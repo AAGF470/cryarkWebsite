@@ -9,7 +9,7 @@
 .wd-page {
   position: relative;
   z-index: 2;
-  max-width: 900px;
+  max-width: min(1400px, 92vw);
   margin: 0 auto;
   padding: 0 48px 96px;
 }
@@ -120,7 +120,7 @@
   border-radius: 8px;
   margin-top: 32px;
   object-fit: cover;
-  max-height: 480px;
+  max-height: 640px;
   display: block;
   border: 0.5px solid rgba(255, 255, 255, 0.07);
 }

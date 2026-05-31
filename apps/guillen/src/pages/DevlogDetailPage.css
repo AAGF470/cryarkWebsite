@@ -48,7 +48,7 @@
 /* ── ARTICLE WRAPPER ─────────────────────────────────────────────────────── */
 
 .dd-page {
-  max-width: 720px;
+  max-width: min(860px, 92vw);
   margin: 0 auto;
   padding: 0 48px 96px;
   position: relative;
