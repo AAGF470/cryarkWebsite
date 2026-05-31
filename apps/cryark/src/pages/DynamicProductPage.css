@@ -1,0 +1,174 @@
+/* ---------------------------------------------------------------------------
+   DynamicProductPage.css
+   Catch-all /products/:slug page.
+   Reuses TheArchitectPage layout patterns — no extra padding-top since
+   CinematicHero starts at the very top with the nav overlaying it.
+--------------------------------------------------------------------------- */
+
+@import "./HomePage.css";
+
+/* ── Page wrapper ─────────────────────────────────────────────────────────── */
+
+.dynprod__page {
+  background: #050508;
+  min-height: 100vh;
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  /* NO padding-top — CinematicHero is full-screen, nav overlays it */
+}
+
+/* ── State wrappers (loading / error) ─────────────────────────────────────── */
+
+.dynprod__shell {
+  background: #050508;
+  min-height: 100vh;
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  padding-top: 62px;
+}
+
+@media (max-width: 680px) {
+  .dynprod__shell { padding-top: 54px; }
+}
+
+.dynprod__state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 16px;
+  color: rgba(232, 230, 225, 0.35);
+  font-size: 14px;
+}
+
+.dynprod__state--error { gap: 10px; }
+
+.dynprod__state_title {
+  font-size: 18px;
+  font-weight: 500;
+  color: rgba(232, 230, 225, 0.60);
+  margin: 0;
+}
+
+.dynprod__state_sub {
+  font-size: 14px;
+  color: rgba(232, 230, 225, 0.30);
+  margin: 0;
+}
+
+.dynprod__state_back {
+  margin-top: 8px;
+  font-size: 13px;
+  color: rgba(200, 169, 126, 0.70);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.dynprod__state_back:hover { color: rgba(200, 169, 126, 1.00); }
+
+/* ── Loading spinner ──────────────────────────────────────────────────────── */
+
+.dynprod__spinner {
+  width: 28px;
+  height: 28px;
+  border: 2px solid rgba(200, 169, 126, 0.14);
+  border-top-color: rgba(200, 169, 126, 0.70);
+  border-radius: 50%;
+  animation: dynprod_spin 0.75s linear infinite;
+}
+
+@keyframes dynprod_spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Text section ─────────────────────────────────────────────────────────── */
+
+.dynprod__text_section {
+  padding: 72px 48px;
+  border-bottom: 0.5px solid var(--color-border-sub);
+}
+
+.dynprod__text_inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.dynprod__text_heading {
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: rgba(232, 230, 225, 0.92);
+  margin: 0 0 20px;
+  line-height: 1.2;
+}
+
+.dynprod__text_prose {
+  font-size: 15px;
+  color: rgba(232, 230, 225, 0.52);
+  line-height: 1.80;
+  margin: 0 0 16px;
+}
+
+@media (max-width: 768px) {
+  .dynprod__text_section { padding: 48px 24px; }
+}
+
+/* ── Built-with section ────────────────────────────────────────────────────── */
+
+.dynprod__built {
+  padding: 56px 48px;
+  border-top: 0.5px solid var(--color-border-sub);
+}
+
+.dynprod__built_inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.dynprod__built_label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(232, 230, 225, 0.25);
+  margin: 0 0 28px;
+}
+
+.dynprod__built_logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+}
+
+.dynprod__built_logo {
+  height: 28px;
+  display: flex;
+  align-items: center;
+}
+
+.dynprod__built_logo img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.55;
+  filter: grayscale(1);
+  transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+.dynprod__built_logo img:hover {
+  opacity: 0.90;
+  filter: grayscale(0);
+}
+
+.dynprod__built_logo span {
+  font-size: 13px;
+  color: rgba(232, 230, 225, 0.35);
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 768px) {
+  .dynprod__built { padding: 40px 24px; }
+}

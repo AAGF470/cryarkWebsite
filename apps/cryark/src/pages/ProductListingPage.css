@@ -1,0 +1,143 @@
+/* ---------------------------------------------------------------------------
+   ProductListingPage.css
+   Shared styles for the /games and /tools listing pages.
+   Card-level styles live in Card.css; this file covers page shell + header.
+--------------------------------------------------------------------------- */
+
+/* ── PAGE SHELL ─────────────────────────────────────────────────────────── */
+
+.page {
+  background: var(--color-bg, #050508);
+  min-height: 100vh;
+  color: var(--color-text, #e8e6e1);
+  font-family: var(--font-sans, system-ui, sans-serif);
+  padding-top: 62px;
+  overflow-x: hidden;
+}
+
+@media (max-width: 680px) {
+  .page { padding-top: 54px; }
+}
+
+/* ── LISTING HEADER ─────────────────────────────────────────────────────── */
+
+.listing__header {
+  position: relative;
+  padding: 72px 48px 56px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Subtle top-left ambient glow */
+.listing__header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -80px;
+  width: 500px;
+  height: 280px;
+  background: radial-gradient(ellipse at 20% 0%, rgba(200, 169, 126, 0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.listing__header_inner {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+}
+
+.listing__eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--color-accent, #c8a97e);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.listing__eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 22px;
+  height: 0.5px;
+  background: var(--color-accent, #c8a97e);
+  flex-shrink: 0;
+}
+
+.listing__title {
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #f5f3ef;
+  margin-bottom: 16px;
+  text-shadow:
+    0 0 40px rgba(200, 169, 126, 0.12),
+    0 0 80px rgba(200, 169, 126, 0.05);
+}
+
+.listing__desc {
+  font-size: 15px;
+  color: rgba(232, 230, 225, 0.48);
+  line-height: 1.65;
+  max-width: 480px;
+}
+
+@media (max-width: 768px) {
+  .listing__header {
+    padding: 52px 24px 40px;
+  }
+}
+
+/* ── CONTENT AREA ───────────────────────────────────────────────────────── */
+
+.listing__main {
+  padding: 0 48px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .listing__main { padding: 0 24px 60px; }
+}
+
+/* ── CARD GRID ───────────────────────────────────────────────────────────── */
+
+.card__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+/* ── EMPTY STATE ─────────────────────────────────────────────────────────── */
+
+.listing__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 96px 24px;
+  text-align: center;
+  gap: 12px;
+}
+
+.listing__empty_icon {
+  font-size: 32px;
+  color: rgba(200, 169, 126, 0.25);
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.listing__empty_msg {
+  font-size: 15px;
+  color: rgba(232, 230, 225, 0.38);
+  letter-spacing: 0.02em;
+}
+
+.listing__empty_sub {
+  font-size: 12px;
+  color: rgba(232, 230, 225, 0.20);
+  letter-spacing: 0.04em;
+}

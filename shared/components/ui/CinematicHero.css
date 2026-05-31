@@ -1,0 +1,194 @@
+/* ---------------------------------------------------------------------------
+   CinematicHero.css
+   Full-viewport hero with video/image background and gradient overlay.
+   Text anchored bottom-left by default; center variant available.
+--------------------------------------------------------------------------- */
+
+.cinematic-hero {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 560px;
+  overflow: hidden;
+  background: #050508;
+}
+
+/* ── BACKGROUND MEDIA ────────────────────────────────────────────────────── */
+
+.cinematic-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.cinematic-hero__bg video,
+.cinematic-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* ── PLACEHOLDER (no media provided) ────────────────────────────────────── */
+
+.cinematic-hero__placeholder {
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(160deg, rgba(40, 28, 12, 0.55) 0%, rgba(5, 5, 8, 0) 55%),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(200, 169, 126, 0.025) 0px,
+      rgba(200, 169, 126, 0.025) 1px,
+      transparent 1px,
+      transparent 44px
+    );
+}
+
+/* ── GRADIENT OVERLAY ────────────────────────────────────────────────────── */
+
+.cinematic-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(to top,
+      rgba(5, 5, 8, 0.95) 0%,
+      rgba(5, 5, 8, 0.68) 26%,
+      rgba(5, 5, 8, 0.32) 52%,
+      rgba(5, 5, 8, 0.12) 72%,
+      rgba(5, 5, 8, 0.04) 100%
+    ),
+    linear-gradient(to right,
+      rgba(5, 5, 8, 0.52) 0%,
+      rgba(5, 5, 8, 0.00) 48%
+    );
+}
+
+/* ── CONTENT ─────────────────────────────────────────────────────────────── */
+
+.cinematic-hero__content {
+  position: absolute;
+  z-index: 2;
+  bottom: 84px;
+  left: 72px;
+  right: 72px;
+  max-width: 620px;
+}
+
+.cinematic-hero--center .cinematic-hero__content {
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 700px;
+}
+
+.cinematic-hero__eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: rgba(200, 169, 126, 0.88);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.cinematic-hero__eyebrow::before {
+  content: '';
+  width: 18px;
+  height: 0.5px;
+  background: rgba(200, 169, 126, 0.88);
+  flex-shrink: 0;
+}
+
+.cinematic-hero--center .cinematic-hero__eyebrow::before {
+  display: none;
+}
+
+.cinematic-hero__title {
+  font-size: clamp(28px, 5vw, 58px);
+  font-weight: 500;
+  line-height: 1.07;
+  letter-spacing: -0.025em;
+  color: #f5f3ef;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 48px rgba(0, 0, 0, 0.65);
+}
+
+.cinematic-hero__subtitle {
+  font-size: 15px;
+  color: rgba(232, 230, 225, 0.55);
+  line-height: 1.68;
+  margin-bottom: 34px;
+  max-width: 480px;
+}
+
+.cinematic-hero--center .cinematic-hero__subtitle {
+  max-width: 540px;
+}
+
+.cinematic-hero__actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* ── SCROLL HINT ─────────────────────────────────────────────────────────── */
+
+.cinematic-hero__scroll_hint {
+  position: absolute;
+  z-index: 2;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.cinematic-hero__scroll_label {
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(232, 230, 225, 0.22);
+}
+
+.cinematic-hero__scroll_line {
+  width: 0.5px;
+  height: 30px;
+  background: linear-gradient(to bottom, rgba(232, 230, 225, 0.25), transparent);
+  animation: ch-scroll-pulse 2.6s ease-in-out infinite;
+}
+
+@keyframes ch-scroll-pulse {
+  0%, 100% { opacity: 0.35; }
+  50%       { opacity: 0.85; }
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .cinematic-hero__content {
+    bottom: 64px;
+    left: 28px;
+    right: 28px;
+  }
+
+  .cinematic-hero--center .cinematic-hero__content {
+    left: 28px;
+    transform: none;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .cinematic-hero__subtitle { max-width: 100%; }
+}

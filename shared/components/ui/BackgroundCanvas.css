@@ -1,0 +1,16 @@
+/* ---------------------------------------------------------------------------
+   BackgroundCanvas.css
+   The canvas sits fixed behind all content — z-index 0, pointer-events none.
+   The page background color matches the canvas base color (#04050a) so there
+   is no flash before the canvas paints on first load.
+--------------------------------------------------------------------------- */
+
+.background_canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  display: block;
+}

@@ -1,0 +1,195 @@
+/* ---------------------------------------------------------------------------
+   EmbeddedApp.css
+   Click-to-activate iframe wrapper for interactive demos and simulations.
+--------------------------------------------------------------------------- */
+
+.embedded-app {
+  border-top:    0.5px solid var(--color-border-sub, rgba(255,255,255,0.07));
+  border-bottom: 0.5px solid var(--color-border-sub, rgba(255,255,255,0.07));
+}
+
+/* ── Header ──────────────────────────────────────────────────────────────── */
+
+.embedded-app__header {
+  padding: 48px 56px 32px;
+  max-width: 720px;
+}
+
+.embedded-app__eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: rgba(200, 169, 126, 0.75);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.embedded-app__eyebrow::before {
+  content: '';
+  width: 18px;
+  height: 0.5px;
+  background: rgba(200, 169, 126, 0.75);
+  flex-shrink: 0;
+}
+
+.embedded-app__title {
+  font-size: clamp(20px, 3vw, 32px);
+  font-weight: 500;
+  letter-spacing: -0.022em;
+  color: #f5f3ef;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+
+.embedded-app__desc {
+  font-size: 14px;
+  color: rgba(232, 230, 225, 0.48);
+  line-height: 1.7;
+}
+
+/* ── Frame container ─────────────────────────────────────────────────────── */
+
+.embedded-app__frame {
+  position: relative;
+  width: 100%;
+  background: #050508;
+  overflow: hidden;
+}
+
+/* ── Iframe ──────────────────────────────────────────────────────────────── */
+
+.embedded-app__iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.embedded-app__frame--loaded .embedded-app__iframe {
+  opacity: 1;
+}
+
+/* ── Loading overlay ─────────────────────────────────────────────────────── */
+
+.embedded-app__loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: #050508;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.embedded-app__spinner {
+  display: block;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(200, 169, 126, 0.14);
+  border-top-color: rgba(200, 169, 126, 0.85);
+  animation: ea-spin 0.9s linear infinite;
+}
+
+@keyframes ea-spin {
+  to { transform: rotate(360deg); }
+}
+
+.embedded-app__loading_label {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(232, 230, 225, 0.22);
+}
+
+/* ── Pre-launch overlay ──────────────────────────────────────────────────── */
+
+.embedded-app__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.embedded-app__poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  user-select: none;
+}
+
+.embedded-app__overlay_veil {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 5, 8, 0.60);
+}
+
+.embedded-app__launch_panel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.embedded-app__launch_btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 32px;
+  border-radius: 8px;
+  border: 1px solid rgba(200, 169, 126, 0.35);
+  background: rgba(200, 169, 126, 0.10);
+  color: rgba(232, 230, 225, 0.90);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: background 0.22s ease, border-color 0.22s ease, transform 0.22s ease;
+}
+
+.embedded-app__launch_btn:hover {
+  background: rgba(200, 169, 126, 0.18);
+  border-color: rgba(200, 169, 126, 0.65);
+  transform: translateY(-1px);
+}
+
+.embedded-app__launch_icon {
+  font-size: 11px;
+  color: rgba(200, 169, 126, 0.90);
+}
+
+.embedded-app__warning {
+  font-size: 11px;
+  color: rgba(232, 230, 225, 0.28);
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .embedded-app__header   { padding: 36px 24px 24px; }
+  .embedded-app__launch_btn { padding: 12px 24px; font-size: 12px; }
+}
+
+@media (max-width: 480px) {
+  .embedded-app__header { padding: 28px 20px 20px; }
+}

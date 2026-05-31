@@ -1,0 +1,219 @@
+/* ---------------------------------------------------------------------------
+   AssetGrid.css
+   Downloadable asset cards for the Lab — 3D models, textures, sprites, etc.
+--------------------------------------------------------------------------- */
+
+.asset-grid {
+  padding: 72px 48px;
+  border-bottom: 0.5px solid var(--color-border-sub, rgba(255,255,255,0.07));
+}
+
+/* ── Heading ─────────────────────────────────────────────────────────────── */
+
+.asset-grid__heading_wrap {
+  margin-bottom: 36px;
+}
+
+.asset-grid__heading {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(200, 169, 126, 0.90);
+  text-transform: uppercase;
+  padding-left: 14px;
+  position: relative;
+}
+
+.asset-grid__heading::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(to bottom, rgba(200, 169, 126, 0.88), rgba(200, 169, 126, 0));
+}
+
+/* ── Grid ────────────────────────────────────────────────────────────────── */
+
+.asset-grid__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+/* ── Card ────────────────────────────────────────────────────────────────── */
+
+.asset-grid__card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.022);
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.22s ease, background 0.22s ease;
+}
+
+.asset-grid__card:hover {
+  border-color: rgba(200, 169, 126, 0.25);
+  background: rgba(200, 169, 126, 0.03);
+}
+
+/* ── Preview image ───────────────────────────────────────────────────────── */
+
+.asset-grid__preview {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+}
+
+.asset-grid__preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.asset-grid__card:hover .asset-grid__preview img {
+  transform: scale(1.04);
+}
+
+.asset-grid__preview_placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── License badge (on image) ────────────────────────────────────────────── */
+
+.asset-grid__license {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  padding: 3px 7px;
+  border-radius: 4px;
+}
+
+.asset-grid__license--free        { background: rgba(74, 140, 111, 0.85); color: #c8f0dc; }
+.asset-grid__license--cc0         { background: rgba(74, 122, 155, 0.85); color: #c8dcf0; }
+.asset-grid__license--attribution { background: rgba(155, 138, 74, 0.85); color: #f0e6c8; }
+.asset-grid__license--patreon     { background: rgba(200, 169, 126, 0.85); color: #2a1f0a; }
+
+/* ── Card body ───────────────────────────────────────────────────────────── */
+
+.asset-grid__body {
+  padding: 16px 18px 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.asset-grid__category {
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(200, 169, 126, 0.65);
+}
+
+.asset-grid__name {
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(240, 237, 232, 0.90);
+  letter-spacing: -0.01em;
+}
+
+.asset-grid__desc {
+  font-size: 12px;
+  color: rgba(232, 230, 225, 0.40);
+  line-height: 1.6;
+  margin-top: 4px;
+}
+
+/* ── Meta row ────────────────────────────────────────────────────────────── */
+
+.asset-grid__meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.asset-grid__type_badge {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(232, 230, 225, 0.50);
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+}
+
+.asset-grid__type_badge--large {
+  font-size: 13px;
+  padding: 4px 10px;
+}
+
+.asset-grid__size {
+  font-size: 11px;
+  color: rgba(232, 230, 225, 0.28);
+}
+
+/* ── Download footer ─────────────────────────────────────────────────────── */
+
+.asset-grid__footer {
+  padding: 0 18px 16px;
+}
+
+.asset-grid__dl_btn {
+  display: block;
+  width: 100%;
+  padding: 9px 0;
+  text-align: center;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 0.5px solid rgba(200, 169, 126, 0.28);
+  color: rgba(200, 169, 126, 0.85);
+  background: rgba(200, 169, 126, 0.06);
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.asset-grid__dl_btn:hover {
+  background: rgba(200, 169, 126, 0.14);
+  border-color: rgba(200, 169, 126, 0.55);
+  color: rgba(200, 169, 126, 1);
+}
+
+.asset-grid__dl_btn--patreon {
+  border-color: rgba(200, 169, 126, 0.45);
+  color: #c8a97e;
+  background: rgba(200, 169, 126, 0.10);
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .asset-grid { padding: 48px 24px; }
+  .asset-grid__list { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+}
+
+@media (max-width: 480px) {
+  .asset-grid { padding: 36px 16px; }
+  .asset-grid__list { grid-template-columns: 1fr 1fr; gap: 10px; }
+}

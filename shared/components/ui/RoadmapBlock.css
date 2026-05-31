@@ -1,0 +1,266 @@
+/* ---------------------------------------------------------------------------
+   RoadmapBlock.css
+   Horizontal milestone track (desktop) / vertical list (mobile).
+--------------------------------------------------------------------------- */
+
+.roadmap {
+  padding: 72px 48px;
+  border-bottom: 0.5px solid var(--color-border-sub, rgba(255,255,255,0.07));
+  /* No overflow: hidden here — it would clip the node hover scale transform */
+}
+
+/* ── Header ──────────────────────────────────────────────────────────────── */
+
+.roadmap__header {
+  margin-bottom: 32px;
+}
+
+.roadmap__eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: rgba(200, 169, 126, 0.75);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.roadmap__eyebrow::before {
+  content: '';
+  width: 18px;
+  height: 0.5px;
+  background: rgba(200, 169, 126, 0.75);
+  flex-shrink: 0;
+}
+
+.roadmap__heading {
+  font-size: clamp(18px, 2.5vw, 28px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: #f5f3ef;
+}
+
+/* ── Progress bar ────────────────────────────────────────────────────────── */
+
+.roadmap__progress_wrap {
+  position: relative;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 99px;
+  margin-bottom: 44px;
+  overflow: visible;
+}
+
+.roadmap__progress_bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(to right, rgba(200, 169, 126, 0.70), rgba(200, 169, 126, 1));
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 8px rgba(200, 169, 126, 0.40);
+}
+
+.roadmap__progress_label {
+  position: absolute;
+  right: 0;
+  top: -22px;
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  color: rgba(200, 169, 126, 0.65);
+}
+
+/* ── Track ───────────────────────────────────────────────────────────────── */
+
+.roadmap__track {
+  position: relative;
+  overflow-x: auto;
+  /* padding-top gives headroom for the node scale(1.1) hover without clipping.
+     overflow-x:auto forces overflow-y:auto too, so we need padding rather than
+     relying on overflow:visible. */
+  padding-top: 8px;
+  padding-bottom: 12px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(200, 169, 126, 0.12) transparent;
+}
+
+.roadmap__track::-webkit-scrollbar       { height: 2px; }
+.roadmap__track::-webkit-scrollbar-track { background: transparent; }
+.roadmap__track::-webkit-scrollbar-thumb { background: rgba(200, 169, 126, 0.15); border-radius: 99px; }
+
+/* Horizontal connecting line */
+.roadmap__line {
+  position: absolute;
+  top: 26px; /* 18px node center + 8px padding-top on track */
+  left: 0;
+  right: 0;
+  height: 0.5px;
+  background: rgba(255, 255, 255, 0.06);
+  pointer-events: none;
+}
+
+.roadmap__list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 0;
+  min-width: min-content;
+}
+
+/* ── Milestone item ──────────────────────────────────────────────────────── */
+
+.roadmap__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  min-width: 120px;
+  padding: 0 12px;
+  text-align: center;
+}
+
+/* ── Node ────────────────────────────────────────────────────────────────── */
+
+.roadmap__node {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.roadmap__item:hover .roadmap__node {
+  transform: scale(1.10);
+}
+
+.roadmap__symbol {
+  font-size: 13px;
+  line-height: 1;
+}
+
+/* Status-specific node colors */
+.roadmap__item--done .roadmap__node {
+  background: rgba(200, 169, 126, 0.15);
+  border-color: rgba(200, 169, 126, 0.75);
+  color: rgba(200, 169, 126, 0.95);
+  box-shadow: 0 0 12px rgba(200, 169, 126, 0.20);
+}
+
+.roadmap__item--in_progress .roadmap__node {
+  background: rgba(100, 181, 196, 0.12);
+  border-color: rgba(100, 181, 196, 0.70);
+  color: rgba(100, 181, 196, 0.95);
+  box-shadow: 0 0 12px rgba(100, 181, 196, 0.18);
+  animation: roadmap-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes roadmap-pulse {
+  0%, 100% { box-shadow: 0 0 12px rgba(100, 181, 196, 0.18); }
+  50%       { box-shadow: 0 0 20px rgba(100, 181, 196, 0.35); }
+}
+
+.roadmap__item--planned .roadmap__node {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.14);
+  color: rgba(232, 230, 225, 0.35);
+}
+
+.roadmap__item--cut .roadmap__node {
+  background: rgba(139, 67, 67, 0.08);
+  border-color: rgba(139, 67, 67, 0.35);
+  color: rgba(200, 120, 120, 0.55);
+}
+
+/* ── Item labels ─────────────────────────────────────────────────────────── */
+
+.roadmap__item_body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.roadmap__item_label {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(232, 230, 225, 0.75);
+  letter-spacing: 0.02em;
+}
+
+.roadmap__item--done    .roadmap__item_label { color: rgba(200, 169, 126, 0.90); }
+.roadmap__item--planned .roadmap__item_label { color: rgba(232, 230, 225, 0.38); }
+.roadmap__item--cut     .roadmap__item_label {
+  color: rgba(232, 230, 225, 0.25);
+  text-decoration: line-through;
+}
+
+.roadmap__item_desc {
+  font-size: 10px;
+  color: rgba(232, 230, 225, 0.28);
+  letter-spacing: 0.02em;
+  max-width: 100px;
+  line-height: 1.4;
+}
+
+/* ── Responsive — vertical layout on mobile ──────────────────────────────── */
+
+@media (max-width: 768px) {
+  .roadmap { padding: 48px 24px; }
+
+  .roadmap__line  { display: none; }
+  .roadmap__track { overflow-x: visible; }
+
+  .roadmap__list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    min-width: unset;
+  }
+
+  .roadmap__item {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    min-width: unset;
+    padding: 0;
+    gap: 16px;
+    padding-bottom: 24px;
+    position: relative;
+  }
+
+  /* Vertical connecting line on mobile */
+  .roadmap__item::after {
+    content: '';
+    position: absolute;
+    left: 17px;
+    top: 36px;
+    bottom: 0;
+    width: 0.5px;
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .roadmap__item:last-child::after { display: none; }
+
+  .roadmap__node { margin-bottom: 0; flex-shrink: 0; }
+
+  .roadmap__item_body {
+    align-items: flex-start;
+    padding-top: 8px;
+  }
+
+  .roadmap__item_desc { max-width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .roadmap { padding: 36px 20px; }
+}

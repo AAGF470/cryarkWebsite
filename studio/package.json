@@ -1,0 +1,19 @@
+{
+  "name": "cryark-studio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev":    "sanity dev",
+    "build":  "sanity build",
+    "deploy": "sanity deploy",
+    "check":  "sanity check"
+  },
+  "dependencies": {
+    "sanity":           "^3.88.0",
+    "@sanity/vision":   "^3.88.0",
+    "styled-components": "^6.1.18",
+    "react":            "^19.0.0",
+    "react-dom":        "^19.0.0"
+  }
+}

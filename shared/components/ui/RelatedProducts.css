@@ -1,0 +1,182 @@
+/* ---------------------------------------------------------------------------
+   RelatedProducts.css
+   "More from Cryark" card strip at the bottom of product pages.
+--------------------------------------------------------------------------- */
+
+.related-products {
+  padding: 64px 48px;
+  border-top: 0.5px solid var(--color-border-sub, rgba(255,255,255,0.07));
+}
+
+/* ── Header ──────────────────────────────────────────────────────────────── */
+
+.related-products__header {
+  margin-bottom: 28px;
+}
+
+.related-products__eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: rgba(200, 169, 126, 0.65);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.related-products__eyebrow::after {
+  content: '';
+  flex: 1;
+  height: 0.5px;
+  background: linear-gradient(to right, rgba(200, 169, 126, 0.16), transparent);
+}
+
+/* ── Grid ────────────────────────────────────────────────────────────────── */
+
+.related-products__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* ── Card ────────────────────────────────────────────────────────────────── */
+
+.related-products__card {
+  display: flex;
+  flex-direction: column;
+  border: 0.5px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.018);
+  transition: border-color 0.22s ease, background 0.22s ease, transform 0.22s ease;
+  position: relative;
+}
+
+.related-products__card:hover {
+  border-color: rgba(200, 169, 126, 0.28);
+  background: rgba(200, 169, 126, 0.03);
+  transform: translateY(-2px);
+}
+
+/* ── Thumbnail ───────────────────────────────────────────────────────────── */
+
+.related-products__thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.related-products__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.40s ease;
+}
+
+.related-products__card:hover .related-products__thumb img {
+  transform: scale(1.05);
+}
+
+.related-products__thumb_placeholder {
+  width: 100%;
+  height: 100%;
+  background: rgba(200, 169, 126, 0.03);
+}
+
+.related-products__thumb_veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, rgba(5, 5, 8, 0.70) 100%);
+}
+
+/* ── Info ────────────────────────────────────────────────────────────────── */
+
+.related-products__info {
+  padding: 16px 18px 14px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.related-products__status {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.related-products__status--released  { color: rgba(200, 169, 126, 0.85); }
+.related-products__status--in_dev    { color: rgba(100, 181, 196, 0.85); }
+.related-products__status--live      { color: rgba(100, 196, 140, 0.85); }
+.related-products__status--research  { color: rgba(180, 140, 210, 0.85); }
+.related-products__status--collab    { color: rgba(210, 170, 100, 0.85); }
+
+.related-products__title {
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(240, 237, 232, 0.90);
+  letter-spacing: -0.01em;
+}
+
+.related-products__subtitle {
+  font-size: 12px;
+  color: rgba(232, 230, 225, 0.38);
+  line-height: 1.5;
+}
+
+.related-products__tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.related-products__tag {
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  color: rgba(232, 230, 225, 0.38);
+}
+
+/* ── Arrow ───────────────────────────────────────────────────────────────── */
+
+.related-products__arrow {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  font-size: 14px;
+  color: rgba(200, 169, 126, 0.35);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.related-products__card:hover .related-products__arrow {
+  color: rgba(200, 169, 126, 0.80);
+  transform: translateX(3px);
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 860px) {
+  .related-products__grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .related-products { padding: 48px 24px; }
+}
+
+@media (max-width: 560px) {
+  .related-products__grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .related-products { padding: 36px 20px; }
+}

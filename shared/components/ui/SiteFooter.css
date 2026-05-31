@@ -1,0 +1,159 @@
+/* ── SiteFooter ──────────────────────────────────────────────────────────── */
+
+.site-footer {
+  border-top: 1px solid var(--color-border-sub);
+  padding: 52px 40px 36px;
+}
+
+.site-footer__inner {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+/* ── Top row: brand left, social right ────────────────────────────────── */
+
+.site-footer__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 32px;
+  padding-bottom: 40px;
+}
+
+/* Brand block */
+
+.site-footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.site-footer__wordmark {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.site-footer__motto {
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: 0.06em;
+  margin-top: 6px;
+  text-shadow:
+    0 0 6px  rgba(200, 169, 126, 0.70),
+    0 0 14px rgba(200, 169, 126, 0.40),
+    0 0 30px rgba(200, 169, 126, 0.18);
+}
+
+.site-footer__credit {
+  font-size: 12px;
+  color: var(--color-text-dim);
+  letter-spacing: 0.02em;
+  margin-top: 2px;
+}
+
+.site-footer__credit_link {
+  color: var(--color-text-dim);
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.site-footer__credit_link:hover {
+  color: var(--color-accent);
+}
+
+/* Social / platform icon links */
+
+.site-footer__social {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  padding-top: 4px;
+}
+
+.site-footer__social_link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-dim);
+  text-decoration: none;
+  transition: color 0.18s ease, transform 0.18s ease, opacity 0.18s ease;
+  line-height: 0;
+}
+
+.site-footer__social_link:hover {
+  color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+/* PNG-based icons: dim normally, brighten on hover via the parent link */
+.site-footer__social_link .social-icon--img {
+  opacity: 0.45;
+  transition: opacity 0.18s ease;
+  filter: brightness(1.4);
+}
+
+.site-footer__social_link:hover .social-icon--img {
+  opacity: 1;
+}
+
+/* ── Art slot ───────────────────────────────────────────────────────────── */
+/* Empty right now — drop an SVG illustration or procedural canvas here.     */
+
+.site-footer__art {
+  /* Future: min-height: 140px; position: relative; overflow: hidden; etc. */
+}
+
+/* ── Bottom bar ─────────────────────────────────────────────────────────── */
+
+.site-footer__bottom {
+  border-top: 1px solid var(--color-border-sub);
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.site-footer__copy {
+  font-size: 11px;
+  color: var(--color-text-faint);
+  letter-spacing: 0.04em;
+}
+
+.site-footer__dev_link {
+  font-size: 11px;
+  color: var(--color-text-faint);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.18s ease;
+}
+
+.site-footer__dev_link:hover {
+  color: var(--color-text-dim);
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .site-footer {
+    padding: 40px 20px 28px;
+  }
+
+  .site-footer__top {
+    flex-direction: column;
+    gap: 24px;
+    padding-bottom: 28px;
+  }
+
+  .site-footer__social {
+    justify-content: flex-start;
+    gap: 20px;
+  }
+}

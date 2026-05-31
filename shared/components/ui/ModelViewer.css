@@ -1,0 +1,123 @@
+/* ---------------------------------------------------------------------------
+   ModelViewer.css
+   Wrapper shell for the <model-viewer> 3D asset viewer.
+   Cinematic dark aesthetic, gold accent, branded loading state.
+--------------------------------------------------------------------------- */
+
+/* ── OUTER WRAPPER ───────────────────────────────────────────────────────── */
+
+.model-viewer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-top:    0.5px solid var(--color-border-sub, rgba(255,255,255,0.07));
+  border-bottom: 0.5px solid var(--color-border-sub, rgba(255,255,255,0.07));
+}
+
+/* ── BACKGROUND VARIANTS ─────────────────────────────────────────────────── */
+
+.model-viewer--dark        { background: #07060a; }
+.model-viewer--neutral     { background: rgba(18, 16, 22, 0.80); }
+.model-viewer--transparent { background: transparent; }
+
+/* ── MODEL-VIEWER CUSTOM ELEMENT THEMING ─────────────────────────────────── */
+/* These CSS custom properties are part of model-viewer's public API.        */
+
+.model-viewer model-viewer {
+  --progress-bar-color:   rgba(200, 169, 126, 0.80);
+  --progress-bar-height:  2px;
+  --poster-color:         transparent;
+}
+
+/* ── LOADING SKELETON ────────────────────────────────────────────────────── */
+
+.model-viewer__skeleton {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  background: #07060a;
+  pointer-events: none;
+  /* Fades out once model-viewer--ready is added */
+  transition: opacity 0.5s ease;
+  z-index: 2;
+}
+
+.model-viewer--ready .model-viewer__skeleton {
+  opacity: 0;
+}
+
+/* Gold ring spinner */
+.model-viewer__spinner {
+  display: block;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(200, 169, 126, 0.14);
+  border-top-color: rgba(200, 169, 126, 0.85);
+  animation: mv-spin 0.9s linear infinite;
+}
+
+@keyframes mv-spin {
+  to { transform: rotate(360deg); }
+}
+
+.model-viewer__loading_label {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(232, 230, 225, 0.22);
+}
+
+/* ── ERROR STATE ─────────────────────────────────────────────────────────── */
+
+.model-viewer__error {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #07060a;
+  font-size: 12px;
+  color: rgba(232, 230, 225, 0.30);
+  letter-spacing: 0.08em;
+  z-index: 2;
+}
+
+.model-viewer__error_icon {
+  font-size: 22px;
+  color: rgba(200, 169, 126, 0.40);
+}
+
+/* ── CAPTION ─────────────────────────────────────────────────────────────── */
+
+.model-viewer__caption {
+  font-size: 11px;
+  letter-spacing: 0.10em;
+  color: rgba(232, 230, 225, 0.28);
+  text-align: center;
+  text-transform: uppercase;
+  padding: 14px 24px 18px;
+  background: #07060a;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.04);
+  margin: 0;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .model-viewer {
+    --mv-h: clamp(320px, 60vw, 480px) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .model-viewer {
+    --mv-h: clamp(280px, 70vw, 360px) !important;
+  }
+}

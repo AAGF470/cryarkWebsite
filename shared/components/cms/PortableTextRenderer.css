@@ -1,0 +1,73 @@
+/* ---------------------------------------------------------------------------
+   PortableTextRenderer.css
+   Styles for CMS-rendered rich text.
+   Uses the same palette as the rest of the site (derg__ token set).
+--------------------------------------------------------------------------- */
+
+.cms__prose {
+  font-size: 15px;
+  color: rgba(232, 230, 225, 0.52);
+  line-height: 1.80;
+  margin: 0 0 20px;
+}
+
+.cms__h2 {
+  font-size: clamp(20px, 2.5vw, 26px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: rgba(232, 230, 225, 0.92);
+  margin: 40px 0 16px;
+  line-height: 1.2;
+}
+
+.cms__h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(232, 230, 225, 0.85);
+  margin: 32px 0 12px;
+  letter-spacing: -0.01em;
+}
+
+.cms__h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(200, 169, 126, 0.80);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 24px 0 10px;
+}
+
+.cms__ul,
+.cms__ol {
+  margin: 0 0 20px 0;
+  padding-left: 20px;
+  color: rgba(232, 230, 225, 0.52);
+}
+
+.cms__li {
+  font-size: 14px;
+  line-height: 1.72;
+  margin-bottom: 6px;
+}
+
+.cms__inline_code {
+  font-size: 13px;
+  font-family: ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace;
+  color: rgba(200, 169, 126, 0.80);
+  background: rgba(200, 169, 126, 0.08);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+.cms__link {
+  color: rgba(200, 169, 126, 0.85);
+  text-decoration: underline;
+  text-decoration-color: rgba(200, 169, 126, 0.30);
+  text-underline-offset: 3px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.cms__link:hover {
+  color: rgba(200, 169, 126, 1.00);
+  text-decoration-color: rgba(200, 169, 126, 0.60);
+}

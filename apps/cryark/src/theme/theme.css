@@ -1,0 +1,13 @@
+/* ── CRYARK THEME ────────────────────────────────────────────────────────── */
+/* Cryark brand identity — dark/gold game studio aesthetic.                  */
+/* Overrides any shared token defaults for the cryark.net deployment.        */
+
+/* The defaults in shared/styles/tokens.css are already tuned for cryark,   */
+/* so no overrides are needed right now. Add them here as the brand evolves. */
+
+/* Example of future overrides:
+:root {
+  --color-accent: #d4b896;    bump gold warmer for v2
+  --font-sans: 'Space Grotesk', system-ui, sans-serif;
+}
+*/

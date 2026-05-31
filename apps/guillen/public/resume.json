@@ -1,0 +1,73 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "meta": {
+    "version": "v1.0.0",
+    "lastModified": "2026-05-31"
+  },
+  "basics": {
+    "name": "Angel A. Guillen Flores",
+    "label": "Software Engineer & Solo Game Developer",
+    "email": "",
+    "url": "https://guillen.studio",
+    "summary": "Engineer and solo game developer building toward the games industry through systems depth and shipped work. Focused on game engine programming, simulation, and tooling in C#, C++, and Python. Independent studio (Cryark) publishes games and developer tools.",
+    "location": {
+      "countryCode": "US"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "url": "https://github.com"
+      },
+      {
+        "network": "LinkedIn",
+        "url": "https://linkedin.com"
+      },
+      {
+        "network": "Portfolio",
+        "url": "https://guillen.studio"
+      }
+    ]
+  },
+  "skills": [
+    {
+      "name": "Languages",
+      "keywords": ["C#", "C++", "Python", "JavaScript", "TypeScript", "GDScript", "GLSL"]
+    },
+    {
+      "name": "Game Engines",
+      "keywords": ["Godot", "Unity"]
+    },
+    {
+      "name": "3D / Art",
+      "keywords": ["Blender"]
+    },
+    {
+      "name": "Web",
+      "keywords": ["React", "Vite", "CSS"]
+    },
+    {
+      "name": "Tools & Infrastructure",
+      "keywords": ["Sanity CMS", "Git", "Docker", "Nginx", "Linux"]
+    }
+  ],
+  "work": [],
+  "education": [],
+  "projects": [
+    {
+      "name": "Cryark",
+      "description": "Independent solo game and developer tools studio. Games and tools built to last.",
+      "url": "https://cryark.net",
+      "keywords": ["Game Development", "C#", "C++", "Godot", "Unity"]
+    }
+  ],
+  "interests": [
+    {
+      "name": "Game Development",
+      "keywords": ["Simulation", "Engine Programming", "Systems Design", "Atmospheric Games"]
+    },
+    {
+      "name": "Developer Tooling",
+      "keywords": ["Editor Extensions", "Build Systems", "Workflow Automation"]
+    }
+  ]
+}

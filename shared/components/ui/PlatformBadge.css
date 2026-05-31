@@ -1,0 +1,30 @@
+/* ---------------------------------------------------------------------------
+   PlatformBadge.css
+   Square icon container for non-text platform logos.
+--------------------------------------------------------------------------- */
+
+.platform-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* Size is set via inline style — default 32px */
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 0.5px solid rgba(200, 169, 126, 0.14);
+  overflow: hidden;
+  flex-shrink: 0;
+  /* Padding ensures every icon — square, wide, tall — has uniform breathing room */
+  padding: 5px;
+}
+
+.platform-badge__icon {
+  /* Fill the padded area, never overflow it */
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  /* Snap non-square images to a consistent visual weight */
+  max-width: 100%;
+  max-height: 100%;
+}

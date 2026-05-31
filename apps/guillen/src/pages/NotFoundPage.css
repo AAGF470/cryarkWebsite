@@ -1,0 +1,113 @@
+/* ── NOT FOUND PAGE ───────────────────────────────────────────────────────── */
+
+.nf {
+  min-height: 100vh;
+  background: #050508;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── FILM GRAIN ──────────────────────────────────────────────────────────── */
+
+.nf__grain {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.048;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 160px 160px;
+  animation: nf-grain-shift 0.18s steps(1) infinite;
+}
+
+@keyframes nf-grain-shift {
+  0%   { background-position:   0%    0%;  }
+  10%  { background-position:  -5%  -10%;  }
+  20%  { background-position: -15%    5%;  }
+  30%  { background-position:   7%  -20%;  }
+  40%  { background-position:  -5%   20%;  }
+  50%  { background-position: -12%    8%;  }
+  60%  { background-position:  14%    0%;  }
+  70%  { background-position:   0%   12%;  }
+  80%  { background-position:   4%   28%;  }
+  90%  { background-position: -10%    6%;  }
+  100% { background-position:   0%    0%;  }
+}
+
+/* ── CENTERED CONTENT ────────────────────────────────────────────────────── */
+
+.nf__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 48px 24px;
+  /* Gold radial glow sits behind the 404 number */
+  background: radial-gradient(
+    ellipse 340px 260px at 50% 42%,
+    rgba(200, 169, 100, 0.06) 0%,
+    transparent 70%
+  );
+}
+
+/* ── 404 NUMBER ──────────────────────────────────────────────────────────── */
+
+.nf-code {
+  font-size: clamp(72px, 18vw, 140px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin: 0 0 8px;
+  color: rgba(200, 169, 100, 0.22);
+  user-select: none;
+}
+
+/* ── HEADING ─────────────────────────────────────────────────────────────── */
+
+.nf-title {
+  font-size: clamp(28px, 5vw, 42px);
+  font-weight: 500;
+  color: #e8e2d9;
+  margin: 0 0 12px;
+  letter-spacing: -0.01em;
+}
+
+/* ── TAGLINE ─────────────────────────────────────────────────────────────── */
+
+.nf-tagline {
+  font-size: 14px;
+  color: rgba(232, 226, 217, 0.42);
+  margin: 0 0 36px;
+  letter-spacing: 0.01em;
+}
+
+/* ── LINK ROW ────────────────────────────────────────────────────────────── */
+
+.nf__links {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.nf__links a {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(200, 169, 100, 0.7);
+  border-bottom: 1px solid rgba(200, 169, 100, 0.2);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.nf__links a:hover {
+  color: rgba(200, 169, 100, 1);
+  border-color: rgba(200, 169, 100, 0.6);
+}

@@ -1,0 +1,313 @@
+/* ---------------------------------------------------------------------------
+   WorkCard.css
+   Horizontal project card for the /work listing page.
+   Four composable slots: meta | primary | code | devlog
+   Slots that are absent simply aren't rendered — no dead space.
+--------------------------------------------------------------------------- */
+
+/* ── Card shell ─────────────────────────────────────────────────────────── */
+
+.wc {
+  width: 100%;
+  border-radius: 14px;
+  border: 0.5px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.025);
+  overflow: hidden;
+  transition: border-color 0.22s ease, background 0.22s ease;
+  position: relative;
+}
+
+/* Top-edge sheen */
+.wc::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.10);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.wc:hover {
+  border-color: rgba(200, 169, 126, 0.20);
+  background: rgba(200, 169, 126, 0.03);
+}
+
+/* ── Inner link (full card is a link) ───────────────────────────────────── */
+
+.wc__inner {
+  display: flex;
+  align-items: stretch;
+  text-decoration: none;
+  color: inherit;
+  min-height: 220px;
+}
+
+/* ── Dividers between slots ─────────────────────────────────────────────── */
+
+.wc__primary,
+.wc__code,
+.wc__log {
+  border-left: 0.5px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ── Meta slot (always rendered) ────────────────────────────────────────── */
+
+.wc__meta {
+  flex: 0 0 240px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.wc__status {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-bottom: 14px;
+  width: fit-content;
+}
+
+.wc__status--released { color: rgba(180, 220, 180, 0.90); background: rgba(100, 200, 100, 0.10); }
+.wc__status--in_dev   { color: rgba(180, 200, 240, 0.90); background: rgba(100, 150, 220, 0.10); }
+.wc__status--research { color: rgba(200, 180, 240, 0.90); background: rgba(150, 100, 220, 0.10); }
+.wc__status--live     { color: rgba(120, 220, 160, 0.90); background: rgba(60,  180, 100, 0.10); }
+.wc__status--collab   { color: rgba(200, 169, 126, 0.90); background: rgba(200, 169, 126, 0.10); }
+
+.wc__title {
+  font-size: 17px;
+  font-weight: 600;
+  color: #f0ede8;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+}
+
+.wc__desc {
+  font-size: 12px;
+  color: rgba(232, 230, 225, 0.42);
+  line-height: 1.65;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: 1;
+  margin-bottom: 14px;
+}
+
+.wc__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.wc__cta {
+  font-size: 11px;
+  color: rgba(200, 169, 126, 0.55);
+  letter-spacing: 0.06em;
+  margin-top: auto;
+  transition: color 0.18s ease;
+}
+
+.wc:hover .wc__cta {
+  color: rgba(200, 169, 126, 0.90);
+}
+
+/* ── Primary slot (thumbnail or placeholder) ────────────────────────────── */
+
+.wc__primary {
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.wc__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.4s ease;
+}
+
+.wc:hover .wc__img {
+  transform: scale(1.02);
+}
+
+.wc__placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,0.012) 0px,
+      rgba(255,255,255,0.012) 1px,
+      transparent 1px,
+      transparent 12px
+    );
+}
+
+.wc__placeholder_label {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(232, 230, 225, 0.15);
+}
+
+/* ── Code slot ───────────────────────────────────────────────────────────── */
+
+.wc__code {
+  flex: 0 0 210px;
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.wc__code_label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(200, 169, 126, 0.55);
+}
+
+.wc__pre {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  font-size: 10.5px;
+  line-height: 1.65;
+  color: rgba(232, 230, 225, 0.55);
+  white-space: pre;
+  overflow: hidden;
+  /* Fade the bottom of the snippet */
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  flex: 1;
+  margin: 0;
+}
+
+/* ── Devlog slot ─────────────────────────────────────────────────────────── */
+
+.wc__log {
+  flex: 0 0 210px;
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-decoration: none;
+  color: inherit;
+  background: rgba(200, 169, 126, 0.02);
+  transition: background 0.18s ease;
+}
+
+.wc__log:hover {
+  background: rgba(200, 169, 126, 0.06);
+}
+
+.wc__log_eyebrow {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(200, 169, 126, 0.50);
+  margin-bottom: 4px;
+}
+
+.wc__log_title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #f0ede8;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.wc__log_date {
+  font-size: 10px;
+  color: rgba(232, 230, 225, 0.28);
+  letter-spacing: 0.04em;
+}
+
+.wc__log_abstract {
+  font-size: 11px;
+  color: rgba(232, 230, 225, 0.36);
+  line-height: 1.6;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.wc__log_cta {
+  font-size: 10px;
+  color: rgba(200, 169, 126, 0.45);
+  letter-spacing: 0.06em;
+  margin-top: auto;
+  transition: color 0.18s ease;
+}
+
+.wc__log:hover .wc__log_cta {
+  color: rgba(200, 169, 126, 0.85);
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .wc__inner {
+    flex-direction: column;
+    min-height: unset;
+  }
+
+  .wc__meta,
+  .wc__primary,
+  .wc__log {
+    flex: none;
+    width: 100%;
+    border-left: none;
+    border-top: 0.5px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .wc__meta {
+    border-top: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 20px 20px 16px;
+  }
+
+  .wc__status  { align-self: flex-start; }
+  .wc__title   { width: 100%; margin-bottom: 6px; }
+  .wc__desc    { width: 100%; -webkit-line-clamp: 2; }
+  .wc__tags    { width: 100%; margin-bottom: 0; }
+  .wc__cta     { display: none; }
+
+  .wc__primary {
+    height: 200px;
+  }
+
+  /* Code + devlog slots hidden on mobile — too dense at small widths */
+  .wc__code,
+  .wc__log {
+    display: none;
+  }
+
+  .wc__log {
+    padding: 16px 20px;
+  }
+}

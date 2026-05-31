@@ -1,0 +1,212 @@
+/* ---------------------------------------------------------------------------
+   DergPage.css
+   Lab entry page for the DERG pipeline research project.
+--------------------------------------------------------------------------- */
+
+@import "./HomePage.css";
+
+.derg__page {
+  background: #050508;
+  min-height: 100vh;
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  padding-top: 62px;
+}
+
+@media (max-width: 680px) {
+  .derg__page { padding-top: 54px; }
+}
+
+/* ── SECTION SHELL ───────────────────────────────────────────────────────── */
+
+.derg__section {
+  padding: 60px 48px;
+  border-bottom: 0.5px solid var(--color-border-sub);
+}
+
+.derg__section--last {
+  border-bottom: none;
+}
+
+@media (max-width: 768px) {
+  .derg__section { padding: 44px 24px; }
+}
+
+/* ── CONTENT CONTAINERS ──────────────────────────────────────────────────── */
+
+.derg__container {
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+.derg__container--wide {
+  max-width: 900px;
+}
+
+/* ── SECTION LABEL ───────────────────────────────────────────────────────── */
+
+/* Inherits .section__label style from HomePage.css via @import.
+   Use .derg__section_label as a local alias so there's no class conflict. */
+.derg__section_label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(200, 169, 126, 0.90);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-left: 14px;
+  position: relative;
+}
+
+.derg__section_label::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(to bottom, rgba(200, 169, 126, 0.88), rgba(200, 169, 126, 0));
+}
+
+.derg__section_label::after {
+  content: '';
+  flex: 1;
+  height: 0.5px;
+  background: linear-gradient(to right, rgba(200, 169, 126, 0.16), rgba(255, 255, 255, 0.03));
+}
+
+/* ── PROSE ───────────────────────────────────────────────────────────────── */
+
+.derg__prose {
+  font-size: 15px;
+  color: rgba(232, 230, 225, 0.52);
+  line-height: 1.80;
+  margin: 0 0 20px;
+}
+
+.derg__prose code {
+  font-size: 13px;
+  font-family: ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace;
+  color: rgba(200, 169, 126, 0.80);
+  background: rgba(200, 169, 126, 0.08);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+.derg__prose--sm {
+  font-size: 13px;
+  margin-bottom: 24px;
+}
+
+/* ── DESIGN DECISIONS ────────────────────────────────────────────────────── */
+
+.derg__decisions {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.derg__decision {
+  padding: 20px 0 20px 20px;
+  border-left: 1.5px solid rgba(200, 169, 126, 0.16);
+  position: relative;
+  transition: border-color 0.2s ease;
+}
+
+.derg__decision:hover {
+  border-left-color: rgba(200, 169, 126, 0.40);
+}
+
+/* Gold dot at the left border */
+.derg__decision::before {
+  content: '';
+  position: absolute;
+  left: -3.5px;
+  top: 26px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(200, 169, 126, 0.45);
+}
+
+.derg__decision_key {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(232, 230, 225, 0.85);
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.derg__decision_desc {
+  font-size: 13px;
+  color: rgba(232, 230, 225, 0.42);
+  line-height: 1.72;
+  margin: 0;
+  max-width: 580px;
+}
+
+/* ── SIDE-BY-SIDE CODE PAIR ──────────────────────────────────────────────── */
+
+.derg__code_pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 4px;
+}
+
+@media (max-width: 860px) {
+  .derg__code_pair { grid-template-columns: 1fr; }
+}
+
+/* ── FOOTER CTA ──────────────────────────────────────────────────────────── */
+
+.derg__cta {
+  padding: 88px 48px 72px;
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.derg__cta_eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.20em;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  opacity: 0.70;
+}
+
+.derg__cta_title {
+  font-size: clamp(26px, 4vw, 40px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: #f5f3ef;
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+
+.derg__cta_desc {
+  font-size: 14px;
+  color: rgba(232, 230, 225, 0.38);
+  line-height: 1.72;
+  margin-bottom: 32px;
+}
+
+.derg__cta_actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .derg__cta { padding: 60px 24px 52px; }
+}

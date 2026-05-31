@@ -1,0 +1,181 @@
+/* ---------------------------------------------------------------------------
+   ComingSoon.css — cryark.net holding page
+--------------------------------------------------------------------------- */
+
+/* ── Shell ──────────────────────────────────────────────────────────────── */
+
+.cs {
+  background: #050508;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e8e6e1;
+  font-family: system-ui, sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── Film grain ──────────────────────────────────────────────────────────── */
+
+.cs__grain {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.052;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 160px 160px;
+  animation: cs-grain 0.18s steps(1) infinite;
+}
+
+@keyframes cs-grain {
+  0%   { background-position:   0%    0%; }
+  10%  { background-position:  -5%  -10%; }
+  20%  { background-position: -15%    5%; }
+  30%  { background-position:   7%  -20%; }
+  40%  { background-position:  -5%   20%; }
+  50%  { background-position: -12%    8%; }
+  60%  { background-position:  14%    0%; }
+  70%  { background-position:   0%   12%; }
+  80%  { background-position:   4%   28%; }
+  90%  { background-position: -10%    6%; }
+  100% { background-position:   0%    0%; }
+}
+
+/* ── Subtle ember glow behind wordmark ───────────────────────────────────── */
+
+.cs::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse 55% 35% at 50% 46%,
+      rgba(196, 68, 28, 0.065) 0%,
+      transparent 70%
+    );
+}
+
+/* ── Content ─────────────────────────────────────────────────────────────── */
+
+.cs__main {
+  position: relative;
+  z-index: 2;
+  max-width: 520px;
+  padding: 48px 32px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+/* ── Status eyebrow ──────────────────────────────────────────────────────── */
+
+.cs__status {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(196, 68, 28, 0.60);
+  margin-bottom: 28px;
+}
+
+/* ── Wordmark ────────────────────────────────────────────────────────────── */
+
+.cs__wordmark {
+  font-size: clamp(56px, 12vw, 100px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: #f5f3ef;
+  text-shadow:
+    0 0  60px rgba(196, 68, 28, 0.18),
+    0 0 120px rgba(196, 68, 28, 0.10),
+    0 0 200px rgba(196, 68, 28, 0.05);
+  margin-bottom: 20px;
+}
+
+/* ── Tagline ─────────────────────────────────────────────────────────────── */
+
+.cs__tagline {
+  font-size: clamp(15px, 2.5vw, 18px);
+  font-weight: 500;
+  color: rgba(232, 230, 225, 0.72);
+  letter-spacing: -0.01em;
+  margin-bottom: 18px;
+}
+
+/* ── Description ─────────────────────────────────────────────────────────── */
+
+.cs__desc {
+  font-size: 14px;
+  color: rgba(232, 230, 225, 0.35);
+  line-height: 1.72;
+  max-width: 380px;
+  margin-bottom: 36px;
+}
+
+/* ── Pillars list ────────────────────────────────────────────────────────── */
+
+.cs__pillars {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.cs__pillars li {
+  font-size: 11px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(232, 230, 225, 0.22);
+  padding: 0 14px;
+}
+
+.cs__pillars li + li {
+  border-left: 0.5px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ── Link ────────────────────────────────────────────────────────────────── */
+
+.cs__link {
+  display: inline-block;
+  font-size: 13px;
+  color: rgba(196, 68, 28, 0.65);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  padding: 10px 22px;
+  border: 0.5px solid rgba(196, 68, 28, 0.22);
+  border-radius: 8px;
+  transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.cs__link:hover {
+  color: rgba(196, 68, 28, 0.95);
+  border-color: rgba(196, 68, 28, 0.45);
+  background: rgba(196, 68, 28, 0.06);
+}
+
+/* ── Mobile ──────────────────────────────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .cs__main { padding: 40px 24px; }
+
+  .cs__pillars {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .cs__pillars li + li {
+    border-left: none;
+    border-top: 0.5px solid rgba(255, 255, 255, 0.06);
+    padding-top: 8px;
+  }
+}

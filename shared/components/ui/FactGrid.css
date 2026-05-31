@@ -1,0 +1,153 @@
+/* ---------------------------------------------------------------------------
+   FactGrid.css
+   Stat / fact card grid section. Used for game specs, feature counts, etc.
+--------------------------------------------------------------------------- */
+
+.fact-grid {
+  padding: 72px 48px;
+  border-bottom: 0.5px solid var(--color-border-sub);
+}
+
+@media (max-width: 768px) {
+  .fact-grid { padding: 48px 24px; }
+}
+
+/* ── Section heading (same style as other section labels) ────────────────── */
+
+.fact-grid__heading {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(200, 169, 126, 0.90);
+  text-transform: uppercase;
+  margin-bottom: 36px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-left: 14px;
+  position: relative;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fact-grid__heading::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(to bottom, rgba(200, 169, 126, 0.88), rgba(200, 169, 126, 0));
+}
+
+.fact-grid__heading::after {
+  content: '';
+  flex: 1;
+  height: 0.5px;
+  background: linear-gradient(to right, rgba(200, 169, 126, 0.16), rgba(255, 255, 255, 0.03));
+}
+
+/* ── Grid ─────────────────────────────────────────────────────────────────── */
+
+.fact-grid__list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 900px;
+  display: grid;
+  gap: 2px;
+  grid-template-columns: repeat(2, 1fr); /* default fallback */
+}
+
+/* Column counts via data attribute */
+.fact-grid[data-cols="2"] .fact-grid__list { grid-template-columns: repeat(2, 1fr); }
+.fact-grid[data-cols="3"] .fact-grid__list { grid-template-columns: repeat(3, 1fr); }
+.fact-grid[data-cols="4"] .fact-grid__list { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 860px) {
+  .fact-grid[data-cols="4"] .fact-grid__list { grid-template-columns: repeat(2, 1fr); }
+  .fact-grid[data-cols="3"] .fact-grid__list { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .fact-grid__list,
+  .fact-grid[data-cols="2"] .fact-grid__list,
+  .fact-grid[data-cols="3"] .fact-grid__list,
+  .fact-grid[data-cols="4"] .fact-grid__list { grid-template-columns: 1fr 1fr; }
+
+  .fact-grid__card { padding: 22px 16px; }
+}
+
+/* ── Card ─────────────────────────────────────────────────────────────────── */
+
+.fact-grid__card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 32px 28px;
+  background: rgba(200, 169, 126, 0.03);
+  border: 0.5px solid rgba(200, 169, 126, 0.10);
+  transition: background 0.2s ease, border-color 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.fact-grid__card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 60% at 20% 100%,
+    rgba(200, 169, 126, 0.06) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.fact-grid__card:hover {
+  background: rgba(200, 169, 126, 0.055);
+  border-color: rgba(200, 169, 126, 0.22);
+}
+
+.fact-grid__card:hover::before {
+  opacity: 1;
+}
+
+/* ── Value (the big number) ───────────────────────────────────────────────── */
+
+.fact-grid__value {
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: rgba(232, 230, 225, 0.92);
+  /* Subtle gold gradient on the number */
+  background: linear-gradient(
+    135deg,
+    rgba(232, 230, 225, 0.95) 0%,
+    rgba(200, 169, 126, 0.90) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Label ────────────────────────────────────────────────────────────────── */
+
+.fact-grid__label {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgba(232, 230, 225, 0.55);
+  text-transform: uppercase;
+}
+
+/* ── Description (optional sub-line) ─────────────────────────────────────── */
+
+.fact-grid__desc {
+  font-size: 12px;
+  color: rgba(232, 230, 225, 0.30);
+  line-height: 1.5;
+  margin-top: 2px;
+}

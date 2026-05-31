@@ -1,0 +1,163 @@
+/* ---------------------------------------------------------------------------
+   PricingCTA.css
+   Dedicated purchase / download section with price display and store links.
+--------------------------------------------------------------------------- */
+
+.pricing-cta {
+  padding: 88px 48px;
+  border-top:    0.5px solid var(--color-border-sub, rgba(255,255,255,0.07));
+  border-bottom: 0.5px solid var(--color-border-sub, rgba(255,255,255,0.07));
+  background: linear-gradient(
+    180deg,
+    rgba(200, 169, 126, 0.025) 0%,
+    rgba(5, 5, 8, 0) 100%
+  );
+}
+
+.pricing-cta__inner {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+/* ── Eyebrow + heading ───────────────────────────────────────────────────── */
+
+.pricing-cta__eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: rgba(200, 169, 126, 0.75);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pricing-cta__eyebrow::before,
+.pricing-cta__eyebrow::after {
+  content: '';
+  flex: 1;
+  max-width: 32px;
+  height: 0.5px;
+  background: rgba(200, 169, 126, 0.40);
+}
+
+.pricing-cta__heading {
+  font-size: clamp(26px, 4vw, 44px);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  color: #f5f3ef;
+  line-height: 1.05;
+  margin-bottom: 32px;
+}
+
+/* ── Price display ───────────────────────────────────────────────────────── */
+
+.pricing-cta__price_wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 36px;
+}
+
+.pricing-cta__price {
+  font-size: clamp(36px, 6vw, 60px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  background: linear-gradient(135deg, rgba(240,237,232,0.95) 0%, rgba(200,169,126,0.85) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.pricing-cta__price_note {
+  font-size: 12px;
+  color: rgba(232, 230, 225, 0.35);
+  letter-spacing: 0.06em;
+}
+
+/* ── Store links ─────────────────────────────────────────────────────────── */
+
+.pricing-cta__links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 36px;
+}
+
+/* ── Patreon strip ───────────────────────────────────────────────────────── */
+
+.pricing-cta__patreon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 8px;
+  border: 0.5px solid rgba(200, 169, 126, 0.22);
+  background: rgba(200, 169, 126, 0.05);
+  color: rgba(200, 169, 126, 0.80);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  transition: background 0.22s ease, border-color 0.22s ease, color 0.22s ease;
+  margin-bottom: 28px;
+}
+
+.pricing-cta__patreon:hover {
+  background: rgba(200, 169, 126, 0.12);
+  border-color: rgba(200, 169, 126, 0.45);
+  color: rgba(200, 169, 126, 1);
+}
+
+.pricing-cta__patreon_icon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pricing-cta__patreon_icon svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+.pricing-cta__patreon_arrow {
+  opacity: 0.5;
+  margin-left: 2px;
+  transition: margin-left 0.2s ease, opacity 0.2s ease;
+}
+
+.pricing-cta__patreon:hover .pricing-cta__patreon_arrow {
+  margin-left: 6px;
+  opacity: 1;
+}
+
+/* ── Fine print ──────────────────────────────────────────────────────────── */
+
+.pricing-cta__note {
+  font-size: 11px;
+  color: rgba(232, 230, 225, 0.22);
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .pricing-cta { padding: 64px 24px; }
+}
+
+@media (max-width: 480px) {
+  .pricing-cta { padding: 48px 20px; }
+  .pricing-cta__links { flex-direction: column; align-items: stretch; }
+}

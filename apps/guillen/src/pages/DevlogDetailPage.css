@@ -1,0 +1,334 @@
+/* ---------------------------------------------------------------------------
+   DevlogDetailPage.css — guillen.studio/devlog/:slug
+--------------------------------------------------------------------------- */
+
+/* ── PAGE SHELL ─────────────────────────────────────────────────────────── */
+
+.page {
+  background: var(--color-bg, #050508);
+  min-height: 100vh;
+  color: var(--color-text, #e8e6e1);
+  font-family: var(--font-sans, system-ui, sans-serif);
+  padding-top: 62px;
+  overflow-x: hidden;
+}
+
+@media (max-width: 680px) {
+  .page { padding-top: 54px; }
+}
+
+/* ── FILM GRAIN ──────────────────────────────────────────────────────────── */
+
+.gh-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.048;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 160px 160px;
+  animation: gh-grain-shift 0.18s steps(1) infinite;
+}
+
+@keyframes gh-grain-shift {
+  0%   { background-position:   0%    0%; }
+  10%  { background-position:  -5%  -10%; }
+  20%  { background-position: -15%    5%; }
+  30%  { background-position:   7%  -20%; }
+  40%  { background-position:  -5%   20%; }
+  50%  { background-position: -12%    8%; }
+  60%  { background-position:  14%    0%; }
+  70%  { background-position:   0%   12%; }
+  80%  { background-position:   4%   28%; }
+  90%  { background-position: -10%    6%; }
+  100% { background-position:   0%    0%; }
+}
+
+/* ── ARTICLE WRAPPER ─────────────────────────────────────────────────────── */
+
+.dd-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 48px 96px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── HEADER ──────────────────────────────────────────────────────────────── */
+
+.dd-header {
+  padding: 64px 0 40px;
+}
+
+.dd-back {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: rgba(200, 169, 126, 0.55);
+  text-decoration: none;
+  margin-bottom: 28px;
+  transition: color 0.16s ease;
+}
+
+.dd-back:hover {
+  color: rgba(200, 169, 126, 0.90);
+}
+
+.dd-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(200, 169, 126, 0.70);
+  margin-bottom: 14px;
+}
+
+.dd-title {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #f5f3ef;
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+
+.dd-subtitle {
+  font-size: 16px;
+  color: rgba(232, 230, 225, 0.48);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* ── META ROW ────────────────────────────────────────────────────────────── */
+
+.dd-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.dd-date {
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: rgba(232, 230, 225, 0.30);
+}
+
+.dd-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.dd-tag {
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: rgba(200, 169, 126, 0.75);
+  background: rgba(200, 169, 126, 0.08);
+  border: 0.5px solid rgba(200, 169, 126, 0.20);
+  border-radius: 20px;
+  padding: 3px 9px;
+}
+
+/* ── BODY ────────────────────────────────────────────────────────────────── */
+
+.dd-body {
+  padding-top: 24px;
+}
+
+/* Abstract — highlighted intro */
+.dd-abstract {
+  font-size: 16px;
+  color: rgba(232, 230, 225, 0.72);
+  line-height: 1.75;
+  padding: 20px 24px;
+  border-left: 2px solid rgba(200, 169, 126, 0.40);
+  margin-bottom: 40px;
+  background: rgba(200, 169, 126, 0.04);
+}
+
+/* Section heading */
+.dd-section-heading {
+  font-size: 18px;
+  font-weight: 600;
+  color: #f5f3ef;
+  margin: 40px 0 16px;
+  letter-spacing: -0.01em;
+}
+
+/* Section wrapper */
+.dd-section {
+  margin-bottom: 8px;
+}
+
+/* Tags footer row */
+.dd-tags--footer {
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ── CODE BLOCK ──────────────────────────────────────────────────────────── */
+
+.dd-code {
+  background: rgba(255, 255, 255, 0.03);
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+.dd-code-hdr {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.dd-code-hdr__lang {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(200, 169, 126, 0.55);
+  background: rgba(200, 169, 126, 0.08);
+  border: 0.5px solid rgba(200, 169, 126, 0.18);
+  border-radius: 3px;
+  padding: 2px 6px;
+}
+
+.dd-code-hdr__title {
+  font-size: 11px;
+  color: rgba(232, 230, 225, 0.32);
+  letter-spacing: 0.02em;
+}
+
+.dd-code pre {
+  margin: 0;
+  padding: 16px 18px;
+  overflow-x: auto;
+}
+
+.dd-code code {
+  font-family: var(--font-mono, "SF Mono", "Fira Code", monospace);
+  font-size: 13px;
+  line-height: 1.65;
+  color: rgba(232, 230, 225, 0.78);
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* ── PORTABLE TEXT STYLES ────────────────────────────────────────────────── */
+
+.dd-body p {
+  font-size: 15px;
+  color: rgba(232, 230, 225, 0.62);
+  line-height: 1.75;
+  margin: 0 0 18px;
+}
+
+.dd-body h1 {
+  font-size: 26px;
+  font-weight: 600;
+  color: #f5f3ef;
+  letter-spacing: -0.02em;
+  margin: 36px 0 14px;
+}
+
+.dd-body h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #f5f3ef;
+  letter-spacing: -0.01em;
+  margin: 32px 0 12px;
+}
+
+.dd-body h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #f5f3ef;
+  margin: 28px 0 10px;
+}
+
+.dd-body strong {
+  color: #f5f3ef;
+  font-weight: 600;
+}
+
+.dd-body em {
+  color: rgba(232, 230, 225, 0.72);
+  font-style: italic;
+}
+
+.dd-body a {
+  color: rgba(200, 169, 126, 0.85);
+  text-decoration: underline;
+  text-decoration-color: rgba(200, 169, 126, 0.35);
+  text-underline-offset: 2px;
+  transition: color 0.16s ease, text-decoration-color 0.16s ease;
+}
+
+.dd-body a:hover {
+  color: rgba(200, 169, 126, 1);
+  text-decoration-color: rgba(200, 169, 126, 0.70);
+}
+
+.dd-body ul,
+.dd-body ol {
+  padding-left: 24px;
+  margin: 0 0 18px;
+}
+
+.dd-body ul {
+  list-style: disc;
+}
+
+.dd-body ol {
+  list-style: decimal;
+}
+
+.dd-body li {
+  font-size: 15px;
+  color: rgba(232, 230, 225, 0.62);
+  line-height: 1.72;
+  margin-bottom: 6px;
+}
+
+.dd-body code {
+  font-family: var(--font-mono, "SF Mono", "Fira Code", monospace);
+  font-size: 13px;
+  color: rgba(232, 230, 225, 0.80);
+  background: rgba(255, 255, 255, 0.06);
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+  padding: 1px 5px;
+}
+
+/* ── NOT FOUND ───────────────────────────────────────────────────────────── */
+
+.dd-not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 96px 24px;
+  text-align: center;
+  color: rgba(232, 230, 225, 0.36);
+  font-size: 15px;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .dd-page {
+    padding: 0 24px 96px;
+  }
+
+  .dd-header {
+    padding: 48px 0 32px;
+  }
+}

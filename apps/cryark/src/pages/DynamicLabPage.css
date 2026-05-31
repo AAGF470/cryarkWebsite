@@ -1,0 +1,78 @@
+/* ---------------------------------------------------------------------------
+   DynamicLabPage.css
+   Catch-all /lab/:slug page.
+   Reuses all DergPage.css class names — just adds loading/error states.
+--------------------------------------------------------------------------- */
+
+@import "./DergPage.css";
+
+/* ── Shell wrapper (loading / error only) ─────────────────────────────────── */
+
+.dynlab__shell {
+  background: #050508;
+  min-height: 100vh;
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  padding-top: 62px;
+}
+
+@media (max-width: 680px) {
+  .dynlab__shell { padding-top: 54px; }
+}
+
+/* ── State panel (loading / error) ───────────────────────────────────────── */
+
+.dynlab__state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 16px;
+  color: rgba(232, 230, 225, 0.35);
+  font-size: 14px;
+}
+
+.dynlab__state--error {
+  gap: 10px;
+}
+
+.dynlab__state_title {
+  font-size: 18px;
+  font-weight: 500;
+  color: rgba(232, 230, 225, 0.60);
+  margin: 0;
+}
+
+.dynlab__state_sub {
+  font-size: 14px;
+  color: rgba(232, 230, 225, 0.30);
+  margin: 0;
+}
+
+.dynlab__state_back {
+  margin-top: 8px;
+  font-size: 13px;
+  color: rgba(200, 169, 126, 0.70);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.dynlab__state_back:hover {
+  color: rgba(200, 169, 126, 1.00);
+}
+
+/* ── Loading spinner ─────────────────────────────────────────────────────── */
+
+.dynlab__spinner {
+  width: 28px;
+  height: 28px;
+  border: 2px solid rgba(200, 169, 126, 0.14);
+  border-top-color: rgba(200, 169, 126, 0.70);
+  border-radius: 50%;
+  animation: dynlab_spin 0.75s linear infinite;
+}
+
+@keyframes dynlab_spin {
+  to { transform: rotate(360deg); }
+}

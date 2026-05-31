@@ -1,0 +1,152 @@
+/* ---------------------------------------------------------------------------
+   TheArchitectPage.css
+   Product detail page for "The Architect Vol. 1".
+--------------------------------------------------------------------------- */
+
+@import "./HomePage.css";
+
+.tarch__page {
+  background: #050508;
+  min-height: 100vh;
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* ── HERO TITLE VARIANT ─────────────────────────────────────────────────── */
+
+.tarch__hero_vol {
+  font-size: 0.52em;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+  opacity: 0.85;
+  display: block;
+  margin-top: 6px;
+}
+
+/* ── SECTION WRAPPER (screenshots strip) ────────────────────────────────── */
+
+.tarch__section {
+  position: relative;
+  z-index: 1;
+  padding: 56px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tarch__section_label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(200, 169, 126, 0.90);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-left: 14px;
+  position: relative;
+}
+
+.tarch__section_label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(to bottom, rgba(200, 169, 126, 0.88), rgba(200, 169, 126, 0));
+}
+
+.tarch__section_label::after {
+  content: '';
+  flex: 1;
+  height: 0.5px;
+  background: linear-gradient(to right, rgba(200, 169, 126, 0.16), rgba(255, 255, 255, 0.03));
+}
+
+/* ── BUILT WITH ─────────────────────────────────────────────────────────── */
+
+.tarch__built_with {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  padding: 36px 48px;
+  border-top: 0.5px solid var(--color-border-sub);
+  border-bottom: 0.5px solid var(--color-border-sub);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tarch__built_label {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: rgba(232, 230, 225, 0.22);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.tarch__built_logos {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.tarch__built_logo {
+  height: 28px;
+  width: auto;
+  opacity: 0.38;
+  filter: brightness(0) invert(1);
+  transition: opacity 0.25s ease;
+  display: block;
+}
+
+.tarch__built_logo:hover {
+  opacity: 0.65;
+}
+
+/* ── FOOTER CTA ─────────────────────────────────────────────────────────── */
+
+.tarch__cta {
+  text-align: center;
+  padding: 96px 48px 80px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.tarch__cta_eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.20em;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.tarch__cta_title {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: #f5f3ef;
+  margin-bottom: 36px;
+  line-height: 1.1;
+}
+
+.tarch__cta_actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .tarch__section          { padding: 40px 24px; }
+  .tarch__built_with       { padding: 28px 24px; gap: 20px; }
+  .tarch__cta              { padding: 64px 24px 56px; }
+}

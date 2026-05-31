@@ -1,0 +1,137 @@
+/* ---------------------------------------------------------------------------
+   SystemRequirements.css
+   Two-column minimum / recommended specs table for game product pages.
+--------------------------------------------------------------------------- */
+
+.sysreq {
+  padding: 72px 48px;
+  border-bottom: 0.5px solid var(--color-border-sub, rgba(255,255,255,0.07));
+}
+
+.sysreq__inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* ── Heading ─────────────────────────────────────────────────────────────── */
+
+.sysreq__heading {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(200, 169, 126, 0.90);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  padding-left: 14px;
+  position: relative;
+}
+
+.sysreq__heading::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(to bottom, rgba(200, 169, 126, 0.88), rgba(200, 169, 126, 0));
+}
+
+.sysreq__platform_note {
+  font-size: 12px;
+  color: rgba(232, 230, 225, 0.35);
+  letter-spacing: 0.04em;
+  margin-bottom: 28px;
+  padding-left: 14px;
+}
+
+/* ── Table wrapper (horizontal scroll on small screens) ──────────────────── */
+
+.sysreq__table_wrap {
+  overflow-x: auto;
+  border: 0.5px solid rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+}
+
+/* ── Table ───────────────────────────────────────────────────────────────── */
+
+.sysreq__table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+/* ── Header row ──────────────────────────────────────────────────────────── */
+
+.sysreq__th {
+  padding: 14px 20px;
+  text-align: left;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.sysreq__th--label {
+  width: 100px;
+  color: rgba(232, 230, 225, 0.25);
+}
+
+.sysreq__th--min { color: rgba(232, 230, 225, 0.55); }
+.sysreq__th--rec { color: rgba(200, 169, 126, 0.85); }
+
+/* ── Data rows ───────────────────────────────────────────────────────────── */
+
+.sysreq__row {
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.04);
+  transition: background 0.15s ease;
+}
+
+.sysreq__row:last-child { border-bottom: none; }
+
+.sysreq__row:hover { background: rgba(255, 255, 255, 0.018); }
+
+.sysreq__cell {
+  padding: 14px 20px;
+  font-size: 13px;
+  line-height: 1.5;
+  vertical-align: top;
+}
+
+.sysreq__cell--label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(232, 230, 225, 0.30);
+}
+
+.sysreq__cell--min { color: rgba(232, 230, 225, 0.65); }
+.sysreq__cell--rec { color: rgba(232, 230, 225, 0.85); }
+
+.sysreq__empty { color: rgba(232, 230, 225, 0.18); }
+
+/* ── Footer ──────────────────────────────────────────────────────────────── */
+
+.sysreq__tested {
+  font-size: 11px;
+  color: rgba(232, 230, 225, 0.25);
+  letter-spacing: 0.04em;
+  margin-top: 18px;
+  padding-left: 14px;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .sysreq { padding: 48px 24px; }
+  .sysreq__cell { padding: 12px 14px; }
+  .sysreq__th   { padding: 12px 14px; }
+  .sysreq__th--label, .sysreq__cell--label { min-width: 72px; }
+}
+
+@media (max-width: 480px) {
+  .sysreq { padding: 36px 0px; }
+  .sysreq__inner { padding: 0 20px; }
+  .sysreq__table_wrap { border-radius: 6px; }
+}

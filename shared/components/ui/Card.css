@@ -1,0 +1,279 @@
+/* ---------------------------------------------------------------------------
+   Card.css
+   Styles for the Card component (Card.jsx).
+   All class names are prefixed with .card__ to avoid leaking into other elements.
+   The glow effect is driven by canvas elements managed in useCardGlow.js —
+   these styles only handle layout, glass surface, and static states.
+--------------------------------------------------------------------------- */
+
+/* ── Wrapper ────────────────────────────────────────────────────────────── */
+
+.card__wrapper {
+  position: relative;
+  border-radius: 14px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.18s ease;
+  will-change: transform;
+}
+
+/* ── Outline canvas (glow layer, sits outside the card edge) ────────────── */
+
+.card__outline_canvas {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: calc(100% + 8px);
+  height: calc(100% + 8px);
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 18px;
+}
+
+/* ── Glass surface ──────────────────────────────────────────────────────── */
+
+.card__surface {
+  position: relative;
+  /* flex: 1 makes the surface stretch to fill the wrapper height,
+     so outline canvas always matches actual rendered card area */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.032);
+  border: 0.5px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  padding: 20px;
+  z-index: 1;
+}
+
+/* Top-left glass sheen — simulates light catching the glass edge */
+.card__surface::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.14);
+  border-left: 0.5px solid rgba(255, 255, 255, 0.06);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* ── Ambient canvas (faint interior tint layer) ─────────────────────────── */
+
+.card__ambient_canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Content layer (above all canvas layers) ────────────────────────────── */
+
+.card__content {
+  position: relative;
+  z-index: 4;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Thumbnail image area ───────────────────────────────────────────────── */
+
+.card__thumbnail {
+  width: 100%;
+  height: 160px;
+  border-radius: 8px;
+  overflow: hidden;  /* thumbnail clips itself */
+  margin-bottom: 14px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 0.5px solid rgba(255, 255, 255, 0.06);
+  object-fit: cover;
+  display: block;
+}
+
+/* Placeholder shown when no thumbnail is provided */
+.card__thumbnail_placeholder {
+  width: 100%;
+  height: 160px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 14px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 0.5px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ── Header row (title + arrow) ─────────────────────────────────────────── */
+
+.card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  gap: 8px;
+}
+
+.card__title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #f0ede8;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.card__arrow {
+  font-size: 12px;
+  color: rgba(200, 169, 126, 0.30);
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: color 0.4s ease;
+  user-select: none;
+}
+
+.card__wrapper:hover .card__arrow {
+  color: rgba(200, 169, 126, 0.95);
+}
+
+/* ── Description text ───────────────────────────────────────────────────── */
+
+.card__description {
+  font-size: 12px;
+  color: rgba(232, 230, 225, 0.42);
+  line-height: 1.6;
+  margin: 0 0 14px 0;
+  /* grow to fill available space so meta row always sits at the bottom */
+  flex: 1;
+}
+
+/* ── Divider ────────────────────────────────────────────────────────────── */
+
+.card__divider {
+  height: 0.5px;
+  background: rgba(255, 255, 255, 0.05);
+  margin: 12px 0;
+  border: none;
+}
+
+/* ── Meta row (pills + status badge) ───────────────────────────────────── */
+
+.card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* ── Tag pills ──────────────────────────────────────────────────────────── */
+
+.card__pills {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.card__pill {
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+  background: rgba(255, 255, 255, 0.045);
+  color: rgba(232, 230, 225, 0.38);
+  border: 0.5px solid rgba(255, 255, 255, 0.07);
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* ── Status badge ───────────────────────────────────────────────────────── */
+
+.card__status_badge {
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  letter-spacing: 0.06em;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.card__status_badge--released {
+  background: rgba(200, 169, 126, 0.10);
+  color: rgba(200, 169, 126, 0.85);
+  border: 0.5px solid rgba(200, 169, 126, 0.20);
+}
+
+.card__status_badge--in_dev {
+  background: rgba(180, 100, 220, 0.08);
+  color: rgba(200, 150, 240, 0.80);
+  border: 0.5px solid rgba(180, 100, 220, 0.20);
+}
+
+.card__status_badge--research {
+  background: rgba(90, 130, 220, 0.10);
+  color: rgba(140, 170, 240, 0.85);
+  border: 0.5px solid rgba(90, 130, 220, 0.20);
+}
+
+.card__status_badge--live {
+  background: rgba(30, 160, 100, 0.10);
+  color: rgba(80, 200, 140, 0.85);
+  border: 0.5px solid rgba(30, 160, 100, 0.22);
+}
+
+.card__status_badge--collab {
+  background: rgba(90, 130, 220, 0.10);
+  color: rgba(140, 170, 240, 0.85);
+  border: 0.5px solid rgba(90, 130, 220, 0.20);
+}
+
+/* Live dot pulse animation — used inside status_badge--live */
+.card__live_dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(80, 200, 140, 0.9);
+  flex-shrink: 0;
+  animation: card_live_dot_pulse 2s ease-in-out infinite;
+}
+
+@keyframes card_live_dot_pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.35; }
+}
+
+/* ── Stats row (alternative to meta row for lab cards) ──────────────────── */
+
+.card__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.card__stat {
+  text-align: center;
+  padding: 0 8px;
+  border-right: 0.5px solid rgba(255, 255, 255, 0.06);
+}
+
+.card__stat:last-child {
+  border-right: none;
+}
+
+.card__stat_number {
+  font-size: 15px;
+  font-weight: 500;
+  color: #c8a97e;
+  display: block;
+}
+
+.card__stat_label {
+  font-size: 10px;
+  color: rgba(232, 230, 225, 0.32);
+  letter-spacing: 0.06em;
+  margin-top: 2px;
+  display: block;
+}

@@ -1,0 +1,185 @@
+/* ---------------------------------------------------------------------------
+   Button.css
+   Three button variants for Cryark.net.
+   All hover/transition logic is pure CSS — no JS required.
+   Theme colors injected via CSS custom properties set by the component.
+
+   Variants:
+     .btn--solid          — fills white on hover, sweep animation, outer glow
+     .btn--ghost          — text + arrow only, no border, arrow slides right
+     .btn--ghost-bordered — glass border at rest, tints to theme on hover
+--------------------------------------------------------------------------- */
+
+/* ── SHARED BASE ─────────────────────────────────────────────────────────── */
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: none;
+  color: rgba(232, 230, 225, 0.82);
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+}
+
+/* ── SOLID ───────────────────────────────────────────────────────────────── */
+
+.btn--solid {
+  padding: 10px 26px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  /* fully opaque dark resting fill — ensures white hover is a clean contrast */
+  background: #0e0f12;
+
+  color: rgba(232, 230, 225, 0.82);
+  overflow: hidden;
+
+  box-shadow: 0 0 0 0 transparent;
+
+  transition:
+    background   0.28s ease-out,
+    box-shadow   0.50s ease-out,
+    border-color 0.28s ease-out,
+    color        0.20s ease-out;
+}
+
+.btn--solid:hover {
+  /* fully opaque white fill */
+  background: var(--btn-fill, #ffffff);
+
+  border-color: rgba(255, 255, 255, 0.95);
+
+  /* text flips dark against the bright white fill */
+  color: rgba(12, 6, 2, 0.90);
+
+  /* glow: tight bright ring + wider diffuse halo */
+  box-shadow:
+    0 0 12px 2px var(--btn-glow-tight, rgba(255, 215, 140, 0.90)),
+    0 0 36px 8px  var(--btn-glow-wide,  rgba(255, 170,  60, 0.28));
+
+  transition:
+    background   0.28s ease-out,
+    box-shadow   0.50s ease-out,
+    border-color 0.28s ease-out,
+    color        0.20s ease-out;
+}
+
+.btn--solid:active {
+  box-shadow: 0 0 4px 1px var(--btn-glow-tight, rgba(255, 215, 140, 0.50));
+  transition: box-shadow 0.1s ease-in;
+}
+
+/* light sweep — fires once on hover entry, button stays lit after */
+.btn--solid::before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: -10%;
+  opacity: 0;
+  background: rgba(255, 255, 255, 0.90);
+  box-shadow: 0 0 38px 22px rgba(255, 255, 255, 0.70);
+  transform: skewX(-16deg);
+  pointer-events: none;
+}
+
+.btn--solid:hover::before {
+  animation: btn_sweep 0.40s ease-in-out forwards;
+}
+
+@keyframes btn_sweep {
+  0%   { opacity: 0;   left: -15%; }
+  10%  { opacity: 1.0; }
+  80%  { opacity: 0.9; }
+  100% { opacity: 0;   left: 112%; }
+}
+
+/* ── SOLID LAVA MODIFIER ─────────────────────────────────────────────────── */
+/* Add .btn--lava alongside .btn--solid for saturated color fill instead      */
+/* Text stays white — do not flip to dark, black on neon looks wrong          */
+
+.btn--solid.btn--lava:hover {
+  background: var(--btn-fill-lava, rgb(255, 148, 32));
+  color: rgba(255, 255, 255, 0.95); /* always white on lava fill */
+  box-shadow:
+    0 0 12px 2px var(--btn-glow-tight-lava, rgba(255, 190, 80, 0.90)),
+    0 0 36px 8px  var(--btn-glow-wide-lava,  rgba(255, 140, 20, 0.32));
+}
+
+.btn--solid.btn--lava::before {
+  background: rgba(255, 235, 180, 0.80);
+  box-shadow: 0 0 38px 22px rgba(255, 210, 120, 0.60);
+}
+
+/* ── GHOST — NO BORDER ───────────────────────────────────────────────────── */
+
+.btn--ghost {
+  padding: 11px 6px;
+  color: rgba(232, 230, 225, 0.50);
+  transition: color 0.25s ease;
+}
+
+.btn--ghost:hover {
+  color: var(--btn-ghost-color, rgba(255, 188, 105, 0.95));
+}
+
+/* arrow slides right on hover */
+.btn--ghost .btn__arrow {
+  display: inline-flex;
+  align-items: center;
+  width: 16px;
+  overflow: visible;
+}
+
+.btn--ghost .btn__arrow_inner {
+  display: inline-block;
+  font-size: 13px;
+  transition: transform 0.30s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn--ghost:hover .btn__arrow_inner {
+  transform: translateX(5px);
+}
+
+/* ── GHOST — WITH BORDER ─────────────────────────────────────────────────── */
+
+.btn--ghost-bordered {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  color: rgba(232, 230, 225, 0.50);
+  transition:
+    color        0.25s ease,
+    border-color 0.25s ease,
+    background   0.25s ease,
+    box-shadow   0.40s ease;
+}
+
+.btn--ghost-bordered:hover {
+  background: rgba(255, 255, 255, 0.025);
+  border-color: var(--btn-ghost-border-hover, rgba(255, 160, 58, 0.55));
+  color: var(--btn-ghost-color, rgba(255, 188, 105, 0.95));
+
+  /* subtle outer glow matching the solid button family */
+  box-shadow: 0 0 14px 2px var(--btn-ghost-glow, rgba(255, 140, 30, 0.22));
+}
+
+/* arrow — same as ghost no-border */
+.btn--ghost-bordered .btn__arrow      { display: inline-flex; align-items: center; width: 16px; overflow: visible; }
+.btn--ghost-bordered .btn__arrow_inner {
+  display: inline-block;
+  font-size: 13px;
+  transition: transform 0.30s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn--ghost-bordered:hover .btn__arrow_inner { transform: translateX(5px); }

@@ -1,0 +1,129 @@
+/* ---------------------------------------------------------------------------
+   CodeBlock.css
+   Dark code panel with language badge, title slot, and copy button.
+--------------------------------------------------------------------------- */
+
+.code-block {
+  background: #08070e;
+  border: 0.5px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+/* ── HEADER ──────────────────────────────────────────────────────────────── */
+
+.code-block__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 16px;
+  background: rgba(255, 255, 255, 0.025);
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Language badge */
+.code-block__lang {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  /* default — gold for "text" / unknown */
+  background: rgba(200, 169, 126, 0.10);
+  color: rgba(200, 169, 126, 0.78);
+}
+
+.code-block--python .code-block__lang {
+  background: rgba(100, 148, 255, 0.12);
+  color: rgba(140, 180, 255, 0.88);
+}
+
+.code-block--json .code-block__lang {
+  background: rgba(80, 210, 150, 0.10);
+  color: rgba(100, 220, 165, 0.82);
+}
+
+.code-block--bash .code-block__lang {
+  background: rgba(185, 130, 255, 0.10);
+  color: rgba(190, 140, 255, 0.82);
+}
+
+.code-block--js .code-block__lang,
+.code-block--jsx .code-block__lang {
+  background: rgba(255, 210, 80, 0.10);
+  color: rgba(255, 218, 100, 0.82);
+}
+
+.code-block--css .code-block__lang {
+  background: rgba(100, 190, 255, 0.10);
+  color: rgba(120, 200, 255, 0.82);
+}
+
+/* Title */
+.code-block__title {
+  font-size: 12px;
+  color: rgba(232, 230, 225, 0.28);
+  font-family: ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Copy button */
+.code-block__copy {
+  font-size: 10px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  font-family: var(--font-sans, system-ui, sans-serif);
+  color: rgba(232, 230, 225, 0.22);
+  background: transparent;
+  border: 0.5px solid rgba(255, 255, 255, 0.07);
+  border-radius: 4px;
+  padding: 3px 10px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.code-block__copy:hover {
+  color: rgba(200, 169, 126, 0.70);
+  border-color: rgba(200, 169, 126, 0.18);
+}
+
+.code-block__copy--done {
+  color: rgba(80, 210, 140, 0.85) !important;
+  border-color: rgba(80, 210, 140, 0.20) !important;
+  background: rgba(80, 210, 140, 0.05) !important;
+}
+
+/* ── CODE AREA ───────────────────────────────────────────────────────────── */
+
+.code-block__pre {
+  margin: 0;
+  padding: 20px 22px;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.70;
+  font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'Courier New', monospace;
+  color: rgba(215, 212, 206, 0.80);
+  tab-size: 4;
+  /* Thin gold-tinted scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(200, 169, 126, 0.14) transparent;
+}
+
+.code-block__pre::-webkit-scrollbar          { height: 3px; }
+.code-block__pre::-webkit-scrollbar-track    { background: transparent; }
+.code-block__pre::-webkit-scrollbar-thumb    {
+  background: rgba(200, 169, 126, 0.14);
+  border-radius: 99px;
+}
+
+.code-block__code {
+  font-family: inherit;
+  white-space: pre;
+}

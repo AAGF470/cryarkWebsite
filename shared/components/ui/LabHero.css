@@ -1,0 +1,154 @@
+/* ---------------------------------------------------------------------------
+   LabHero.css
+   Editorial page header for Lab / research entries.
+   Not cinematic — no media. Focused on metadata density and readability.
+--------------------------------------------------------------------------- */
+
+.lab-hero {
+  position: relative;
+  padding: 64px 48px 52px;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-bottom: 0.5px solid var(--color-border-sub);
+}
+
+/* ── BACK NAV ────────────────────────────────────────────────────────────── */
+
+.lab-hero__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  color: rgba(232, 230, 225, 0.28);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  transition: color 0.2s ease;
+}
+
+.lab-hero__back:hover { color: var(--color-accent); }
+
+.lab-hero__back_arrow {
+  font-size: 13px;
+  transition: transform 0.2s ease;
+}
+
+.lab-hero__back:hover .lab-hero__back_arrow {
+  transform: translateX(-3px);
+}
+
+/* ── EYEBROW + STATUS ────────────────────────────────────────────────────── */
+
+.lab-hero__meta_row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.lab-hero__eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.20em;
+  color: rgba(200, 169, 126, 0.60);
+  text-transform: uppercase;
+}
+
+/* ── TITLE ───────────────────────────────────────────────────────────────── */
+
+.lab-hero__title {
+  font-size: clamp(52px, 8vw, 86px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 0.93;
+  color: #f5f3ef;
+  margin: 0 0 14px;
+  text-shadow: 0 0 60px rgba(200, 169, 126, 0.08);
+}
+
+/* ── SUBTITLE ────────────────────────────────────────────────────────────── */
+
+.lab-hero__subtitle {
+  font-size: clamp(15px, 2vw, 19px);
+  font-weight: 400;
+  color: rgba(232, 230, 225, 0.40);
+  letter-spacing: -0.01em;
+  margin: 0 0 32px;
+  max-width: 600px;
+}
+
+/* ── ABSTRACT ────────────────────────────────────────────────────────────── */
+
+.lab-hero__abstract {
+  font-size: 15px;
+  color: rgba(232, 230, 225, 0.52);
+  line-height: 1.78;
+  max-width: 640px;
+  margin: 0 0 12px;
+}
+
+/* ── COLLABORATOR ────────────────────────────────────────────────────────── */
+
+.lab-hero__collab {
+  font-size: 12px;
+  color: rgba(200, 169, 126, 0.45);
+  letter-spacing: 0.04em;
+  margin: 0 0 40px;
+}
+
+/* ── BOTTOM ROW: stats + tags ────────────────────────────────────────────── */
+
+.lab-hero__bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding-top: 40px;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.05);
+  margin-top: 8px;
+}
+
+.lab-hero__stats {
+  display: flex;
+  gap: 36px;
+}
+
+.lab-hero__stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.lab-hero__stat_num {
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--color-accent);
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+.lab-hero__stat_label {
+  font-size: 10px;
+  color: rgba(232, 230, 225, 0.28);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 5px;
+}
+
+/* ── TAGS (Pill components) ──────────────────────────────────────────────── */
+
+.lab-hero__tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .lab-hero                { padding: 40px 24px 40px; }
+  .lab-hero__bottom        { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .lab-hero__stats         { gap: 24px; }
+}

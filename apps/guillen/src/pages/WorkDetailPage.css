@@ -1,0 +1,272 @@
+/* ---------------------------------------------------------------------------
+   WorkDetailPage.css — guillen.studio/work/:slug
+   The .page shell, .gh-grain overlay, and @keyframes gh-grain-shift are
+   defined in WorkPage.css (shared via the page class). Do not redefine them.
+--------------------------------------------------------------------------- */
+
+/* ── PAGE WRAPPER ────────────────────────────────────────────────────────── */
+
+.wd-page {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 48px 96px;
+}
+
+/* ── HERO SECTION ────────────────────────────────────────────────────────── */
+
+.wd-hero {
+  padding: 64px 0 48px;
+}
+
+/* Back link */
+.wd-back {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: rgba(200, 169, 126, 0.70);
+  text-decoration: none;
+  margin-bottom: 32px;
+  transition: color 0.16s ease;
+}
+
+.wd-back:hover {
+  color: rgba(200, 169, 126, 1);
+}
+
+/* Eyebrow */
+.wd-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(200, 169, 126, 0.70);
+  margin: 0 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.wd-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 22px;
+  height: 0.5px;
+  background: rgba(200, 169, 126, 0.70);
+  flex-shrink: 0;
+}
+
+/* Title */
+.wd-title {
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #f5f3ef;
+  margin: 0 0 20px;
+}
+
+/* Meta row: status badge + tags */
+.wd-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+/* Status badge — mirrors WorkCard style with wd- prefix */
+.wd-status {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+.wd-status--released { color: rgba(180, 220, 180, 0.90); background: rgba(100, 200, 100, 0.10); }
+.wd-status--in_dev   { color: rgba(180, 200, 240, 0.90); background: rgba(100, 150, 220, 0.10); }
+.wd-status--research { color: rgba(200, 180, 240, 0.90); background: rgba(150, 100, 220, 0.10); }
+.wd-status--live     { color: rgba(120, 220, 160, 0.90); background: rgba(60,  180, 100, 0.10); }
+.wd-status--collab   { color: rgba(200, 169, 126, 0.90); background: rgba(200, 169, 126, 0.10); }
+
+/* Tag chips */
+.wd-tag {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 3px 9px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(232, 230, 225, 0.55);
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Description */
+.wd-desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(232, 230, 225, 0.58);
+  margin: 0 0 0;
+  max-width: 640px;
+}
+
+/* Hero / key art image */
+.wd-hero-img {
+  width: 100%;
+  border-radius: 8px;
+  margin-top: 32px;
+  object-fit: cover;
+  max-height: 480px;
+  display: block;
+  border: 0.5px solid rgba(255, 255, 255, 0.07);
+}
+
+/* CTA link row */
+.wd-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.wd-cta-btn {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 9px 20px;
+  border-radius: 6px;
+  border: 0.5px solid rgba(200, 169, 126, 0.36);
+  color: rgba(200, 169, 126, 0.90);
+  background: rgba(200, 169, 126, 0.06);
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+
+.wd-cta-btn:hover {
+  background: rgba(200, 169, 126, 0.12);
+  border-color: rgba(200, 169, 126, 0.60);
+  color: rgba(200, 169, 126, 1);
+}
+
+/* ── BODY ────────────────────────────────────────────────────────────────── */
+
+.wd-body {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+/* Text section */
+.wd-text-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.wd-section-heading {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #f5f3ef;
+  margin: 0;
+}
+
+/* ── SUBSECTION LABEL (Built With / Platforms) ───────────────────────────── */
+
+.wd-section-label {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(200, 169, 126, 0.55);
+  margin: 0 0 14px;
+}
+
+/* ── BUILT WITH ──────────────────────────────────────────────────────────── */
+
+.wd-built-with-wrapper,
+.wd-platforms-wrapper {
+  padding-top: 8px;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.06);
+}
+
+.wd-built-with {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.wd-built-chip {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(232, 230, 225, 0.55);
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ── PLATFORMS ───────────────────────────────────────────────────────────── */
+
+.wd-platforms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.wd-platform-link {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  padding: 5px 12px;
+  border-radius: 5px;
+  border: 0.5px solid rgba(255, 255, 255, 0.10);
+  color: rgba(232, 230, 225, 0.70);
+  background: rgba(255, 255, 255, 0.03);
+  transition: color 0.16s ease, border-color 0.16s ease, background 0.16s ease;
+}
+
+.wd-platform-link:hover {
+  color: #e8e6e1;
+  border-color: rgba(255, 255, 255, 0.20);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ── 404 / NOT FOUND ─────────────────────────────────────────────────────── */
+
+.wd-not-found {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 16px;
+  text-align: center;
+  color: rgba(232, 230, 225, 0.42);
+  font-size: 15px;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .wd-page {
+    padding: 0 24px 72px;
+  }
+
+  .wd-hero {
+    padding: 48px 0 32px;
+  }
+
+  .wd-hero-img {
+    max-height: 280px;
+  }
+}

@@ -1,0 +1,165 @@
+/* ---------------------------------------------------------------------------
+   DocLayout.css
+   Sidebar + main content grid for Lab / documentation pages.
+   Sidebar is sticky below the fixed SiteNav (62px); tracks active section
+   via IntersectionObserver-driven class updates from DocLayout.jsx.
+--------------------------------------------------------------------------- */
+
+.doc-layout {
+  display: grid;
+  grid-template-columns: 228px 1fr;
+  align-items: start;
+  border-top: 0.5px solid var(--color-border-sub);
+  position: relative;
+}
+
+/* ── SIDEBAR ─────────────────────────────────────────────────────────────── */
+
+.doc-layout__sidebar {
+  position: sticky;
+  top: 62px;
+  height: calc(100vh - 62px);
+  overflow-y: auto;
+  border-right: 0.5px solid var(--color-border-sub);
+  padding: 28px 0 48px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.05) transparent;
+}
+
+.doc-layout__sidebar::-webkit-scrollbar       { width: 3px; }
+.doc-layout__sidebar::-webkit-scrollbar-track { background: transparent; }
+.doc-layout__sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.06); border-radius: 99px; }
+
+/* ── NAV GROUPS ──────────────────────────────────────────────────────────── */
+
+.doc-layout__nav {
+  padding: 0 12px;
+}
+
+.doc-layout__group {
+  margin-bottom: 20px;
+}
+
+.doc-layout__group_label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(232, 230, 225, 0.22);
+  padding: 4px 8px 6px;
+}
+
+/* ── NAV ITEMS ───────────────────────────────────────────────────────────── */
+
+.doc-layout__nav_item {
+  display: block;
+  font-size: 13px;
+  color: rgba(232, 230, 225, 0.36);
+  text-decoration: none;
+  padding: 6px 10px 6px 12px;
+  border-radius: 6px;
+  border-left: 1.5px solid transparent;
+  margin-bottom: 1px;
+  line-height: 1.4;
+  transition: color 0.16s ease, background 0.16s ease, border-color 0.16s ease;
+}
+
+.doc-layout__nav_item:hover {
+  color: rgba(232, 230, 225, 0.72);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.doc-layout__nav_item--active {
+  color: rgba(200, 169, 126, 0.92) !important;
+  background: rgba(200, 169, 126, 0.07) !important;
+  border-left-color: rgba(200, 169, 126, 0.65) !important;
+}
+
+/* ── MAIN CONTENT ────────────────────────────────────────────────────────── */
+
+.doc-layout__main {
+  min-width: 0;
+}
+
+/* Sections must scroll past the fixed nav */
+.doc-layout__main [data-doc-section] {
+  scroll-margin-top: 80px;
+}
+
+/* ── MOBILE BACKDROP ─────────────────────────────────────────────────────── */
+
+.doc-layout__backdrop {
+  display: none;
+}
+
+/* ── MOBILE TOGGLE BUTTON ────────────────────────────────────────────────── */
+
+.doc-layout__toggle {
+  display: none;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .doc-layout {
+    grid-template-columns: 1fr;
+  }
+
+  /* Sidebar becomes a slide-in drawer */
+  .doc-layout__sidebar {
+    position: fixed;
+    top: 62px;
+    left: 0;
+    bottom: 0;
+    width: 232px;
+    z-index: 90;
+    height: calc(100vh - 62px);
+    background: rgba(5, 5, 8, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-right: 0.5px solid rgba(200, 169, 126, 0.12);
+    transform: translateX(-100%);
+    transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .doc-layout__sidebar--open {
+    transform: translateX(0);
+  }
+
+  /* Dark backdrop when sidebar is open */
+  .doc-layout__backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 89;
+    background: rgba(5, 5, 8, 0.60);
+    backdrop-filter: blur(4px);
+  }
+
+  /* Toggle button — fixed bottom-left */
+  .doc-layout__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 24px;
+    left: 20px;
+    z-index: 95;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: rgba(8, 7, 14, 0.92);
+    border: 0.5px solid rgba(200, 169, 126, 0.24);
+    color: rgba(200, 169, 126, 0.75);
+    font-size: 17px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: color 0.18s ease, border-color 0.18s ease;
+  }
+
+  .doc-layout__toggle--open {
+    color: rgba(232, 230, 225, 0.75);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+}

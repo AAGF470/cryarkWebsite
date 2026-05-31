@@ -1,0 +1,479 @@
+/* ---------------------------------------------------------------------------
+   ShowcasePage.css
+   Component library / design system reference page.
+   Imports homepage section styles for section previews.
+--------------------------------------------------------------------------- */
+
+@import "./HomePage.css";
+
+.sc__page {
+  background: #050508;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  padding-top: 62px;
+}
+
+@media (max-width: 680px) {
+  .sc__page { padding-top: 54px; }
+}
+
+/* ── PAGE HEADER ─────────────────────────────────────────────────────────── */
+
+.sc__hero {
+  position: relative;
+  z-index: 1;
+  padding: 48px 48px 44px;
+  max-width: 960px;
+  margin: 0 auto;
+  border-bottom: 0.5px solid var(--color-border-sub);
+}
+
+.sc__hero_eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sc__hero_eyebrow::before {
+  content: '';
+  width: 20px;
+  height: 0.5px;
+  background: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.sc__hero_title {
+  font-size: 34px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: #f0ede8;
+  margin-bottom: 12px;
+  line-height: 1.1;
+}
+
+.sc__hero_desc {
+  font-size: 13px;
+  color: var(--color-text-dim);
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 28px;
+}
+
+/* ── TABLE OF CONTENTS ───────────────────────────────────────────────────── */
+
+.sc__toc {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.sc__toc_link {
+  font-size: 10px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 0.5px solid var(--color-border-low);
+  color: rgba(232, 230, 225, 0.35);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  text-transform: capitalize;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.sc__toc_link:hover {
+  color: var(--color-accent);
+  border-color: rgba(200, 169, 126, 0.35);
+}
+
+/* ── SECTION SHELL ───────────────────────────────────────────────────────── */
+
+.sc__section {
+  position: relative;
+  z-index: 1;
+  padding: 56px 48px;
+  max-width: 960px;
+  margin: 0 auto;
+  border-bottom: 0.5px solid var(--color-border-sub);
+}
+
+/* Wide sections break out to full content area (for hero/about/footer previews) */
+.sc__section--wide {
+  max-width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.sc__section--wide > header.sc__section_header {
+  padding: 0 48px;
+  max-width: 960px;
+  margin: 0 auto 36px;
+}
+
+.sc__section_header {
+  margin-bottom: 32px;
+}
+
+.sc__section_label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(200, 169, 126, 0.90);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-left: 14px;
+  position: relative;
+}
+
+.sc__section_label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(to bottom, rgba(200, 169, 126, 0.88), rgba(200, 169, 126, 0));
+}
+
+.sc__section_label::after {
+  content: '';
+  flex: 1;
+  height: 0.5px;
+  background: linear-gradient(to right, rgba(200, 169, 126, 0.16), rgba(255, 255, 255, 0.03));
+}
+
+.sc__section_desc {
+  font-size: 13px;
+  color: var(--color-text-dim);
+  line-height: 1.7;
+  max-width: 640px;
+}
+
+/* ── LAYOUT HELPERS ──────────────────────────────────────────────────────── */
+
+.sc__row {
+  display: flex;
+  align-items: center;
+}
+
+.sc__row--wrap    { flex-wrap: wrap; }
+.sc__row--top     { align-items: flex-start; }
+.sc__row--gap-lg  { gap: 28px; }
+.sc__row--gap-md  { gap: 20px; }
+
+/* ── VARIANT LABELS ──────────────────────────────────────────────────────── */
+
+.sc__vslot {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.sc__vlabel {
+  font-size: 10px;
+  color: rgba(232, 230, 225, 0.20);
+  letter-spacing: 0.06em;
+}
+
+/* ── PILLS ───────────────────────────────────────────────────────────────── */
+
+.sc__pill_grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+/* ── HINT TEXT ───────────────────────────────────────────────────────────── */
+
+.sc__hint {
+  font-size: 11px;
+  color: rgba(232, 230, 225, 0.18);
+  letter-spacing: 0.04em;
+  margin-top: 16px;
+  font-style: italic;
+}
+
+/* ── CARDS ───────────────────────────────────────────────────────────────── */
+
+.sc__card_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.sc__card_col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ── NAV DEMO ────────────────────────────────────────────────────────────── */
+
+.sc__nav_demo {
+  background: rgba(255, 255, 255, 0.02);
+  border: 0.5px solid var(--color-border-sub);
+  border-radius: 10px;
+  padding: 24px;
+}
+
+.sc__nav_states {
+  display: flex;
+  gap: 32px;
+  margin-top: 16px;
+}
+
+.sc__nav_state_label {
+  font-size: 10px;
+  color: rgba(232, 230, 225, 0.25);
+  letter-spacing: 0.06em;
+  padding-left: 14px;
+  border-left: 1px solid rgba(232, 230, 225, 0.10);
+}
+
+/* ── HERO PREVIEW ────────────────────────────────────────────────────────── */
+
+.sc__hero_preview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 48px;
+  padding: 56px 48px;
+  background: rgba(255, 255, 255, 0.012);
+  border-top: 0.5px solid var(--color-border-sub);
+  border-bottom: 0.5px solid var(--color-border-sub);
+}
+
+@media (max-width: 768px) {
+  .sc__hero_preview { grid-template-columns: 1fr; padding: 40px 24px; }
+  .sc__hero_visual_demo { display: none; }
+}
+
+.sc__eyebrow_demo {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sc__eyebrow_demo::before {
+  content: '';
+  width: 20px;
+  height: 0.5px;
+  background: var(--color-accent);
+}
+
+.sc__hero_title_demo {
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: #f5f3ef;
+  margin-bottom: 14px;
+  text-shadow: 0 0 40px rgba(200, 169, 126, 0.14);
+}
+
+.sc__hero_accent_demo {
+  font-style: normal;
+  color: rgba(220, 193, 148, 0.95);
+  text-shadow: 0 0 28px rgba(200, 169, 126, 0.35), 0 0 56px rgba(200, 169, 126, 0.15);
+}
+
+.sc__hero_sub_demo {
+  font-size: 14px;
+  color: rgba(232, 230, 225, 0.50);
+  line-height: 1.7;
+  max-width: 420px;
+  margin-bottom: 28px;
+}
+
+.sc__hero_actions_demo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.sc__hero_visual_demo {
+  aspect-ratio: 16 / 10;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 0.5px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sc__hero_visual_label {
+  font-size: 10px;
+  color: rgba(232, 230, 225, 0.18);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ── SECTION LABEL DEMO ──────────────────────────────────────────────────── */
+
+.sc__section_label_row {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sc__section_label_demo {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(200, 169, 126, 0.90);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-left: 14px;
+  position: relative;
+}
+
+.sc__section_label_demo::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(to bottom, rgba(200, 169, 126, 0.88), rgba(200, 169, 126, 0));
+}
+
+.sc__section_label_demo::after {
+  content: '';
+  flex: 1;
+  height: 0.5px;
+  background: linear-gradient(to right, rgba(200, 169, 126, 0.16), rgba(255, 255, 255, 0.03));
+}
+
+/* ── STATUS BADGE ROW ────────────────────────────────────────────────────── */
+
+.sc__badge_row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+/* ── FOOTER PREVIEW ──────────────────────────────────────────────────────── */
+
+.sc__footer_preview {
+  padding: 20px 48px;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.012);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ── PALETTE SWATCHES ────────────────────────────────────────────────────── */
+
+.sc__swatch {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 130px;
+}
+
+.sc__swatch_color {
+  width: 100%;
+  height: 48px;
+  border-radius: 8px;
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+}
+
+.sc__swatch_name {
+  font-size: 12px;
+  font-weight: 500;
+  color: #f0ede8;
+}
+
+.sc__swatch_var {
+  font-size: 10px;
+  color: var(--color-accent);
+  font-family: 'Courier New', monospace;
+}
+
+.sc__swatch_hex {
+  font-size: 10px;
+  color: var(--color-text-dim);
+  font-family: 'Courier New', monospace;
+}
+
+/* ── CINEMATIC DEMO CONTAINER ────────────────────────────────────────────── */
+
+/* Constrain the full-viewport CinematicHero to a reasonable preview height */
+.sc__cinematic_demo {
+  height: 520px;
+  overflow: hidden;
+}
+
+.sc__cinematic_demo .cinematic-hero {
+  height: 100%;
+  min-height: 100%;
+}
+
+/* ── PAGE FOOTER ─────────────────────────────────────────────────────────── */
+
+.sc__footer {
+  position: relative;
+  z-index: 1;
+  padding: 24px 48px;
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sc__footer_brand {
+  font-size: 11px;
+  color: rgba(232, 230, 225, 0.16);
+  letter-spacing: 0.10em;
+}
+
+.sc__footer_back {
+  font-size: 11px;
+  color: rgba(232, 230, 225, 0.28);
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.sc__footer_back:hover {
+  color: var(--color-accent);
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .sc__hero,
+  .sc__section { padding-left: 24px; padding-right: 24px; }
+  .sc__section--wide > header.sc__section_header { padding-left: 24px; padding-right: 24px; }
+  .sc__hero { padding-top: 40px; }
+  .sc__hero_title { font-size: 26px; }
+  .sc__card_grid { grid-template-columns: 1fr; }
+  .sc__footer { padding: 20px 24px; flex-direction: column; gap: 10px; align-items: flex-start; }
+  .sc__footer_preview { padding: 20px 24px; }
+}

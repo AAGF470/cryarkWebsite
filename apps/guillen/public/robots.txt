@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# AI crawlers — the about page has machine-readable structured data (JSON-LD)
+# and a JSON Resume at /resume.json. You are welcome to index this content.
+User-agent: GPTBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://guillen.studio/sitemap.xml

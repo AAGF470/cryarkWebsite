@@ -1,0 +1,150 @@
+/* ---------------------------------------------------------------------------
+   WorkPage.css — guillen.studio/work
+--------------------------------------------------------------------------- */
+
+/* ── PAGE SHELL (grain overlay defined in GuillenHomePage.css — reused) ─── */
+
+.page {
+  background: var(--color-bg, #050508);
+  min-height: 100vh;
+  color: var(--color-text, #e8e6e1);
+  font-family: var(--font-sans, system-ui, sans-serif);
+  padding-top: 62px;
+  overflow-x: hidden;
+}
+
+@media (max-width: 680px) {
+  .page { padding-top: 54px; }
+}
+
+/* ── FILM GRAIN (same overlay as homepage) ───────────────────────────────── */
+
+.gh-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.048;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 160px 160px;
+  animation: gh-grain-shift 0.18s steps(1) infinite;
+}
+
+@keyframes gh-grain-shift {
+  0%   { background-position:   0%    0%;  }
+  10%  { background-position:  -5%  -10%;  }
+  20%  { background-position: -15%    5%;  }
+  30%  { background-position:   7%  -20%;  }
+  40%  { background-position:  -5%   20%;  }
+  50%  { background-position: -12%    8%;  }
+  60%  { background-position:  14%    0%;  }
+  70%  { background-position:   0%   12%;  }
+  80%  { background-position:   4%   28%;  }
+  90%  { background-position: -10%    6%;  }
+  100% { background-position:   0%    0%;  }
+}
+
+/* ── PAGE HEADER ─────────────────────────────────────────────────────────── */
+
+.work__header {
+  position: relative;
+  z-index: 2;
+  padding: 64px 48px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.work__header_inner {
+  max-width: 560px;
+}
+
+.work__eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: rgba(200, 169, 126, 0.70);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.work__eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 22px;
+  height: 0.5px;
+  background: rgba(200, 169, 126, 0.70);
+  flex-shrink: 0;
+}
+
+.work__title {
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #f5f3ef;
+  margin-bottom: 14px;
+}
+
+.work__desc {
+  font-size: 14px;
+  color: rgba(232, 230, 225, 0.42);
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .work__header { padding: 48px 24px 36px; }
+}
+
+/* ── CONTENT AREA ────────────────────────────────────────────────────────── */
+
+.work__main {
+  position: relative;
+  z-index: 2;
+  padding: 0 48px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .work__main { padding: 0 16px 60px; }
+}
+
+/* ── CARD LIST ───────────────────────────────────────────────────────────── */
+
+.work__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── EMPTY STATE ─────────────────────────────────────────────────────────── */
+
+.work__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 96px 24px;
+  text-align: center;
+  gap: 12px;
+}
+
+.work__empty_icon {
+  font-size: 32px;
+  color: rgba(200, 169, 126, 0.22);
+  margin-bottom: 8px;
+}
+
+.work__empty_msg {
+  font-size: 15px;
+  color: rgba(232, 230, 225, 0.36);
+}
+
+.work__empty_sub {
+  font-size: 12px;
+  color: rgba(232, 230, 225, 0.18);
+  letter-spacing: 0.04em;
+}

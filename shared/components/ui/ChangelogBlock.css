@@ -1,0 +1,182 @@
+/* ---------------------------------------------------------------------------
+   ChangelogBlock.css
+   Compact card grid — version entries sit side-by-side, not full-width vertical.
+   3 cols desktop → 2 tablet → 1 mobile.
+--------------------------------------------------------------------------- */
+
+.changelog {
+  padding: 72px 48px;
+  border-bottom: 0.5px solid var(--color-border-sub, rgba(255,255,255,0.07));
+}
+
+/* ── Heading ─────────────────────────────────────────────────────────────── */
+
+.changelog__header {
+  margin-bottom: 28px;
+}
+
+.changelog__heading {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(200, 169, 126, 0.90);
+  text-transform: uppercase;
+  padding-left: 14px;
+  position: relative;
+}
+
+.changelog__heading::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(to bottom, rgba(200, 169, 126, 0.88), rgba(200, 169, 126, 0));
+}
+
+/* ── Card grid ───────────────────────────────────────────────────────────── */
+
+.changelog__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  align-items: start; /* cards don't stretch to match tallest */
+}
+
+/* ── Card ────────────────────────────────────────────────────────────────── */
+
+.changelog__card {
+  background: rgba(255, 255, 255, 0.022);
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.changelog__card:hover {
+  border-color: rgba(200, 169, 126, 0.20);
+  background: rgba(200, 169, 126, 0.025);
+}
+
+/* ── Card meta (version + date) ──────────────────────────────────────────── */
+
+.changelog__card_meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.changelog__version {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(200, 169, 126, 0.95);
+  background: rgba(200, 169, 126, 0.10);
+  border: 0.5px solid rgba(200, 169, 126, 0.28);
+  border-radius: 4px;
+  padding: 2px 8px;
+}
+
+.changelog__date {
+  font-size: 10px;
+  color: rgba(232, 230, 225, 0.25);
+  letter-spacing: 0.04em;
+}
+
+/* ── Card title ──────────────────────────────────────────────────────────── */
+
+.changelog__card_title {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(240, 237, 232, 0.80);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+/* ── Changes list ────────────────────────────────────────────────────────── */
+
+.changelog__changes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.changelog__change {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.changelog__change_tag {
+  flex-shrink: 0;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 5px;
+  border-radius: 3px;
+  margin-top: 1px;
+}
+
+.changelog__change_tag--green  { background: rgba(74, 140, 111, 0.20); color: #7ad4a4; }
+.changelog__change_tag--blue   { background: rgba(74, 122, 155, 0.20); color: #82b8dc; }
+.changelog__change_tag--yellow { background: rgba(155, 138, 74, 0.20); color: #dcd082; }
+.changelog__change_tag--red    { background: rgba(155, 74, 74, 0.20);  color: #dc8282; }
+.changelog__change_tag--dim    { background: rgba(255, 255, 255, 0.05); color: rgba(232,230,225,0.28); }
+
+.changelog__change_text {
+  color: rgba(232, 230, 225, 0.52);
+  line-height: 1.5;
+}
+
+/* ── Show more toggle ────────────────────────────────────────────────────── */
+
+.changelog__toggle_wrap {
+  margin-top: 16px;
+}
+
+.changelog__toggle {
+  background: none;
+  border: 0.5px solid rgba(255, 255, 255, 0.10);
+  color: rgba(232, 230, 225, 0.38);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.changelog__toggle:hover {
+  color: rgba(232, 230, 225, 0.80);
+  border-color: rgba(255, 255, 255, 0.20);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 860px) {
+  .changelog__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .changelog { padding: 48px 24px; }
+}
+
+@media (max-width: 560px) {
+  .changelog__grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .changelog { padding: 36px 20px; }
+}
