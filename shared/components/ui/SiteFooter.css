@@ -6,7 +6,7 @@
 }
 
 .site-footer__inner {
-  max-width: 1160px;
+  max-width: min(1920px, 94vw);
   margin: 0 auto;
 }
 
