@@ -70,7 +70,7 @@
 
 .gh-section {
   padding: 0 48px 72px;
-  max-width: 1200px;
+  max-width: min(1600px, 92vw);
   margin: 0 auto;
   position: relative;
   z-index: 2;   /* above grain (z-index 0) */
@@ -136,7 +136,7 @@
 .gh-hero__content {
   position: relative;
   z-index: 2;   /* above grain */
-  max-width: 720px;
+  max-width: min(900px, 92vw);
 }
 
 .gh-hero__eyebrow {
