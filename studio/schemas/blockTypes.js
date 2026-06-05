@@ -800,6 +800,98 @@ export const changelogBlockType = defineType({
   },
 })
 
+// ── Callout Block ────────────────────────────────────────────────────────────
+// Used inside labEntry → content_sections → content[]
+// Renders as <CalloutBlock> — colour-coded aside with label + body text.
+export const calloutBlockType = defineType({
+  name:  'calloutBlock',
+  title: 'Callout / Note',
+  type:  'object',
+  fields: [
+    defineField({
+      name:    'variant',
+      title:   'Variant',
+      type:    'string',
+      options: {
+        list: [
+          { title: 'Note (gold)',     value: 'note'    },
+          { title: 'Tip (green)',     value: 'tip'     },
+          { title: 'Warning (orange)', value: 'warning' },
+          { title: 'Info (blue)',     value: 'info'    },
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'note',
+    }),
+    defineField({
+      name:        'label',
+      title:       'Custom label',
+      type:        'string',
+      description: 'Overrides the variant label — e.g. "Key Insight", "Gotcha"',
+    }),
+    defineField({
+      name:        'body',
+      title:       'Body text',
+      type:        'text',
+      rows:        3,
+      validation:  R => R.required(),
+    }),
+  ],
+  preview: {
+    select: { title: 'label', subtitle: 'variant' },
+    prepare({ title, subtitle }) {
+      return { title: title ?? subtitle ?? 'Callout', subtitle: subtitle ?? 'note' }
+    },
+  },
+})
+
+// ── Image Block ──────────────────────────────────────────────────────────────
+// Used inside labEntry → content_sections → content[]
+// Renders as <ImageBlock> — single inline image with optional caption.
+export const imageBlockType = defineType({
+  name:  'imageBlock',
+  title: 'Image',
+  type:  'object',
+  fields: [
+    defineField({
+      name:       'image',
+      title:      'Image',
+      type:       'image',
+      options:    { hotspot: true },
+      validation: R => R.required(),
+    }),
+    defineField({
+      name:  'alt',
+      title: 'Alt text',
+      type:  'string',
+    }),
+    defineField({
+      name:  'caption',
+      title: 'Caption',
+      type:  'string',
+    }),
+    defineField({
+      name:         'size',
+      title:        'Display size',
+      type:         'string',
+      options: {
+        list: [
+          { title: 'Normal — max 720px',       value: 'normal' },
+          { title: 'Wide — full content width', value: 'wide'   },
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'normal',
+    }),
+  ],
+  preview: {
+    select: { title: 'caption', media: 'image' },
+    prepare({ title, media }) {
+      return { title: title ?? '(image)', media }
+    },
+  },
+})
+
 // ── Title Block ──────────────────────────────────────────────────────────────
 // Used inside product → sections[] and labEntry → sections[]
 // Renders as a large section heading — use before ContentCards, FeatureSpotlights,

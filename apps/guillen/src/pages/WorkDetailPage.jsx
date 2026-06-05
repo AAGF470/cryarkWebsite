@@ -1,16 +1,23 @@
 import { useParams, Link } from "react-router-dom";
 import { useCmsQuery, PRODUCT_BY_SLUG, cmsImageUrl } from "@shared/lib/cms";
 import { PortableText } from "@portabletext/react";
-import SiteNav          from "@shared/components/ui/SiteNav";
-import SiteFooter       from "@shared/components/ui/SiteFooter";
-import CodeBlock        from "@shared/components/ui/CodeBlock";
-import TitleBlock       from "@shared/components/ui/TitleBlock";
-import FeatureSpotlight from "@shared/components/ui/FeatureSpotlight";
-import ScreenshotGallery from "@shared/components/ui/ScreenshotGallery";
-import VideoPlayer      from "@shared/components/ui/VideoPlayer";
-import FactGrid         from "@shared/components/ui/FactGrid";
-import RoadmapBlock     from "@shared/components/ui/RoadmapBlock";
-import Spacer           from "@shared/components/ui/Spacer";
+import SiteNav            from "@shared/components/ui/SiteNav";
+import SiteFooter         from "@shared/components/ui/SiteFooter";
+import CodeBlock          from "@shared/components/ui/CodeBlock";
+import TitleBlock         from "@shared/components/ui/TitleBlock";
+import FeatureSpotlight   from "@shared/components/ui/FeatureSpotlight";
+import ScreenshotGallery  from "@shared/components/ui/ScreenshotGallery";
+import VideoPlayer        from "@shared/components/ui/VideoPlayer";
+import FactGrid           from "@shared/components/ui/FactGrid";
+import RoadmapBlock       from "@shared/components/ui/RoadmapBlock";
+import CinematicBanner    from "@shared/components/ui/CinematicBanner";
+import ContentCards       from "@shared/components/ui/ContentCards";
+import EmbeddedApp        from "@shared/components/ui/EmbeddedApp";
+import PricingCTA         from "@shared/components/ui/PricingCTA";
+import SystemRequirements from "@shared/components/ui/SystemRequirements";
+import ChangelogBlock     from "@shared/components/ui/ChangelogBlock";
+import AssetGrid          from "@shared/components/ui/AssetGrid";
+import Spacer             from "@shared/components/ui/Spacer";
 import "./WorkDetailPage.css";
 
 // ---------------------------------------------------------------------------
@@ -70,17 +77,14 @@ function BlockRenderer({ block }) {
     case "featureSpotlightBlock":
       return (
         <FeatureSpotlight
-          // Schema uses `heading`/`body`; component expects `title`/`description`
           title={block.heading}
           description={block.body}
           eyebrow={block.eyebrow}
-          // `image_src` is resolved by the GROQ query; raw `image` ref is ignored
           image_src={block.image_src ?? null}
           video_src={block.video_src ?? null}
           flip={block.flip ?? false}
           media_fit={block.media_fit ?? "cover"}
           media_bg={block.media_bg ?? null}
-          // Schema uses `cta_label`/`cta_href`; component expects `actions[]`
           actions={
             block.cta_label
               ? [{ label: block.cta_label, href: block.cta_href, variant: "solid" }]
@@ -90,10 +94,44 @@ function BlockRenderer({ block }) {
       );
 
     case "screenshotGalleryBlock":
-      return <ScreenshotGallery images={block.images} label={block.label} />;
+      return <ScreenshotGallery images={block.images ?? []} label={block.label} />;
+
+    case "cinematicBannerBlock":
+      return (
+        <CinematicBanner
+          image_src={block.image_src ?? null}
+          eyebrow={block.eyebrow}
+          heading={block.heading ?? ""}
+          body={block.body}
+          align={block.align ?? "left"}
+          min_height={block.min_height ?? "520px"}
+          cta_label={block.cta_label}
+          cta_href={block.cta_href}
+        />
+      );
+
+    case "contentCardsBlock":
+      return (
+        <ContentCards
+          heading={block.heading}
+          cards={block.cards ?? []}
+          columns={block.columns}
+          card_height={block.card_height ?? 280}
+        />
+      );
 
     case "videoBlock":
-      return <VideoPlayer {...block} />;
+      return (
+        <VideoPlayer
+          eyebrow={block.eyebrow}
+          title={block.title}
+          video_mp4={block.video_mp4}
+          video_webm={block.video_webm}
+          poster_src={block.poster_src ?? null}
+          caption={block.caption}
+          aspect_ratio={block.aspect_ratio ?? "16/9"}
+        />
+      );
 
     case "factGridBlock":
       return (
@@ -106,6 +144,59 @@ function BlockRenderer({ block }) {
 
     case "roadmapBlock":
       return <RoadmapBlock {...block} />;
+
+    case "embeddedAppBlock":
+      return (
+        <EmbeddedApp
+          title={block.title}
+          description={block.description}
+          embed_url={block.embed_url ?? ""}
+          poster_src={block.poster_src ?? null}
+          launch_label={block.launch_label ?? "Launch"}
+          warning={block.warning}
+          height={block.height ?? 620}
+        />
+      );
+
+    case "assetDownloadBlock":
+      return (
+        <AssetGrid
+          heading={block.heading}
+          assets={block.assets ?? []}
+        />
+      );
+
+    case "pricingCtaBlock":
+      return (
+        <PricingCTA
+          heading={block.heading}
+          price={block.price}
+          price_note={block.price_note}
+          links={block.links ?? []}
+          patreon_href={block.patreon_href}
+          patreon_label={block.patreon_label}
+          note={block.note}
+        />
+      );
+
+    case "systemRequirementsBlock":
+      return (
+        <SystemRequirements
+          heading={block.heading}
+          platform_note={block.platform_note}
+          minimum={block.minimum}
+          recommended={block.recommended}
+          tested_on={block.tested_on}
+        />
+      );
+
+    case "changelogBlock":
+      return (
+        <ChangelogBlock
+          heading={block.heading}
+          entries={block.entries ?? []}
+        />
+      );
 
     case "spacerBlock":
       return <Spacer {...block} />;

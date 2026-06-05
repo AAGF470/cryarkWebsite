@@ -1,0 +1,60 @@
+/* ---------------------------------------------------------------------------
+   CalloutBlock.css
+   Colour-coded aside blocks for devlog / article content.
+   Variants: note (gold) | tip (green) | warning (orange) | info (blue)
+--------------------------------------------------------------------------- */
+
+.callout {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 14px 18px;
+  border-radius: 0 6px 6px 0;
+  border-left: 2.5px solid;
+  margin: 22px 0;
+}
+
+/* ── Variant colours ─────────────────────────────────────────────────────── */
+
+.callout--note {
+  border-color: rgba(200, 169, 126, 0.55);
+  background: rgba(200, 169, 126, 0.055);
+}
+
+.callout--tip {
+  border-color: rgba(100, 200, 120, 0.55);
+  background: rgba(100, 200, 120, 0.055);
+}
+
+.callout--warning {
+  border-color: rgba(220, 110, 70, 0.55);
+  background: rgba(220, 110, 70, 0.055);
+}
+
+.callout--info {
+  border-color: rgba(90, 150, 220, 0.55);
+  background: rgba(90, 150, 220, 0.055);
+}
+
+/* ── Label ───────────────────────────────────────────────────────────────── */
+
+.callout__label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.callout--note .callout__label    { color: rgba(200, 169, 126, 0.90); }
+.callout--tip .callout__label     { color: rgba(100, 200, 120, 0.90); }
+.callout--warning .callout__label { color: rgba(220, 110, 70,  0.90); }
+.callout--info .callout__label    { color: rgba(90,  150, 220, 0.90); }
+
+/* ── Body ────────────────────────────────────────────────────────────────── */
+
+.callout__body {
+  font-size: 14px;
+  line-height: 1.72;
+  color: rgba(232, 230, 225, 0.65);
+  margin: 0;
+}

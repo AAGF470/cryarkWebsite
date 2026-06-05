@@ -36,6 +36,21 @@ export const LAB_ENTRY_BY_SLUG = `
     sections[] {
       ...,
       _type,
+      "image_src": image.asset->url,
+      images[] {
+        "src": image.asset->url,
+        alt,
+        caption,
+      },
+      cards[] {
+        ...,
+        "image_src": image.asset->url,
+      },
+      assets[] {
+        ...,
+        "preview_src": preview.asset->url,
+      },
+      "poster_src": poster.asset->url,
     },
     content_sections[] {
       section_id,
@@ -43,6 +58,7 @@ export const LAB_ENTRY_BY_SLUG = `
       content[] {
         ...,
         _type,
+        "image_src": image.asset->url,
       },
     },
     published_at,
@@ -69,16 +85,28 @@ export const PRODUCT_BY_SLUG = `
     key_art,
     thumbnail,
     screenshots[] {
-      image,
+      "src": image.asset->url,
       alt,
       caption,
     },
     sections[] {
       ...,
       _type,
-      // Resolve image asset URL for blocks with an image field (featureSpotlightBlock etc.)
-      // Returns null for block types without an image field — safe to spread.
       "image_src": image.asset->url,
+      images[] {
+        "src": image.asset->url,
+        alt,
+        caption,
+      },
+      cards[] {
+        ...,
+        "image_src": image.asset->url,
+      },
+      assets[] {
+        ...,
+        "preview_src": preview.asset->url,
+      },
+      "poster_src": poster.asset->url,
     },
     built_with[] {
       name,

@@ -161,6 +161,8 @@ export const labEntryType = defineType({
             of: [
               defineArrayMember({ type: 'block'           }), // rich text
               defineArrayMember({ type: 'codeBlock'       }), // code snippet
+              defineArrayMember({ type: 'calloutBlock'    }), // note/tip/warning/info aside
+              defineArrayMember({ type: 'imageBlock'      }), // single inline image
               defineArrayMember({ type: 'designDecision'  }), // key + description
               defineArrayMember({ type: 'spacerBlock'     }), // vertical gap
             ],

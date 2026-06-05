@@ -8,6 +8,8 @@ import { siteLinkType }             from './siteLink'
 import {
   codeBlockType,
   designDecisionType,
+  calloutBlockType,
+  imageBlockType,
   featureSpotlightBlockType,
   textSectionType,
   factGridBlockType,
@@ -41,6 +43,8 @@ export const schemaTypes = [
   // ── Shared object / block types ───────────────────────────────────────────
   codeBlockType,
   designDecisionType,
+  calloutBlockType,
+  imageBlockType,
   featureSpotlightBlockType,
   textSectionType,
   factGridBlockType,

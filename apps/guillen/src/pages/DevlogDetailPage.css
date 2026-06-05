@@ -169,6 +169,42 @@
   border-top: 0.5px solid rgba(255, 255, 255, 0.06);
 }
 
+/* ── FULL-WIDTH SECTIONS (video, gallery, roadmap…) ─────────────────────── */
+
+.dd-full-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-bottom: 48px;
+}
+
+/* ── DESIGN DECISION ─────────────────────────────────────────────────────── */
+
+.dd-decision {
+  border-left: 2px solid rgba(200, 169, 126, 0.35);
+  padding: 10px 16px;
+  margin: 18px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: rgba(200, 169, 126, 0.03);
+}
+
+.dd-decision__key {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(200, 169, 126, 0.75);
+}
+
+.dd-decision__desc {
+  font-size: 14px;
+  color: rgba(232, 230, 225, 0.60);
+  line-height: 1.65;
+  margin: 0;
+}
+
 /* ── CODE BLOCK ──────────────────────────────────────────────────────────── */
 
 .dd-code {

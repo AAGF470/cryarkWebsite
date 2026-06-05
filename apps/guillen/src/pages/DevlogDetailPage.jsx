@@ -1,15 +1,30 @@
 import { useParams } from "react-router-dom";
 import { useCmsQuery, LAB_ENTRY_BY_SLUG } from "@shared/lib/cms";
-import SiteNav    from "@shared/components/ui/SiteNav";
-import SiteFooter from "@shared/components/ui/SiteFooter";
-import { PortableText } from "@portabletext/react";
+import { PortableText }   from "@portabletext/react";
+import SiteNav            from "@shared/components/ui/SiteNav";
+import SiteFooter         from "@shared/components/ui/SiteFooter";
+import CodeBlock          from "@shared/components/ui/CodeBlock";
+import CalloutBlock       from "@shared/components/ui/CalloutBlock";
+import ImageBlock         from "@shared/components/ui/ImageBlock";
+import ScreenshotGallery  from "@shared/components/ui/ScreenshotGallery";
+import VideoPlayer        from "@shared/components/ui/VideoPlayer";
+import FactGrid           from "@shared/components/ui/FactGrid";
+import RoadmapBlock       from "@shared/components/ui/RoadmapBlock";
+import ChangelogBlock     from "@shared/components/ui/ChangelogBlock";
+import CinematicBanner    from "@shared/components/ui/CinematicBanner";
+import ContentCards       from "@shared/components/ui/ContentCards";
+import TitleBlock         from "@shared/components/ui/TitleBlock";
+import Spacer             from "@shared/components/ui/Spacer";
 import "./DevlogDetailPage.css";
 
 // ---------------------------------------------------------------------------
 // DevlogDetailPage — guillen.studio/devlog/:slug
 //
-// Fetches a single lab/devlog entry by slug and renders it as a long-form
-// article with header metadata, abstract, and structured content sections.
+// Two-layer rendering:
+//   sections[]         — full-width visual blocks rendered before the body
+//                        (video, gallery, roadmap, etc.)
+//   content_sections[] — structured article body with heading + inline blocks
+//                        (rich text, code, callout, image, etc.)
 // ---------------------------------------------------------------------------
 
 const GUILLEN_NAV = [
@@ -25,7 +40,77 @@ function format_date(iso) {
   });
 }
 
-// ── Block renderer ────────────────────────────────────────────────────────
+// ── Full-width block renderer (for sections[]) ────────────────────────────
+
+function FullBlockRenderer({ block }) {
+  switch (block._type) {
+    case "titleBlock":
+      return <TitleBlock {...block} />;
+
+    case "screenshotGalleryBlock":
+      return <ScreenshotGallery images={block.images ?? []} label={block.label} />;
+
+    case "videoBlock":
+      return (
+        <VideoPlayer
+          eyebrow={block.eyebrow}
+          title={block.title}
+          video_mp4={block.video_mp4}
+          video_webm={block.video_webm}
+          poster_src={block.poster_src ?? null}
+          caption={block.caption}
+          aspect_ratio={block.aspect_ratio ?? "16/9"}
+        />
+      );
+
+    case "factGridBlock":
+      return (
+        <FactGrid
+          heading={block.heading}
+          facts={block.facts}
+          columns={block.columns}
+        />
+      );
+
+    case "roadmapBlock":
+      return <RoadmapBlock {...block} />;
+
+    case "changelogBlock":
+      return <ChangelogBlock heading={block.heading} entries={block.entries ?? []} />;
+
+    case "cinematicBannerBlock":
+      return (
+        <CinematicBanner
+          image_src={block.image_src ?? null}
+          eyebrow={block.eyebrow}
+          heading={block.heading ?? ""}
+          body={block.body}
+          align={block.align ?? "left"}
+          min_height={block.min_height ?? "520px"}
+          cta_label={block.cta_label}
+          cta_href={block.cta_href}
+        />
+      );
+
+    case "contentCardsBlock":
+      return (
+        <ContentCards
+          heading={block.heading}
+          cards={block.cards ?? []}
+          columns={block.columns}
+          card_height={block.card_height ?? 280}
+        />
+      );
+
+    case "spacerBlock":
+      return <Spacer {...block} />;
+
+    default:
+      return null;
+  }
+}
+
+// ── Inline block renderer (for content_sections[].content[]) ─────────────
 
 function render_block(block) {
   switch (block._type) {
@@ -34,44 +119,57 @@ function render_block(block) {
 
     case "codeBlock":
       return (
-        <div key={block._key ?? block._id} className="dd-code">
-          <div className="dd-code-hdr">
-            {block.language && (
-              <span className="dd-code-hdr__lang">{block.language}</span>
-            )}
-            {block.title && (
-              <span className="dd-code-hdr__title">{block.title}</span>
-            )}
-          </div>
-          <pre><code>{block.code}</code></pre>
+        <CodeBlock
+          key={block._key ?? block._id}
+          language={block.language ?? "text"}
+          title={block.title}
+          code={block.code ?? ""}
+        />
+      );
+
+    case "calloutBlock":
+      return (
+        <CalloutBlock
+          key={block._key ?? block._id}
+          variant={block.variant ?? "note"}
+          label={block.label}
+          body={block.body ?? ""}
+        />
+      );
+
+    case "imageBlock":
+      return (
+        <ImageBlock
+          key={block._key ?? block._id}
+          image_src={block.image_src ?? null}
+          alt={block.alt}
+          caption={block.caption}
+          size={block.size ?? "normal"}
+        />
+      );
+
+    case "designDecision":
+      return (
+        <div key={block._key ?? block._id} className="dd-decision">
+          {block.key && <span className="dd-decision__key">{block.key}</span>}
+          {block.description && <p className="dd-decision__desc">{block.description}</p>}
         </div>
       );
+
+    case "spacerBlock":
+      return <Spacer key={block._key ?? block._id} {...block} />;
 
     default:
       return null;
   }
 }
 
-// ── Content sections ──────────────────────────────────────────────────────
+// ── Content sections (article body) ──────────────────────────────────────
 
 function ContentSections({ sections }) {
   if (!sections?.length) return null;
   return sections.map((section, i) => (
     <div key={section.section_id ?? i} className="dd-section">
-      {section.section_label && (
-        <h2 className="dd-section-heading">{section.section_label}</h2>
-      )}
-      {section.content?.map(block => render_block(block))}
-    </div>
-  ));
-}
-
-// ── Fallback sections (sections[] instead of content_sections[]) ──────────
-
-function FallbackSections({ sections }) {
-  if (!sections?.length) return null;
-  return sections.map((section, i) => (
-    <div key={section._key ?? i} className="dd-section">
       {section.section_label && (
         <h2 className="dd-section-heading">{section.section_label}</h2>
       )}
@@ -111,9 +209,6 @@ export default function DevlogDetailPage() {
     );
   }
 
-  const use_content_sections =
-    data.content_sections && data.content_sections.length > 0;
-
   return (
     <div className="page">
       <div className="gh-grain" aria-hidden="true" />
@@ -150,16 +245,22 @@ export default function DevlogDetailPage() {
           </div>
         </header>
 
-        {/* ── Body ── */}
+        {/* ── Full-width sections (video, gallery, roadmap, etc.) ── */}
+        {data.sections?.length > 0 && (
+          <div className="dd-full-sections">
+            {data.sections.map((block, i) => (
+              <FullBlockRenderer key={block._key ?? i} block={block} />
+            ))}
+          </div>
+        )}
+
+        {/* ── Article body ── */}
         <div className="dd-body">
           {data.abstract && (
             <p className="dd-abstract">{data.abstract}</p>
           )}
 
-          {use_content_sections
-            ? <ContentSections sections={data.content_sections} />
-            : <FallbackSections sections={data.sections} />
-          }
+          <ContentSections sections={data.content_sections} />
 
           {data.tags?.length > 0 && (
             <div className="dd-tags dd-tags--footer">
