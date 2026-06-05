@@ -188,6 +188,7 @@ export const productType = defineType({
         defineArrayMember({ type: 'changelogBlock'           }),
         defineArrayMember({ type: 'titleBlock'               }),
         defineArrayMember({ type: 'textSection'              }),
+        defineArrayMember({ type: 'codeBlock'                }),
         defineArrayMember({ type: 'spacerBlock'              }),
       ],
     }),

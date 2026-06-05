@@ -76,13 +76,21 @@ export const PRODUCT_BY_SLUG = `
     sections[] {
       ...,
       _type,
+      // Resolve image asset URL for blocks with an image field (featureSpotlightBlock etc.)
+      // Returns null for block types without an image field — safe to spread.
+      "image_src": image.asset->url,
     },
     built_with[] {
       name,
-      logo,
+      "logo_url": logo.asset->url,
       src,
     },
-    cta_links,
+    cta_links[] {
+      label,
+      href,
+      variant,
+      lava,
+    },
     published_at,
   }
 `

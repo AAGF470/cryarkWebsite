@@ -68,7 +68,26 @@ function BlockRenderer({ block }) {
       );
 
     case "featureSpotlightBlock":
-      return <FeatureSpotlight {...block} />;
+      return (
+        <FeatureSpotlight
+          // Schema uses `heading`/`body`; component expects `title`/`description`
+          title={block.heading}
+          description={block.body}
+          eyebrow={block.eyebrow}
+          // `image_src` is resolved by the GROQ query; raw `image` ref is ignored
+          image_src={block.image_src ?? null}
+          video_src={block.video_src ?? null}
+          flip={block.flip ?? false}
+          media_fit={block.media_fit ?? "cover"}
+          media_bg={block.media_bg ?? null}
+          // Schema uses `cta_label`/`cta_href`; component expects `actions[]`
+          actions={
+            block.cta_label
+              ? [{ label: block.cta_label, href: block.cta_href, variant: "solid" }]
+              : []
+          }
+        />
+      );
 
     case "screenshotGalleryBlock":
       return <ScreenshotGallery images={block.images} label={block.label} />;
@@ -173,8 +192,8 @@ export default function WorkDetailPage() {
                   {product.cta_links.map((cta, i) => (
                     <a
                       key={i}
-                      href={cta.url}
-                      className="wd-cta-btn"
+                      href={cta.href}
+                      className={`wd-cta-btn wd-cta-btn--${cta.variant ?? "solid"}`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -198,11 +217,21 @@ export default function WorkDetailPage() {
                 <div className="wd-built-with-wrapper">
                   <p className="wd-section-label">Built with</p>
                   <div className="wd-built-with">
-                    {product.built_with.map(tech => (
-                      <span key={tech.name} className="wd-built-chip">
-                        {tech.name}
-                      </span>
-                    ))}
+                    {product.built_with.map(tech => {
+                      const logo = tech.logo_url ?? tech.src ?? null;
+                      return (
+                        <span key={tech.name} className="wd-built-chip">
+                          {logo && (
+                            <img
+                              src={logo}
+                              alt={tech.name}
+                              className="wd-built-chip__logo"
+                            />
+                          )}
+                          {tech.name}
+                        </span>
+                      );
+                    })}
                   </div>
                 </div>
               )}
