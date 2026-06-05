@@ -1,5 +1,7 @@
 import { productType }              from './product'
 import { labEntryType }             from './labEntry'
+import { docSpaceType }             from './docSpace'
+import { docPageType }              from './docPage'
 import { skillType }                from './skill'
 import { experienceType }           from './experience'
 import { aboutProfileType }         from './aboutProfile'
@@ -35,6 +37,8 @@ export const schemaTypes = [
   // ── Document types (shown in nav) ────────────────────────────────────────
   productType,
   labEntryType,
+  docSpaceType,
+  docPageType,
   aboutProfileType,
   skillType,
   experienceType,

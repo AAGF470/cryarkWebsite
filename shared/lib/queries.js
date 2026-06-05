@@ -357,6 +357,62 @@ export const ALL_EXPERIENCE = `
   }
 `
 
+// ── DOCS QUERIES ─────────────────────────────────────────────────────────────
+
+// Doc space nav — space metadata + full flat page list for building the sidebar tree.
+// The frontend nests pages by parent_id and sorts by order.
+export const DOC_SPACE_NAV = `
+  *[_type == "docSpace" && slug.current == $space_slug && is_draft != true][0] {
+    _id,
+    title,
+    "slug": slug.current,
+    description,
+    "product_slug": product->slug.current,
+    "pages": *[_type == "docPage" && space._ref == ^._id && is_draft != true] | order(order asc) {
+      _id,
+      title,
+      "slug": slug.current,
+      "parent_id": parent._ref,
+      order,
+    }
+  }
+`
+
+// Single doc page — content only (nav comes from DOC_SPACE_NAV above).
+export const DOC_PAGE_BY_SLUG = `
+  *[_type == "docPage"
+    && space->slug.current == $space_slug
+    && slug.current == $page_slug
+    && is_draft != true][0] {
+    _id,
+    title,
+    content_sections[] {
+      section_id,
+      section_label,
+      content[] {
+        ...,
+        _type,
+        "image_src": image.asset->url,
+      },
+    },
+  }
+`
+
+// All doc spaces — for a /docs listing page or product links.
+export const ALL_DOC_SPACES = `
+  *[_type == "docSpace" && is_draft != true] | order(title asc) {
+    _id,
+    title,
+    "slug": slug.current,
+    description,
+    "product_slug": product->slug.current,
+    "product_title": product->title,
+    "page_count": count(*[_type == "docPage" && space._ref == ^._id && is_draft != true]),
+  }
+`
+
+// ── ABOUT PAGE QUERIES (shared — use $site parameter) ────────────────────────
+
 // All site links (social / external) visible on a site, ordered by manual order.
 // Filter by show_in on the client: "footer", "hero", "about", "nav"
 export const ALL_SITE_LINKS = `

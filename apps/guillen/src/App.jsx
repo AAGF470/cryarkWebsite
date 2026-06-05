@@ -6,6 +6,7 @@ import WorkDetailPage      from "./pages/WorkDetailPage";
 import DevlogPage          from "./pages/DevlogPage";
 import DevlogDetailPage    from "./pages/DevlogDetailPage";
 import AboutPage           from "./pages/AboutPage";
+import DocsPage            from "./pages/DocsPage";
 import NotFoundPage        from "./pages/NotFoundPage";
 import PageLoader          from "@shared/components/ui/PageLoader";
 
@@ -66,6 +67,16 @@ const router = createBrowserRouter([
   {
     path: "/about",
     element: <AboutPage />,
+  },
+  {
+    // /docs/:space_slug/:page_slug — full doc page
+    path: "/docs/:space_slug/:page_slug",
+    element: <DocsPage />,
+  },
+  {
+    // /docs/:space_slug — redirects to first page (handled inside DocsPage)
+    path: "/docs/:space_slug",
+    element: <DocsPage />,
   },
   {
     path: "*",

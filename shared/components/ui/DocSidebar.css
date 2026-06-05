@@ -1,0 +1,193 @@
+/* ---------------------------------------------------------------------------
+   DocSidebar.css
+   Left-rail navigation for the docs layout.
+   Sticky on desktop, collapsible drawer on mobile.
+--------------------------------------------------------------------------- */
+
+/* ── Shell ──────────────────────────────────────────────────────────────── */
+
+.doc-sidebar {
+  position: sticky;
+  top: 62px;           /* matches SiteNav height */
+  height: calc(100vh - 62px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.012);
+  border-right: 0.5px solid rgba(255, 255, 255, 0.055);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(200, 169, 126, 0.12) transparent;
+  flex-shrink: 0;
+}
+
+.doc-sidebar::-webkit-scrollbar       { width: 3px; }
+.doc-sidebar::-webkit-scrollbar-track { background: transparent; }
+.doc-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(200, 169, 126, 0.12);
+  border-radius: 99px;
+}
+
+/* ── Header (space name + mobile toggle) ────────────────────────────────── */
+
+.doc-sidebar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 16px 16px;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.05);
+  flex-shrink: 0;
+}
+
+.doc-sidebar__space-name {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(200, 169, 126, 0.80);
+  text-decoration: none;
+  transition: color 0.16s ease;
+  line-height: 1.3;
+}
+
+.doc-sidebar__space-name:hover {
+  color: rgba(200, 169, 126, 1);
+}
+
+/* Mobile hamburger — hidden on desktop */
+.doc-sidebar__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.doc-sidebar__toggle span {
+  display: block;
+  width: 16px;
+  height: 1.5px;
+  background: rgba(232, 230, 225, 0.45);
+  border-radius: 2px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* ── Nav tree ────────────────────────────────────────────────────────────── */
+
+.doc-sidebar__nav {
+  flex: 1;
+  padding: 10px 0 32px;
+}
+
+.doc-sidebar__tree,
+.doc-sidebar__children {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Nav item row ────────────────────────────────────────────────────────── */
+
+.doc-sidebar__item {
+  /* no own padding — handled by .doc-sidebar__row padding-left */
+}
+
+.doc-sidebar__row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  /* padding-left set inline via depth */
+  padding-right: 14px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  position: relative;
+}
+
+/* Active page — gold left bar */
+.doc-sidebar__row--active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  bottom: 2px;
+  width: 2px;
+  border-radius: 2px;
+  background: rgba(200, 169, 126, 0.75);
+}
+
+/* ── Chevron ─────────────────────────────────────────────────────────────── */
+
+.doc-sidebar__chevron {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: rgba(232, 230, 225, 0.20);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.18s ease, color 0.18s ease;
+  transform: rotate(0deg);
+  user-select: none;
+}
+
+.doc-sidebar__chevron--open {
+  transform: rotate(90deg);
+  color: rgba(232, 230, 225, 0.40);
+}
+
+/* ── Link ─────────────────────────────────────────────────────────────────── */
+
+.doc-sidebar__link {
+  display: block;
+  flex: 1;
+  font-size: 13px;
+  line-height: 1.4;
+  padding: 5px 0;
+  color: rgba(232, 230, 225, 0.45);
+  text-decoration: none;
+  transition: color 0.16s ease;
+  word-break: break-word;
+}
+
+.doc-sidebar__link:hover {
+  color: rgba(232, 230, 225, 0.85);
+}
+
+.doc-sidebar__row--active .doc-sidebar__link {
+  color: rgba(232, 230, 225, 0.92);
+  font-weight: 500;
+}
+
+/* ── Mobile ──────────────────────────────────────────────────────────────── */
+
+@media (max-width: 860px) {
+  .doc-sidebar {
+    position: static;
+    height: auto;
+    overflow: hidden;
+    border-right: none;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.055);
+    max-height: 52px;            /* only header visible when closed */
+    transition: max-height 0.28s ease;
+  }
+
+  .doc-sidebar--open {
+    max-height: 600px;
+    overflow-y: auto;
+  }
+
+  .doc-sidebar__toggle {
+    display: flex;
+  }
+
+  .doc-sidebar__nav {
+    padding-bottom: 16px;
+  }
+}

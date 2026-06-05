@@ -1,0 +1,293 @@
+/* ---------------------------------------------------------------------------
+   DocsPage.css — guillen.studio/docs/:space/:page
+
+   Three-column layout:
+     [DocSidebar 260px] | [docs-main flex] | [docs-toc 200px]
+
+   Breakpoints:
+     < 1200px  — drop right TOC column
+     < 860px   — drop sidebar column (sidebar becomes a collapsible strip)
+--------------------------------------------------------------------------- */
+
+/* ── Three-column grid ────────────────────────────────────────────────────── */
+
+.docs-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr 200px;
+  min-height: calc(100vh - 62px);
+  align-items: start;
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 1200px) {
+  .docs-layout {
+    grid-template-columns: 260px 1fr;
+  }
+  .docs-toc {
+    display: none;
+  }
+}
+
+@media (max-width: 860px) {
+  .docs-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Main content column ──────────────────────────────────────────────────── */
+
+.docs-main {
+  min-width: 0;                       /* prevent grid blowout */
+  padding: 56px 64px 96px;
+  max-width: 780px;
+}
+
+@media (max-width: 1200px) {
+  .docs-main { max-width: none; }
+}
+
+@media (max-width: 860px) {
+  .docs-main { padding: 40px 24px 80px; }
+}
+
+/* ── Page header ──────────────────────────────────────────────────────────── */
+
+.docs-header {
+  margin-bottom: 40px;
+  padding-bottom: 24px;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.07);
+}
+
+.docs-title {
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #f5f3ef;
+  line-height: 1.15;
+  margin: 0;
+}
+
+/* ── Content body ─────────────────────────────────────────────────────────── */
+
+.docs-body {
+  /* Portable text, code blocks, callouts etc. rendered here */
+}
+
+/* Sections */
+.docs-section {
+  margin-bottom: 48px;
+  scroll-margin-top: 84px;    /* clears the sticky nav when jumping to anchor */
+}
+
+.docs-section__heading {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #f5f3ef;
+  margin: 0 0 20px;
+  padding-bottom: 10px;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.06);
+}
+
+.docs-section__body {
+  /* blocks stack here */
+}
+
+/* ── Portable Text typography ─────────────────────────────────────────────── */
+
+.docs-body p {
+  font-size: 15px;
+  color: rgba(232, 230, 225, 0.65);
+  line-height: 1.80;
+  margin: 0 0 18px;
+}
+
+.docs-body h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(232, 230, 225, 0.88);
+  margin: 28px 0 10px;
+}
+
+.docs-body h4 {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(232, 230, 225, 0.75);
+  letter-spacing: 0.03em;
+  margin: 22px 0 8px;
+}
+
+.docs-body strong {
+  color: rgba(232, 230, 225, 0.92);
+  font-weight: 600;
+}
+
+.docs-body em {
+  color: rgba(232, 230, 225, 0.72);
+}
+
+.docs-body a {
+  color: rgba(200, 169, 126, 0.88);
+  text-decoration: underline;
+  text-decoration-color: rgba(200, 169, 126, 0.30);
+  text-underline-offset: 2px;
+  transition: color 0.16s ease, text-decoration-color 0.16s ease;
+}
+
+.docs-body a:hover {
+  color: rgba(200, 169, 126, 1);
+  text-decoration-color: rgba(200, 169, 126, 0.65);
+}
+
+.docs-body ul,
+.docs-body ol {
+  padding-left: 22px;
+  margin: 0 0 18px;
+}
+
+.docs-body ul { list-style: disc; }
+.docs-body ol { list-style: decimal; }
+
+.docs-body li {
+  font-size: 15px;
+  color: rgba(232, 230, 225, 0.65);
+  line-height: 1.72;
+  margin-bottom: 6px;
+}
+
+.docs-body code {
+  font-family: ui-monospace, "Cascadia Code", Menlo, Consolas, monospace;
+  font-size: 13px;
+  color: rgba(200, 169, 126, 0.88);
+  background: rgba(200, 169, 126, 0.08);
+  border: 0.5px solid rgba(200, 169, 126, 0.16);
+  border-radius: 3px;
+  padding: 1px 5px;
+}
+
+.docs-body hr {
+  border: none;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.07);
+  margin: 32px 0;
+}
+
+/* ── In-page TOC (right column) ───────────────────────────────────────────── */
+
+.docs-toc {
+  position: sticky;
+  top: 82px;
+  padding: 56px 24px 56px 0;
+  align-self: start;
+}
+
+.docs-toc__heading {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(200, 169, 126, 0.55);
+  margin: 0 0 14px;
+}
+
+.docs-toc__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.docs-toc__item {
+  /* item wrapper */
+}
+
+.docs-toc__link {
+  display: block;
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 4px 0 4px 12px;
+  color: rgba(232, 230, 225, 0.32);
+  text-decoration: none;
+  border-left: 1.5px solid rgba(255, 255, 255, 0.055);
+  transition: color 0.16s ease, border-color 0.16s ease;
+}
+
+.docs-toc__link:hover {
+  color: rgba(232, 230, 225, 0.80);
+  border-color: rgba(200, 169, 126, 0.45);
+}
+
+/* ── Prev / Next pager ────────────────────────────────────────────────────── */
+
+.docs-pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 64px;
+  padding-top: 28px;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.07);
+}
+
+.docs-pager__btn {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 18px;
+  border: 0.5px solid rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.018);
+  transition: border-color 0.2s ease, background 0.2s ease;
+  max-width: 48%;
+}
+
+.docs-pager__btn:hover {
+  border-color: rgba(200, 169, 126, 0.25);
+  background: rgba(200, 169, 126, 0.03);
+}
+
+.docs-pager__btn--next {
+  text-align: right;
+  margin-left: auto;
+}
+
+.docs-pager__dir {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(200, 169, 126, 0.55);
+}
+
+.docs-pager__title {
+  font-size: 13px;
+  color: rgba(232, 230, 225, 0.72);
+  line-height: 1.35;
+}
+
+/* ── Not found state ──────────────────────────────────────────────────────── */
+
+.docs-not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 96px 24px;
+  text-align: center;
+  color: rgba(232, 230, 225, 0.35);
+  font-size: 15px;
+}
+
+.docs-not-found a {
+  font-size: 12px;
+  color: rgba(200, 169, 126, 0.65);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.16s ease;
+}
+
+.docs-not-found a:hover {
+  color: rgba(200, 169, 126, 1);
+}

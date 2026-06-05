@@ -26,6 +26,10 @@ export {
   // Project-linked devlogs (Guillen)
   LATEST_DEVLOG_BY_PROJECT,
   DEVLOGS_BY_PROJECT,
+  // Docs
+  DOC_SPACE_NAV,
+  DOC_PAGE_BY_SLUG,
+  ALL_DOC_SPACES,
   // About page (shared — pass { site: "guillen" | "cryark" } as params)
   ABOUT_PROFILE,
   ALL_SKILLS,
