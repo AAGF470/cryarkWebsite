@@ -133,7 +133,51 @@ export const productType = defineType({
           name:    'language',
           title:   'Language',
           type:    'string',
-          options: { list: ['python', 'csharp', 'cpp', 'gdscript', 'javascript', 'glsl', 'hlsl', 'bash'] },
+          options: {
+            list: [
+              // Web
+              { title: 'JavaScript',   value: 'javascript'  },
+              { title: 'TypeScript',   value: 'typescript'  },
+              { title: 'JSX',          value: 'jsx'         },
+              { title: 'TSX',          value: 'tsx'         },
+              { title: 'HTML',         value: 'html'        },
+              { title: 'CSS',          value: 'css'         },
+              { title: 'SCSS',         value: 'scss'        },
+              { title: 'Vue',          value: 'vue'         },
+              // Data / config
+              { title: 'JSON',         value: 'json'        },
+              { title: 'YAML',         value: 'yaml'        },
+              { title: 'TOML',         value: 'toml'        },
+              { title: 'GraphQL',      value: 'graphql'     },
+              { title: 'SQL',          value: 'sql'         },
+              // Scripting
+              { title: 'Python',       value: 'python'      },
+              { title: 'Bash / Shell', value: 'bash'        },
+              { title: 'Lua',          value: 'lua'         },
+              { title: 'Ruby',         value: 'ruby'        },
+              { title: 'PHP',          value: 'php'         },
+              // Systems
+              { title: 'C#',           value: 'csharp'      },
+              { title: 'C++',          value: 'cpp'         },
+              { title: 'C',            value: 'c'           },
+              { title: 'Rust',         value: 'rust'        },
+              { title: 'Go',           value: 'go'          },
+              { title: 'Zig',          value: 'zig'         },
+              { title: 'Swift',        value: 'swift'       },
+              { title: 'Kotlin',       value: 'kotlin'      },
+              { title: 'Java',         value: 'java'        },
+              // Shaders / game
+              { title: 'GDScript',     value: 'gdscript'    },
+              { title: 'GLSL',         value: 'glsl'        },
+              { title: 'HLSL',         value: 'hlsl'        },
+              { title: 'WGSL',         value: 'wgsl'        },
+              // Other
+              { title: 'Markdown',     value: 'markdown'    },
+              { title: 'Dockerfile',   value: 'dockerfile'  },
+              { title: 'Solidity',     value: 'solidity'    },
+              { title: 'Plain text',   value: 'text'        },
+            ],
+          },
           initialValue: 'python',
         }),
         defineField({
