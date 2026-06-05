@@ -1,71 +1,161 @@
 /* ---------------------------------------------------------------------------
    CodeBlock.css
-   Dark code panel with language badge, title slot, and copy button.
+   Styled code panel for Cryark / Guillen dark aesthetic.
+   Mac window dots, gold top-sheen, language accent colours, expand toggle.
 --------------------------------------------------------------------------- */
 
+/* ── Card shell ─────────────────────────────────────────────────────────── */
+
 .code-block {
-  background: #08070e;
-  border: 0.5px solid rgba(255, 255, 255, 0.07);
+  position: relative;
+  background: #07060c;
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 24px;
+  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.35);
 }
 
-/* ── HEADER ──────────────────────────────────────────────────────────────── */
+/* Gold-tinted top sheen */
+.code-block::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(200, 169, 126, 0.28) 40%,
+    rgba(200, 169, 126, 0.28) 60%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
 
 .code-block__header {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 9px 16px;
-  background: rgba(255, 255, 255, 0.025);
-  border-bottom: 0.5px solid rgba(255, 255, 255, 0.05);
+  gap: 10px;
+  padding: 9px 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.055);
 }
 
+/* Mac-style window dots */
+
+.code-block__dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-shrink: 0;
+  margin-right: 4px;
+}
+
+.code-block__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: block;
+}
+
+.code-block__dot--red    { background: rgba(255, 95,  87,  0.62); }
+.code-block__dot--yellow { background: rgba(255, 189, 46,  0.62); }
+.code-block__dot--green  { background: rgba(39,  201, 63,  0.62); }
+
 /* Language badge */
+
 .code-block__lang {
   font-size: 10px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.10em;
   text-transform: uppercase;
-  padding: 3px 9px;
+  padding: 2px 8px;
   border-radius: 4px;
   flex-shrink: 0;
-  /* default — gold for "text" / unknown */
+  /* default — gold (text / unknown) */
   background: rgba(200, 169, 126, 0.10);
-  color: rgba(200, 169, 126, 0.78);
+  color: rgba(200, 169, 126, 0.80);
+  border: 0.5px solid rgba(200, 169, 126, 0.18);
 }
+
+/* Per-language accent colours */
 
 .code-block--python .code-block__lang {
   background: rgba(100, 148, 255, 0.12);
   color: rgba(140, 180, 255, 0.88);
+  border-color: rgba(140, 180, 255, 0.18);
+}
+
+.code-block--javascript .code-block__lang,
+.code-block--js .code-block__lang,
+.code-block--jsx .code-block__lang {
+  background: rgba(255, 210, 80, 0.11);
+  color: rgba(255, 218, 100, 0.85);
+  border-color: rgba(255, 218, 100, 0.18);
+}
+
+.code-block--typescript .code-block__lang,
+.code-block--ts .code-block__lang,
+.code-block--tsx .code-block__lang {
+  background: rgba(50, 130, 215, 0.12);
+  color: rgba(80,  165, 240, 0.88);
+  border-color: rgba(80,  165, 240, 0.18);
 }
 
 .code-block--json .code-block__lang {
-  background: rgba(80, 210, 150, 0.10);
-  color: rgba(100, 220, 165, 0.82);
+  background: rgba(80,  210, 150, 0.10);
+  color: rgba(100, 222, 165, 0.85);
+  border-color: rgba(100, 222, 165, 0.18);
 }
 
-.code-block--bash .code-block__lang {
+.code-block--bash .code-block__lang,
+.code-block--shell .code-block__lang {
   background: rgba(185, 130, 255, 0.10);
-  color: rgba(190, 140, 255, 0.82);
+  color: rgba(195, 145, 255, 0.85);
+  border-color: rgba(195, 145, 255, 0.18);
 }
 
-.code-block--js .code-block__lang,
-.code-block--jsx .code-block__lang {
-  background: rgba(255, 210, 80, 0.10);
-  color: rgba(255, 218, 100, 0.82);
-}
-
-.code-block--css .code-block__lang {
+.code-block--css .code-block__lang,
+.code-block--scss .code-block__lang {
   background: rgba(100, 190, 255, 0.10);
-  color: rgba(120, 200, 255, 0.82);
+  color: rgba(125, 205, 255, 0.85);
+  border-color: rgba(125, 205, 255, 0.18);
+}
+
+.code-block--gdscript .code-block__lang {
+  background: rgba(75,  155, 235, 0.12);
+  color: rgba(100, 180, 255, 0.88);
+  border-color: rgba(100, 180, 255, 0.18);
+}
+
+.code-block--csharp .code-block__lang {
+  background: rgba(155, 110, 230, 0.12);
+  color: rgba(180, 140, 250, 0.88);
+  border-color: rgba(180, 140, 250, 0.18);
+}
+
+.code-block--cpp .code-block__lang,
+.code-block--c .code-block__lang {
+  background: rgba(90,  140, 220, 0.12);
+  color: rgba(115, 165, 240, 0.88);
+  border-color: rgba(115, 165, 240, 0.18);
+}
+
+.code-block--glsl .code-block__lang,
+.code-block--hlsl .code-block__lang {
+  background: rgba(50,  200, 190, 0.10);
+  color: rgba(70,  215, 200, 0.85);
+  border-color: rgba(70,  215, 200, 0.18);
 }
 
 /* Title */
+
 .code-block__title {
   font-size: 12px;
-  color: rgba(232, 230, 225, 0.28);
+  color: rgba(232, 230, 225, 0.25);
   font-family: ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace;
   flex: 1;
   white-space: nowrap;
@@ -74,12 +164,13 @@
 }
 
 /* Copy button */
+
 .code-block__copy {
   font-size: 10px;
   letter-spacing: 0.07em;
   text-transform: uppercase;
   font-family: var(--font-sans, system-ui, sans-serif);
-  color: rgba(232, 230, 225, 0.22);
+  color: rgba(232, 230, 225, 0.20);
   background: transparent;
   border: 0.5px solid rgba(255, 255, 255, 0.07);
   border-radius: 4px;
@@ -90,35 +181,46 @@
 }
 
 .code-block__copy:hover {
-  color: rgba(200, 169, 126, 0.70);
-  border-color: rgba(200, 169, 126, 0.18);
+  color: rgba(200, 169, 126, 0.72);
+  border-color: rgba(200, 169, 126, 0.20);
+  background: rgba(200, 169, 126, 0.04);
 }
 
 .code-block__copy--done {
-  color: rgba(80, 210, 140, 0.85) !important;
-  border-color: rgba(80, 210, 140, 0.20) !important;
-  background: rgba(80, 210, 140, 0.05) !important;
+  color:        rgba(80, 210, 140, 0.88) !important;
+  border-color: rgba(80, 210, 140, 0.22) !important;
+  background:   rgba(80, 210, 140, 0.06) !important;
 }
 
-/* ── CODE AREA ───────────────────────────────────────────────────────────── */
+/* ── Code body ──────────────────────────────────────────────────────────── */
+
+.code-block__body {
+  position: relative;
+}
+
+/* Collapsed: cap height and hide overflow */
+.code-block__body--collapsed {
+  max-height: 296px;
+  overflow: hidden;
+}
 
 .code-block__pre {
   margin: 0;
-  padding: 20px 22px;
+  padding: 18px 20px;
   overflow-x: auto;
   font-size: 13px;
-  line-height: 1.70;
-  font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'Courier New', monospace;
-  color: rgba(215, 212, 206, 0.80);
+  line-height: 1.72;
+  font-family: ui-monospace, 'JetBrains Mono', 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace;
+  color: rgba(215, 212, 206, 0.78);
   tab-size: 4;
-  /* Thin gold-tinted scrollbar */
+  /* Gold-tinted thin scrollbar */
   scrollbar-width: thin;
   scrollbar-color: rgba(200, 169, 126, 0.14) transparent;
 }
 
-.code-block__pre::-webkit-scrollbar          { height: 3px; }
-.code-block__pre::-webkit-scrollbar-track    { background: transparent; }
-.code-block__pre::-webkit-scrollbar-thumb    {
+.code-block__pre::-webkit-scrollbar       { height: 3px; }
+.code-block__pre::-webkit-scrollbar-track { background: transparent; }
+.code-block__pre::-webkit-scrollbar-thumb {
   background: rgba(200, 169, 126, 0.14);
   border-radius: 99px;
 }
@@ -126,4 +228,41 @@
 .code-block__code {
   font-family: inherit;
   white-space: pre;
+}
+
+/* ── Fade mask (collapsed state) ────────────────────────────────────────── */
+
+.code-block__fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 96px;
+  background: linear-gradient(to bottom, transparent 0%, #07060c 100%);
+  pointer-events: none;
+}
+
+/* ── Expand / collapse toggle ───────────────────────────────────────────── */
+
+.code-block__expand {
+  display: block;
+  width: 100%;
+  padding: 9px 16px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: var(--font-sans, system-ui, sans-serif);
+  color: rgba(200, 169, 126, 0.45);
+  background: rgba(200, 169, 126, 0.025);
+  border: none;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: color 0.18s ease, background 0.18s ease;
+}
+
+.code-block__expand:hover {
+  color: rgba(200, 169, 126, 0.88);
+  background: rgba(200, 169, 126, 0.06);
 }
