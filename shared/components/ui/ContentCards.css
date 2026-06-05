@@ -12,12 +12,12 @@
 /* ── Section shell ────────────────────────────────────────────────────────── */
 
 .content-cards {
-  padding: 72px 48px;
+  padding: 72px 0;
   border-bottom: 0.5px solid var(--color-border-sub);
 }
 
 @media (max-width: 768px) {
-  .content-cards { padding: 48px 24px; }
+  .content-cards { padding: 48px 0; }
 }
 
 /* ── Section heading ─────────────────────────────────────────────────────── */
@@ -28,12 +28,16 @@
   letter-spacing: 0.14em;
   color: rgba(200, 169, 126, 0.90);
   text-transform: uppercase;
-  margin: 0 0 36px;
+  margin: 0 48px 36px;
   display: flex;
   align-items: center;
   gap: 16px;
   padding-left: 14px;
   position: relative;
+}
+
+@media (max-width: 768px) {
+  .content-cards__heading { margin: 0 24px 28px; }
 }
 
 .content-cards__heading::before {

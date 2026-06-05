@@ -19,25 +19,50 @@ import "./CodeBlock.css";
 // ---------------------------------------------------------------------------
 
 const LANG_LABELS = {
-  python:     "Python",
+  // Web
   javascript: "JavaScript",
   js:         "JS",
   jsx:        "JSX",
   typescript: "TypeScript",
   ts:         "TS",
   tsx:        "TSX",
-  json:       "JSON",
-  bash:       "Bash",
-  shell:      "Shell",
+  html:       "HTML",
   css:        "CSS",
   scss:       "SCSS",
-  html:       "HTML",
-  gdscript:   "GDScript",
+  // Data / config
+  json:       "JSON",
+  yaml:       "YAML",
+  toml:       "TOML",
+  graphql:    "GraphQL",
+  sql:        "SQL",
+  // Scripting
+  python:     "Python",
+  bash:       "Bash",
+  shell:      "Shell",
+  lua:        "Lua",
+  ruby:       "Ruby",
+  php:        "PHP",
+  // Systems
   csharp:     "C#",
   cpp:        "C++",
   c:          "C",
+  rust:       "Rust",
+  go:         "Go",
+  zig:        "Zig",
+  swift:      "Swift",
+  kotlin:     "Kotlin",
+  java:       "Java",
+  // Shaders / game
   glsl:       "GLSL",
   hlsl:       "HLSL",
+  wgsl:       "WGSL",
+  gdscript:   "GDScript",
+  // Frameworks / markup
+  vue:        "Vue",
+  markdown:   "Markdown",
+  dockerfile: "Dockerfile",
+  solidity:   "Solidity",
+  // Fallback
   text:       "Text",
 };
 

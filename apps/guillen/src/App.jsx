@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Component }       from "react";
+import { Component, useState, useEffect } from "react";
 import GuillenHomePage     from "./pages/GuillenHomePage";
 import WorkPage            from "./pages/WorkPage";
 import WorkDetailPage      from "./pages/WorkDetailPage";
@@ -7,6 +7,7 @@ import DevlogPage          from "./pages/DevlogPage";
 import DevlogDetailPage    from "./pages/DevlogDetailPage";
 import AboutPage           from "./pages/AboutPage";
 import NotFoundPage        from "./pages/NotFoundPage";
+import PageLoader          from "@shared/components/ui/PageLoader";
 
 // ---------------------------------------------------------------------------
 // Guillen.Studio — router
@@ -72,9 +73,21 @@ const router = createBrowserRouter([
   },
 ]);
 
+// ── First-load screen ──────────────────────────────────────────────────────
+// Visible for 420 ms then fades out in 400 ms.
+const LOADER_VISIBLE_MS = 420;
+
 export default function App() {
+  const [loading, set_loading] = useState(true);
+
+  useEffect(() => {
+    const t = setTimeout(() => set_loading(false), LOADER_VISIBLE_MS);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
     <ErrorBoundary>
+      <PageLoader visible={loading} />
       <RouterProvider router={router} />
     </ErrorBoundary>
   );

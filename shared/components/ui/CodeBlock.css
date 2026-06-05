@@ -145,10 +145,108 @@
 }
 
 .code-block--glsl .code-block__lang,
-.code-block--hlsl .code-block__lang {
+.code-block--hlsl .code-block__lang,
+.code-block--wgsl .code-block__lang {
   background: rgba(50,  200, 190, 0.10);
   color: rgba(70,  215, 200, 0.85);
   border-color: rgba(70,  215, 200, 0.18);
+}
+
+.code-block--rust .code-block__lang {
+  background: rgba(240, 105, 60, 0.10);
+  color: rgba(250, 130, 80, 0.88);
+  border-color: rgba(250, 130, 80, 0.18);
+}
+
+.code-block--go .code-block__lang {
+  background: rgba(0, 175, 210, 0.10);
+  color: rgba(30, 195, 230, 0.88);
+  border-color: rgba(30, 195, 230, 0.18);
+}
+
+.code-block--zig .code-block__lang {
+  background: rgba(240, 160, 40, 0.10);
+  color: rgba(250, 180, 60, 0.88);
+  border-color: rgba(250, 180, 60, 0.18);
+}
+
+.code-block--swift .code-block__lang {
+  background: rgba(250, 85, 60, 0.10);
+  color: rgba(255, 110, 80, 0.88);
+  border-color: rgba(255, 110, 80, 0.18);
+}
+
+.code-block--kotlin .code-block__lang {
+  background: rgba(150, 100, 230, 0.11);
+  color: rgba(170, 125, 250, 0.88);
+  border-color: rgba(170, 125, 250, 0.18);
+}
+
+.code-block--java .code-block__lang {
+  background: rgba(220, 90, 60, 0.10);
+  color: rgba(240, 115, 80, 0.88);
+  border-color: rgba(240, 115, 80, 0.18);
+}
+
+.code-block--lua .code-block__lang {
+  background: rgba(60, 90, 200, 0.11);
+  color: rgba(100, 130, 230, 0.88);
+  border-color: rgba(100, 130, 230, 0.18);
+}
+
+.code-block--ruby .code-block__lang {
+  background: rgba(220, 50, 80, 0.10);
+  color: rgba(240, 80, 105, 0.88);
+  border-color: rgba(240, 80, 105, 0.18);
+}
+
+.code-block--php .code-block__lang {
+  background: rgba(120, 130, 200, 0.11);
+  color: rgba(145, 155, 220, 0.88);
+  border-color: rgba(145, 155, 220, 0.18);
+}
+
+.code-block--sql .code-block__lang {
+  background: rgba(60, 190, 140, 0.10);
+  color: rgba(80, 210, 155, 0.88);
+  border-color: rgba(80, 210, 155, 0.18);
+}
+
+.code-block--yaml .code-block__lang,
+.code-block--toml .code-block__lang {
+  background: rgba(190, 170, 100, 0.10);
+  color: rgba(210, 192, 120, 0.88);
+  border-color: rgba(210, 192, 120, 0.18);
+}
+
+.code-block--graphql .code-block__lang {
+  background: rgba(220, 65, 155, 0.10);
+  color: rgba(238, 90, 175, 0.88);
+  border-color: rgba(238, 90, 175, 0.18);
+}
+
+.code-block--vue .code-block__lang {
+  background: rgba(55, 185, 130, 0.10);
+  color: rgba(75, 205, 150, 0.88);
+  border-color: rgba(75, 205, 150, 0.18);
+}
+
+.code-block--markdown .code-block__lang {
+  background: rgba(130, 130, 130, 0.10);
+  color: rgba(165, 165, 165, 0.88);
+  border-color: rgba(165, 165, 165, 0.18);
+}
+
+.code-block--dockerfile .code-block__lang {
+  background: rgba(25, 130, 200, 0.11);
+  color: rgba(50, 155, 225, 0.88);
+  border-color: rgba(50, 155, 225, 0.18);
+}
+
+.code-block--solidity .code-block__lang {
+  background: rgba(90, 105, 200, 0.11);
+  color: rgba(120, 135, 225, 0.88);
+  border-color: rgba(120, 135, 225, 0.18);
 }
 
 /* Title */

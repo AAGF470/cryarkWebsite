@@ -1,0 +1,50 @@
+/* ---------------------------------------------------------------------------
+   PageLoader.css
+   Full-screen first-load overlay with gold glow "Loading" text.
+   Fades in immediately; fades out via .page-loader--hidden class toggle.
+--------------------------------------------------------------------------- */
+
+.page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #050508;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  visibility: visible;
+  /* Fade-out transition */
+  transition:
+    opacity  0.40s ease,
+    visibility 0.40s ease;
+  pointer-events: all;
+}
+
+.page-loader--hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Gold glow "Loading" text — same sheen as the hero motto */
+
+.page-loader__text {
+  font-family: var(--font-sans, system-ui, sans-serif);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
+  color: rgba(200, 169, 126, 0.82);
+  text-shadow:
+    0 0 6px  rgba(200, 169, 126, 0.70),
+    0 0 14px rgba(200, 169, 126, 0.40),
+    0 0 30px rgba(200, 169, 126, 0.18);
+  /* Gentle pulse while loading */
+  animation: loader-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes loader-pulse {
+  0%, 100% { opacity: 0.75; }
+  50%       { opacity: 1.00; }
+}
