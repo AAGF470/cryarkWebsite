@@ -51,6 +51,36 @@ export const LAB_ENTRY_BY_SLUG = `
         "preview_src": preview.asset->url,
       },
       "poster_src": poster.asset->url,
+      left[] {
+        ...,
+        _type,
+        "image_src": image.asset->url,
+        "poster_src": poster.asset->url,
+        images[] {
+          "src": image.asset->url,
+          alt,
+          caption,
+        },
+        cards[] {
+          ...,
+          "image_src": image.asset->url,
+        },
+      },
+      right[] {
+        ...,
+        _type,
+        "image_src": image.asset->url,
+        "poster_src": poster.asset->url,
+        images[] {
+          "src": image.asset->url,
+          alt,
+          caption,
+        },
+        cards[] {
+          ...,
+          "image_src": image.asset->url,
+        },
+      },
     },
     content_sections[] {
       section_id,
@@ -107,6 +137,36 @@ export const PRODUCT_BY_SLUG = `
         "preview_src": preview.asset->url,
       },
       "poster_src": poster.asset->url,
+      left[] {
+        ...,
+        _type,
+        "image_src": image.asset->url,
+        "poster_src": poster.asset->url,
+        images[] {
+          "src": image.asset->url,
+          alt,
+          caption,
+        },
+        cards[] {
+          ...,
+          "image_src": image.asset->url,
+        },
+      },
+      right[] {
+        ...,
+        _type,
+        "image_src": image.asset->url,
+        "poster_src": poster.asset->url,
+        images[] {
+          "src": image.asset->url,
+          alt,
+          caption,
+        },
+        cards[] {
+          ...,
+          "image_src": image.asset->url,
+        },
+      },
     },
     built_with[] {
       name,

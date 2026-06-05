@@ -1,0 +1,50 @@
+/* ---------------------------------------------------------------------------
+   SideBySide.css
+   Two-column grid wrapper for placing two different blocks side by side.
+   Collapses to single column on mobile.
+--------------------------------------------------------------------------- */
+
+.sbs {
+  display: grid;
+  gap: 20px;
+  /* default 50/50 */
+  grid-template-columns: 1fr 1fr;
+}
+
+/* ── Column ratios ───────────────────────────────────────────────────────── */
+
+.sbs[data-split="50/50"] { grid-template-columns: 1fr 1fr; }
+.sbs[data-split="60/40"] { grid-template-columns: 3fr 2fr; }
+.sbs[data-split="40/60"] { grid-template-columns: 2fr 3fr; }
+.sbs[data-split="67/33"] { grid-template-columns: 2fr 1fr; }
+.sbs[data-split="33/67"] { grid-template-columns: 1fr 2fr; }
+
+/* ── Vertical alignment ──────────────────────────────────────────────────── */
+
+.sbs[data-align="start"]   { align-items: start; }
+.sbs[data-align="center"]  { align-items: center; }
+.sbs[data-align="stretch"] { align-items: stretch; }
+
+/* ── Column ──────────────────────────────────────────────────────────────── */
+
+.sbs__col {
+  min-width: 0; /* prevent grid blowout on wide content */
+}
+
+/* Remove bottom margins from blocks when they're the last child in a column,
+   since the grid gap handles the spacing between the SideBySide and siblings */
+.sbs__col > *:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .sbs,
+  .sbs[data-split="60/40"],
+  .sbs[data-split="40/60"],
+  .sbs[data-split="67/33"],
+  .sbs[data-split="33/67"] {
+    grid-template-columns: 1fr;
+  }
+}

@@ -179,6 +179,7 @@ export const labEntryType = defineType({
       type:  'array',
       description: 'Full-width blocks rendered above the sidebar doc layout — trailers, demos, asset downloads, roadmaps, etc.',
       of: [
+        defineArrayMember({ type: 'sideBySideBlock'    }),
         defineArrayMember({ type: 'videoBlock'         }),
         defineArrayMember({ type: 'embeddedAppBlock'   }),
         defineArrayMember({ type: 'assetDownloadBlock' }),

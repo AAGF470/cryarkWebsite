@@ -14,6 +14,7 @@ import ChangelogBlock     from "@shared/components/ui/ChangelogBlock";
 import CinematicBanner    from "@shared/components/ui/CinematicBanner";
 import ContentCards       from "@shared/components/ui/ContentCards";
 import TitleBlock         from "@shared/components/ui/TitleBlock";
+import SideBySide         from "@shared/components/ui/SideBySide";
 import Spacer             from "@shared/components/ui/Spacer";
 import "./DevlogDetailPage.css";
 
@@ -101,6 +102,19 @@ function FullBlockRenderer({ block }) {
           card_height={block.card_height ?? 280}
         />
       );
+
+    case "sideBySideBlock": {
+      const left_block  = block.left?.[0]  ?? null;
+      const right_block = block.right?.[0] ?? null;
+      return (
+        <SideBySide
+          split={block.split ?? "50/50"}
+          align={block.align ?? "start"}
+          left={left_block  ? <FullBlockRenderer block={left_block}  /> : null}
+          right={right_block ? <FullBlockRenderer block={right_block} /> : null}
+        />
+      );
+    }
 
     case "spacerBlock":
       return <Spacer {...block} />;

@@ -173,6 +173,7 @@ export const productType = defineType({
       type:  'array',
       description: 'Add FeatureSpotlight blocks, text sections, etc. in order.',
       of: [
+        defineArrayMember({ type: 'sideBySideBlock'          }),
         defineArrayMember({ type: 'featureSpotlightBlock'  }),
         defineArrayMember({ type: 'cinematicBannerBlock'   }),
         defineArrayMember({ type: 'contentCardsBlock'      }),

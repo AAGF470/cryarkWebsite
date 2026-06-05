@@ -17,6 +17,7 @@ import PricingCTA         from "@shared/components/ui/PricingCTA";
 import SystemRequirements from "@shared/components/ui/SystemRequirements";
 import ChangelogBlock     from "@shared/components/ui/ChangelogBlock";
 import AssetGrid          from "@shared/components/ui/AssetGrid";
+import SideBySide         from "@shared/components/ui/SideBySide";
 import Spacer             from "@shared/components/ui/Spacer";
 import "./WorkDetailPage.css";
 
@@ -197,6 +198,19 @@ function BlockRenderer({ block }) {
           entries={block.entries ?? []}
         />
       );
+
+    case "sideBySideBlock": {
+      const left_block  = block.left?.[0]  ?? null;
+      const right_block = block.right?.[0] ?? null;
+      return (
+        <SideBySide
+          split={block.split ?? "50/50"}
+          align={block.align ?? "start"}
+          left={left_block  ? <BlockRenderer block={left_block}  /> : null}
+          right={right_block ? <BlockRenderer block={right_block} /> : null}
+        />
+      );
+    }
 
     case "spacerBlock":
       return <Spacer {...block} />;

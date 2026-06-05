@@ -28,8 +28,7 @@
   letter-spacing: 0.14em;
   color: rgba(200, 169, 126, 0.90);
   text-transform: uppercase;
-  margin: 0 auto 36px;
-  max-width: 960px;
+  margin: 0 0 36px;
   display: flex;
   align-items: center;
   gap: 16px;
@@ -58,8 +57,7 @@
 .content-cards__grid {
   list-style: none;
   padding: 0;
-  margin: 0 auto;
-  max-width: 960px;
+  margin: 0;
   display: grid;
   gap: 2px;
   grid-template-columns: repeat(2, 1fr);

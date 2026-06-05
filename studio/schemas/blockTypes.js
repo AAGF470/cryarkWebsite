@@ -800,6 +800,86 @@ export const changelogBlockType = defineType({
   },
 })
 
+// ── Side by Side Block ───────────────────────────────────────────────────────
+// Used inside product → sections[] and labEntry → sections[]
+// Renders two blocks in a horizontal two-column layout.
+// Each slot accepts exactly one block of any "column-friendly" type.
+export const sideBySideBlockType = defineType({
+  name:  'sideBySideBlock',
+  title: 'Side by Side',
+  type:  'object',
+  fields: [
+    defineField({
+      name:         'split',
+      title:        'Column split',
+      type:         'string',
+      options: {
+        list: [
+          { title: '50 / 50  —  Equal halves',      value: '50/50' },
+          { title: '60 / 40  —  Left wider',        value: '60/40' },
+          { title: '40 / 60  —  Right wider',       value: '40/60' },
+          { title: '67 / 33  —  Left 2× right',     value: '67/33' },
+          { title: '33 / 67  —  Right 2× left',     value: '33/67' },
+        ],
+        layout: 'radio',
+      },
+      initialValue: '50/50',
+    }),
+    defineField({
+      name:         'align',
+      title:        'Vertical alignment',
+      type:         'string',
+      options: {
+        list: [
+          { title: 'Top',    value: 'start'   },
+          { title: 'Center', value: 'center'  },
+          { title: 'Stretch (equal heights)', value: 'stretch' },
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'start',
+    }),
+    defineField({
+      name:        'left',
+      title:       'Left column',
+      type:        'array',
+      description: 'Add exactly one block for the left column.',
+      validation:  R => R.max(1),
+      of: [
+        defineArrayMember({ type: 'textSection'            }),
+        defineArrayMember({ type: 'codeBlock'              }),
+        defineArrayMember({ type: 'imageBlock'             }),
+        defineArrayMember({ type: 'calloutBlock'           }),
+        defineArrayMember({ type: 'factGridBlock'          }),
+        defineArrayMember({ type: 'screenshotGalleryBlock' }),
+        defineArrayMember({ type: 'videoBlock'             }),
+      ],
+    }),
+    defineField({
+      name:        'right',
+      title:       'Right column',
+      type:        'array',
+      description: 'Add exactly one block for the right column.',
+      validation:  R => R.max(1),
+      of: [
+        defineArrayMember({ type: 'textSection'            }),
+        defineArrayMember({ type: 'codeBlock'              }),
+        defineArrayMember({ type: 'imageBlock'             }),
+        defineArrayMember({ type: 'calloutBlock'           }),
+        defineArrayMember({ type: 'factGridBlock'          }),
+        defineArrayMember({ type: 'screenshotGalleryBlock' }),
+        defineArrayMember({ type: 'videoBlock'             }),
+      ],
+    }),
+  ],
+  preview: {
+    select: { title: 'split' },
+    prepare({ title }) {
+      return { title: 'Side by Side', subtitle: title ?? '50/50' }
+    },
+  },
+})
+
 // ── Callout Block ────────────────────────────────────────────────────────────
 // Used inside labEntry → content_sections → content[]
 // Renders as <CalloutBlock> — colour-coded aside with label + body text.
