@@ -115,9 +115,10 @@
 /* ── CARD LIST ───────────────────────────────────────────────────────────── */
 
 .work__list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  display: grid;
+  /* 1 column on mobile, 2 columns when viewport allows ≥620px per card */
+  grid-template-columns: repeat(auto-fill, minmax(min(620px, 100%), 1fr));
+  gap: 12px;
 }
 
 /* ── EMPTY STATE ─────────────────────────────────────────────────────────── */
