@@ -116,6 +116,34 @@ function FullBlockRenderer({ block }) {
       );
     }
 
+    case "imageBlock":
+      return (
+        <ImageBlock
+          image_src={block.image_src ?? null}
+          alt={block.alt}
+          caption={block.caption}
+          size={block.size ?? "normal"}
+        />
+      );
+
+    case "calloutBlock":
+      return (
+        <CalloutBlock
+          variant={block.variant ?? "note"}
+          label={block.label}
+          body={block.body ?? ""}
+        />
+      );
+
+    case "codeBlock":
+      return (
+        <CodeBlock
+          language={block.language ?? "text"}
+          title={block.title}
+          code={block.code ?? ""}
+        />
+      );
+
     case "spacerBlock":
       return <Spacer {...block} />;
 

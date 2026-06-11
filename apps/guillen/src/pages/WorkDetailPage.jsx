@@ -16,6 +16,8 @@ import EmbeddedApp        from "@shared/components/ui/EmbeddedApp";
 import PricingCTA         from "@shared/components/ui/PricingCTA";
 import SystemRequirements from "@shared/components/ui/SystemRequirements";
 import ChangelogBlock     from "@shared/components/ui/ChangelogBlock";
+import CalloutBlock       from "@shared/components/ui/CalloutBlock";
+import ImageBlock         from "@shared/components/ui/ImageBlock";
 import AssetGrid          from "@shared/components/ui/AssetGrid";
 import SideBySide         from "@shared/components/ui/SideBySide";
 import Spacer             from "@shared/components/ui/Spacer";
@@ -196,6 +198,25 @@ function BlockRenderer({ block }) {
         <ChangelogBlock
           heading={block.heading}
           entries={block.entries ?? []}
+        />
+      );
+
+    case "imageBlock":
+      return (
+        <ImageBlock
+          image_src={block.image_src ?? null}
+          alt={block.alt}
+          caption={block.caption}
+          size={block.size ?? "normal"}
+        />
+      );
+
+    case "calloutBlock":
+      return (
+        <CalloutBlock
+          variant={block.variant ?? "note"}
+          label={block.label}
+          body={block.body ?? ""}
         />
       );
 
