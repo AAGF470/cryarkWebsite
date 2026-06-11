@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import "./ArchitectureBlock.css";
 
 // ---------------------------------------------------------------------------
@@ -232,42 +232,135 @@ function HubLayout({ nodes, edges, center_id, active_id, onNodeClick }) {
 }
 
 // ── Linear layout ─────────────────────────────────────────────────────────────
-// Left-to-right chain: node → label → node → label → node …
+// Left-to-right chain with SVG connections.
+// Back-edges (e.g. node 3 → node 1) are drawn as arcs below the row.
+// All edges use SVG paths + arrowhead markers — no text arrows.
 
 function LinearLayout({ nodes, edges, active_id, onNodeClick }) {
-  return (
-    <div className="ab-linear">
-      {nodes.map((node, i) => {
-        const next_edge = edges.find(
-          e => e.from === node.id && e.to === nodes[i + 1]?.id
-        ) ?? edges.find(
-          e => e.bidirectional &&
-               ((e.from === node.id && e.to === nodes[i + 1]?.id) ||
-                (e.to === node.id && e.from === nodes[i + 1]?.id))
-        );
+  const wrap_ref   = useRef(null);
+  const node_refs  = useRef({});
+  const [svg_paths, set_svg_paths] = useState([]);
+  const [extra_h,   set_extra_h]   = useState(0);
 
-        return (
-          <div key={node.id} className="ab-linear__step">
-            <NodeCard
-              node={node}
-              active={active_id === node.id}
-              onClick={onNodeClick}
-            />
-            {i < nodes.length - 1 && (
-              <div className="ab-linear__connector">
-                <div className="ab-linear__line" />
-                {next_edge?.bidirectional
-                  ? <span className="ab-linear__arrow ab-linear__arrow--bi">⇄</span>
-                  : <span className="ab-linear__arrow">→</span>
-                }
-                {next_edge?.label && (
-                  <span className="ab-linear__edge-label">{next_edge.label}</span>
-                )}
-              </div>
-            )}
+  const node_order = useMemo(
+    () => Object.fromEntries(nodes.map((n, i) => [n.id, i])),
+    [nodes]
+  );
+
+  function measure() {
+    if (!wrap_ref.current) return;
+    const wrap = wrap_ref.current.getBoundingClientRect();
+    if (wrap.width === 0) return;
+
+    const paths = [];
+    let max_extra = 0;
+
+    edges.forEach(edge => {
+      const f_el = node_refs.current[edge.from];
+      const t_el = node_refs.current[edge.to];
+      if (!f_el || !t_el) return;
+
+      const f  = f_el.getBoundingClientRect();
+      const t  = t_el.getBoundingClientRect();
+      const fi = node_order[edge.from] ?? 0;
+      const ti = node_order[edge.to]   ?? 0;
+      const is_back = ti < fi;
+
+      // Forward: exit right side, enter left side. Back: exit left, enter right.
+      const fx = (is_back ? f.left : f.right) - wrap.left;
+      const fy = f.top - wrap.top + f.height / 2;
+      const tx = (is_back ? t.right : t.left) - wrap.left;
+      const ty = t.top - wrap.top + t.height / 2;
+
+      if (is_back) {
+        // Cubic bezier arc below the chain. Depth scales with distance.
+        const gap   = Math.abs(fi - ti);
+        const arc_y = Math.max(f.bottom, t.bottom) - wrap.top + 36 + gap * 10;
+        max_extra   = Math.max(max_extra, arc_y + 28);
+        paths.push({
+          id: `${edge.from}-${edge.to}`,
+          d:  `M ${fx} ${fy} C ${fx} ${arc_y}, ${tx} ${arc_y}, ${tx} ${ty}`,
+          lx: (fx + tx) / 2,
+          ly: arc_y + 14,
+          label: edge.label,
+          is_back: true,
+          bidirectional: edge.bidirectional,
+        });
+      } else {
+        paths.push({
+          id: `${edge.from}-${edge.to}`,
+          d:  `M ${fx} ${fy} L ${tx} ${ty}`,
+          lx: (fx + tx) / 2,
+          ly: fy - 9,
+          label: edge.label,
+          is_back: false,
+          bidirectional: edge.bidirectional,
+        });
+      }
+    });
+
+    set_svg_paths(paths);
+    set_extra_h(max_extra);
+  }
+
+  useEffect(() => {
+    const t = setTimeout(measure, 60);
+    return () => clearTimeout(t);
+  }, [nodes, edges, node_order]);
+
+  return (
+    <div
+      ref={wrap_ref}
+      className="ab-linear"
+      style={{ paddingBottom: extra_h > 0 ? `${extra_h}px` : undefined }}
+    >
+      {/* Node row — no inline connector divs */}
+      <div className="ab-linear__row">
+        {nodes.map(node => (
+          <div
+            key={node.id}
+            ref={el => { node_refs.current[node.id] = el; }}
+            className="ab-linear__node-wrap"
+          >
+            <NodeCard node={node} active={active_id === node.id} onClick={onNodeClick} />
           </div>
-        );
-      })}
+        ))}
+      </div>
+
+      {/* SVG overlay — covers row + arc space below */}
+      <svg
+        className="ab-linear__svg"
+        aria-hidden="true"
+        style={{ height: `calc(100% + ${extra_h}px)` }}
+      >
+        <defs>
+          <marker id="ab-arr"      markerWidth="7" markerHeight="7" refX="5.5" refY="3.5" orient="auto">
+            <path d="M0,1 L0,6 L6,3.5 Z" fill="rgba(200,169,126,0.70)" />
+          </marker>
+          <marker id="ab-arr-back" markerWidth="7" markerHeight="7" refX="5.5" refY="3.5" orient="auto">
+            <path d="M0,1 L0,6 L6,3.5 Z" fill="rgba(200,169,126,0.42)" />
+          </marker>
+          <marker id="ab-arr-start" markerWidth="7" markerHeight="7" refX="0.5" refY="3.5" orient="auto-start-reverse">
+            <path d="M0,1 L0,6 L6,3.5 Z" fill="rgba(200,169,126,0.55)" />
+          </marker>
+        </defs>
+
+        {svg_paths.map(p => (
+          <g key={p.id}>
+            <path
+              d={p.d}
+              className={`ab-linear__path${p.is_back ? " ab-linear__path--back" : ""}`}
+              markerEnd={`url(#${p.is_back ? "ab-arr-back" : "ab-arr"})`}
+              markerStart={p.bidirectional ? "url(#ab-arr-start)" : undefined}
+            />
+            {p.label && (
+              <text x={p.lx} y={p.ly} className="ab-linear__path-label" textAnchor="middle">
+                {p.label}
+              </text>
+            )}
+          </g>
+        ))}
+      </svg>
     </div>
   );
 }
@@ -402,16 +495,17 @@ export default function ArchitectureBlock({
             onNodeClick={handle_click}
           />
         )}
-
-        {active_node && (
-          <NodeDetail
-            node={active_node}
-            edges={edges}
-            node_map={node_map}
-            onClose={() => set_active_id(null)}
-          />
-        )}
       </div>
+
+      {/* Detail panel lives OUTSIDE the canvas so it can never clip */}
+      {active_node && (
+        <NodeDetail
+          node={active_node}
+          edges={edges}
+          node_map={node_map}
+          onClose={() => set_active_id(null)}
+        />
+      )}
 
       {caption && <p className="ab-block__caption">{caption}</p>}
 
