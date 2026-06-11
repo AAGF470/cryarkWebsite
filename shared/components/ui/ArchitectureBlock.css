@@ -3,11 +3,42 @@
    Supports: hub, linear, tree layouts
    ========================================================================== */
 
-/* ── Outer wrapper ──────────────────────────────────────────────────────────── */
+/* ── Outer wrapper + node size tokens ──────────────────────────────────────── */
 
 .ab-block {
-  width: 100%;
-  padding: 48px 0;
+  width:          100%;
+  padding:        48px 0;
+  display:        flex;
+  flex-direction: column;
+  height:         100%;
+
+  /* Default node size tokens — cascades to all .ab-node__inner children */
+  --ab-node-min-w:  148px;
+  --ab-node-max-w:  210px;
+  --ab-node-pad:    16px 22px;
+  --ab-node-gap:    8px;
+  --ab-label-size:  0.86rem;
+  --ab-badge-size:  0.62rem;
+}
+
+/* Compact — dense pipelines with many nodes */
+.ab-block--compact {
+  --ab-node-min-w:  96px;
+  --ab-node-max-w:  140px;
+  --ab-node-pad:    10px 14px;
+  --ab-node-gap:    5px;
+  --ab-label-size:  0.75rem;
+  --ab-badge-size:  0.56rem;
+}
+
+/* Wide — spacious diagrams with few large nodes */
+.ab-block--wide {
+  --ab-node-min-w:  200px;
+  --ab-node-max-w:  300px;
+  --ab-node-pad:    22px 30px;
+  --ab-node-gap:    10px;
+  --ab-label-size:  0.96rem;
+  --ab-badge-size:  0.66rem;
 }
 
 /* ── Eyebrow heading ────────────────────────────────────────────────────────── */
@@ -38,12 +69,6 @@
 }
 
 /* ── Canvas ─────────────────────────────────────────────────────────────────── */
-
-.ab-block {
-  display:        flex;
-  flex-direction: column;
-  height:         100%;   /* fills the SideBySide column */
-}
 
 .ab-block__canvas {
   position:      relative;
@@ -94,16 +119,16 @@
   display:        flex;
   flex-direction: column;
   align-items:    center;
-  gap:            7px;
-  padding:        14px 18px;
+  gap:            var(--ab-node-gap, 8px);
+  padding:        var(--ab-node-pad, 16px 22px);
   border-radius:  11px;
   border:         1px solid rgba(255, 255, 255, 0.07);
   background:     rgba(8, 7, 13, 0.78);
   backdrop-filter: blur(12px) saturate(140%);
   -webkit-backdrop-filter: blur(12px) saturate(140%);
   transition:     border-color 0.18s ease, box-shadow 0.18s ease;
-  min-width:      110px;
-  max-width:      160px;
+  min-width:      var(--ab-node-min-w, 148px);
+  max-width:      var(--ab-node-max-w, 210px);
   text-align:     center;
 }
 
@@ -150,7 +175,7 @@
   display:        inline-block;
   padding:        2px 8px;
   border-radius:  100px;
-  font-size:      0.60rem;
+  font-size:      var(--ab-badge-size, 0.62rem);
   font-weight:    600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -196,7 +221,7 @@
 /* ── Node label ─────────────────────────────────────────────────────────────── */
 
 .ab-node__label {
-  font-size:   0.82rem;
+  font-size:   var(--ab-label-size, 0.86rem);
   font-weight: 500;
   color:       rgba(228, 226, 222, 0.88);
   line-height: 1.3;

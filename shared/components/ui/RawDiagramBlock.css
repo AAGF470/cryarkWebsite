@@ -1,0 +1,80 @@
+/* ==========================================================================
+   RawDiagramBlock — iframe container for AI-generated Cytoscape.js diagrams
+   ========================================================================== */
+
+.rdb-block {
+  width: 100%;
+  padding: 40px 0;
+}
+
+/* ── Eyebrow heading ────────────────────────────────────────────────────────── */
+
+.rdb-heading {
+  display:     flex;
+  align-items: center;
+  gap:         10px;
+  margin:      0 0 18px;
+}
+
+.rdb-heading::before {
+  content:      "";
+  display:      block;
+  width:        3px;
+  height:       14px;
+  border-radius: 2px;
+  background:   rgba(200, 169, 126, 0.70);
+  flex-shrink:  0;
+}
+
+.rdb-heading-text {
+  font-size:      0.70rem;
+  font-weight:    600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color:          rgba(200, 169, 126, 0.82);
+}
+
+/* ── Frame wrapper ──────────────────────────────────────────────────────────── */
+
+.rdb-frame-wrap {
+  position:      relative;
+  width:         100%;
+  border-radius: 14px;
+  overflow:      hidden;
+  border:        1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:    inset 0 1px 0 rgba(200, 169, 126, 0.07),
+                 0 4px 32px rgba(0, 0, 0, 0.40);
+  background:    #07060c; /* shown while iframe loads */
+}
+
+/* ── Iframe ─────────────────────────────────────────────────────────────────── */
+
+.rdb-frame {
+  display: block;
+  width:   100%;
+  height:  100%;
+  border:  none;
+  /* Allow the diagram's internal scroll/pan to work on touch */
+  touch-action: none;
+}
+
+/* ── Caption ────────────────────────────────────────────────────────────────── */
+
+.rdb-caption {
+  margin:      10px 0 0;
+  font-size:   0.74rem;
+  color:       rgba(228, 226, 222, 0.30);
+  text-align:  center;
+  font-style:  italic;
+  letter-spacing: 0.02em;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .rdb-frame-wrap {
+    /* On mobile allow the frame height to shrink a bit — the diagram
+       handles its own pan/zoom internally so full content is still reachable */
+    min-height: 320px;
+  }
+}

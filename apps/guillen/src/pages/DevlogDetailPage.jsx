@@ -17,6 +17,7 @@ import TitleBlock         from "@shared/components/ui/TitleBlock";
 import SideBySide         from "@shared/components/ui/SideBySide";
 import Spacer             from "@shared/components/ui/Spacer";
 import DiagramBlock       from "@shared/components/ui/DiagramBlock";
+import RawDiagramBlock    from "@shared/components/ui/RawDiagramBlock";
 import ArchitectureBlock  from "@shared/components/ui/ArchitectureBlock";
 import HierarchyBlock     from "@shared/components/ui/HierarchyBlock";
 import "./DevlogDetailPage.css";
@@ -156,6 +157,16 @@ function FullBlockRenderer({ block }) {
         />
       );
 
+    case "rawDiagramBlock":
+      return (
+        <RawDiagramBlock
+          heading={block.heading}
+          html_code={block.html_code ?? ""}
+          height={block.height ?? 560}
+          caption={block.caption}
+        />
+      );
+
     case "architectureBlock":
       return (
         <ArchitectureBlock
@@ -163,6 +174,7 @@ function FullBlockRenderer({ block }) {
           caption={block.caption}
           layout={block.layout ?? "hub"}
           center_id={block.center_id}
+          node_size={block.node_size ?? "default"}
           nodes={block.nodes ?? []}
           edges={block.edges ?? []}
         />
@@ -233,6 +245,17 @@ function render_block(block) {
         />
       );
 
+    case "rawDiagramBlock":
+      return (
+        <RawDiagramBlock
+          key={block._key ?? block._id}
+          heading={block.heading}
+          html_code={block.html_code ?? ""}
+          height={block.height ?? 560}
+          caption={block.caption}
+        />
+      );
+
     case "architectureBlock":
       return (
         <ArchitectureBlock
@@ -241,6 +264,7 @@ function render_block(block) {
           caption={block.caption}
           layout={block.layout ?? "hub"}
           center_id={block.center_id}
+          node_size={block.node_size ?? "default"}
           nodes={block.nodes ?? []}
           edges={block.edges ?? []}
         />

@@ -30,6 +30,7 @@ import {
   changelogBlockType,
   titleBlockType,
   diagramBlockType,
+  rawDiagramBlockType,
   architectureBlockType,
   hierarchyBlockType,
 } from './blockTypes'
@@ -71,6 +72,7 @@ export const schemaTypes = [
   changelogBlockType,
   titleBlockType,
   diagramBlockType,
+  rawDiagramBlockType,
   architectureBlockType,
   hierarchyBlockType,
 ]

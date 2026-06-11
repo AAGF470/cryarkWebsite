@@ -90,6 +90,7 @@ export const docPageType = defineType({
               defineArrayMember({ type: 'calloutBlock' }), // note / tip / warning / info
               defineArrayMember({ type: 'imageBlock'   }), // inline image with caption
               defineArrayMember({ type: 'diagramBlock'      }), // mermaid flow diagram
+              defineArrayMember({ type: 'rawDiagramBlock'   }), // AI-generated Cytoscape.js diagram
               defineArrayMember({ type: 'architectureBlock' }), // CSS architecture diagram
               defineArrayMember({ type: 'hierarchyBlock'    }), // hierarchy tree diagram
               defineArrayMember({ type: 'spacerBlock'       }), // vertical gap

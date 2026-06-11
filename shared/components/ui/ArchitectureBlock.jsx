@@ -444,6 +444,7 @@ export default function ArchitectureBlock({
   caption,
   layout    = "hub",
   center_id,
+  node_size = "default",
   nodes     = [],
   edges     = [],
 }) {
@@ -459,7 +460,7 @@ export default function ArchitectureBlock({
   }
 
   return (
-    <div className="ab-block">
+    <div className={`ab-block ab-block--${node_size ?? "default"}`}>
 
       {heading && (
         <div className="ab-block__heading">

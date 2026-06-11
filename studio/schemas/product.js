@@ -235,6 +235,7 @@ export const productType = defineType({
         defineArrayMember({ type: 'textSection'              }),
         defineArrayMember({ type: 'codeBlock'                }),
         defineArrayMember({ type: 'diagramBlock'             }),
+        defineArrayMember({ type: 'rawDiagramBlock'          }),
         defineArrayMember({ type: 'architectureBlock'        }),
         defineArrayMember({ type: 'hierarchyBlock'           }),
         defineArrayMember({ type: 'spacerBlock'              }),

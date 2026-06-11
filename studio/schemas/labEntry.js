@@ -164,6 +164,7 @@ export const labEntryType = defineType({
               defineArrayMember({ type: 'calloutBlock'    }), // note/tip/warning/info aside
               defineArrayMember({ type: 'imageBlock'      }), // single inline image
               defineArrayMember({ type: 'diagramBlock'       }), // mermaid flow diagram
+              defineArrayMember({ type: 'rawDiagramBlock'    }), // AI-generated Cytoscape.js diagram
               defineArrayMember({ type: 'architectureBlock'  }), // CSS architecture diagram
               defineArrayMember({ type: 'hierarchyBlock'     }), // hierarchy tree diagram
               defineArrayMember({ type: 'designDecision'     }), // key + description
@@ -195,6 +196,7 @@ export const labEntryType = defineType({
         defineArrayMember({ type: 'cinematicBannerBlock' }),
         defineArrayMember({ type: 'titleBlock'         }),
         defineArrayMember({ type: 'diagramBlock'         }),
+        defineArrayMember({ type: 'rawDiagramBlock'      }),
         defineArrayMember({ type: 'architectureBlock'    }),
         defineArrayMember({ type: 'hierarchyBlock'       }),
         defineArrayMember({ type: 'spacerBlock'          }),
