@@ -18,6 +18,7 @@ import SystemRequirements from "@shared/components/ui/SystemRequirements";
 import ChangelogBlock     from "@shared/components/ui/ChangelogBlock";
 import CalloutBlock       from "@shared/components/ui/CalloutBlock";
 import ImageBlock         from "@shared/components/ui/ImageBlock";
+import DiagramBlock       from "@shared/components/ui/DiagramBlock";
 import AssetGrid          from "@shared/components/ui/AssetGrid";
 import SideBySide         from "@shared/components/ui/SideBySide";
 import Spacer             from "@shared/components/ui/Spacer";
@@ -217,6 +218,15 @@ function BlockRenderer({ block }) {
           variant={block.variant ?? "note"}
           label={block.label}
           body={block.body ?? ""}
+        />
+      );
+
+    case "diagramBlock":
+      return (
+        <DiagramBlock
+          heading={block.heading}
+          code={block.code ?? ""}
+          caption={block.caption}
         />
       );
 

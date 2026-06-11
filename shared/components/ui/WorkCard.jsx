@@ -4,32 +4,27 @@ import Pill from "./Pill";
 import "./WorkCard.css";
 
 // ---------------------------------------------------------------------------
-// WorkCard — Bento/cube grid layout
+// WorkCard — Apple-style bento layout
 //
-// Each card is a 2-column grid ("large cube") of smaller cells:
+// One large outer card (the "frame") whose background shows through as the
+// visible gap between three fixed-height inner cards:
 //
-//   ┌──────────────┬──────────────┐
-//   │  Image cell  │  Meta cell   │  ← always shown
-//   ├──────────────┼──────────────┤
-//   │  Code cell   │  Devlog cell │  ← bottom row: only when content exists
-//   └──────────────┴──────────────┘
+//   ┌────────────────────────────────────────┐
+//   │  ┌──────────────┐  ┌───────────────┐  │
+//   │  │   Image      │  │   Meta        │  │  ← same height
+//   │  └──────────────┘  └───────────────┘  │
+//   │  ┌──────────────────────────────────┐  │
+//   │  │   Code                           │  │  ← same height, full width
+//   │  └──────────────────────────────────┘  │
+//   └────────────────────────────────────────┘
 //
-// If only one bottom-row cell has content it spans both columns.
-// If neither has content the card is just the two-cell top row.
+// The outer card's 10px padding + 10px grid gap creates a uniform gold-tinted
+// gutter that visually separates every inner card from each other and the edge.
 //
-// The whole card is clickable via article.onClick → navigate(/work/:slug).
-// The devlog cell is its own <a> that stopPropagation()s the article click.
-// A "View project →" anchor inside the meta cell gives keyboard navigation.
+// Code overflow is hard-capped by the fixed height + overflow:hidden — it
+// cannot expand the card regardless of snippet length.
 //
-// Props:
-//   id            string   — product._id, used to query latest devlog
-//   title         string
-//   slug          string   — URL slug for /work/:slug
-//   description   string?
-//   tags          string[]
-//   status        string
-//   thumbnail     object?  — Sanity image asset
-//   preview_code  object?  — { language, label, code } from Sanity
+// Devlog link is folded into the meta cell footer rather than a 4th cell.
 // ---------------------------------------------------------------------------
 
 const STATUS_LABEL = {
@@ -66,10 +61,8 @@ export default function WorkCard({
   const navigate = useNavigate();
   const { data: devlog } = useCmsQuery(LATEST_DEVLOG_BY_PROJECT, { project_id: id });
 
-  const has_code   = !!(preview_code?.code);
-  const has_devlog = !!devlog;
-
-  const img_src = thumb_url(thumbnail);
+  const has_code = !!(preview_code?.code);
+  const img_src  = thumb_url(thumbnail);
 
   return (
     <article
@@ -78,7 +71,7 @@ export default function WorkCard({
     >
       <div className="wc__grid">
 
-        {/* ── Image cell (top-left) ──────────────────────────────────── */}
+        {/* ── Image card ─────────────────────────────────────────────── */}
         <div className="wc__img-cell">
           {img_src ? (
             <img
@@ -94,61 +87,68 @@ export default function WorkCard({
           )}
         </div>
 
-        {/* ── Meta cell (top-right) ─────────────────────────────────── */}
+        {/* ── Meta card ──────────────────────────────────────────────── */}
         <div className="wc__meta-cell">
-          {status && (
-            <span className={`wc__status wc__status--${status}`}>
-              {STATUS_LABEL[status] ?? status}
-            </span>
-          )}
-          <h3 className="wc__title">{title}</h3>
-          {description && <p className="wc__desc">{description}</p>}
-          {tags.length > 0 && (
-            <div className="wc__tags">
-              {tags.slice(0, 5).map(t => <Pill key={t} label={t} />)}
-            </div>
-          )}
-          {/* Real anchor for keyboard nav — stopPropagation prevents double-navigate */}
-          <a
-            href={`/work/${slug}`}
-            className="wc__cta"
-            onClick={e => e.stopPropagation()}
-            aria-label={`View ${title}`}
-          >
-            View project →
-          </a>
+
+          {/* Top content */}
+          <div className="wc__meta-top">
+            {status && (
+              <span className={`wc__status wc__status--${status}`}>
+                {STATUS_LABEL[status] ?? status}
+              </span>
+            )}
+            <h3 className="wc__title">{title}</h3>
+            {description && <p className="wc__desc">{description}</p>}
+            {tags.length > 0 && (
+              <div className="wc__tags">
+                {tags.slice(0, 4).map(t => <Pill key={t} label={t} />)}
+              </div>
+            )}
+          </div>
+
+          {/* Footer — devlog + CTA */}
+          <div className="wc__meta-footer">
+            {devlog && (
+              <a
+                href={`/devlog/${devlog.slug}`}
+                className="wc__devlog-link"
+                onClick={e => e.stopPropagation()}
+                aria-label={`Read devlog: ${devlog.title}`}
+              >
+                <span className="wc__devlog-link__eyebrow">Latest devlog</span>
+                <span className="wc__devlog-link__title">{devlog.title}</span>
+                {devlog.published_at && (
+                  <span className="wc__devlog-link__date">{format_date(devlog.published_at)}</span>
+                )}
+              </a>
+            )}
+            <a
+              href={`/work/${slug}`}
+              className="wc__cta"
+              onClick={e => e.stopPropagation()}
+              aria-label={`View ${title}`}
+            >
+              View project →
+            </a>
+          </div>
+
         </div>
 
-        {/* ── Code cell (bottom-left, optional) ────────────────────── */}
+        {/* ── Code card (full width, hard-capped height) ─────────────── */}
         {has_code && (
-          <div className={`wc__code-cell${!has_devlog ? " wc__code-cell--full" : ""}`}>
+          <div className="wc__code-cell">
             {preview_code.label && (
-              <p className="wc__code_label">{preview_code.label}</p>
+              <div className="wc__code-header">
+                <span className="wc__code-lang">
+                  {preview_code.language?.toUpperCase() ?? "CODE"}
+                </span>
+                <span className="wc__code-label">{preview_code.label}</span>
+              </div>
             )}
             <pre className="wc__pre">
               <code>{preview_code.code}</code>
             </pre>
           </div>
-        )}
-
-        {/* ── Devlog cell (bottom-right, optional) — its own link ───── */}
-        {has_devlog && (
-          <a
-            href={`/devlog/${devlog.slug}`}
-            className={`wc__log-cell${!has_code ? " wc__log-cell--full" : ""}`}
-            onClick={e => e.stopPropagation()}
-            aria-label={`Read devlog: ${devlog.title}`}
-          >
-            <p className="wc__log_eyebrow">Latest devlog</p>
-            <p className="wc__log_title">{devlog.title}</p>
-            {devlog.published_at && (
-              <p className="wc__log_date">{format_date(devlog.published_at)}</p>
-            )}
-            {devlog.abstract && (
-              <p className="wc__log_abstract">{devlog.abstract}</p>
-            )}
-            <span className="wc__log_cta">Read →</span>
-          </a>
         )}
 
       </div>

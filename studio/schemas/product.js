@@ -234,6 +234,7 @@ export const productType = defineType({
         defineArrayMember({ type: 'titleBlock'               }),
         defineArrayMember({ type: 'textSection'              }),
         defineArrayMember({ type: 'codeBlock'                }),
+        defineArrayMember({ type: 'diagramBlock'             }),
         defineArrayMember({ type: 'spacerBlock'              }),
       ],
     }),

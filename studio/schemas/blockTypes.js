@@ -1050,3 +1050,52 @@ export const titleBlockType = defineType({
     },
   },
 })
+
+// ── Diagram Block ────────────────────────────────────────────────────────────
+// Renders a Mermaid diagram on the frontend via DiagramBlock.jsx.
+// Supports flowchart, sequenceDiagram, classDiagram, stateDiagram-v2, erDiagram, gantt.
+//
+// Example Mermaid code for a hub-spoke architecture:
+//
+//   flowchart LR
+//     main["main.py\norchestrator"] -->|pull signal| pull["pull.py"]
+//     pull -->|mesh data| main
+//     main -->|render request| render["render.py"]
+//     render -->|frames| main
+export const diagramBlockType = defineType({
+  name:  'diagramBlock',
+  title: 'Diagram',
+  type:  'object',
+  fields: [
+    defineField({
+      name:        'heading',
+      title:       'Heading',
+      type:        'string',
+      description: 'Optional label shown above the diagram (gold eyebrow style).',
+    }),
+    defineField({
+      name:        'code',
+      title:       'Mermaid diagram code',
+      type:        'text',
+      rows:        14,
+      description: 'Mermaid syntax. Start with: flowchart LR / TD, sequenceDiagram, classDiagram, stateDiagram-v2, erDiagram, or gantt.',
+      validation:  R => R.required(),
+    }),
+    defineField({
+      name:        'caption',
+      title:       'Caption',
+      type:        'string',
+      description: 'Optional note shown below the diagram.',
+    }),
+  ],
+  preview: {
+    select: { title: 'heading', subtitle: 'code' },
+    prepare({ title, subtitle }) {
+      const first_line = subtitle?.split('\n')[0]?.trim() ?? ''
+      return {
+        title:    title ?? 'Diagram',
+        subtitle: first_line.length > 60 ? first_line.slice(0, 60) + '…' : first_line,
+      }
+    },
+  },
+})

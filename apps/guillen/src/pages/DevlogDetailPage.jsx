@@ -16,6 +16,7 @@ import ContentCards       from "@shared/components/ui/ContentCards";
 import TitleBlock         from "@shared/components/ui/TitleBlock";
 import SideBySide         from "@shared/components/ui/SideBySide";
 import Spacer             from "@shared/components/ui/Spacer";
+import DiagramBlock       from "@shared/components/ui/DiagramBlock";
 import "./DevlogDetailPage.css";
 
 // ---------------------------------------------------------------------------
@@ -144,6 +145,15 @@ function FullBlockRenderer({ block }) {
         />
       );
 
+    case "diagramBlock":
+      return (
+        <DiagramBlock
+          heading={block.heading}
+          code={block.code ?? ""}
+          caption={block.caption}
+        />
+      );
+
     case "spacerBlock":
       return <Spacer {...block} />;
 
@@ -187,6 +197,16 @@ function render_block(block) {
           alt={block.alt}
           caption={block.caption}
           size={block.size ?? "normal"}
+        />
+      );
+
+    case "diagramBlock":
+      return (
+        <DiagramBlock
+          key={block._key ?? block._id}
+          heading={block.heading}
+          code={block.code ?? ""}
+          caption={block.caption}
         />
       );
 

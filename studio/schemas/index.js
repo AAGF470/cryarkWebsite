@@ -29,6 +29,7 @@ import {
   systemRequirementsBlockType,
   changelogBlockType,
   titleBlockType,
+  diagramBlockType,
 } from './blockTypes'
 
 // Register every schema type that the studio needs to know about.
@@ -67,4 +68,5 @@ export const schemaTypes = [
   systemRequirementsBlockType,
   changelogBlockType,
   titleBlockType,
+  diagramBlockType,
 ]

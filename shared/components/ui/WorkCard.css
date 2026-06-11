@@ -1,63 +1,58 @@
 /* ---------------------------------------------------------------------------
-   WorkCard.css — Bento/cube grid layout
-   Two-column grid card: image + meta (top row), code + devlog (bottom row).
-   Bottom row cells only render when content exists.
-   Full card is clickable via article.onClick; devlog cell is its own <a>.
+   WorkCard.css — Apple-style bento layout
+
+   One large rounded outer card (the "frame") with 10px padding.
+   Three fixed-height inner cards, each with their own border-radius.
+   The outer card's subtle background shows through the 10px padding + gap
+   as a uniform gutter that segments the inner cards from each other and
+   from the outer edge — the same technique Apple uses on apple.com.
+
+   Inner border-radius = outer (20px) − padding (10px) = 10px.
+   Both padding and grid gap are 10px so all gutters are identical.
 --------------------------------------------------------------------------- */
 
-/* ── Card shell ─────────────────────────────────────────────────────────── */
+/* ── Outer card (the frame) ──────────────────────────────────────────────── */
 
 .wc {
   position: relative;
-  border-radius: 14px;
-  border: 0.5px solid rgba(255, 255, 255, 0.07);
-  overflow: hidden;
+  border-radius: 20px;
+  border: 0.5px solid rgba(255, 255, 255, 0.06);
+  /* This background IS the visible gutter between inner cards */
+  background: rgba(200, 169, 126, 0.055);
+  padding: 10px;
   cursor: pointer;
-  /* Card bg shows through the 2px grid gap — this is the divider line color */
-  background: rgba(255, 255, 255, 0.055);
   transition: border-color 0.22s ease, box-shadow 0.22s ease;
 }
 
-/* Top-edge sheen */
-.wc::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 14px;
-  border-top: 0.5px solid rgba(255, 255, 255, 0.10);
-  pointer-events: none;
-  z-index: 2;
-}
-
 .wc:hover {
-  border-color: rgba(200, 169, 126, 0.25);
-  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.40);
+  border-color: rgba(200, 169, 126, 0.28);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45);
 }
 
-/* ── Bento grid ──────────────────────────────────────────────────────────── */
+/* ── Inner grid ──────────────────────────────────────────────────────────── */
 
 .wc__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2px; /* gap fills with .wc background = thin divider lines */
+  gap: 10px; /* matches outer padding — every gutter is uniform 10px */
 }
 
-/* ── Base cell styles ────────────────────────────────────────────────────── */
+/* ── Shared inner-card styles ────────────────────────────────────────────── */
 
 .wc__img-cell,
 .wc__meta-cell,
-.wc__code-cell,
-.wc__log-cell {
-  background: #08080d;
+.wc__code-cell {
+  border-radius: 10px; /* = outer radius (20) − padding (10) */
+  overflow: hidden;
   min-width: 0;
 }
 
-/* ── Image cell (top-left) ───────────────────────────────────────────────── */
+/* ── Image card ──────────────────────────────────────────────────────────── */
 
 .wc__img-cell {
+  background: #0a0910;
+  height: 260px;
   position: relative;
-  min-height: 280px;
-  overflow: hidden;
 }
 
 .wc__img {
@@ -68,13 +63,14 @@
   object-fit: cover;
   object-position: center;
   display: block;
-  transition: transform 0.5s ease;
+  transition: transform 0.55s cubic-bezier(0.25, 0, 0.1, 1);
 }
 
 .wc:hover .wc__img {
-  transform: scale(1.04);
+  transform: scale(1.05);
 }
 
+/* No-thumbnail placeholder */
 .wc__placeholder {
   position: absolute;
   inset: 0;
@@ -84,10 +80,10 @@
   background:
     repeating-linear-gradient(
       45deg,
-      rgba(255, 255, 255, 0.012) 0px,
-      rgba(255, 255, 255, 0.012) 1px,
+      rgba(255, 255, 255, 0.010) 0px,
+      rgba(255, 255, 255, 0.010) 1px,
       transparent 1px,
-      transparent 12px
+      transparent 14px
     );
 }
 
@@ -95,61 +91,67 @@
   font-size: 10px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(232, 230, 225, 0.14);
+  color: rgba(232, 230, 225, 0.12);
 }
 
-/* ── Meta cell (top-right) ───────────────────────────────────────────────── */
+/* ── Meta card ───────────────────────────────────────────────────────────── */
 
 .wc__meta-cell {
-  padding: 28px 26px;
+  background: #0a0910;
+  height: 260px;        /* same as image — makes both top cards visually equal */
   display: flex;
   flex-direction: column;
-  gap: 0;
+  padding: 22px 22px 18px;
+}
+
+.wc__meta-top {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
 }
 
 /* Status badge */
 
 .wc__status {
   display: inline-block;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.10em;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: 3px 8px;
   border-radius: 4px;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   width: fit-content;
 }
 
-.wc__status--released { color: rgba(180, 220, 180, 0.90); background: rgba(100, 200, 100, 0.10); }
-.wc__status--in_dev   { color: rgba(180, 200, 240, 0.90); background: rgba(100, 150, 220, 0.10); }
-.wc__status--research { color: rgba(200, 180, 240, 0.90); background: rgba(150, 100, 220, 0.10); }
-.wc__status--live     { color: rgba(120, 220, 160, 0.90); background: rgba(60,  180, 100, 0.10); }
+.wc__status--released { color: rgba(160, 220, 160, 0.90); background: rgba(80,  190, 80,  0.10); }
+.wc__status--in_dev   { color: rgba(160, 195, 245, 0.90); background: rgba(80,  140, 225, 0.10); }
+.wc__status--research { color: rgba(190, 165, 245, 0.90); background: rgba(140, 90,  225, 0.10); }
+.wc__status--live     { color: rgba(100, 220, 150, 0.90); background: rgba(50,  175, 90,  0.10); }
 .wc__status--collab   { color: rgba(200, 169, 126, 0.90); background: rgba(200, 169, 126, 0.10); }
 
 /* Title */
 
 .wc__title {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   color: #f0ede8;
   line-height: 1.2;
   letter-spacing: -0.02em;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
-/* Description */
+/* Description — hard clamp so it never pushes content out */
 
 .wc__desc {
-  font-size: 13px;
-  color: rgba(232, 230, 225, 0.42);
+  font-size: 12.5px;
+  color: rgba(232, 230, 225, 0.38);
   line-height: 1.7;
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  flex: 1;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 /* Tag chips */
@@ -157,19 +159,74 @@
 .wc__tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 20px;
+  gap: 5px;
 }
 
-/* "View project →" — real anchor, sits at bottom of meta, handles keyboard nav */
+/* ── Meta footer (devlog link + CTA) ─────────────────────────────────────── */
+
+.wc__meta-footer {
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.05);
+  margin-top: 12px;
+}
+
+/* Latest devlog mini-link */
+
+.wc__devlog-link {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-decoration: none;
+  min-width: 0;
+  flex: 1;
+  transition: opacity 0.18s ease;
+}
+
+.wc__devlog-link:hover {
+  opacity: 0.85;
+}
+
+.wc__devlog-link__eyebrow {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: rgba(200, 169, 126, 0.50);
+  flex-shrink: 0;
+}
+
+.wc__devlog-link__title {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(232, 230, 225, 0.62);
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.wc__devlog-link__date {
+  font-size: 10px;
+  color: rgba(232, 230, 225, 0.24);
+  letter-spacing: 0.03em;
+  flex-shrink: 0;
+}
+
+/* "View project →" CTA */
 
 .wc__cta {
   font-size: 11px;
   letter-spacing: 0.06em;
   text-decoration: none;
-  color: rgba(200, 169, 126, 0.50);
-  margin-top: auto;
-  display: inline-block;
+  color: rgba(200, 169, 126, 0.45);
+  white-space: nowrap;
+  flex-shrink: 0;
   transition: color 0.22s ease;
 }
 
@@ -177,120 +234,65 @@
   color: rgba(200, 169, 126, 0.90);
 }
 
-/* ── Code cell (bottom-left, optional) ──────────────────────────────────── */
+/* ── Code card ───────────────────────────────────────────────────────────── */
 
 .wc__code-cell {
-  padding: 20px 20px 16px;
+  grid-column: 1 / -1;  /* always spans full width */
+  background: #060509;
+  height: 260px;         /* hard fixed height — code CANNOT expand the card */
+  overflow: hidden;      /* clips any snippet that exceeds this */
   display: flex;
   flex-direction: column;
+}
+
+/* Code header (language badge + label) */
+
+.wc__code-header {
+  display: flex;
+  align-items: center;
   gap: 10px;
-  overflow: hidden;
-  /* Slightly darker than other cells for visual depth */
-  background: rgba(4, 4, 8, 1);
-  min-height: 160px;
-}
-
-/* Span both columns when no devlog cell */
-.wc__code-cell--full {
-  grid-column: 1 / -1;
-}
-
-.wc__code_label {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(200, 169, 126, 0.50);
+  padding: 12px 18px 10px;
   flex-shrink: 0;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.04);
 }
 
-.wc__pre {
-  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
-  font-size: 11px;
-  line-height: 1.65;
-  color: rgba(232, 230, 225, 0.50);
-  white-space: pre;
-  overflow: hidden;
-  /* Fade out the bottom of the snippet */
-  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
-  flex: 1;
-  margin: 0;
-}
-
-/* ── Devlog cell (bottom-right, optional) — its own independent link ─────── */
-
-.wc__log-cell {
-  padding: 20px 20px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  text-decoration: none;
-  color: inherit;
-  overflow: hidden;
-  background: rgba(200, 169, 126, 0.025);
-  transition: background 0.18s ease;
-  min-height: 160px;
-}
-
-.wc__log-cell:hover {
-  background: rgba(200, 169, 126, 0.072);
-}
-
-/* Span both columns when no code cell */
-.wc__log-cell--full {
-  grid-column: 1 / -1;
-}
-
-.wc__log_eyebrow {
+.wc__code-lang {
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(200, 169, 126, 0.50);
-  margin-bottom: 4px;
+  color: rgba(200, 169, 126, 0.55);
+  background: rgba(200, 169, 126, 0.08);
+  border: 0.5px solid rgba(200, 169, 126, 0.14);
+  border-radius: 3px;
+  padding: 2px 6px;
   flex-shrink: 0;
 }
 
-.wc__log_title {
-  font-size: 13px;
-  font-weight: 600;
-  color: #f0ede8;
-  line-height: 1.4;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+.wc__code-label {
+  font-size: 11px;
+  color: rgba(232, 230, 225, 0.22);
+  font-family: ui-monospace, "Cascadia Code", Menlo, Consolas, monospace;
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.wc__log_date {
-  font-size: 10px;
-  color: rgba(232, 230, 225, 0.28);
-  letter-spacing: 0.04em;
-}
+/* Code pre — fades out at bottom so the hard clip looks intentional */
 
-.wc__log_abstract {
-  font-size: 12px;
-  color: rgba(232, 230, 225, 0.35);
-  line-height: 1.6;
+.wc__pre {
+  font-family: ui-monospace, "JetBrains Mono", "Fira Code", Menlo, Consolas, monospace;
+  font-size: 11.5px;
+  line-height: 1.68;
+  color: rgba(232, 230, 225, 0.45);
+  white-space: pre;
+  overflow: hidden;
   flex: 1;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.wc__log_cta {
-  font-size: 10px;
-  color: rgba(200, 169, 126, 0.45);
-  letter-spacing: 0.06em;
-  margin-top: auto;
-  flex-shrink: 0;
-  transition: color 0.18s ease;
-}
-
-.wc__log-cell:hover .wc__log_cta {
-  color: rgba(200, 169, 126, 0.85);
+  margin: 0;
+  padding: 14px 18px 0;
+  /* Fade bottom so the cutoff looks designed, not broken */
+  mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
 }
 
 /* ── Responsive ──────────────────────────────────────────────────────────── */
@@ -300,19 +302,13 @@
     grid-template-columns: 1fr;
   }
 
-  .wc__img-cell {
-    min-height: 200px;
+  .wc__img-cell,
+  .wc__meta-cell {
+    height: 220px;
   }
 
-  /* Code cell: hidden on mobile — too dense at small widths */
-  .wc__code-cell,
-  .wc__code-cell--full {
+  /* Code card hidden on mobile — too dense */
+  .wc__code-cell {
     display: none;
-  }
-
-  /* Devlog: reset column span from --full modifier */
-  .wc__log-cell,
-  .wc__log-cell--full {
-    grid-column: auto;
   }
 }

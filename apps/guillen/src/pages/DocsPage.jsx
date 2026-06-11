@@ -9,6 +9,7 @@ import CodeBlock                  from "@shared/components/ui/CodeBlock";
 import CalloutBlock               from "@shared/components/ui/CalloutBlock";
 import ImageBlock                 from "@shared/components/ui/ImageBlock";
 import Spacer                     from "@shared/components/ui/Spacer";
+import DiagramBlock               from "@shared/components/ui/DiagramBlock";
 import "./DocsPage.css";
 
 // ---------------------------------------------------------------------------
@@ -63,6 +64,16 @@ function render_block(block) {
           alt={block.alt}
           caption={block.caption}
           size={block.size ?? "normal"}
+        />
+      );
+
+    case "diagramBlock":
+      return (
+        <DiagramBlock
+          key={block._key ?? block._id}
+          heading={block.heading}
+          code={block.code ?? ""}
+          caption={block.caption}
         />
       );
 
