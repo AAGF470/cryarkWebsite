@@ -89,8 +89,9 @@ export const docPageType = defineType({
               defineArrayMember({ type: 'codeBlock'    }), // code snippet
               defineArrayMember({ type: 'calloutBlock' }), // note / tip / warning / info
               defineArrayMember({ type: 'imageBlock'   }), // inline image with caption
-              defineArrayMember({ type: 'diagramBlock' }), // mermaid flow diagram
-              defineArrayMember({ type: 'spacerBlock'  }), // vertical gap
+              defineArrayMember({ type: 'diagramBlock'      }), // mermaid flow diagram
+              defineArrayMember({ type: 'architectureBlock' }), // CSS architecture diagram
+              defineArrayMember({ type: 'spacerBlock'       }), // vertical gap
             ],
           }),
         ],

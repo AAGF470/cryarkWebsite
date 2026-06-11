@@ -17,6 +17,7 @@ import TitleBlock         from "@shared/components/ui/TitleBlock";
 import SideBySide         from "@shared/components/ui/SideBySide";
 import Spacer             from "@shared/components/ui/Spacer";
 import DiagramBlock       from "@shared/components/ui/DiagramBlock";
+import ArchitectureBlock  from "@shared/components/ui/ArchitectureBlock";
 import "./DevlogDetailPage.css";
 
 // ---------------------------------------------------------------------------
@@ -154,6 +155,18 @@ function FullBlockRenderer({ block }) {
         />
       );
 
+    case "architectureBlock":
+      return (
+        <ArchitectureBlock
+          heading={block.heading}
+          caption={block.caption}
+          layout={block.layout ?? "hub"}
+          center_id={block.center_id}
+          nodes={block.nodes ?? []}
+          edges={block.edges ?? []}
+        />
+      );
+
     case "spacerBlock":
       return <Spacer {...block} />;
 
@@ -207,6 +220,19 @@ function render_block(block) {
           heading={block.heading}
           code={block.code ?? ""}
           caption={block.caption}
+        />
+      );
+
+    case "architectureBlock":
+      return (
+        <ArchitectureBlock
+          key={block._key ?? block._id}
+          heading={block.heading}
+          caption={block.caption}
+          layout={block.layout ?? "hub"}
+          center_id={block.center_id}
+          nodes={block.nodes ?? []}
+          edges={block.edges ?? []}
         />
       );
 

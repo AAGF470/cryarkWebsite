@@ -10,6 +10,7 @@ import CalloutBlock               from "@shared/components/ui/CalloutBlock";
 import ImageBlock                 from "@shared/components/ui/ImageBlock";
 import Spacer                     from "@shared/components/ui/Spacer";
 import DiagramBlock               from "@shared/components/ui/DiagramBlock";
+import ArchitectureBlock          from "@shared/components/ui/ArchitectureBlock";
 import "./DocsPage.css";
 
 // ---------------------------------------------------------------------------
@@ -74,6 +75,19 @@ function render_block(block) {
           heading={block.heading}
           code={block.code ?? ""}
           caption={block.caption}
+        />
+      );
+
+    case "architectureBlock":
+      return (
+        <ArchitectureBlock
+          key={block._key ?? block._id}
+          heading={block.heading}
+          caption={block.caption}
+          layout={block.layout ?? "hub"}
+          center_id={block.center_id}
+          nodes={block.nodes ?? []}
+          edges={block.edges ?? []}
         />
       );
 

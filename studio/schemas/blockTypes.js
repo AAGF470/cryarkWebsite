@@ -1099,3 +1099,167 @@ export const diagramBlockType = defineType({
     },
   },
 })
+
+// ── Architecture Block ────────────────────────────────────────────────────────
+// Renders a custom CSS code-architecture diagram via ArchitectureBlock.jsx.
+// Supports hub (hub-and-spoke), linear (pipeline chain), and tree layouts.
+// Nodes have roles: orchestrator, reader, processor, renderer, writer, utility.
+export const architectureBlockType = defineType({
+  name:  'architectureBlock',
+  title: 'Architecture Diagram',
+  type:  'object',
+  fields: [
+    defineField({
+      name:        'heading',
+      title:       'Heading',
+      type:        'string',
+      description: 'Optional gold eyebrow label above the diagram.',
+    }),
+    defineField({
+      name:    'layout',
+      title:   'Layout',
+      type:    'string',
+      options: {
+        list: [
+          { title: 'Hub & Spoke — one central orchestrator with surrounding nodes', value: 'hub'    },
+          { title: 'Linear — left-to-right pipeline chain',                         value: 'linear' },
+          { title: 'Tree — parent/child hierarchy',                                 value: 'tree'   },
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'hub',
+      validation:   R => R.required(),
+    }),
+    defineField({
+      name:        'center_id',
+      title:       'Center node ID (hub layout only)',
+      type:        'string',
+      description: 'The id of the node to place in the center. Must match a node id below.',
+    }),
+    defineField({
+      name:  'nodes',
+      title: 'Nodes',
+      type:  'array',
+      description: 'Each node is a file or component in the architecture.',
+      of: [defineArrayMember({
+        type:  'object',
+        name:  'archNode',
+        fields: [
+          defineField({
+            name:        'id',
+            title:       'Node ID',
+            type:        'string',
+            description: 'Unique identifier — e.g. "main", "pull", "render". Used in edges.',
+            validation:  R => R.required(),
+          }),
+          defineField({
+            name:        'label',
+            title:       'Label',
+            type:        'string',
+            description: 'Display name — e.g. "main.py"',
+            validation:  R => R.required(),
+          }),
+          defineField({
+            name:        'description',
+            title:       'Description',
+            type:        'text',
+            rows:        3,
+            description: 'Shown in the detail panel when the node is clicked.',
+          }),
+          defineField({
+            name:    'role',
+            title:   'Role',
+            type:    'string',
+            options: {
+              list: [
+                { title: 'Orchestrator — coordinates the pipeline',       value: 'orchestrator' },
+                { title: 'Reader — reads files or input data',            value: 'reader'       },
+                { title: 'Processor — transforms or computes data',       value: 'processor'    },
+                { title: 'Renderer — generates output (image, model, etc)', value: 'renderer'   },
+                { title: 'Writer — writes results to disk or stream',     value: 'writer'       },
+                { title: 'Utility — helper / miscellaneous',              value: 'utility'      },
+              ],
+              layout: 'radio',
+            },
+            initialValue: 'utility',
+          }),
+          defineField({
+            name:        'badge',
+            title:       'Badge label override',
+            type:        'string',
+            description: 'Overrides the role label on the badge — e.g. "Entry point". Leave blank to use role name.',
+          }),
+        ],
+        preview: {
+          select: { title: 'label', subtitle: 'role' },
+          prepare({ title, subtitle }) {
+            return { title: title ?? '(unnamed)', subtitle: subtitle ?? 'utility' }
+          },
+        },
+      })],
+    }),
+    defineField({
+      name:  'edges',
+      title: 'Connections',
+      type:  'array',
+      description: 'Define arrows between nodes. Use the node IDs set above.',
+      of: [defineArrayMember({
+        type:  'object',
+        name:  'archEdge',
+        fields: [
+          defineField({
+            name:        'from',
+            title:       'From node ID',
+            type:        'string',
+            description: 'ID of the source node.',
+            validation:  R => R.required(),
+          }),
+          defineField({
+            name:        'to',
+            title:       'To node ID',
+            type:        'string',
+            description: 'ID of the target node.',
+            validation:  R => R.required(),
+          }),
+          defineField({
+            name:        'label',
+            title:       'Edge label',
+            type:        'string',
+            description: 'Short description of what passes along this connection — e.g. "mesh data".',
+          }),
+          defineField({
+            name:         'bidirectional',
+            title:        'Bidirectional',
+            type:         'boolean',
+            description:  'Show a two-way arrow (⇄) instead of a one-way arrow.',
+            initialValue: false,
+          }),
+        ],
+        preview: {
+          select: { title: 'label', from: 'from', to: 'to' },
+          prepare({ title, from, to }) {
+            return {
+              title:    title ?? `${from ?? '?'} → ${to ?? '?'}`,
+              subtitle: title ? `${from ?? '?'} → ${to ?? '?'}` : '',
+            }
+          },
+        },
+      })],
+    }),
+    defineField({
+      name:        'caption',
+      title:       'Caption',
+      type:        'string',
+      description: 'Optional note shown below the diagram.',
+    }),
+  ],
+  preview: {
+    select: { title: 'heading', layout: 'layout' },
+    prepare({ title, layout }) {
+      return {
+        title:    title ?? 'Architecture Diagram',
+        subtitle: layout ?? 'hub',
+      }
+    },
+  },
+})

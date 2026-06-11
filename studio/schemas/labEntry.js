@@ -163,9 +163,10 @@ export const labEntryType = defineType({
               defineArrayMember({ type: 'codeBlock'       }), // code snippet
               defineArrayMember({ type: 'calloutBlock'    }), // note/tip/warning/info aside
               defineArrayMember({ type: 'imageBlock'      }), // single inline image
-              defineArrayMember({ type: 'diagramBlock'    }), // mermaid flow diagram
-              defineArrayMember({ type: 'designDecision'  }), // key + description
-              defineArrayMember({ type: 'spacerBlock'     }), // vertical gap
+              defineArrayMember({ type: 'diagramBlock'       }), // mermaid flow diagram
+              defineArrayMember({ type: 'architectureBlock'  }), // CSS architecture diagram
+              defineArrayMember({ type: 'designDecision'     }), // key + description
+              defineArrayMember({ type: 'spacerBlock'        }), // vertical gap
             ],
           }),
         ],
@@ -192,8 +193,9 @@ export const labEntryType = defineType({
         defineArrayMember({ type: 'modelViewerBlock'   }),
         defineArrayMember({ type: 'cinematicBannerBlock' }),
         defineArrayMember({ type: 'titleBlock'         }),
-        defineArrayMember({ type: 'diagramBlock'       }),
-        defineArrayMember({ type: 'spacerBlock'        }),
+        defineArrayMember({ type: 'diagramBlock'         }),
+        defineArrayMember({ type: 'architectureBlock'    }),
+        defineArrayMember({ type: 'spacerBlock'          }),
       ],
     }),
 

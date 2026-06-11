@@ -1,0 +1,535 @@
+/* ==========================================================================
+   ArchitectureBlock — custom CSS code-architecture diagram
+   Supports: hub, linear, tree layouts
+   ========================================================================== */
+
+/* ── Outer wrapper ──────────────────────────────────────────────────────────── */
+
+.ab-block {
+  width: 100%;
+  padding: 48px 0;
+}
+
+/* ── Eyebrow heading ────────────────────────────────────────────────────────── */
+
+.ab-block__heading {
+  display:      flex;
+  align-items:  center;
+  gap:          10px;
+  margin:       0 0 32px;
+}
+
+.ab-block__heading::before {
+  content:          "";
+  display:          block;
+  width:            3px;
+  height:           16px;
+  border-radius:    2px;
+  background:       rgba(200, 169, 126, 0.7);
+  flex-shrink:      0;
+}
+
+.ab-block__heading-text {
+  font-size:      0.72rem;
+  font-weight:    600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color:          rgba(200, 169, 126, 0.85);
+}
+
+/* ── Canvas ─────────────────────────────────────────────────────────────────── */
+
+.ab-block__canvas {
+  position:      relative;
+  background:    #07060c;
+  border:        1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  box-shadow:    inset 0 1px 0 rgba(200, 169, 126, 0.08),
+                 0 2px 24px rgba(0, 0, 0, 0.4);
+  padding:       48px 40px;
+  min-height:    360px;
+  overflow:      hidden;
+}
+
+/* ── Caption ────────────────────────────────────────────────────────────────── */
+
+.ab-block__caption {
+  margin:      12px 0 0;
+  font-size:   0.75rem;
+  color:       rgba(228, 226, 222, 0.38);
+  text-align:  center;
+  font-style:  italic;
+  letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   Node card
+   ========================================================================== */
+
+.ab-node {
+  display:        inline-flex;
+  flex-direction: column;
+  align-items:    center;
+  background:     none;
+  border:         none;
+  padding:        0;
+  cursor:         pointer;
+  transition:     transform 0.18s ease, filter 0.18s ease;
+}
+
+.ab-node:hover,
+.ab-node--active {
+  transform: translateY(-2px);
+  filter:    brightness(1.12);
+}
+
+.ab-node__inner {
+  display:        flex;
+  flex-direction: column;
+  align-items:    center;
+  gap:            7px;
+  padding:        14px 18px;
+  border-radius:  11px;
+  border:         1px solid rgba(255, 255, 255, 0.08);
+  background:     #0e0d14;
+  transition:     border-color 0.18s ease, box-shadow 0.18s ease;
+  min-width:      110px;
+  max-width:      160px;
+  text-align:     center;
+}
+
+/* Role-specific border + shadow on hover/active */
+.ab-node--orchestrator.ab-node--active .ab-node__inner,
+.ab-node--orchestrator:hover .ab-node__inner {
+  border-color: rgba(200, 169, 126, 0.5);
+  box-shadow:   0 0 18px rgba(200, 169, 126, 0.15);
+}
+
+.ab-node--reader.ab-node--active .ab-node__inner,
+.ab-node--reader:hover .ab-node__inner {
+  border-color: rgba(96, 165, 250, 0.5);
+  box-shadow:   0 0 18px rgba(96, 165, 250, 0.12);
+}
+
+.ab-node--processor.ab-node--active .ab-node__inner,
+.ab-node--processor:hover .ab-node__inner {
+  border-color: rgba(45, 212, 191, 0.5);
+  box-shadow:   0 0 18px rgba(45, 212, 191, 0.12);
+}
+
+.ab-node--renderer.ab-node--active .ab-node__inner,
+.ab-node--renderer:hover .ab-node__inner {
+  border-color: rgba(167, 139, 250, 0.5);
+  box-shadow:   0 0 18px rgba(167, 139, 250, 0.12);
+}
+
+.ab-node--writer.ab-node--active .ab-node__inner,
+.ab-node--writer:hover .ab-node__inner {
+  border-color: rgba(74, 222, 128, 0.5);
+  box-shadow:   0 0 18px rgba(74, 222, 128, 0.12);
+}
+
+.ab-node--utility.ab-node--active .ab-node__inner,
+.ab-node--utility:hover .ab-node__inner {
+  border-color: rgba(148, 163, 184, 0.45);
+  box-shadow:   0 0 18px rgba(148, 163, 184, 0.10);
+}
+
+/* ── Role badge pill ─────────────────────────────────────────────────────────── */
+
+.ab-node__badge {
+  display:        inline-block;
+  padding:        2px 8px;
+  border-radius:  100px;
+  font-size:      0.60rem;
+  font-weight:    600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  flex-shrink:    0;
+}
+
+.ab-node__badge--orchestrator {
+  background: rgba(200, 169, 126, 0.18);
+  color:      rgba(200, 169, 126, 0.95);
+  border:     1px solid rgba(200, 169, 126, 0.3);
+}
+
+.ab-node__badge--reader {
+  background: rgba(96, 165, 250, 0.14);
+  color:      rgba(96, 165, 250, 0.92);
+  border:     1px solid rgba(96, 165, 250, 0.28);
+}
+
+.ab-node__badge--processor {
+  background: rgba(45, 212, 191, 0.12);
+  color:      rgba(45, 212, 191, 0.90);
+  border:     1px solid rgba(45, 212, 191, 0.26);
+}
+
+.ab-node__badge--renderer {
+  background: rgba(167, 139, 250, 0.14);
+  color:      rgba(167, 139, 250, 0.92);
+  border:     1px solid rgba(167, 139, 250, 0.28);
+}
+
+.ab-node__badge--writer {
+  background: rgba(74, 222, 128, 0.12);
+  color:      rgba(74, 222, 128, 0.88);
+  border:     1px solid rgba(74, 222, 128, 0.24);
+}
+
+.ab-node__badge--utility {
+  background: rgba(148, 163, 184, 0.10);
+  color:      rgba(148, 163, 184, 0.75);
+  border:     1px solid rgba(148, 163, 184, 0.20);
+}
+
+/* ── Node label ─────────────────────────────────────────────────────────────── */
+
+.ab-node__label {
+  font-size:   0.82rem;
+  font-weight: 500;
+  color:       rgba(228, 226, 222, 0.88);
+  line-height: 1.3;
+}
+
+/* ==========================================================================
+   Detail panel — shown when a node is clicked
+   ========================================================================== */
+
+.ab-detail {
+  position:   absolute;
+  bottom:     24px;
+  right:      24px;
+  width:      280px;
+  background: #0e0d14;
+  border:     1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding:    20px 20px 18px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+  z-index:    10;
+  animation:  ab-detail-in 0.18s ease;
+}
+
+@keyframes ab-detail-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)  scale(1);     }
+}
+
+.ab-detail__close {
+  position:   absolute;
+  top:        12px;
+  right:      12px;
+  background: none;
+  border:     none;
+  color:      rgba(228, 226, 222, 0.35);
+  font-size:  0.78rem;
+  cursor:     pointer;
+  padding:    4px 6px;
+  border-radius: 4px;
+  transition: color 0.15s;
+  line-height: 1;
+}
+
+.ab-detail__close:hover {
+  color: rgba(228, 226, 222, 0.7);
+}
+
+.ab-detail__head {
+  display:     flex;
+  flex-direction: column;
+  gap:         7px;
+  margin-bottom: 12px;
+}
+
+.ab-detail__badge {
+  align-self:  flex-start;
+}
+
+.ab-detail__label {
+  font-size:   1rem;
+  font-weight: 600;
+  color:       rgba(228, 226, 222, 0.92);
+  margin:      0;
+}
+
+.ab-detail__desc {
+  font-size:   0.80rem;
+  color:       rgba(228, 226, 222, 0.6);
+  line-height: 1.55;
+  margin:      0 0 12px;
+}
+
+/* ── Edge list ──────────────────────────────────────────────────────────────── */
+
+.ab-detail__edges {
+  display:    flex;
+  flex-direction: column;
+  gap:        6px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.ab-detail__edge {
+  display:     flex;
+  align-items: center;
+  gap:         7px;
+  font-size:   0.75rem;
+}
+
+.ab-detail__edge-dir {
+  color:      rgba(200, 169, 126, 0.7);
+  font-size:  0.82rem;
+  flex-shrink: 0;
+}
+
+.ab-detail__edge--in .ab-detail__edge-dir {
+  color: rgba(96, 165, 250, 0.7);
+}
+
+.ab-detail__edge--bi .ab-detail__edge-dir {
+  color: rgba(45, 212, 191, 0.7);
+}
+
+.ab-detail__edge-peer {
+  font-weight: 500;
+  color:       rgba(228, 226, 222, 0.78);
+}
+
+.ab-detail__edge-label {
+  color:       rgba(228, 226, 222, 0.38);
+  font-style:  italic;
+  font-size:   0.70rem;
+}
+
+/* ==========================================================================
+   Hub layout
+   ========================================================================== */
+
+.ab-hub {
+  position:   relative;
+  width:      100%;
+  /* Tall enough for a full circle. Aspect ratio maintained via min-height. */
+  min-height: 480px;
+}
+
+.ab-hub__svg {
+  position: absolute;
+  inset:    0;
+  width:    100%;
+  height:   100%;
+  pointer-events: none;
+}
+
+.ab-hub__line {
+  stroke:       rgba(200, 169, 126, 0.22);
+  stroke-width: 1.5px;
+  transition:   stroke 0.2s ease;
+}
+
+.ab-hub__line--active {
+  stroke: rgba(200, 169, 126, 0.6);
+}
+
+/* Center node — absolutely centered */
+.ab-hub__center {
+  position:  absolute;
+  top:       50%;
+  left:      50%;
+  transform: translate(-50%, -50%);
+  z-index:   2;
+}
+
+/* Spoke nodes — positioned by JS via inline style */
+.ab-hub__spoke {
+  position:  absolute;
+  transform: translate(-50%, -50%);
+  z-index:   2;
+}
+
+/* Edge labels */
+.ab-hub__edge-label {
+  position:   absolute;
+  transform:  translate(-50%, -50%);
+  font-size:  0.62rem;
+  color:      rgba(200, 169, 126, 0.65);
+  background: rgba(7, 6, 12, 0.85);
+  padding:    2px 6px;
+  border-radius: 4px;
+  pointer-events: none;
+  white-space:  nowrap;
+  z-index:    3;
+}
+
+/* ==========================================================================
+   Linear layout
+   ========================================================================== */
+
+.ab-linear {
+  display:     flex;
+  flex-wrap:   wrap;
+  align-items: center;
+  gap:         0;
+  padding:     16px 0;
+  justify-content: center;
+}
+
+.ab-linear__step {
+  display:     flex;
+  flex-wrap:   wrap;
+  align-items: center;
+  gap:         0;
+}
+
+.ab-linear__connector {
+  display:        flex;
+  flex-direction: column;
+  align-items:    center;
+  gap:            4px;
+  padding:        0 8px;
+  position:       relative;
+}
+
+.ab-linear__line {
+  width:            40px;
+  height:           1px;
+  background:       rgba(200, 169, 126, 0.25);
+  background-image: repeating-linear-gradient(
+    to right,
+    rgba(200, 169, 126, 0.35) 0,
+    rgba(200, 169, 126, 0.35) 4px,
+    transparent 4px,
+    transparent 8px
+  );
+}
+
+.ab-linear__arrow {
+  font-size:  0.82rem;
+  color:      rgba(200, 169, 126, 0.6);
+  line-height: 1;
+}
+
+.ab-linear__arrow--bi {
+  color: rgba(45, 212, 191, 0.65);
+}
+
+.ab-linear__edge-label {
+  font-size:    0.60rem;
+  color:        rgba(200, 169, 126, 0.55);
+  white-space:  nowrap;
+  text-align:   center;
+  font-style:   italic;
+}
+
+/* ==========================================================================
+   Tree layout
+   ========================================================================== */
+
+.ab-tree {
+  display:        flex;
+  flex-direction: column;
+  align-items:    flex-start;
+  gap:            24px;
+  padding:        8px 0;
+}
+
+.ab-tree__node-wrap {
+  display:        flex;
+  flex-direction: row;
+  align-items:    flex-start;
+  gap:            0;
+}
+
+.ab-tree__children {
+  display:        flex;
+  flex-direction: column;
+  gap:            16px;
+  padding-left:   40px;
+  margin-left:    16px;
+  border-left:    1px dashed rgba(200, 169, 126, 0.2);
+  padding-top:    8px;
+  padding-bottom: 4px;
+}
+
+.ab-tree__child-wrap {
+  display:        flex;
+  flex-direction: column;
+  gap:            4px;
+  position:       relative;
+}
+
+/* Horizontal connector from tree line to node */
+.ab-tree__child-wrap::before {
+  content:    "";
+  position:   absolute;
+  left:       -40px;
+  top:        24px;
+  width:      38px;
+  height:     1px;
+  background: rgba(200, 169, 126, 0.2);
+  background-image: repeating-linear-gradient(
+    to right,
+    rgba(200, 169, 126, 0.28) 0,
+    rgba(200, 169, 126, 0.28) 3px,
+    transparent 3px,
+    transparent 6px
+  );
+}
+
+.ab-tree__edge-label {
+  font-size:    0.62rem;
+  color:        rgba(200, 169, 126, 0.55);
+  font-style:   italic;
+  padding-left: 2px;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 640px) {
+  .ab-block__canvas {
+    padding: 32px 20px;
+    min-height: 300px;
+  }
+
+  .ab-hub {
+    min-height: 380px;
+  }
+
+  .ab-node__inner {
+    min-width: 90px;
+    max-width: 128px;
+    padding:   10px 12px;
+  }
+
+  .ab-node__label {
+    font-size: 0.75rem;
+  }
+
+  .ab-detail {
+    position:   relative;
+    inset:      auto;
+    width:      100%;
+    margin-top: 16px;
+    bottom:     auto;
+    right:      auto;
+  }
+
+  .ab-linear {
+    flex-direction: column;
+  }
+
+  .ab-linear__connector {
+    transform: rotate(90deg);
+  }
+
+  .ab-tree__children {
+    padding-left: 24px;
+  }
+
+  .ab-tree__child-wrap::before {
+    left: -24px;
+    width: 22px;
+  }
+}

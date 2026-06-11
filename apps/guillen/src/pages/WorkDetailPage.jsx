@@ -19,6 +19,7 @@ import ChangelogBlock     from "@shared/components/ui/ChangelogBlock";
 import CalloutBlock       from "@shared/components/ui/CalloutBlock";
 import ImageBlock         from "@shared/components/ui/ImageBlock";
 import DiagramBlock       from "@shared/components/ui/DiagramBlock";
+import ArchitectureBlock  from "@shared/components/ui/ArchitectureBlock";
 import AssetGrid          from "@shared/components/ui/AssetGrid";
 import SideBySide         from "@shared/components/ui/SideBySide";
 import Spacer             from "@shared/components/ui/Spacer";
@@ -227,6 +228,18 @@ function BlockRenderer({ block }) {
           heading={block.heading}
           code={block.code ?? ""}
           caption={block.caption}
+        />
+      );
+
+    case "architectureBlock":
+      return (
+        <ArchitectureBlock
+          heading={block.heading}
+          caption={block.caption}
+          layout={block.layout ?? "hub"}
+          center_id={block.center_id}
+          nodes={block.nodes ?? []}
+          edges={block.edges ?? []}
         />
       );
 
