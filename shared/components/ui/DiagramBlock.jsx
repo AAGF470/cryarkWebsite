@@ -38,42 +38,42 @@ async function get_mermaid() {
         darkMode:            true,
         background:          "#07060c",
 
-        // Nodes
-        primaryColor:        "#1c1726",
+        // Nodes — neutral dark, no purple
+        primaryColor:        "#0f0f14",
         primaryTextColor:    "#e4e2de",
-        primaryBorderColor:  "rgba(200, 169, 126, 0.38)",
+        primaryBorderColor:  "rgba(200, 169, 126, 0.25)",
 
-        // Secondary / tertiary node fills (for multi-node colour variation)
-        secondaryColor:      "#150e22",
-        tertiaryColor:       "#0e0b16",
+        // Secondary / tertiary fills — dark grays, no color bias
+        secondaryColor:      "#0c0c11",
+        tertiaryColor:       "#0a0a0f",
 
-        // Edges + labels
-        lineColor:           "rgba(200, 169, 126, 0.58)",
-        edgeLabelBackground: "#0d0b14",
-        labelBackground:     "#0d0b14",
+        // Edges — white-toned arrows
+        lineColor:           "rgba(228, 226, 222, 0.55)",
+        edgeLabelBackground: "rgba(7, 6, 12, 0.92)",
+        labelBackground:     "rgba(7, 6, 12, 0.92)",
 
-        // Cluster boxes
-        clusterBkg:    "#110e1a",
-        clusterBorder: "rgba(255, 255, 255, 0.07)",
+        // Cluster / subgraph boxes
+        clusterBkg:    "#0c0c12",
+        clusterBorder: "rgba(200, 169, 126, 0.15)",
 
         // Title
-        titleColor: "#f5f3ef",
+        titleColor: "rgba(200, 169, 126, 0.75)",
 
         // Typography
         fontFamily: "system-ui, -apple-system, 'Segoe UI', sans-serif",
         fontSize:   "14px",
 
         // ── Sequence diagram ────────────────────────────
-        actorBkg:      "#1c1726",
-        actorBorder:   "rgba(200, 169, 126, 0.38)",
-        actorTextColor:"#e4e2de",
-        actorLineColor:"rgba(200, 169, 126, 0.30)",
-        signalColor:   "rgba(232, 230, 225, 0.65)",
-        signalTextColor:"rgba(232, 230, 225, 0.65)",
-        loopTextColor: "#e4e2de",
-        noteBkgColor:  "#1c1726",
-        noteTextColor: "#e4e2de",
-        noteBorderColor:"rgba(200, 169, 126, 0.28)",
+        actorBkg:       "#0f0f14",
+        actorBorder:    "rgba(200, 169, 126, 0.25)",
+        actorTextColor: "#e4e2de",
+        actorLineColor: "rgba(228, 226, 222, 0.30)",
+        signalColor:    "rgba(228, 226, 222, 0.55)",
+        signalTextColor:"rgba(228, 226, 222, 0.55)",
+        loopTextColor:  "#e4e2de",
+        noteBkgColor:   "#0f0f14",
+        noteTextColor:  "#e4e2de",
+        noteBorderColor:"rgba(200, 169, 126, 0.22)",
 
         // ── Class diagram ───────────────────────────────
         classText: "#e4e2de",

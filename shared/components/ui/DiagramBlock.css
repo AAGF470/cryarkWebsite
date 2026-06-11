@@ -79,17 +79,34 @@
   fill: transparent !important;
 }
 
+/* Rounded corners on flowchart nodes */
+.diagram-block__svg .node rect,
+.diagram-block__svg .cluster rect {
+  rx: 8px;
+  ry: 8px;
+}
+
 /* Edge / arrow labels — override Mermaid's default label box */
 .diagram-block__svg .edgeLabel {
-  background: #0d0b14 !important;
+  background: rgba(7, 6, 12, 0.92) !important;
   border-radius: 4px;
 }
 
 .diagram-block__svg .edgeLabel p,
 .diagram-block__svg .edgeLabel span {
-  color: rgba(232, 230, 225, 0.55) !important;
+  color: rgba(232, 230, 225, 0.50) !important;
   font-size: 12px !important;
-  background: #0d0b14 !important;
+  background: rgba(7, 6, 12, 0.92) !important;
+}
+
+/* Arrow paths — ensure white-toned color isn't overridden */
+.diagram-block__svg .flowchart-link,
+.diagram-block__svg path.path {
+  stroke: rgba(228, 226, 222, 0.50) !important;
+}
+
+.diagram-block__svg marker path {
+  fill: rgba(228, 226, 222, 0.50) !important;
 }
 
 /* Node text */

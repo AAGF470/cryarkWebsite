@@ -165,6 +165,7 @@ export const labEntryType = defineType({
               defineArrayMember({ type: 'imageBlock'      }), // single inline image
               defineArrayMember({ type: 'diagramBlock'       }), // mermaid flow diagram
               defineArrayMember({ type: 'architectureBlock'  }), // CSS architecture diagram
+              defineArrayMember({ type: 'hierarchyBlock'     }), // hierarchy tree diagram
               defineArrayMember({ type: 'designDecision'     }), // key + description
               defineArrayMember({ type: 'spacerBlock'        }), // vertical gap
             ],
@@ -195,6 +196,7 @@ export const labEntryType = defineType({
         defineArrayMember({ type: 'titleBlock'         }),
         defineArrayMember({ type: 'diagramBlock'         }),
         defineArrayMember({ type: 'architectureBlock'    }),
+        defineArrayMember({ type: 'hierarchyBlock'       }),
         defineArrayMember({ type: 'spacerBlock'          }),
       ],
     }),

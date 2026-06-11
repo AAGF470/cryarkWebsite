@@ -90,49 +90,51 @@
   gap:            7px;
   padding:        14px 18px;
   border-radius:  11px;
-  border:         1px solid rgba(255, 255, 255, 0.08);
-  background:     #0e0d14;
+  border:         1px solid rgba(255, 255, 255, 0.07);
+  background:     rgba(8, 7, 13, 0.78);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
   transition:     border-color 0.18s ease, box-shadow 0.18s ease;
   min-width:      110px;
   max-width:      160px;
   text-align:     center;
 }
 
-/* Role-specific border + shadow on hover/active */
+/* Role-specific border + shadow on hover/active — gold/gray palette only */
 .ab-node--orchestrator.ab-node--active .ab-node__inner,
 .ab-node--orchestrator:hover .ab-node__inner {
-  border-color: rgba(200, 169, 126, 0.5);
-  box-shadow:   0 0 18px rgba(200, 169, 126, 0.15);
+  border-color: rgba(200, 169, 126, 0.50);
+  box-shadow:   0 0 18px rgba(200, 169, 126, 0.14);
 }
 
 .ab-node--reader.ab-node--active .ab-node__inner,
 .ab-node--reader:hover .ab-node__inner {
-  border-color: rgba(96, 165, 250, 0.5);
-  box-shadow:   0 0 18px rgba(96, 165, 250, 0.12);
+  border-color: rgba(185, 178, 165, 0.42);
+  box-shadow:   0 0 18px rgba(185, 178, 165, 0.08);
 }
 
 .ab-node--processor.ab-node--active .ab-node__inner,
 .ab-node--processor:hover .ab-node__inner {
-  border-color: rgba(45, 212, 191, 0.5);
-  box-shadow:   0 0 18px rgba(45, 212, 191, 0.12);
+  border-color: rgba(165, 162, 155, 0.40);
+  box-shadow:   0 0 18px rgba(165, 162, 155, 0.08);
 }
 
 .ab-node--renderer.ab-node--active .ab-node__inner,
 .ab-node--renderer:hover .ab-node__inner {
-  border-color: rgba(167, 139, 250, 0.5);
-  box-shadow:   0 0 18px rgba(167, 139, 250, 0.12);
+  border-color: rgba(210, 190, 155, 0.45);
+  box-shadow:   0 0 18px rgba(210, 190, 155, 0.10);
 }
 
 .ab-node--writer.ab-node--active .ab-node__inner,
 .ab-node--writer:hover .ab-node__inner {
-  border-color: rgba(74, 222, 128, 0.5);
-  box-shadow:   0 0 18px rgba(74, 222, 128, 0.12);
+  border-color: rgba(148, 168, 150, 0.40);
+  box-shadow:   0 0 18px rgba(148, 168, 150, 0.08);
 }
 
 .ab-node--utility.ab-node--active .ab-node__inner,
 .ab-node--utility:hover .ab-node__inner {
-  border-color: rgba(148, 163, 184, 0.45);
-  box-shadow:   0 0 18px rgba(148, 163, 184, 0.10);
+  border-color: rgba(130, 128, 124, 0.38);
+  box-shadow:   0 0 18px rgba(130, 128, 124, 0.07);
 }
 
 /* ── Role badge pill ─────────────────────────────────────────────────────────── */
@@ -155,33 +157,33 @@
 }
 
 .ab-node__badge--reader {
-  background: rgba(96, 165, 250, 0.14);
-  color:      rgba(96, 165, 250, 0.92);
-  border:     1px solid rgba(96, 165, 250, 0.28);
+  background: rgba(185, 178, 165, 0.10);
+  color:      rgba(185, 178, 165, 0.80);
+  border:     1px solid rgba(185, 178, 165, 0.20);
 }
 
 .ab-node__badge--processor {
-  background: rgba(45, 212, 191, 0.12);
-  color:      rgba(45, 212, 191, 0.90);
-  border:     1px solid rgba(45, 212, 191, 0.26);
+  background: rgba(165, 162, 155, 0.09);
+  color:      rgba(165, 162, 155, 0.76);
+  border:     1px solid rgba(165, 162, 155, 0.18);
 }
 
 .ab-node__badge--renderer {
-  background: rgba(167, 139, 250, 0.14);
-  color:      rgba(167, 139, 250, 0.92);
-  border:     1px solid rgba(167, 139, 250, 0.28);
+  background: rgba(210, 190, 155, 0.11);
+  color:      rgba(210, 190, 155, 0.80);
+  border:     1px solid rgba(210, 190, 155, 0.22);
 }
 
 .ab-node__badge--writer {
-  background: rgba(74, 222, 128, 0.12);
-  color:      rgba(74, 222, 128, 0.88);
-  border:     1px solid rgba(74, 222, 128, 0.24);
+  background: rgba(148, 168, 150, 0.09);
+  color:      rgba(148, 168, 150, 0.76);
+  border:     1px solid rgba(148, 168, 150, 0.18);
 }
 
 .ab-node__badge--utility {
-  background: rgba(148, 163, 184, 0.10);
-  color:      rgba(148, 163, 184, 0.75);
-  border:     1px solid rgba(148, 163, 184, 0.20);
+  background: rgba(130, 128, 124, 0.08);
+  color:      rgba(130, 128, 124, 0.68);
+  border:     1px solid rgba(130, 128, 124, 0.16);
 }
 
 /* ── Node label ─────────────────────────────────────────────────────────────── */
@@ -284,11 +286,11 @@
 }
 
 .ab-detail__edge--in .ab-detail__edge-dir {
-  color: rgba(96, 165, 250, 0.7);
+  color: rgba(185, 178, 165, 0.65);
 }
 
 .ab-detail__edge--bi .ab-detail__edge-dir {
-  color: rgba(45, 212, 191, 0.7);
+  color: rgba(165, 162, 155, 0.65);
 }
 
 .ab-detail__edge-peer {

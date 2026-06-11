@@ -11,6 +11,7 @@ import ImageBlock                 from "@shared/components/ui/ImageBlock";
 import Spacer                     from "@shared/components/ui/Spacer";
 import DiagramBlock               from "@shared/components/ui/DiagramBlock";
 import ArchitectureBlock          from "@shared/components/ui/ArchitectureBlock";
+import HierarchyBlock             from "@shared/components/ui/HierarchyBlock";
 import "./DocsPage.css";
 
 // ---------------------------------------------------------------------------
@@ -88,6 +89,16 @@ function render_block(block) {
           center_id={block.center_id}
           nodes={block.nodes ?? []}
           edges={block.edges ?? []}
+        />
+      );
+
+    case "hierarchyBlock":
+      return (
+        <HierarchyBlock
+          key={block._key ?? block._id}
+          heading={block.heading}
+          caption={block.caption}
+          nodes={block.nodes ?? []}
         />
       );
 

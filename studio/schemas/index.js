@@ -31,6 +31,7 @@ import {
   titleBlockType,
   diagramBlockType,
   architectureBlockType,
+  hierarchyBlockType,
 } from './blockTypes'
 
 // Register every schema type that the studio needs to know about.
@@ -71,4 +72,5 @@ export const schemaTypes = [
   titleBlockType,
   diagramBlockType,
   architectureBlockType,
+  hierarchyBlockType,
 ]

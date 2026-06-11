@@ -887,6 +887,9 @@ export const sideBySideBlockType = defineType({
         defineArrayMember({ type: 'factGridBlock'          }),
         defineArrayMember({ type: 'screenshotGalleryBlock' }),
         defineArrayMember({ type: 'videoBlock'             }),
+        defineArrayMember({ type: 'diagramBlock'           }),
+        defineArrayMember({ type: 'architectureBlock'      }),
+        defineArrayMember({ type: 'hierarchyBlock'         }),
       ],
     }),
     defineField({
@@ -903,6 +906,9 @@ export const sideBySideBlockType = defineType({
         defineArrayMember({ type: 'factGridBlock'          }),
         defineArrayMember({ type: 'screenshotGalleryBlock' }),
         defineArrayMember({ type: 'videoBlock'             }),
+        defineArrayMember({ type: 'diagramBlock'           }),
+        defineArrayMember({ type: 'architectureBlock'      }),
+        defineArrayMember({ type: 'hierarchyBlock'         }),
       ],
     }),
   ],
@@ -1104,6 +1110,96 @@ export const diagramBlockType = defineType({
 // Renders a custom CSS code-architecture diagram via ArchitectureBlock.jsx.
 // Supports hub (hub-and-spoke), linear (pipeline chain), and tree layouts.
 // Nodes have roles: orchestrator, reader, processor, renderer, writer, utility.
+// ── Hierarchy Block ───────────────────────────────────────────────────────────
+// Renders a Unity / Unreal Engine-style scene hierarchy tree via HierarchyBlock.jsx.
+// Nodes are defined as a flat list with parent_id references; the component
+// builds the tree at render time.
+export const hierarchyBlockType = defineType({
+  name:  'hierarchyBlock',
+  title: 'Hierarchy Tree',
+  type:  'object',
+  fields: [
+    defineField({
+      name:        'heading',
+      title:       'Heading',
+      type:        'string',
+      description: 'Optional gold eyebrow label above the tree.',
+    }),
+    defineField({
+      name:  'nodes',
+      title: 'Nodes',
+      type:  'array',
+      description: 'Define each object in the hierarchy. Set parent_id to nest under another node.',
+      of: [defineArrayMember({
+        type:  'object',
+        name:  'hierNode',
+        fields: [
+          defineField({
+            name:        'id',
+            title:       'Node ID',
+            type:        'string',
+            description: 'Unique identifier used by children to reference this node — e.g. "player".',
+            validation:  R => R.required(),
+          }),
+          defineField({
+            name:        'parent_id',
+            title:       'Parent node ID',
+            type:        'string',
+            description: 'Leave blank for root nodes. Set to another node\'s ID to make this a child.',
+          }),
+          defineField({
+            name:        'label',
+            title:       'Label',
+            type:        'string',
+            description: 'Display name shown in the tree — e.g. "PlayerController", "MainCamera".',
+            validation:  R => R.required(),
+          }),
+          defineField({
+            name:        'type',
+            title:       'Type badge',
+            type:        'string',
+            description: 'Component or object type — e.g. "GameObject", "Camera", "Light", "Script", "Prefab".',
+          }),
+          defineField({
+            name:        'note',
+            title:       'Inline note',
+            type:        'string',
+            description: 'Short annotation shown after the label — e.g. "(disabled)", "← entry point".',
+          }),
+          defineField({
+            name:         'order',
+            title:        'Sort order',
+            type:         'number',
+            description:  'Lower numbers appear first among siblings.',
+            initialValue: 0,
+          }),
+        ],
+        preview: {
+          select: { title: 'label', parent: 'parent_id', subtitle: 'type' },
+          prepare({ title, parent, subtitle }) {
+            return {
+              title:    title ?? '(unnamed)',
+              subtitle: parent ? `↳ ${parent}  ·  ${subtitle ?? ''}` : (subtitle ?? 'root'),
+            }
+          },
+        },
+      })],
+    }),
+    defineField({
+      name:        'caption',
+      title:       'Caption',
+      type:        'string',
+      description: 'Optional note shown below the hierarchy.',
+    }),
+  ],
+  preview: {
+    select: { title: 'heading' },
+    prepare({ title }) {
+      return { title: title ?? 'Hierarchy Tree', subtitle: 'hierarchy' }
+    },
+  },
+})
+
 export const architectureBlockType = defineType({
   name:  'architectureBlock',
   title: 'Architecture Diagram',

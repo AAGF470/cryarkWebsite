@@ -20,6 +20,7 @@ import CalloutBlock       from "@shared/components/ui/CalloutBlock";
 import ImageBlock         from "@shared/components/ui/ImageBlock";
 import DiagramBlock       from "@shared/components/ui/DiagramBlock";
 import ArchitectureBlock  from "@shared/components/ui/ArchitectureBlock";
+import HierarchyBlock     from "@shared/components/ui/HierarchyBlock";
 import AssetGrid          from "@shared/components/ui/AssetGrid";
 import SideBySide         from "@shared/components/ui/SideBySide";
 import Spacer             from "@shared/components/ui/Spacer";
@@ -240,6 +241,15 @@ function BlockRenderer({ block }) {
           center_id={block.center_id}
           nodes={block.nodes ?? []}
           edges={block.edges ?? []}
+        />
+      );
+
+    case "hierarchyBlock":
+      return (
+        <HierarchyBlock
+          heading={block.heading}
+          caption={block.caption}
+          nodes={block.nodes ?? []}
         />
       );
 
