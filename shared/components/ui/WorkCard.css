@@ -18,7 +18,7 @@
   border-radius: 20px;
   border: 0.5px solid rgba(255, 255, 255, 0.06);
   /* This background IS the visible gutter between inner cards */
-  background: rgba(200, 169, 126, 0.055);
+  background: rgba(255, 255, 255, 0.032);
   padding: 10px;
   cursor: pointer;
   transition: border-color 0.22s ease, box-shadow 0.22s ease;
@@ -50,7 +50,7 @@
 /* ── Image card ──────────────────────────────────────────────────────────── */
 
 .wc__img-cell {
-  background: #0a0910;
+  background: #08080d;
   height: 260px;
   position: relative;
 }
@@ -97,7 +97,7 @@
 /* ── Meta card ───────────────────────────────────────────────────────────── */
 
 .wc__meta-cell {
-  background: #0a0910;
+  background: #08080d;
   height: 260px;        /* same as image — makes both top cards visually equal */
   display: flex;
   flex-direction: column;
@@ -238,7 +238,7 @@
 
 .wc__code-cell {
   grid-column: 1 / -1;  /* always spans full width */
-  background: #060509;
+  background: #06060b;
   height: 260px;         /* hard fixed height — code CANNOT expand the card */
   overflow: hidden;      /* clips any snippet that exceeds this */
   display: flex;
