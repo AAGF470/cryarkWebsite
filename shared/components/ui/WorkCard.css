@@ -16,9 +16,11 @@
 .wc {
   position: relative;
   border-radius: 20px;
-  border: 0.5px solid rgba(255, 255, 255, 0.06);
-  /* This background IS the visible gutter between inner cards */
-  background: rgba(255, 255, 255, 0.032);
+  border: 0.5px solid rgba(255, 255, 255, 0.07);
+  /* Frosted dark glass — semi-transparent so page grain bleeds through */
+  background: rgba(5, 5, 10, 0.72);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
   padding: 10px;
   cursor: pointer;
   transition: border-color 0.22s ease, box-shadow 0.22s ease;
@@ -50,7 +52,7 @@
 /* ── Image card ──────────────────────────────────────────────────────────── */
 
 .wc__img-cell {
-  background: #08080d;
+  background: rgba(4, 4, 9, 0.92);
   height: 260px;
   position: relative;
 }
@@ -97,7 +99,7 @@
 /* ── Meta card ───────────────────────────────────────────────────────────── */
 
 .wc__meta-cell {
-  background: #08080d;
+  background: rgba(4, 4, 9, 0.92);
   height: 260px;        /* same as image — makes both top cards visually equal */
   display: flex;
   flex-direction: column;
@@ -154,12 +156,16 @@
   margin-bottom: 12px;
 }
 
-/* Tag chips */
+/* Tag chips — single row, extras clipped rather than wrapping */
 
 .wc__tags {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 5px;
+  overflow: hidden;
+  /* Fade the right edge so the clip looks intentional, not abrupt */
+  mask-image: linear-gradient(to right, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, black 80%, transparent 100%);
 }
 
 /* ── Meta footer (devlog link + CTA) ─────────────────────────────────────── */
@@ -238,7 +244,7 @@
 
 .wc__code-cell {
   grid-column: 1 / -1;  /* always spans full width */
-  background: #06060b;
+  background: rgba(3, 3, 7, 0.94);
   height: 260px;         /* hard fixed height — code CANNOT expand the card */
   overflow: hidden;      /* clips any snippet that exceeds this */
   display: flex;
