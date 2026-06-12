@@ -1,4 +1,5 @@
 import { NavLink, useLocation } from "react-router-dom";
+import { createPortal }         from "react-dom";
 import { useEffect, useRef, useState } from "react";
 import Button from "./Button";
 import "./SiteNav.css";
@@ -85,7 +86,10 @@ export default function SiteNav({
     menu_open   ? "sitenav--menu-open": "",
   ].filter(Boolean).join(" ");
 
-  return (
+  // Render into document.body via a portal so this element is never inside
+  // a div with overflow:hidden — which is a known Chromium bug that silently
+  // disables backdrop-filter on all descendants including position:fixed ones.
+  return createPortal(
     <>
       <nav className={cls}>
 
@@ -186,6 +190,7 @@ export default function SiteNav({
           aria-hidden="true"
         />
       )}
-    </>
+    </>,
+    document.body,
   );
 }
