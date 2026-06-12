@@ -3,6 +3,7 @@ import WorkCard   from "@shared/components/ui/WorkCard";
 import SiteNav    from "@shared/components/ui/SiteNav";
 import SiteFooter from "@shared/components/ui/SiteFooter";
 import "./WorkPage.css";
+import { GUILLEN_NAV } from "../nav.jsx";
 
 // ---------------------------------------------------------------------------
 // WorkPage — guillen.studio/work
@@ -12,11 +13,7 @@ import "./WorkPage.css";
 // by a "pageConfig" document in Sanity (page_id = "guillen_work").
 // ---------------------------------------------------------------------------
 
-const GUILLEN_NAV = [
-  { to: "/work",   label: "Work"   },
-  { to: "/devlog", label: "Devlog" },
-  { to: "/about",  label: "About"  },
-];
+
 
 const STATUS_LABEL = {
   released: "Released",

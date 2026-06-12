@@ -14,6 +14,7 @@ import RawDiagramBlock            from "@shared/components/ui/RawDiagramBlock";
 import ArchitectureBlock          from "@shared/components/ui/ArchitectureBlock";
 import HierarchyBlock             from "@shared/components/ui/HierarchyBlock";
 import "./DocsPage.css";
+import { GUILLEN_NAV } from "../nav.jsx";
 
 // ---------------------------------------------------------------------------
 // DocsPage — guillen.studio/docs/:space_slug/:page_slug
@@ -26,11 +27,7 @@ import "./DocsPage.css";
 // /docs/:space_slug with no page_slug redirects to the first page in the space.
 // ---------------------------------------------------------------------------
 
-const GUILLEN_NAV = [
-  { to: "/work",   label: "Work"   },
-  { to: "/devlog", label: "Devlog" },
-  { to: "/about",  label: "About"  },
-];
+
 
 // ── Inline block renderer ────────────────────────────────────────────────────
 

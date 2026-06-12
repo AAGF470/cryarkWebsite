@@ -3,6 +3,7 @@ import SiteFooter from "@shared/components/ui/SiteFooter";
 import SiteNav    from "@shared/components/ui/SiteNav";
 import { useCmsQuery, ALL_SITE_LINKS } from "@shared/lib/cms";
 import "./GuillenHomePage.css";
+import { GUILLEN_NAV } from "../nav.jsx";
 
 // ---------------------------------------------------------------------------
 // GuillenHomePage — guillen.studio
@@ -12,11 +13,7 @@ import "./GuillenHomePage.css";
 // are commented out below — re-enable as content goes live.
 // ---------------------------------------------------------------------------
 
-const GUILLEN_NAV = [
-  { to: "/work",   label: "Work"   },
-  { to: "/devlog", label: "Devlog" },
-  { to: "/about",  label: "About"  },
-];
+
 
 // ── Hero ──────────────────────────────────────────────────────────────────
 

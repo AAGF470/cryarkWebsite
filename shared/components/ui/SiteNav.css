@@ -1,245 +1,347 @@
 /* ---------------------------------------------------------------------------
-   SiteNav.css
-   3-zone grid nav: [logo] [centered links] [resume cta / hamburger]
-   Scroll-aware frosted glass. Auto-hides on scroll down, returns on scroll up
-   or mouse proximity to top. Mobile: hamburger → slide-down menu.
+   SiteNav.css — floating pill dock
+   Centered, frosted glass pill. Each nav item shows icon at rest;
+   hovered / active item slides label in. Mobile collapses to logo + hamburger
+   with a floating card menu below.
 --------------------------------------------------------------------------- */
+
+/* ── FLOATING PILL ──────────────────────────────────────────────────────── */
 
 .sitenav {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 200;
 
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
   align-items: center;
-  height: 62px;
-  padding: 0 44px;
+  gap: 2px;
+  padding: 5px 6px;
 
-  /* ── Dark frosted glass — consistent at every scroll position ───────────
-     Single set of values, no state-based changes except the gold border
-     accent on scroll. The blur is always on; the tint is always dark.
-     Inspired by Framer: pure dark, no white washes, just the blur.       */
-  background:    rgba(8, 8, 8, 0.80);
-  border-bottom: 0.5px solid rgba(255, 255, 255, 0.06);
-  box-shadow:    0 1px 0 rgba(255, 255, 255, 0.04) inset,
-                 0 4px 32px rgba(0, 0, 0, 0.40);
+  border-radius: 99px;
+  border: 0.5px solid rgba(255, 255, 255, 0.10);
+  background: rgba(10, 10, 10, 0.86);
+  box-shadow:
+    0 8px 40px rgba(0, 0, 0, 0.55),
+    0 1px 0 rgba(255, 255, 255, 0.06) inset;
 
-  backdrop-filter:         blur(24px) saturate(160%);
-  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  backdrop-filter:         blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
 
-  transition:
-    border-color 0.30s ease,
-    transform    0.32s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Only transition the hide transform; everything else snaps */
+  transition: transform 0.30s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity   0.30s ease;
 }
 
-/* Scrolled: only swap the hairline border to the gold accent — glass stays identical */
-.sitenav--scrolled {
-  border-bottom-color: rgba(200, 169, 126, 0.12);
-}
-
-.sitenav--menu-open {
-  background:    rgba(6, 6, 6, 0.97);
-  border-bottom: 0.5px solid rgba(200, 169, 126, 0.12);
-  backdrop-filter:         blur(24px) saturate(160%);
-  -webkit-backdrop-filter: blur(24px) saturate(160%);
-}
-
+/* Hide: slide up and fade */
 .sitenav--hidden {
-  transform: translateY(-100%);
+  transform: translateX(-50%) translateY(-80px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Mobile menu open: slightly more opaque */
+.sitenav--menu-open {
+  background: rgba(8, 8, 8, 0.96);
+  border-color: rgba(200, 169, 126, 0.14);
 }
 
 /* ── LOGO ─────────────────────────────────────────────────────────────────── */
 
 .sitenav__logo {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(240, 237, 232, 0.90);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
   text-decoration: none;
-  user-select: none;
-  transition: color 0.2s ease;
-  justify-self: start;
+  color: rgba(232, 230, 225, 0.55);
+  flex-shrink: 0;
+  transition: color 0.16s ease, background 0.16s ease;
 }
 
-.sitenav__logo:hover { color: #ffffff; }
+.sitenav__logo:hover {
+  background: rgba(200, 169, 126, 0.10);
+  color: rgba(200, 169, 126, 0.90);
+}
 
-.sitenav__logo_accent {
-  color: #d4b48a;
-  text-shadow:
-    0 0 14px rgba(200, 169, 126, 0.55),
-    0 0 32px rgba(200, 169, 126, 0.20);
+.sitenav__logo.active {
+  color: rgba(200, 169, 126, 0.80);
+}
+
+.sitenav__logo_text {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  font-family: var(--font-sans, system-ui, sans-serif);
 }
 
 .sitenav__logo_img {
-  height: 22px;
-  width: auto;
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  opacity: 0.70;
+}
+
+.sitenav__logo_accent {
+  color: rgba(200, 169, 126, 0.85);
+}
+
+/* ── SEPARATOR ────────────────────────────────────────────────────────────── */
+
+.sitenav__sep {
   display: block;
+  width: 0.5px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+  margin: 0 3px;
 }
 
-/* Text logo variant — used by Guillen.Studio */
-.sitenav__logo_text {
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: #ffffff;
-  text-shadow:
-    0 0 8px  rgba(200, 169, 126, 0.90),
-    0 0 20px rgba(200, 169, 126, 0.50),
-    0 0 42px rgba(200, 169, 126, 0.22);
-  transition: text-shadow 0.22s ease;
-}
+/* ── NAV LINKS ────────────────────────────────────────────────────────────── */
 
-.sitenav__logo:hover .sitenav__logo_text {
-  text-shadow:
-    0 0 10px rgba(200, 169, 126, 1.00),
-    0 0 28px rgba(200, 169, 126, 0.65),
-    0 0 56px rgba(200, 169, 126, 0.30);
-}
-
-/* ── CENTER — desktop nav links ──────────────────────────────────────────── */
-
-.sitenav__center {
+.sitenav__links {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 2px;
 }
 
+/* Each link: icon-only at rest, label slides in on hover */
 .sitenav__link {
-  position: relative;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(232, 230, 225, 0.38);
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 7px 9px;
+  border-radius: 99px;
   text-decoration: none;
-  padding: 6px 14px;
-  border-radius: 6px;
-  transition: color 0.22s ease, background 0.22s ease;
+  color: rgba(232, 230, 225, 0.42);
+  white-space: nowrap;
+
+  /* Animate gap and right padding smoothly when label appears */
+  transition:
+    background 0.16s ease,
+    color      0.16s ease,
+    gap        0.20s cubic-bezier(0.4, 0, 0.2, 1),
+    padding    0.20s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .sitenav__link:hover {
-  color: rgba(232, 230, 225, 0.88);
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(232, 230, 225, 0.92);
+  gap: 6px;
+  padding-right: 13px;
 }
 
 .sitenav__link--active {
-  color: rgba(220, 193, 148, 0.95);
-  background: rgba(200, 169, 126, 0.07);
+  background: rgba(200, 169, 126, 0.10);
+  color: rgba(200, 169, 126, 0.88);
+  gap: 6px;
+  padding-right: 13px;
 }
 
-.sitenav__link--active::after {
-  content: '';
-  position: absolute;
-  bottom: 3px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 16px;
-  height: 1.5px;
-  border-radius: 999px;
-  background: rgba(200, 169, 126, 0.75);
-  box-shadow: 0 0 6px rgba(200, 169, 126, 0.50);
+.sitenav__link--active:hover {
+  background: rgba(200, 169, 126, 0.14);
+  color: rgba(200, 169, 126, 1);
 }
 
-/* ── RIGHT ZONE ──────────────────────────────────────────────────────────── */
-
-.sitenav__right {
+/* Icon wrapper */
+.sitenav__icon {
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 12px;
-}
-
-/* ── HAMBURGER BUTTON ─────────────────────────────────────────────────────── */
-
-.sitenav__hamburger {
-  display: none;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 5px;
-  background: none;
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+/* Label — hidden at rest, reveals on hover / active */
+.sitenav__label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  font-family: var(--font-sans, system-ui, sans-serif);
+  max-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-width 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity   0.18s ease;
+}
+
+.sitenav__link:hover     .sitenav__label,
+.sitenav__link--active   .sitenav__label {
+  max-width: 80px;
+  opacity: 1;
+}
+
+/* No-icon fallback: always show the label */
+.sitenav__link:not(:has(.sitenav__icon)) .sitenav__label {
+  max-width: 80px;
+  opacity: 1;
+}
+
+/* ── CTA ──────────────────────────────────────────────────────────────────── */
+
+.sitenav__cta {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  font-family: var(--font-sans, system-ui, sans-serif);
+  color: rgba(200, 169, 126, 0.60);
+  text-decoration: none;
+  padding: 7px 13px;
+  border-radius: 99px;
+  border: 0.5px solid rgba(200, 169, 126, 0.18);
+  background: rgba(200, 169, 126, 0.04);
+  transition: color 0.16s ease, border-color 0.16s ease, background 0.16s ease;
+  white-space: nowrap;
+}
+
+.sitenav__cta:hover {
+  color: rgba(200, 169, 126, 0.95);
+  border-color: rgba(200, 169, 126, 0.35);
+  background: rgba(200, 169, 126, 0.09);
+}
+
+/* ── HAMBURGER (mobile only) ─────────────────────────────────────────────── */
+
+.sitenav__hamburger {
+  display: none;                /* hidden on desktop */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: transparent;
   border: none;
   cursor: pointer;
-  padding: 8px 4px;
-  width: 36px;
-  height: 36px;
+  border-radius: 50%;
+  transition: background 0.16s ease;
+}
+
+.sitenav__hamburger:hover {
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .sitenav__hamburger span {
   display: block;
-  width: 20px;
-  height: 1.5px;
-  background: rgba(232, 230, 225, 0.70);
-  border-radius: 999px;
+  width: 14px;
+  height: 1px;
+  background: rgba(232, 230, 225, 0.55);
+  border-radius: 1px;
   transform-origin: center;
-  transition:
-    transform 0.28s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity   0.20s ease;
+  transition: transform 0.22s ease, opacity 0.18s ease, width 0.18s ease;
 }
 
-.sitenav__hamburger--open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-.sitenav__hamburger--open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.sitenav__hamburger--open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.sitenav__hamburger--open span:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+.sitenav__hamburger--open span:nth-child(2) { opacity: 0; width: 0; }
+.sitenav__hamburger--open span:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
 
-/* ── MOBILE MENU ─────────────────────────────────────────────────────────── */
+/* ── MOBILE MENU CARD ─────────────────────────────────────────────────────── */
 
 .sitenav__mobile {
   position: fixed;
-  top: 54px;
-  left: 0;
-  right: 0;
+  top: 72px;                    /* pill top (14) + pill height (48) + gap (10) */
+  left: 14px;
+  right: 14px;
   z-index: 199;
-  background: rgba(5, 5, 8, 0.97);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-bottom: 0.5px solid rgba(200, 169, 126, 0.14);
-  padding: 16px 28px 28px;
-  display: flex;
-  flex-direction: column;
-  transform: translateY(-12px);
+
+  border-radius: 18px;
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  background: rgba(10, 10, 10, 0.96);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.60);
+  backdrop-filter:         blur(28px) saturate(160%);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
+
+  overflow: hidden;
   opacity: 0;
+  transform: translateY(-8px) scale(0.98);
   pointer-events: none;
   transition:
-    transform 0.28s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity   0.22s ease;
+    opacity   0.20s ease,
+    transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .sitenav__mobile--open {
-  transform: translateY(0);
   opacity: 1;
+  transform: translateY(0) scale(1);
   pointer-events: auto;
 }
 
 .sitenav__mobile_links {
   display: flex;
   flex-direction: column;
+  padding: 10px 8px 8px;
 }
 
 .sitenav__mobile_link {
-  font-size: 18px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  color: rgba(232, 230, 225, 0.45);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 12px;
   text-decoration: none;
-  padding: 16px 0;
-  border-bottom: 0.5px solid rgba(255, 255, 255, 0.05);
-  transition: color 0.15s ease;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  font-family: var(--font-sans, system-ui, sans-serif);
+  color: rgba(232, 230, 225, 0.55);
+  transition: background 0.14s ease, color 0.14s ease;
 }
 
-.sitenav__mobile_link:last-child {
-  border-bottom: none;
+.sitenav__mobile_link:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(232, 230, 225, 0.90);
 }
 
-.sitenav__mobile_link:hover { color: rgba(232, 230, 225, 0.90); }
+.sitenav__mobile_link--active {
+  color: rgba(200, 169, 126, 0.88);
+  background: rgba(200, 169, 126, 0.07);
+}
 
-.sitenav__mobile_link--active { color: rgba(200, 169, 126, 0.90); }
+.sitenav__mobile_icon {
+  display: flex;
+  align-items: center;
+  width: 18px;
+  height: 18px;
+  opacity: 0.70;
+}
 
+.sitenav__mobile_link--active .sitenav__mobile_icon {
+  opacity: 1;
+}
+
+/* CTA row in mobile menu */
 .sitenav__mobile_cta {
-  margin-top: 20px;
+  padding: 8px 8px 10px;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.06);
+  margin-top: 4px;
+}
+
+.sitenav__mobile_cta_link {
+  display: block;
+  text-align: center;
+  padding: 13px;
+  border-radius: 12px;
+  border: 0.5px solid rgba(200, 169, 126, 0.20);
+  background: rgba(200, 169, 126, 0.04);
+  color: rgba(200, 169, 126, 0.72);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  font-family: var(--font-sans, system-ui, sans-serif);
+  transition: background 0.16s ease, color 0.16s ease, border-color 0.16s ease;
+}
+
+.sitenav__mobile_cta_link:hover {
+  background: rgba(200, 169, 126, 0.09);
+  color: rgba(200, 169, 126, 0.95);
+  border-color: rgba(200, 169, 126, 0.35);
 }
 
 /* ── BACKDROP ─────────────────────────────────────────────────────────────── */
@@ -248,19 +350,45 @@
   position: fixed;
   inset: 0;
   z-index: 198;
-  background: rgba(5, 5, 8, 0.50);
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
-/* ── RESPONSIVE ──────────────────────────────────────────────────────────── */
+/* ── RESPONSIVE — mobile breakpoint ─────────────────────────────────────── */
 
-@media (max-width: 680px) {
+@media (max-width: 640px) {
   .sitenav {
-    grid-template-columns: 1fr auto;
-    padding: 0 24px;
-    height: 54px;
+    /* Stretch toward edges on small screens, but keep pill shape */
+    left: 14px;
+    right: 14px;
+    transform: none;
+    justify-content: space-between;
   }
 
-  .sitenav__center      { display: none; }
-  .sitenav__cta_desktop { display: none; }
-  .sitenav__hamburger   { display: flex; }
+  /* Hidden state on mobile: translate up */
+  .sitenav--hidden {
+    transform: translateY(-80px);
+  }
+
+  /* Hide desktop elements */
+  .sitenav__links,
+  .sitenav__sep,
+  .sitenav__cta {
+    display: none;
+  }
+
+  /* Show hamburger */
+  .sitenav__hamburger {
+    display: flex;
+  }
+}
+
+/* ── :has() fallback for browsers without icon support ─────────────────── */
+/* If :has() not supported, labels are always visible (graceful fallback) */
+@supports not selector(:has(.sitenav__icon)) {
+  .sitenav__label {
+    max-width: 80px;
+    opacity: 1;
+  }
 }

@@ -26,6 +26,7 @@ import AssetGrid          from "@shared/components/ui/AssetGrid";
 import SideBySide         from "@shared/components/ui/SideBySide";
 import Spacer             from "@shared/components/ui/Spacer";
 import "./WorkDetailPage.css";
+import { GUILLEN_NAV } from "../nav.jsx";
 
 // ---------------------------------------------------------------------------
 // WorkDetailPage — guillen.studio/work/:slug
@@ -35,11 +36,7 @@ import "./WorkDetailPage.css";
 // BlockRenderer switch, so each section type maps to its own component.
 // ---------------------------------------------------------------------------
 
-const GUILLEN_NAV = [
-  { to: "/work",   label: "Work"   },
-  { to: "/devlog", label: "Devlog" },
-  { to: "/about",  label: "About"  },
-];
+
 
 const STATUS_LABEL = {
   released: "Released",

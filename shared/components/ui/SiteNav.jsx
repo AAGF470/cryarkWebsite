@@ -1,8 +1,17 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { createPortal }         from "react-dom";
 import { useEffect, useRef, useState } from "react";
-import Button from "./Button";
 import "./SiteNav.css";
+
+// ---------------------------------------------------------------------------
+// SiteNav — floating pill dock
+//
+// Props:
+//   links      array   — nav link items [{ to, label, icon? }]
+//   cta_label  string  — CTA text (e.g. "Resume"). Pass null to hide.
+//   cta_href   string  — CTA href
+//   logo_text  string? — text monogram (e.g. "AG"). Falls back to image logo.
+// ---------------------------------------------------------------------------
 
 const DEFAULT_NAV_LINKS = [
   { to: "/games",  label: "Games"  },
@@ -11,30 +20,24 @@ const DEFAULT_NAV_LINKS = [
   { to: "/about",  label: "About"  },
 ];
 
-// Props:
-//   links      array   — nav link items [{ to, label }]. Defaults to cryark links.
-//   cta_label  string  — CTA button label
-//   cta_href   string  — CTA button href
-//   logo_text  string? — if set, renders a text logo instead of the image (e.g. "AG")
 export default function SiteNav({
   links     = DEFAULT_NAV_LINKS,
   cta_label = "itch.io",
   cta_href  = "https://itch.io",
   logo_text = null,
 }) {
-  const [scrolled,    set_scrolled]    = useState(false);
-  const [hidden,      set_hidden]      = useState(false);
-  const [logo_err,    set_logo_err]    = useState(false);
-  const [menu_open,   set_menu_open]   = useState(false);
+  const [hidden,    set_hidden]    = useState(false);
+  const [logo_err,  set_logo_err]  = useState(false);
+  const [menu_open, set_menu_open] = useState(false);
   const last_y  = useRef(0);
   const location = useLocation();
 
-  // Close mobile menu on route change
+  // Close menu on route change
   useEffect(() => {
     set_menu_open(false);
   }, [location.pathname]);
 
-  // Lock body scroll when mobile menu is open
+  // Lock body scroll when mobile menu open
   useEffect(() => {
     if (menu_open) {
       set_hidden(false);
@@ -45,34 +48,23 @@ export default function SiteNav({
     return () => { document.body.style.overflow = ""; };
   }, [menu_open]);
 
+  // Auto-hide on scroll down, restore on scroll up / mouse near top
   useEffect(() => {
     function on_scroll() {
       const y     = window.scrollY;
       const delta = y - last_y.current;
       last_y.current = y;
-
-      set_scrolled(y > 32);
-
-      // Never hide while mobile menu is open
       if (menu_open) return;
-
-      if (y < 80) {
-        set_hidden(false);
-      } else if (delta > 4) {
-        set_hidden(true);
-      } else if (delta < -4) {
-        set_hidden(false);
-      }
+      if (y < 80)          set_hidden(false);
+      else if (delta > 4)  set_hidden(true);
+      else if (delta < -4) set_hidden(false);
     }
-
     function on_mouse(e) {
-      if (e.clientY < 72) set_hidden(false);
+      if (e.clientY < 80) set_hidden(false);
     }
-
     window.addEventListener("scroll",    on_scroll, { passive: true });
     window.addEventListener("mousemove", on_mouse,  { passive: true });
     on_scroll();
-
     return () => {
       window.removeEventListener("scroll",    on_scroll);
       window.removeEventListener("mousemove", on_mouse);
@@ -81,20 +73,18 @@ export default function SiteNav({
 
   const cls = [
     "sitenav",
-    scrolled    ? "sitenav--scrolled" : "",
-    hidden      ? "sitenav--hidden"   : "",
-    menu_open   ? "sitenav--menu-open": "",
+    hidden    ? "sitenav--hidden"    : "",
+    menu_open ? "sitenav--menu-open" : "",
   ].filter(Boolean).join(" ");
 
-  // Render into document.body via a portal so this element is never inside
-  // a div with overflow:hidden — which is a known Chromium bug that silently
-  // disables backdrop-filter on all descendants including position:fixed ones.
+  // Render via portal so backdrop-filter never hits an overflow:hidden ancestor.
   return createPortal(
     <>
-      <nav className={cls}>
+      {/* ── Floating pill ────────────────────────────────────────────────── */}
+      <nav className={cls} role="navigation" aria-label="Main navigation">
 
-        {/* Left — logo */}
-        <NavLink to="/" className="sitenav__logo" end>
+        {/* Logo / monogram */}
+        <NavLink to="/" className="sitenav__logo" end aria-label="Home">
           {logo_text ? (
             <span className="sitenav__logo_text">{logo_text}</span>
           ) : logo_err ? (
@@ -109,9 +99,12 @@ export default function SiteNav({
           )}
         </NavLink>
 
-        {/* Center — primary links (desktop) */}
-        <div className="sitenav__center">
-          {links.map(({ to, label }) => (
+        {/* Hairline separator */}
+        <span className="sitenav__sep" aria-hidden="true" />
+
+        {/* Nav links — icon + sliding label */}
+        <div className="sitenav__links">
+          {links.map(({ to, label, icon }) => (
             <NavLink
               key={to}
               to={to}
@@ -119,45 +112,49 @@ export default function SiteNav({
                 `sitenav__link${isActive ? " sitenav__link--active" : ""}`
               }
             >
-              {label}
+              {icon && (
+                <span className="sitenav__icon" aria-hidden="true">{icon}</span>
+              )}
+              <span className="sitenav__label">{label}</span>
             </NavLink>
           ))}
         </div>
 
-        {/* Right — CTA (desktop) + hamburger (mobile) */}
-        <div className="sitenav__right">
-          {cta_label && (
-            <span className="sitenav__cta_desktop">
-              <Button
-                variant="ghost-bordered"
-                label={cta_label}
-                href={cta_href}
-                show_arrow={false}
-              />
-            </span>
-          )}
+        {/* CTA — desktop only */}
+        {cta_label && (
+          <>
+            <span className="sitenav__sep sitenav__sep--cta" aria-hidden="true" />
+            <a
+              href={cta_href}
+              className="sitenav__cta"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {cta_label}
+            </a>
+          </>
+        )}
 
-          {/* Hamburger button — mobile only */}
-          <button
-            className={`sitenav__hamburger${menu_open ? " sitenav__hamburger--open" : ""}`}
-            onClick={() => set_menu_open(o => !o)}
-            aria-label={menu_open ? "Close menu" : "Open menu"}
-            aria-expanded={menu_open}
-          >
-            <span aria-hidden="true" />
-            <span aria-hidden="true" />
-            <span aria-hidden="true" />
-          </button>
-        </div>
+        {/* Hamburger — mobile only */}
+        <button
+          className={`sitenav__hamburger${menu_open ? " sitenav__hamburger--open" : ""}`}
+          onClick={() => set_menu_open(o => !o)}
+          aria-label={menu_open ? "Close menu" : "Open menu"}
+          aria-expanded={menu_open}
+        >
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
+        </button>
       </nav>
 
-      {/* Mobile menu — slides down from nav */}
+      {/* ── Mobile menu card ─────────────────────────────────────────────── */}
       <div
         className={`sitenav__mobile${menu_open ? " sitenav__mobile--open" : ""}`}
         aria-hidden={!menu_open}
       >
         <nav className="sitenav__mobile_links">
-          {links.map(({ to, label }) => (
+          {links.map(({ to, label, icon }) => (
             <NavLink
               key={to}
               to={to}
@@ -166,23 +163,28 @@ export default function SiteNav({
               }
               onClick={() => set_menu_open(false)}
             >
+              {icon && (
+                <span className="sitenav__mobile_icon" aria-hidden="true">{icon}</span>
+              )}
               {label}
             </NavLink>
           ))}
         </nav>
         {cta_label && (
           <div className="sitenav__mobile_cta">
-            <Button
-              variant="ghost-bordered"
-              label={cta_label}
+            <a
               href={cta_href}
-              show_arrow={false}
-            />
+              className="sitenav__mobile_cta_link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {cta_label} ↗
+            </a>
           </div>
         )}
       </div>
 
-      {/* Backdrop — tap to close */}
+      {/* Backdrop — tap outside to close */}
       {menu_open && (
         <div
           className="sitenav__backdrop"

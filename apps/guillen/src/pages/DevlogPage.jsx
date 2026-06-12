@@ -3,6 +3,7 @@ import { useCmsQuery, ALL_DEVLOGS, PAGE_CONFIG } from "@shared/lib/cms";
 import SiteNav    from "@shared/components/ui/SiteNav";
 import SiteFooter from "@shared/components/ui/SiteFooter";
 import "./DevlogPage.css";
+import { GUILLEN_NAV } from "../nav.jsx";
 
 // ---------------------------------------------------------------------------
 // DevlogPage — guillen.studio/devlog
@@ -15,11 +16,7 @@ import "./DevlogPage.css";
 // are driven by a "pageConfig" document in Sanity (page_id = "guillen_devlog").
 // ---------------------------------------------------------------------------
 
-const GUILLEN_NAV = [
-  { to: "/work",   label: "Work"   },
-  { to: "/devlog", label: "Devlog" },
-  { to: "/about",  label: "About"  },
-];
+
 
 function format_date(iso) {
   if (!iso) return "";

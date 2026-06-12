@@ -21,6 +21,7 @@ import RawDiagramBlock    from "@shared/components/ui/RawDiagramBlock";
 import ArchitectureBlock  from "@shared/components/ui/ArchitectureBlock";
 import HierarchyBlock     from "@shared/components/ui/HierarchyBlock";
 import "./DevlogDetailPage.css";
+import { GUILLEN_NAV } from "../nav.jsx";
 
 // ---------------------------------------------------------------------------
 // DevlogDetailPage — guillen.studio/devlog/:slug
@@ -32,11 +33,7 @@ import "./DevlogDetailPage.css";
 //                        (rich text, code, callout, image, etc.)
 // ---------------------------------------------------------------------------
 
-const GUILLEN_NAV = [
-  { to: "/work",   label: "Work"   },
-  { to: "/devlog", label: "Devlog" },
-  { to: "/about",  label: "About"  },
-];
+
 
 function format_date(iso) {
   if (!iso) return "";
