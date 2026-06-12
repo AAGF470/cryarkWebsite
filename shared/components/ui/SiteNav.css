@@ -22,7 +22,7 @@
      Single set of values, no state-based changes except the gold border
      accent on scroll. The blur is always on; the tint is always dark.
      Inspired by Framer: pure dark, no white washes, just the blur.       */
-  background:    rgba(6, 5, 10, 0.78);
+  background:    rgba(8, 8, 8, 0.80);
   border-bottom: 0.5px solid rgba(255, 255, 255, 0.06);
   box-shadow:    0 1px 0 rgba(255, 255, 255, 0.04) inset,
                  0 4px 32px rgba(0, 0, 0, 0.40);
@@ -41,7 +41,7 @@
 }
 
 .sitenav--menu-open {
-  background:    rgba(4, 3, 8, 0.96);
+  background:    rgba(6, 6, 6, 0.97);
   border-bottom: 0.5px solid rgba(200, 169, 126, 0.12);
   backdrop-filter:         blur(24px) saturate(160%);
   -webkit-backdrop-filter: blur(24px) saturate(160%);

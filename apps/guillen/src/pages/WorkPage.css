@@ -5,7 +5,7 @@
 /* ── PAGE SHELL (grain overlay defined in GuillenHomePage.css — reused) ─── */
 
 .page {
-  background: var(--color-bg, #050508);
+  background: var(--color-bg, #020202);
   min-height: 100vh;
   color: var(--color-text, #e8e6e1);
   font-family: var(--font-sans, system-ui, sans-serif);
@@ -85,9 +85,9 @@
   inset:    0;
   background: linear-gradient(
     to bottom,
-    rgba(5, 5, 8, 0.42) 0%,
-    rgba(5, 5, 8, 0.72) 60%,
-    rgba(5, 5, 8, 1.00) 100%
+    rgba(2, 2, 2, 0.42) 0%,
+    rgba(2, 2, 2, 0.72) 60%,
+    rgba(2, 2, 2, 1.00) 100%
   );
 }
 
@@ -168,27 +168,19 @@
   color:           inherit;
   position:        relative;
   overflow:        hidden;
-  border-radius:   12px;
-  border:          0.5px solid rgba(200, 169, 126, 0.20);
-  background:      rgba(200, 169, 126, 0.04);
+  /* Match WorkCard outer frame exactly */
+  border-radius:   20px;
+  border:          0.5px solid rgba(255, 255, 255, 0.07);
+  background:      rgba(5, 5, 10, 0.72);
+  backdrop-filter:         blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
   margin-bottom:   32px;
-  transition:      border-color 0.2s ease, background 0.2s ease;
+  transition:      border-color 0.22s ease, box-shadow 0.22s ease;
 }
 
 .work__featured:hover {
-  border-color: rgba(200, 169, 126, 0.38);
-  background:   rgba(200, 169, 126, 0.07);
-}
-
-/* Top gold sheen */
-.work__featured::before {
-  content:  '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(200,169,126,0.28) 50%, transparent 100%);
-  pointer-events: none;
-  z-index: 1;
+  border-color: rgba(200, 169, 126, 0.28);
+  box-shadow:   0 8px 40px rgba(0, 0, 0, 0.45);
 }
 
 /* "Featured" label */
@@ -210,10 +202,10 @@
 
 /* Thumbnail */
 .work__featured__img-wrap {
-  width:     100%;
+  width:      100%;
   max-height: 360px;
-  overflow:  hidden;
-  border-bottom: 0.5px solid rgba(255, 255, 255, 0.05);
+  overflow:   hidden;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.06);
 }
 
 .work__featured__img {

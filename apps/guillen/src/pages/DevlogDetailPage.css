@@ -5,7 +5,7 @@
 /* ── PAGE SHELL ─────────────────────────────────────────────────────────── */
 
 .page {
-  background: var(--color-bg, #050508);
+  background: var(--color-bg, #020202);
   min-height: 100vh;
   color: var(--color-text, #e8e6e1);
   font-family: var(--font-sans, system-ui, sans-serif);

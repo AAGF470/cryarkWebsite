@@ -50,7 +50,7 @@
   width: 100%;
   height: 0;              /* height set via paddingTop in JSX */
   overflow: hidden;
-  background: #050508;
+  background: #020202;
 }
 
 /* ── Loaded <video> element ──────────────────────────────────────────────── */
@@ -61,7 +61,7 @@
   width: 100%;
   height: 100%;
   display: block;
-  background: #050508;
+  background: #020202;
 }
 
 /* ── Poster overlay ──────────────────────────────────────────────────────── */
@@ -148,7 +148,7 @@
   text-align: center;
   text-transform: uppercase;
   padding: 14px 24px 18px;
-  background: #050508;
+  background: #020202;
   border-top: 0.5px solid rgba(255, 255, 255, 0.04);
   margin: 0;
 }
