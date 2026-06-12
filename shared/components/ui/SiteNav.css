@@ -18,32 +18,62 @@
   height: 62px;
   padding: 0 44px;
 
-  /* Frosted glass at rest — light tint so it reads clearly over hero images */
-  background:    rgba(5, 5, 8, 0.22);
-  border-bottom: 0.5px solid rgba(255, 255, 255, 0.04);
-  backdrop-filter:         blur(18px) saturate(150%);
-  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  /* ── Frosted glass at rest ───────────────────────────────────────────────
+     backdrop-filter blurs whatever sits behind this element. On plain dark
+     pages that produces no visible diffusion because dark-blur = dark.
+     We layer in glass cues that work independently of what's below:
+       • semi-opaque dark tint (distinct from page bg)
+       • inset top-edge highlight (simulates a lit glass surface)
+       • soft drop shadow (depth below the glass)
+       • hairline bottom border
+     Combined they read as frosted glass on any background.               */
+  background:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.045) 0%,
+      rgba(255, 255, 255, 0.000) 100%
+    ),
+    rgba(10, 9, 18, 0.62);
+
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),   /* top-edge glass highlight */
+    0 1px 20px rgba(0, 0, 0, 0.35);            /* shadow below the pane   */
+
+  backdrop-filter:         blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
 
   transition:
     background      0.36s ease,
     border-color    0.36s ease,
+    box-shadow      0.36s ease,
     backdrop-filter 0.36s ease,
     transform       0.32s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Once the user scrolls — go more opaque so it's readable over content */
+/* Once the user scrolls — tighten the tint and sharpen the edge */
 .sitenav--scrolled {
-  background:    rgba(5, 5, 8, 0.88);
-  border-bottom: 0.5px solid rgba(200, 169, 126, 0.14);
-  backdrop-filter:         blur(28px) saturate(160%);
-  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  background:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.03) 0%,
+      rgba(255, 255, 255, 0.00) 100%
+    ),
+    rgba(5, 5, 10, 0.86);
+
+  border-bottom: 0.5px solid rgba(200, 169, 126, 0.16);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.055),
+    0 1px 24px rgba(0, 0, 0, 0.45);
+
+  backdrop-filter:         blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
 }
 
 .sitenav--menu-open {
-  background:    rgba(5, 5, 8, 0.97);
+  background:    rgba(5, 5, 10, 0.97);
   border-bottom: 0.5px solid rgba(200, 169, 126, 0.14);
-  backdrop-filter:         blur(28px) saturate(160%);
-  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  box-shadow:    0 1px 24px rgba(0, 0, 0, 0.50);
+  backdrop-filter:         blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
 }
 
 .sitenav--hidden {
