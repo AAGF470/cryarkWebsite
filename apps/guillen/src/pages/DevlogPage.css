@@ -50,7 +50,9 @@
 .dl-header {
   position: relative;
   z-index:  2;
-  /* Full-width so the hero bg image can bleed edge-to-edge */
+  /* Pull the header up so it starts at y=0, behind the fixed nav.
+     .page has padding-top:62px — this negates it for this element only. */
+  margin-top: -62px;
 }
 
 /* ── Hero background image ───────────────────────────────────────────────── */
@@ -94,15 +96,21 @@
 .dl-header__content {
   position:  relative;
   z-index:   1;
-  padding:   64px 48px 48px;
+  /* Top padding = nav height (62px) + original breathing room (64px) */
+  padding:   126px 48px 48px;
   max-width: min(1920px, 94vw);
   margin:    0 auto;
 }
 
-/* Taller padding when a bg image is present */
+/* With bg: push the text lower so there's lots of image above it.
+   Adjust min-height to control how tall the hero showcase is.      */
+.dl-header--has-bg {
+  min-height: 520px;
+}
+
 .dl-header--has-bg .dl-header__content {
-  padding-top:    96px;
-  padding-bottom: 72px;
+  padding-top:    200px;
+  padding-bottom: 80px;
 }
 
 .dl-header__inner { max-width: 520px; }
@@ -143,8 +151,10 @@
 }
 
 @media (max-width: 768px) {
-  .dl-header__content                  { padding: 48px 24px 32px; }
-  .dl-header--has-bg .dl-header__content { padding: 72px 24px 48px; }
+  .dl-header               { margin-top: -54px; }  /* mobile nav is 54px */
+  .dl-header__content      { padding: 104px 24px 32px; }
+  .dl-header--has-bg       { min-height: 380px; }
+  .dl-header--has-bg .dl-header__content { padding: 140px 24px 48px; }
 }
 
 /* ── MAIN CONTENT ────────────────────────────────────────────────────────── */

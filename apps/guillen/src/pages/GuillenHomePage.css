@@ -117,7 +117,10 @@
   min-height: 86vh;
   display: flex;
   align-items: center;
-  padding: 80px 48px 96px;
+  /* Pull up to y=0 so content sits behind the fixed nav from the start.
+     Increase padding-top by the nav height (62px) to preserve visual spacing. */
+  margin-top: -62px;
+  padding: 142px 48px 96px;
   overflow: hidden;
   /* Solid base — no animated orbs. Grain overlay adds texture above this. */
   background:
@@ -127,8 +130,9 @@
 
 @media (max-width: 768px) {
   .gh-hero {
+    margin-top: -54px;
     min-height: 70vh;
-    padding: 60px 24px 72px;
+    padding: 114px 24px 72px;
     align-items: flex-end;
   }
 }

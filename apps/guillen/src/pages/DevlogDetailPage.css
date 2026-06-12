@@ -58,7 +58,9 @@
 /* ── HEADER ──────────────────────────────────────────────────────────────── */
 
 .dd-header {
-  padding: 64px 0 40px;
+  /* Pull up so back-link starts just below the fixed nav */
+  margin-top: -62px;
+  padding:    126px 0 40px;
 }
 
 .dd-back {
@@ -365,6 +367,7 @@
   }
 
   .dd-header {
-    padding: 48px 0 32px;
+    margin-top: -54px;
+    padding:    104px 0 32px;
   }
 }

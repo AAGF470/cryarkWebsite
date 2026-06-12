@@ -18,30 +18,32 @@
   height: 62px;
   padding: 0 44px;
 
-  background: rgba(5, 5, 8, 0.40);
-  border-bottom: 0.5px solid transparent;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  /* Frosted glass at rest — light tint so it reads clearly over hero images */
+  background:    rgba(5, 5, 8, 0.22);
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.04);
+  backdrop-filter:         blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
 
   transition:
-    background      0.40s ease,
-    border-color    0.40s ease,
-    backdrop-filter 0.40s ease,
+    background      0.36s ease,
+    border-color    0.36s ease,
+    backdrop-filter 0.36s ease,
     transform       0.32s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Once the user scrolls — go more opaque so it's readable over content */
 .sitenav--scrolled {
-  background: rgba(5, 5, 8, 0.85);
-  border-bottom-color: rgba(200, 169, 126, 0.14);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background:    rgba(5, 5, 8, 0.88);
+  border-bottom: 0.5px solid rgba(200, 169, 126, 0.14);
+  backdrop-filter:         blur(28px) saturate(160%);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
 }
 
 .sitenav--menu-open {
-  background: rgba(5, 5, 8, 0.97);
-  border-bottom-color: rgba(200, 169, 126, 0.14);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background:    rgba(5, 5, 8, 0.97);
+  border-bottom: 0.5px solid rgba(200, 169, 126, 0.14);
+  backdrop-filter:         blur(28px) saturate(160%);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
 }
 
 .sitenav--hidden {

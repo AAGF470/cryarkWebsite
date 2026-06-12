@@ -17,7 +17,10 @@
 /* ── HERO SECTION ────────────────────────────────────────────────────────── */
 
 .wd-hero {
-  padding: 64px 0 48px;
+  /* Pull up so the back-link starts just below the fixed nav.
+     margin-top negates .page padding-top; padding-top re-adds nav+breathing room. */
+  margin-top:  -62px;
+  padding:      126px 0 48px;
 }
 
 /* Back link */
@@ -383,7 +386,8 @@
   }
 
   .wd-hero {
-    padding: 48px 0 32px;
+    margin-top: -54px;        /* mobile nav is 54px */
+    padding:    104px 0 32px;
   }
 
   .wd-hero-img {
