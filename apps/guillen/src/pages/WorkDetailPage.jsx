@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { useCmsQuery, PRODUCT_BY_SLUG, cmsImageUrl } from "@shared/lib/cms";
+import { useCmsQuery, PRODUCT_BY_SLUG, DEVLOGS_BY_PROJECT, cmsImageUrl } from "@shared/lib/cms";
 import { PortableText } from "@portabletext/react";
 import SiteNav            from "@shared/components/ui/SiteNav";
 import SiteFooter         from "@shared/components/ui/SiteFooter";
@@ -48,6 +48,13 @@ const STATUS_LABEL = {
   live:     "Live",
   collab:   "Collab",
 };
+
+function format_date(iso) {
+  if (!iso) return "";
+  return new Date(iso).toLocaleDateString("en-US", {
+    month: "short", day: "numeric", year: "numeric",
+  });
+}
 
 // ── Image helper ──────────────────────────────────────────────────────────
 
@@ -292,6 +299,12 @@ export default function WorkDetailPage() {
   const { slug } = useParams();
   const { data: product, loading } = useCmsQuery(PRODUCT_BY_SLUG, { slug });
 
+  // Fetch devlog entries linked to this product (runs once product._id is known)
+  const { data: devlogs } = useCmsQuery(
+    DEVLOGS_BY_PROJECT,
+    { project_id: product?._id ?? "" },
+  );
+
   const hero_src = product_img(product?.key_art ?? product?.hero_image, 1400);
 
   // ── 404 state ─────────────────────────────────────────────────────────
@@ -428,6 +441,45 @@ export default function WorkDetailPage() {
               )}
 
             </div>
+
+            {/* ── Devlog feed ─────────────────────────────────────────── */}
+            {devlogs?.length > 0 && (
+              <section className="wd-devlog-feed">
+                <div className="wd-devlog-feed__header">
+                  <p className="wd-section-label">Devlog</p>
+                  <a href="/devlog" className="wd-devlog-feed__all">View all →</a>
+                </div>
+                <div className="wd-devlog-list">
+                  {devlogs.map(entry => (
+                    <a
+                      key={entry._id}
+                      href={`/devlog/${entry.slug}`}
+                      className="wd-devlog-row"
+                    >
+                      <span className="wd-devlog-row__date">
+                        {format_date(entry.published_at)}
+                      </span>
+                      <div className="wd-devlog-row__body">
+                        <span className="wd-devlog-row__title">{entry.title}</span>
+                        {(entry.abstract || entry.subtitle) && (
+                          <p className="wd-devlog-row__abstract">
+                            {entry.abstract ?? entry.subtitle}
+                          </p>
+                        )}
+                        {entry.tags?.length > 0 && (
+                          <div className="wd-devlog-row__tags">
+                            {entry.tags.map(t => (
+                              <span key={t} className="wd-tag">{t}</span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                      <span className="wd-devlog-row__arrow" aria-hidden="true">→</span>
+                    </a>
+                  ))}
+                </div>
+              </section>
+            )}
           </>
         )}
 

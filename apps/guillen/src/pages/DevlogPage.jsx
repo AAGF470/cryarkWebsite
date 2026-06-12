@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useCmsQuery, ALL_DEVLOGS } from "@shared/lib/cms";
+import { useCmsQuery, ALL_DEVLOGS, PAGE_CONFIG } from "@shared/lib/cms";
 import SiteNav    from "@shared/components/ui/SiteNav";
 import SiteFooter from "@shared/components/ui/SiteFooter";
 import "./DevlogPage.css";
@@ -10,6 +10,9 @@ import "./DevlogPage.css";
 // Featured latest entry rendered as a hero card.
 // Remaining entries as a chronological list with year-group dividers.
 // Year filter buttons show per-year counts.
+//
+// Optional hero background image + title/desc + pinned featured entry
+// are driven by a "pageConfig" document in Sanity (page_id = "guillen_devlog").
 // ---------------------------------------------------------------------------
 
 const GUILLEN_NAV = [
@@ -41,13 +44,15 @@ function format_year(iso) {
   return new Date(iso).getFullYear();
 }
 
-// ── Featured (most recent) entry — hero card ──────────────────────────────
+// ── Featured (hero) entry card ────────────────────────────────────────────
 
-function FeaturedEntry({ entry }) {
+function FeaturedEntry({ entry, pinned }) {
   if (!entry) return null;
   return (
     <a href={`/devlog/${entry.slug}`} className="dl-featured">
-      <p className="dl-featured__badge">Latest entry</p>
+      <p className="dl-featured__badge">
+        {pinned ? "Featured entry" : "Latest entry"}
+      </p>
 
       <div className="dl-featured__meta">
         <span className="dl-featured__date">{relative_date(entry.published_at)}</span>
@@ -147,7 +152,8 @@ function YearFilter({ years, counts, total, active, onChange }) {
 // ── Page ──────────────────────────────────────────────────────────────────
 
 export default function DevlogPage() {
-  const { data, loading } = useCmsQuery(ALL_DEVLOGS);
+  const { data, loading }     = useCmsQuery(ALL_DEVLOGS);
+  const { data: config }      = useCmsQuery(PAGE_CONFIG, { page_id: "guillen_devlog" });
   const [year_filter, set_year_filter] = useState("all");
 
   const years = data
@@ -168,8 +174,13 @@ export default function DevlogPage() {
         : data.filter(e => format_year(e.published_at) === year_filter))
     : [];
 
-  const featured = entries[0] ?? null;
-  const rest     = entries.slice(1);
+  // Use Sanity-pinned featured entry if set; otherwise auto-pick entries[0]
+  const config_featured = config?.featured_entry ?? null;
+  const is_pinned       = !!config_featured;
+  const featured        = config_featured ?? (entries[0] ?? null);
+
+  // List excludes whichever entry is featured to avoid duplication
+  const rest = entries.filter(e => e._id !== featured?._id);
 
   // Render rest of list — with year dividers when viewing all years
   function render_list() {
@@ -192,19 +203,35 @@ export default function DevlogPage() {
     return items;
   }
 
+  const has_bg = !!(config?.bg_image_url);
+
   return (
     <div className="page">
       <div className="gh-grain" aria-hidden="true" />
 
       <SiteNav links={GUILLEN_NAV} logo_text="AG" />
 
-      <header className="dl-header">
-        <div className="dl-header__inner">
-          <div className="dl-eyebrow">Angel A. Guillen · guillen.studio</div>
-          <h1 className="dl-title">Devlog</h1>
+      {/* ── Page header (with optional hero bg image) ───────────────── */}
+      <header className={`dl-header${has_bg ? " dl-header--has-bg" : ""}`}>
+        {has_bg && (
+          <div
+            className="dl-hero-bg"
+            style={{ backgroundImage: `url(${config.bg_image_url})` }}
+            aria-hidden="true"
+          />
+        )}
+        <div className="dl-header__content">
+          <div className="dl-header__inner">
+            <div className="dl-eyebrow">Angel A. Guillen · guillen.studio</div>
+            <h1 className="dl-title">{config?.title ?? "Devlog"}</h1>
+            {config?.description && (
+              <p className="dl-desc">{config.description}</p>
+            )}
+          </div>
         </div>
       </header>
 
+      {/* ── Main content ─────────────────────────────────────────────── */}
       <main className="dl-main">
         {!loading && years.length > 1 && (
           <YearFilter
@@ -224,7 +251,7 @@ export default function DevlogPage() {
           </div>
         ) : (
           <>
-            <FeaturedEntry entry={featured} />
+            <FeaturedEntry entry={featured} pinned={is_pinned} />
 
             {rest.length > 0 && (
               <div className="dl-list">

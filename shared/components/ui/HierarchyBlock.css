@@ -240,3 +240,12 @@
   font-style:  italic;
   letter-spacing: 0.02em;
 }
+
+/* ── Responsive ─────────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .hb-canvas {
+    padding:       16px 14px;
+    border-radius: 8px;
+  }
+}

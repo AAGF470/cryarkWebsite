@@ -49,10 +49,60 @@
 
 .dl-header {
   position: relative;
-  z-index: 2;
-  padding: 64px 48px 48px;
+  z-index:  2;
+  /* Full-width so the hero bg image can bleed edge-to-edge */
+}
+
+/* ── Hero background image ───────────────────────────────────────────────── */
+
+.dl-hero-bg {
+  position:            absolute;
+  inset:               0;
+  background-size:     cover;
+  background-position: center top;
+  background-repeat:   no-repeat;
+  /* Fade the image into the dark site background */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.80) 0%,
+    rgba(0,0,0,0.50) 45%,
+    rgba(0,0,0,0)    100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.80) 0%,
+    rgba(0,0,0,0.50) 45%,
+    rgba(0,0,0,0)    100%
+  );
+}
+
+/* Colour-tinted dark overlay so text is always readable */
+.dl-hero-bg::after {
+  content:  '';
+  position: absolute;
+  inset:    0;
+  background: linear-gradient(
+    to bottom,
+    rgba(5, 5, 8, 0.42) 0%,
+    rgba(5, 5, 8, 0.72) 60%,
+    rgba(5, 5, 8, 1.00) 100%
+  );
+}
+
+/* ── Header content wrapper (restores the max-width constraint) ──────────── */
+
+.dl-header__content {
+  position:  relative;
+  z-index:   1;
+  padding:   64px 48px 48px;
   max-width: min(1920px, 94vw);
-  margin: 0 auto;
+  margin:    0 auto;
+}
+
+/* Taller padding when a bg image is present */
+.dl-header--has-bg .dl-header__content {
+  padding-top:    96px;
+  padding-bottom: 72px;
 }
 
 .dl-header__inner { max-width: 520px; }
@@ -78,21 +128,23 @@
 }
 
 .dl-title {
-  font-size: clamp(36px, 5vw, 52px);
-  font-weight: 500;
+  font-size:      clamp(36px, 5vw, 52px);
+  font-weight:    500;
   letter-spacing: -0.02em;
-  color: #f5f3ef;
-  margin-bottom: 14px;
+  color:          #f5f3ef;
+  margin-bottom:  14px;
 }
 
 .dl-desc {
-  font-size: 14px;
-  color: rgba(232, 230, 225, 0.42);
+  font-size:   14px;
+  color:       rgba(232, 230, 225, 0.50);
   line-height: 1.7;
+  max-width:   480px;
 }
 
 @media (max-width: 768px) {
-  .dl-header { padding: 48px 24px 32px; }
+  .dl-header__content                  { padding: 48px 24px 32px; }
+  .dl-header--has-bg .dl-header__content { padding: 72px 24px 48px; }
 }
 
 /* ── MAIN CONTENT ────────────────────────────────────────────────────────── */

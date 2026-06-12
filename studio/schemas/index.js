@@ -7,6 +7,7 @@ import { experienceType }           from './experience'
 import { aboutProfileType }         from './aboutProfile'
 import { aboutProjectType }         from './aboutProject'
 import { siteLinkType }             from './siteLink'
+import { pageConfigType }           from './pageConfig'
 import {
   codeBlockType,
   designDecisionType,
@@ -48,6 +49,7 @@ export const schemaTypes = [
   experienceType,
   aboutProjectType,
   siteLinkType,
+  pageConfigType,
 
   // ── Shared object / block types ───────────────────────────────────────────
   codeBlockType,

@@ -364,3 +364,27 @@
   color: rgba(200, 169, 126, 0.88);
   background: rgba(200, 169, 126, 0.06);
 }
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .code-block__header {
+    padding: 8px 10px;
+    gap:     7px;
+  }
+
+  .code-block__dots {
+    gap:          5px;
+    margin-right: 2px;
+  }
+
+  .code-block__dot {
+    width:  8px;
+    height: 8px;
+  }
+
+  .code-block__pre {
+    padding:   14px 14px;
+    font-size: 12px;
+  }
+}

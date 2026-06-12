@@ -37,4 +37,6 @@ export {
   ALL_ABOUT_PROJECTS,
   // Site links — social / external links per site (pass { site: ... } as params)
   ALL_SITE_LINKS,
+  // Page hero config — pass { page_id: "guillen_work" | "guillen_devlog" | … }
+  PAGE_CONFIG,
 } from './queries'

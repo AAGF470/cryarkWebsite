@@ -315,6 +315,39 @@ export const DEVLOGS_BY_PROJECT = `
   }
 `
 
+// ── PAGE CONFIG QUERY ─────────────────────────────────────────────────────────
+
+// Hero config for listing pages — identified by page_id (e.g. "guillen_work").
+// Pass { page_id: "guillen_work" } as params.
+export const PAGE_CONFIG = `
+  *[_type == "pageConfig" && page_id == $page_id][0] {
+    "bg_image_url": bg_image.asset->url,
+    title,
+    description,
+    "featured_product": featured_product-> {
+      _id,
+      title,
+      "slug": slug.current,
+      description,
+      subtitle,
+      status,
+      tags,
+      thumbnail,
+    },
+    "featured_entry": featured_entry-> {
+      _id,
+      title,
+      "slug": slug.current,
+      abstract,
+      subtitle,
+      tags,
+      published_at,
+      "project_slug": project->slug.current,
+      "project_title": project->title,
+    },
+  }
+`
+
 // ── ABOUT PAGE QUERIES (shared — use $site parameter) ────────────────────────
 
 // Hero content, bio, education, and contact links for one site
