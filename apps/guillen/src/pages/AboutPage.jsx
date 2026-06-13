@@ -11,19 +11,14 @@
 // ---------------------------------------------------------------------------
 
 import SharedAboutPage from "@shared/components/about/AboutPage";
-
-const NAV = [
-  { to: "/work",   label: "Work"   },
-  { to: "/devlog", label: "Devlog" },
-  { to: "/about",  label: "About"  },
-];
+import { GUILLEN_NAV } from "../nav.jsx";
 
 export default function AboutPage() {
   return (
     <SharedAboutPage
       site="guillen"
       variant="guillen"
-      nav_links={NAV}
+      nav_links={GUILLEN_NAV}
       logo_text="AG"
     />
   );

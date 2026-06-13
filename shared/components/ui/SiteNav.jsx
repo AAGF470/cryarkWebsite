@@ -1,14 +1,14 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { createPortal }         from "react-dom";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import "./SiteNav.css";
 
 // ---------------------------------------------------------------------------
-// SiteNav — floating pill dock
+// SiteNav — floating dock, top-left
 //
 // Props:
 //   links      array   — nav link items [{ to, label, icon? }]
-//   cta_label  string  — CTA text (e.g. "Resume"). Pass null to hide.
+//   cta_label  string  — CTA text. Pass null to hide.
 //   cta_href   string  — CTA href
 //   logo_text  string? — text monogram (e.g. "AG"). Falls back to image logo.
 // ---------------------------------------------------------------------------
@@ -29,8 +29,12 @@ export default function SiteNav({
   const [hidden,    set_hidden]    = useState(false);
   const [logo_err,  set_logo_err]  = useState(false);
   const [menu_open, set_menu_open] = useState(false);
-  const last_y  = useRef(0);
-  const location = useLocation();
+
+  // Glider state — the liquid-glass active indicator
+  const [glider, set_glider] = useState({ left: 0, width: 0, visible: false });
+  const links_ref = useRef(null);
+  const location  = useLocation();
+  const last_y    = useRef(0);
 
   // Close menu on route change
   useEffect(() => {
@@ -71,16 +75,34 @@ export default function SiteNav({
     };
   }, [menu_open]);
 
+  // ── Glider: measure and position on every route change ──────────────────
+  // useLayoutEffect fires after DOM update but before paint → glider is
+  // always in the right place with no visible flash.
+  useLayoutEffect(() => {
+    if (!links_ref.current) return;
+    const active = links_ref.current.querySelector(".sitenav__link--active");
+    if (active) {
+      const container = links_ref.current.getBoundingClientRect();
+      const item      = active.getBoundingClientRect();
+      set_glider({
+        left:    item.left - container.left,
+        width:   item.width,
+        visible: true,
+      });
+    } else {
+      set_glider(g => ({ ...g, visible: false }));
+    }
+  }, [location.pathname]);
+
   const cls = [
     "sitenav",
     hidden    ? "sitenav--hidden"    : "",
     menu_open ? "sitenav--menu-open" : "",
   ].filter(Boolean).join(" ");
 
-  // Render via portal so backdrop-filter never hits an overflow:hidden ancestor.
   return createPortal(
     <>
-      {/* ── Floating pill ────────────────────────────────────────────────── */}
+      {/* ── Floating dock ────────────────────────────────────────────────── */}
       <nav className={cls} role="navigation" aria-label="Main navigation">
 
         {/* Logo / monogram */}
@@ -99,11 +121,22 @@ export default function SiteNav({
           )}
         </NavLink>
 
-        {/* Hairline separator */}
         <span className="sitenav__sep" aria-hidden="true" />
 
-        {/* Nav links — icon + sliding label */}
-        <div className="sitenav__links">
+        {/* Nav links with the liquid-glass glider behind them */}
+        <div className="sitenav__links" ref={links_ref}>
+
+          {/* Glider — slides under the active item like a water drop */}
+          <div
+            className="sitenav__glider"
+            aria-hidden="true"
+            style={{
+              left:    glider.left,
+              width:   glider.width,
+              opacity: glider.visible ? 1 : 0,
+            }}
+          />
+
           {links.map(({ to, label, icon }) => (
             <NavLink
               key={to}
@@ -184,7 +217,6 @@ export default function SiteNav({
         )}
       </div>
 
-      {/* Backdrop — tap outside to close */}
       {menu_open && (
         <div
           className="sitenav__backdrop"

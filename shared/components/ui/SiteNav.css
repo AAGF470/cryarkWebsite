@@ -1,25 +1,24 @@
 /* ---------------------------------------------------------------------------
-   SiteNav.css — floating pill dock
-   Centered, frosted glass pill. Each nav item shows icon at rest;
-   hovered / active item slides label in. Mobile collapses to logo + hamburger
-   with a floating card menu below.
+   SiteNav.css — floating dock (top-left)
+   Frosted glass panel. Icon-only links at rest, label slides in on hover/active.
+   A liquid-glass "glider" flows under the active item like a water drop.
 --------------------------------------------------------------------------- */
 
-/* ── FLOATING PILL ──────────────────────────────────────────────────────── */
+/* ── FLOATING DOCK ──────────────────────────────────────────────────────── */
 
 .sitenav {
   position: fixed;
   top: 14px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 24px;            /* anchored top-left */
   z-index: 200;
 
   display: flex;
   align-items: center;
   gap: 2px;
-  padding: 5px 6px;
+  padding: 6px 8px;
 
-  border-radius: 99px;
+  /* Boxier — not fully pill-shaped */
+  border-radius: 14px;
   border: 0.5px solid rgba(255, 255, 255, 0.10);
   background: rgba(10, 10, 10, 0.86);
   box-shadow:
@@ -29,21 +28,19 @@
   backdrop-filter:         blur(28px) saturate(180%);
   -webkit-backdrop-filter: blur(28px) saturate(180%);
 
-  /* Only transition the hide transform; everything else snaps */
-  transition: transform 0.30s cubic-bezier(0.4, 0, 0.2, 1),
-              opacity   0.30s ease;
+  transition:
+    transform 0.30s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity   0.30s ease;
 }
 
-/* Hide: slide up and fade */
 .sitenav--hidden {
-  transform: translateX(-50%) translateY(-80px);
+  transform: translateY(-80px);
   opacity: 0;
   pointer-events: none;
 }
 
-/* Mobile menu open: slightly more opaque */
 .sitenav--menu-open {
-  background: rgba(8, 8, 8, 0.96);
+  background: rgba(8, 8, 8, 0.97);
   border-color: rgba(200, 169, 126, 0.14);
 }
 
@@ -53,9 +50,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
   text-decoration: none;
   color: rgba(232, 230, 225, 0.55);
   flex-shrink: 0;
@@ -100,26 +97,55 @@
   margin: 0 3px;
 }
 
-/* ── NAV LINKS ────────────────────────────────────────────────────────────── */
+/* ── NAV LINKS + GLIDER ───────────────────────────────────────────────────── */
 
+/* Container is relative so the glider can be absolutely positioned inside */
 .sitenav__links {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 2px;
 }
 
-/* Each link: icon-only at rest, label slides in on hover */
+/* ── Liquid-glass glider ──
+   Flows under the active item. Spring transition = water-drop feel.        */
+.sitenav__glider {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  border-radius: 8px;
+
+  /* Gold-tinted frosted glass — distinct from plain hover */
+  background: rgba(200, 169, 126, 0.09);
+  border: 0.5px solid rgba(200, 169, 126, 0.22);
+  box-shadow:
+    0 1px 0 rgba(200, 169, 126, 0.10) inset,
+    0 2px 10px rgba(200, 169, 126, 0.06);
+
+  pointer-events: none;
+  z-index: 0;
+
+  /* Spring easing for the "liquid" feel — slight overshoot on x, smooth on width */
+  transition:
+    left    0.38s cubic-bezier(0.34, 1.28, 0.64, 1),
+    width   0.30s cubic-bezier(0.4,  0,    0.2,  1),
+    opacity 0.20s ease;
+}
+
+/* Each nav link sits above the glider */
 .sitenav__link {
+  position: relative;
+  z-index: 1;
+
   display: flex;
   align-items: center;
   gap: 0;
-  padding: 7px 9px;
-  border-radius: 99px;
+  padding: 7px 10px;
+  border-radius: 8px;
   text-decoration: none;
   color: rgba(232, 230, 225, 0.42);
   white-space: nowrap;
 
-  /* Animate gap and right padding smoothly when label appears */
   transition:
     background 0.16s ease,
     color      0.16s ease,
@@ -127,26 +153,27 @@
     padding    0.20s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Hover: neutral highlight (glider handles active) */
 .sitenav__link:hover {
-  background: rgba(255, 255, 255, 0.06);
-  color: rgba(232, 230, 225, 0.92);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(232, 230, 225, 0.88);
   gap: 6px;
-  padding-right: 13px;
+  padding-right: 14px;
 }
 
+/* Active: gold text + expand label; background handled by glider */
 .sitenav__link--active {
-  background: rgba(200, 169, 126, 0.10);
   color: rgba(200, 169, 126, 0.88);
   gap: 6px;
-  padding-right: 13px;
+  padding-right: 14px;
 }
 
 .sitenav__link--active:hover {
-  background: rgba(200, 169, 126, 0.14);
+  background: transparent;   /* glider already provides the background */
   color: rgba(200, 169, 126, 1);
 }
 
-/* Icon wrapper */
+/* Icon */
 .sitenav__icon {
   display: flex;
   align-items: center;
@@ -170,13 +197,13 @@
     opacity   0.18s ease;
 }
 
-.sitenav__link:hover     .sitenav__label,
-.sitenav__link--active   .sitenav__label {
+.sitenav__link:hover   .sitenav__label,
+.sitenav__link--active .sitenav__label {
   max-width: 80px;
   opacity: 1;
 }
 
-/* No-icon fallback: always show the label */
+/* Fallback: if no icon, always show label */
 .sitenav__link:not(:has(.sitenav__icon)) .sitenav__label {
   max-width: 80px;
   opacity: 1;
@@ -192,7 +219,7 @@
   color: rgba(200, 169, 126, 0.60);
   text-decoration: none;
   padding: 7px 13px;
-  border-radius: 99px;
+  border-radius: 8px;
   border: 0.5px solid rgba(200, 169, 126, 0.18);
   background: rgba(200, 169, 126, 0.04);
   transition: color 0.16s ease, border-color 0.16s ease, background 0.16s ease;
@@ -208,19 +235,20 @@
 /* ── HAMBURGER (mobile only) ─────────────────────────────────────────────── */
 
 .sitenav__hamburger {
-  display: none;                /* hidden on desktop */
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 4px;
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   padding: 0;
   background: transparent;
   border: none;
   cursor: pointer;
-  border-radius: 50%;
+  border-radius: 8px;
   transition: background 0.16s ease;
+  margin-left: auto;
 }
 
 .sitenav__hamburger:hover {
@@ -237,7 +265,7 @@
   transition: transform 0.22s ease, opacity 0.18s ease, width 0.18s ease;
 }
 
-.sitenav__hamburger--open span:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+.sitenav__hamburger--open span:nth-child(1) { transform: translateY(5px) rotate(45deg);  }
 .sitenav__hamburger--open span:nth-child(2) { opacity: 0; width: 0; }
 .sitenav__hamburger--open span:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
 
@@ -245,14 +273,14 @@
 
 .sitenav__mobile {
   position: fixed;
-  top: 72px;                    /* pill top (14) + pill height (48) + gap (10) */
+  top: 68px;              /* dock bottom (14 + 46 + 8 gap) */
   left: 14px;
   right: 14px;
   z-index: 199;
 
-  border-radius: 18px;
+  border-radius: 16px;
   border: 0.5px solid rgba(255, 255, 255, 0.08);
-  background: rgba(10, 10, 10, 0.96);
+  background: rgba(10, 10, 10, 0.97);
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.60);
   backdrop-filter:         blur(28px) saturate(160%);
   -webkit-backdrop-filter: blur(28px) saturate(160%);
@@ -283,7 +311,7 @@
   align-items: center;
   gap: 12px;
   padding: 14px 16px;
-  border-radius: 12px;
+  border-radius: 10px;
   text-decoration: none;
   font-size: 15px;
   font-weight: 500;
@@ -315,7 +343,6 @@
   opacity: 1;
 }
 
-/* CTA row in mobile menu */
 .sitenav__mobile_cta {
   padding: 8px 8px 10px;
   border-top: 0.5px solid rgba(255, 255, 255, 0.06);
@@ -326,7 +353,7 @@
   display: block;
   text-align: center;
   padding: 13px;
-  border-radius: 12px;
+  border-radius: 10px;
   border: 0.5px solid rgba(200, 169, 126, 0.20);
   background: rgba(200, 169, 126, 0.04);
   color: rgba(200, 169, 126, 0.72);
@@ -355,37 +382,27 @@
   -webkit-backdrop-filter: blur(4px);
 }
 
-/* ── RESPONSIVE — mobile breakpoint ─────────────────────────────────────── */
+/* ── RESPONSIVE ──────────────────────────────────────────────────────────── */
 
 @media (max-width: 640px) {
   .sitenav {
-    /* Stretch toward edges on small screens, but keep pill shape */
     left: 14px;
     right: 14px;
-    transform: none;
     justify-content: space-between;
   }
 
-  /* Hidden state on mobile: translate up */
-  .sitenav--hidden {
-    transform: translateY(-80px);
-  }
-
-  /* Hide desktop elements */
   .sitenav__links,
   .sitenav__sep,
   .sitenav__cta {
     display: none;
   }
 
-  /* Show hamburger */
   .sitenav__hamburger {
     display: flex;
   }
 }
 
-/* ── :has() fallback for browsers without icon support ─────────────────── */
-/* If :has() not supported, labels are always visible (graceful fallback) */
+/* ── Fallback: :has() not supported → labels always visible ───────────────── */
 @supports not selector(:has(.sitenav__icon)) {
   .sitenav__label {
     max-width: 80px;
