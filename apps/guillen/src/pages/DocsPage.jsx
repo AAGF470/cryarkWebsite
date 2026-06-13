@@ -244,6 +244,7 @@ export default function DocsPage() {
           space_slug={space_slug}
           pages={space?.pages ?? []}
           current_slug={page_slug ?? ""}
+          product_slug={space?.product_slug}
         />
 
         {/* ── Main content ──────────────────────────────────────────────── */}

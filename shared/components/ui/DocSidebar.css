@@ -28,15 +28,39 @@
   border-radius: 99px;
 }
 
-/* ── Header (space name + mobile toggle) ────────────────────────────────── */
+/* ── Header (back link + space name + mobile toggle) ────────────────────── */
 
 .doc-sidebar__header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 24px 16px 16px;
+  flex-direction: column;
+  padding: 20px 16px 14px;
   border-bottom: 0.5px solid rgba(255, 255, 255, 0.05);
   flex-shrink: 0;
+  gap: 8px;
+}
+
+/* Back-to-project link */
+.doc-sidebar__back {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: rgba(232, 230, 225, 0.30);
+  text-decoration: none;
+  transition: color 0.16s ease;
+  line-height: 1;
+}
+
+.doc-sidebar__back:hover {
+  color: rgba(232, 230, 225, 0.70);
+}
+
+/* Row: space-name (left) + mobile toggle (right) */
+.doc-sidebar__header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .doc-sidebar__space-name {

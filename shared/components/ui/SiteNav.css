@@ -14,7 +14,11 @@
   /* Align with the page's own auto-margin: content uses max-width:min(1920px,94vw)
      so its left edge lands at (100vw - 94vw)/2 = 3vw. Min 20px for small screens. */
   top: 14px;
-  left: max(20px, 3vw);
+  /* Track the exact auto-margin the content uses: max-width:min(1920px,94vw) + margin:auto
+     At <2048px viewport: left = (100vw - 94vw)/2 = 3vw
+     At >2048px viewport: left = (100vw - 1920px)/2  (content hits its 1920px cap)
+     Without this, on wide monitors the nav floats far left of the content column. */
+  left: max(20px, calc((100vw - min(1920px, 94vw)) / 2));
   z-index: 200;
 
   display: flex;

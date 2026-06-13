@@ -96,7 +96,7 @@ function check_descendant(node, slug) {
 
 // ── Main component ────────────────────────────────────────────────────────────
 
-export default function DocSidebar({ space_title, space_slug, pages = [], current_slug }) {
+export default function DocSidebar({ space_title, space_slug, pages = [], current_slug, product_slug }) {
   const [mobile_open, set_mobile_open] = useState(false);
   const tree = build_tree(pages);
 
@@ -105,16 +105,26 @@ export default function DocSidebar({ space_title, space_slug, pages = [], curren
 
       {/* Space title */}
       <div className="doc-sidebar__header">
-        <a href={`/docs/${space_slug}`} className="doc-sidebar__space-name">
-          {space_title}
-        </a>
-        <button
-          className="doc-sidebar__toggle"
-          onClick={() => set_mobile_open(o => !o)}
-          aria-label={mobile_open ? "Close navigation" : "Open navigation"}
-        >
-          <span /><span /><span />
-        </button>
+
+        {/* Back to project — only when space belongs to a product */}
+        {product_slug && (
+          <a href={`/work/${product_slug}`} className="doc-sidebar__back">
+            ← Project page
+          </a>
+        )}
+
+        <div className="doc-sidebar__header-row">
+          <a href={`/docs/${space_slug}`} className="doc-sidebar__space-name">
+            {space_title}
+          </a>
+          <button
+            className="doc-sidebar__toggle"
+            onClick={() => set_mobile_open(o => !o)}
+            aria-label={mobile_open ? "Close navigation" : "Open navigation"}
+          >
+            <span /><span /><span />
+          </button>
+        </div>
       </div>
 
       {/* Page tree */}
