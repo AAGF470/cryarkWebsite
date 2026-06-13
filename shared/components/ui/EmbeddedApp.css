@@ -54,7 +54,7 @@
 .embedded-app__frame {
   position: relative;
   width: 100%;
-  background: #111111;
+  background: #050508;
   overflow: hidden;
 }
 
@@ -85,7 +85,7 @@
   align-items: center;
   justify-content: center;
   gap: 16px;
-  background: #111111;
+  background: #050508;
   z-index: 2;
   pointer-events: none;
 }

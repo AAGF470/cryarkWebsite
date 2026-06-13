@@ -40,7 +40,7 @@
   position:      relative;
   width:         100%;
   overflow:      hidden;
-  background:    #050506; /* matches page canvas — no border, no card shadow */
+  background:    #07060c; /* matches page canvas — no border, no card shadow */
 }
 
 /* ── Iframe ─────────────────────────────────────────────────────────────────── */

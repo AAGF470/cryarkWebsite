@@ -31,7 +31,7 @@
 }
 
 /* ── Gradient veil ───────────────────────────────────────────────────────── */
-/* Fades the page background colour (#111111) in at top and bottom.
+/* Fades the page background colour (#050508) in at top and bottom.
    The image stays most visible in the vertical middle third.
    Left edge also fades slightly for left-aligned text layouts.            */
 
@@ -43,14 +43,14 @@
     /* Top fade */
     linear-gradient(
       to bottom,
-      #111111 0%,
+      #050508 0%,
       rgba(5, 5, 8, 0.55) 18%,
       transparent 38%
     ),
     /* Bottom fade — heavier so text is always readable */
     linear-gradient(
       to top,
-      #111111 0%,
+      #050508 0%,
       rgba(5, 5, 8, 0.80) 22%,
       rgba(5, 5, 8, 0.25) 45%,
       transparent 62%
@@ -62,13 +62,13 @@
   background:
     linear-gradient(
       to bottom,
-      #111111 0%,
+      #050508 0%,
       rgba(5, 5, 8, 0.55) 18%,
       transparent 38%
     ),
     linear-gradient(
       to top,
-      #111111 0%,
+      #050508 0%,
       rgba(5, 5, 8, 0.80) 22%,
       rgba(5, 5, 8, 0.25) 45%,
       transparent 62%

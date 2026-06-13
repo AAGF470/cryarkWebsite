@@ -7,8 +7,8 @@
   --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
 
   /* Palette */
-  --color-bg:          #111111;   /* dark grey — lifted from near-black */
-  --color-surface:     #1a1a1a;   /* neutral elevated surface */
+  --color-bg:          #050508;   /* slightly blue-black */
+  --color-surface:     #0a090e;   /* elevated surface, subtle blue-black */
   --color-text:        #e8e6e1;
   --color-text-dim:    rgba(232, 230, 225, 0.42);
   --color-text-faint:  rgba(232, 230, 225, 0.22);

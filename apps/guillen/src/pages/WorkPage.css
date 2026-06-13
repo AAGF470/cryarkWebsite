@@ -5,7 +5,7 @@
 /* ── PAGE SHELL (grain overlay defined in GuillenHomePage.css — reused) ─── */
 
 .page {
-  background: var(--color-bg, #111111);
+  background: var(--color-bg, #050508);
   min-height: 100vh;
   color: var(--color-text, #e8e6e1);
   font-family: var(--font-sans, system-ui, sans-serif);
@@ -85,9 +85,9 @@
   inset:    0;
   background: linear-gradient(
     to bottom,
-    rgba(17, 17, 17, 0.42) 0%,
-    rgba(17, 17, 17, 0.72) 60%,
-    rgba(17, 17, 17, 1.00) 100%
+    rgba(5, 5, 8, 0.42) 0%,
+    rgba(5, 5, 8, 0.72) 60%,
+    rgba(5, 5, 8, 1.00) 100%
   );
 }
 

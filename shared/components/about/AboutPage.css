@@ -37,7 +37,7 @@
 /* ── PAGE SHELL ─────────────────────────────────────────────────────────── */
 
 .ab-page {
-  background: var(--color-bg, #111111);
+  background: var(--color-bg, #050508);
   min-height: 100vh;
   color: #e8e6e1;
   font-family: system-ui, sans-serif;
@@ -973,7 +973,7 @@
   .ab-body,
   body {
     background: #ffffff !important;
-    color: #111111 !important;
+    color: #050508 !important;
   }
 
   /* Hide chrome */
