@@ -121,8 +121,9 @@ export default function DocSidebar({ space_title, space_slug, pages = [], curren
             className="doc-sidebar__toggle"
             onClick={() => set_mobile_open(o => !o)}
             aria-label={mobile_open ? "Close navigation" : "Open navigation"}
+            aria-expanded={mobile_open}
           >
-            <span /><span /><span />
+            {mobile_open ? "Close ✕" : "Pages ▾"}
           </button>
         </div>
       </div>

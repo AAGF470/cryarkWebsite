@@ -1,30 +1,46 @@
 /* ---------------------------------------------------------------------------
    DocSidebar.css
-   Left-rail navigation for the docs layout.
-   Sticky on desktop, collapsible drawer on mobile.
+
+   Desktop: floating glass panel — same material as SiteNav.
+   Mobile:  full-width collapsible strip; toggle is a text pill, not a
+            hamburger, so it doesn't conflict with SiteNav's hamburger.
 --------------------------------------------------------------------------- */
 
 /* ── Shell ──────────────────────────────────────────────────────────────── */
 
 .doc-sidebar {
   position: sticky;
-  top: 62px;           /* matches SiteNav height */
-  height: calc(100vh - 62px);
+  /* 62px nav + 16px breathing room = 78px from viewport top */
+  top: 78px;
+  /* Full remaining height minus top offset (78px) and a 16px bottom gap */
+  height: calc(100vh - 94px);
   overflow-y: auto;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.012);
-  border-right: 0.5px solid rgba(255, 255, 255, 0.055);
+
+  /* Float it away from the left grid edge */
+  margin: 0 8px 16px 16px;
+
+  /* Frosted glass panel — matches the SiteNav aesthetic */
+  background: rgba(10, 10, 10, 0.86);
+  border: 0.5px solid rgba(255, 255, 255, 0.10);
+  border-radius: 14px;
+  box-shadow:
+    0 8px 40px rgba(0, 0, 0, 0.55),
+    0 1px 0 rgba(255, 255, 255, 0.06) inset;
+  backdrop-filter:         blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+
   scrollbar-width: thin;
-  scrollbar-color: rgba(200, 169, 126, 0.12) transparent;
+  scrollbar-color: rgba(200, 169, 126, 0.10) transparent;
   flex-shrink: 0;
 }
 
 .doc-sidebar::-webkit-scrollbar       { width: 3px; }
 .doc-sidebar::-webkit-scrollbar-track { background: transparent; }
 .doc-sidebar::-webkit-scrollbar-thumb {
-  background: rgba(200, 169, 126, 0.12);
+  background: rgba(200, 169, 126, 0.10);
   border-radius: 99px;
 }
 
@@ -33,7 +49,7 @@
 .doc-sidebar__header {
   display: flex;
   flex-direction: column;
-  padding: 20px 16px 14px;
+  padding: 18px 16px 14px;
   border-bottom: 0.5px solid rgba(255, 255, 255, 0.05);
   flex-shrink: 0;
   gap: 8px;
@@ -46,7 +62,7 @@
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.01em;
-  color: rgba(232, 230, 225, 0.30);
+  color: rgba(232, 230, 225, 0.28);
   text-decoration: none;
   transition: color 0.16s ease;
   line-height: 1;
@@ -61,6 +77,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 8px;
 }
 
 .doc-sidebar__space-name {
@@ -72,37 +89,44 @@
   text-decoration: none;
   transition: color 0.16s ease;
   line-height: 1.3;
+  min-width: 0;
 }
 
 .doc-sidebar__space-name:hover {
   color: rgba(200, 169, 126, 1);
 }
 
-/* Mobile hamburger — hidden on desktop */
+/* Mobile toggle — text pill, hidden on desktop */
 .doc-sidebar__toggle {
   display: none;
-  flex-direction: column;
+  align-items: center;
   gap: 4px;
-  background: transparent;
-  border: none;
+  padding: 3px 9px;
+  border-radius: 99px;
+  border: 0.5px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(232, 230, 225, 0.55);
+  font-size: 11px;
+  font-weight: 500;
+  font-family: var(--font-sans, system-ui, sans-serif);
+  letter-spacing: 0.04em;
   cursor: pointer;
-  padding: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.16s ease, color 0.16s ease, border-color 0.16s ease;
 }
 
-.doc-sidebar__toggle span {
-  display: block;
-  width: 16px;
-  height: 1.5px;
-  background: rgba(232, 230, 225, 0.45);
-  border-radius: 2px;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+.doc-sidebar__toggle:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(232, 230, 225, 0.88);
+  border-color: rgba(255, 255, 255, 0.20);
 }
 
 /* ── Nav tree ────────────────────────────────────────────────────────────── */
 
 .doc-sidebar__nav {
   flex: 1;
-  padding: 10px 0 32px;
+  padding: 10px 0 24px;
 }
 
 .doc-sidebar__tree,
@@ -189,22 +213,50 @@
   font-weight: 500;
 }
 
-/* ── Mobile ──────────────────────────────────────────────────────────────── */
+/* ── Mobile (≤ 860px) ────────────────────────────────────────────────────── */
 
 @media (max-width: 860px) {
   .doc-sidebar {
+    /* Reset floating-panel styles — full-width inline strip */
     position: static;
     height: auto;
+    top: auto;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    /* Simpler inline strip */
+    background: rgba(10, 10, 10, 0.60);
+    border: none;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.07);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+
     overflow: hidden;
-    border-right: none;
-    border-bottom: 0.5px solid rgba(255, 255, 255, 0.055);
-    max-height: 52px;            /* only header visible when closed */
-    transition: max-height 0.28s ease;
+    max-height: 50px;
+    transition: max-height 0.28s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .doc-sidebar--open {
     max-height: 600px;
     overflow-y: auto;
+  }
+
+  .doc-sidebar__header {
+    flex-direction: row;
+    align-items: center;
+    padding: 11px 16px;
+    gap: 0;
+    border-bottom: none;
+  }
+
+  /* On mobile the header always shows as a single row:
+     back link (if any) | space name | toggle pill */
+  .doc-sidebar__back {
+    display: none;  /* hidden on mobile — too cramped; back is in the toggle row */
+  }
+
+  .doc-sidebar__header-row {
+    flex: 1;
   }
 
   .doc-sidebar__toggle {
@@ -213,5 +265,6 @@
 
   .doc-sidebar__nav {
     padding-bottom: 16px;
+    border-top: 0.5px solid rgba(255, 255, 255, 0.05);
   }
 }

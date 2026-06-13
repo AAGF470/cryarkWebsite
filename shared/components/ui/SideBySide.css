@@ -40,7 +40,10 @@
 /* ── Responsive ──────────────────────────────────────────────────────────── */
 
 @media (max-width: 768px) {
+  /* Must enumerate every attribute variant — they each have higher specificity
+     than a plain .sbs class rule, so they'd override without being listed. */
   .sbs,
+  .sbs[data-split="50/50"],
   .sbs[data-split="60/40"],
   .sbs[data-split="40/60"],
   .sbs[data-split="67/33"],

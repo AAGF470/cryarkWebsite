@@ -14,6 +14,9 @@
 .docs-layout {
   display: grid;
   grid-template-columns: 260px 1fr 200px;
+  /* top padding pushes the sidebar below the nav with breathing room.
+     The sidebar itself uses top:78px sticky (62px nav + 16px gap). */
+  padding-top: 16px;
   min-height: calc(100vh - 62px);
   align-items: start;
   position: relative;
@@ -32,6 +35,7 @@
 @media (max-width: 860px) {
   .docs-layout {
     grid-template-columns: 1fr;
+    padding-top: 0;   /* sidebar strip flows inline — no gap needed */
   }
 }
 
