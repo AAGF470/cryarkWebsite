@@ -11,14 +11,12 @@
 
 .sitenav {
   position: fixed;
-  /* Align with the page's own auto-margin: content uses max-width:min(1920px,94vw)
-     so its left edge lands at (100vw - 94vw)/2 = 3vw. Min 20px for small screens. */
   top: 14px;
-  /* Track the exact auto-margin the content uses: max-width:min(1920px,94vw) + margin:auto
-     At <2048px viewport: left = (100vw - 94vw)/2 = 3vw
-     At >2048px viewport: left = (100vw - 1920px)/2  (content hits its 1920px cap)
-     Without this, on wide monitors the nav floats far left of the content column. */
-  left: max(20px, calc((100vw - min(1920px, 94vw)) / 2));
+  /* Align with where the actual page content starts — not just the container edge.
+     Content uses: max-width:min(1920px,94vw) + margin:auto + padding:0 48px
+     So content left edge = (100vw - min(1920px,94vw)) / 2  +  48px
+     A 768px breakpoint matches the content's responsive padding drop to 24px. */
+  left: max(20px, calc((100vw - min(1920px, 94vw)) / 2 + 48px));
   z-index: 200;
 
   display: flex;
@@ -365,6 +363,13 @@
 }
 
 /* ── RESPONSIVE ──────────────────────────────────────────────────────────── */
+
+/* Tablet range (641–768px): content padding drops from 48px to 24px */
+@media (max-width: 768px) {
+  .sitenav {
+    left: max(20px, calc((100vw - min(1920px, 94vw)) / 2 + 24px));
+  }
+}
 
 @media (max-width: 640px) {
   .sitenav {

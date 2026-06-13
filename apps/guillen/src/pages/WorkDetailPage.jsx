@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { useCmsQuery, PRODUCT_BY_SLUG, DEVLOGS_BY_PROJECT, cmsImageUrl } from "@shared/lib/cms";
 import { PortableText } from "@portabletext/react";
 import SiteNav            from "@shared/components/ui/SiteNav";
+import Button             from "@shared/components/ui/Button";
 import SiteFooter         from "@shared/components/ui/SiteFooter";
 import CodeBlock          from "@shared/components/ui/CodeBlock";
 import TitleBlock         from "@shared/components/ui/TitleBlock";
@@ -371,15 +372,13 @@ export default function WorkDetailPage() {
               {product.cta_links?.length > 0 && (
                 <div className="wd-cta-row">
                   {product.cta_links.map((cta, i) => (
-                    <a
+                    <Button
                       key={i}
+                      label={cta.label}
                       href={cta.href}
-                      className={`wd-cta-btn wd-cta-btn--${cta.variant ?? "solid"}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {cta.label}
-                    </a>
+                      variant={cta.variant ?? "solid"}
+                      lava={cta.lava ?? false}
+                    />
                   ))}
                 </div>
               )}
