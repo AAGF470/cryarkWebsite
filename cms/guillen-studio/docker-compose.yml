@@ -1,0 +1,32 @@
+# Payload pilot for guillen.studio — runs as a graduated (stateful) stack on RAYA.
+# Security notes baked in:
+#   • Postgres is on an INTERNAL network only — never exposed to the internet.
+#   • DB data is bind-mounted under /srv/docker → captured by the backup kit.
+#   • NPM routes cms.guillen.studio -> guillen-cms:3000 (by container name, proxy net).
+services:
+  guillen-cms:
+    build: .                      # Dockerfile from `create-payload-app`
+    container_name: guillen-cms
+    restart: unless-stopped
+    environment:
+      DATABASE_URI: postgres://payload:${DB_PASSWORD}@guillen-cms-db:5432/payload
+      PAYLOAD_SECRET: ${PAYLOAD_SECRET}
+      PAYLOAD_PUBLIC_SERVER_URL: https://cms.guillen.studio
+    depends_on: [guillen-cms-db]
+    networks: [proxy, internal]
+
+  guillen-cms-db:
+    image: postgres:16-alpine
+    container_name: guillen-cms-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: payload
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: payload
+    volumes:
+      - /srv/docker/guillen-cms/pgdata:/var/lib/postgresql/data
+    networks: [internal]          # not on proxy → not reachable from outside
+
+networks:
+  proxy:    { external: true }
+  internal: {}
