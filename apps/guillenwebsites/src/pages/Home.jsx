@@ -120,7 +120,7 @@ export default function Home() {
         <PricingPlans
           eyebrow="Packages"
           headline="Flat, all-in pricing"
-          subtext="One first-year price covers design, hosting, and your domain. After year one it's just $300/yr for hosting and domain renewal — billed transparently."
+          subtext="Three tiers, one flat first-year price covering design, hosting, and your domain — then a low yearly rate for hosting + domain renewal, billed transparently. Current pricing is an intentional market-entry rate; existing clients stay grandfathered."
           plans={PLANS}
           variant="default"
         />
@@ -191,8 +191,10 @@ export default function Home() {
           <h2 className="section-title">Your site is built from a real component library</h2>
           <p className="section-sub">
             Every Guillen Solutions site is assembled from the same tested, mobile-ready,
-            light-and-dark component set — the one this very page uses. It means faster builds,
-            a consistent look, and pieces you can rearrange as you grow.
+            light-and-dark component set — the one this very page uses. One theme file morphs
+            it into completely different looks: the same system powers three sites that look
+            nothing alike — Cryark (cinematic), a university CubeSat team, and guillen.studio.
+            That's how you get custom-tier design at near-template cost.
           </p>
           <div className="gs-libpeek__grid">
             {LIBRARY_PEEK.map(item => (

@@ -8,10 +8,29 @@ export const CONTACT_EMAIL = 'contact@guillensolutions.com'
 
 export const PACKAGES = [
   {
+    id: 'freelance',
+    tag: 'Solo & freelancers',
+    name: 'Freelance / Solo',
+    price: '$600',
+    period: 'first year, all-in',
+    description: 'A polished professional template — a credible presence for independent professionals, without the custom-build cost.',
+    note: 'After year one: $200/yr hosting + domain renewal.',
+    features: [
+      'Up to 5 pages — 3 designed for you + 2 self-serve',
+      'Professional template design',
+      'Self-serve content — edit it yourself',
+      'Managed hosting — SSL, backups, uptime',
+      'Domain registered in your name',
+      'Everything is yours to keep',
+    ],
+    firstYear: 600,
+    recurring: 200,
+  },
+  {
     id: 'standard',
     badge: 'Most popular',
-    tag: 'In-house design system',
-    name: 'Local Business Standard',
+    tag: 'Custom in-house design',
+    name: 'Standard Business',
     price: '$800',
     period: 'first year, all-in',
     description: 'Our in-house design system — fast, modern, and easy to update.',
@@ -31,7 +50,7 @@ export const PACKAGES = [
   {
     id: 'wordpress',
     tag: 'Maximum portability',
-    name: 'Local Business WordPress',
+    name: 'WordPress Business',
     price: '$1,150',
     period: 'first year, all-in',
     description: "Built on the world's most widely-supported platform — maintainable by any developer.",
