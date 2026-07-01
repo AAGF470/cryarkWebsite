@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Sample project photo">
+  <rect width="800" height="600" fill="#e7ebf1"/>
+  <path d="M800 0 L800 200 L560 0 Z" fill="#2c4a6e" opacity="0.12"/>
+  <rect x="120" y="360" width="560" height="90" rx="10" fill="#2c4a6e" opacity="0.08"/>
+  <rect x="48" y="52" width="40" height="4" fill="#2c4a6e"/>
+  <text x="48" y="92" font-family="Inter, system-ui, sans-serif" font-size="16" letter-spacing="3" fill="#2c4a6e" opacity="0.55">GUILLEN SOLUTIONS</text>
+  <text x="48" y="300" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="44" fill="#2c4a6e">Your work here</text>
+</svg>

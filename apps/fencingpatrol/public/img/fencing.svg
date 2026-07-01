@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Fencing project">
+  <rect width="800" height="600" fill="#1c1812"/>
+  <path d="M800 0 L800 150 L560 0 Z" fill="#e0600f"/>
+  <g stroke="#e0600f" stroke-width="9" opacity="0.9" stroke-linecap="round">
+    <line x1="150" y1="190" x2="150" y2="300"/>
+    <line x1="230" y1="190" x2="230" y2="300"/>
+    <line x1="310" y1="190" x2="310" y2="300"/>
+    <line x1="100" y1="225" x2="360" y2="225"/>
+    <line x1="100" y1="270" x2="360" y2="270"/>
+  </g>
+  <rect x="56" y="64" width="46" height="4" fill="#e0600f"/>
+  <text x="56" y="108" font-family="Inter, system-ui, sans-serif" font-size="18" letter-spacing="3" fill="#ffffff" opacity="0.5">FENCINGPATROL</text>
+  <text x="56" y="430" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="62" fill="#ffffff">Fencing</text>
+</svg>

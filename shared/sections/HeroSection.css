@@ -1,0 +1,85 @@
+@import './_base.css';
+
+.hero-section {
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 0 100px;
+  overflow: hidden;
+}
+
+.hero-section--centered {
+  text-align: center;
+}
+
+.hero-section--centered .hero-section__sub,
+.hero-section--centered .hero-section__actions {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-section--centered .hero-section__actions {
+  justify-content: center;
+}
+
+.hero-section__glow {
+  position: absolute;
+  top: -160px;
+  right: -100px;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: var(--color-accent-dim);
+  filter: blur(90px);
+  pointer-events: none;
+}
+
+.hero-section__content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+}
+
+.hero-section__headline {
+  font-size: clamp(44px, 7vw, 82px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.06;
+  color: var(--color-text);
+  margin: 0 0 24px;
+}
+
+.section--accent .hero-section__headline {
+  color: var(--color-on-accent);
+}
+
+.hero-section__sub {
+  font-size: 17px;
+  color: var(--color-text-sub);
+  line-height: 1.75;
+  max-width: 480px;
+  margin: 0 0 40px;
+}
+
+.section--accent .hero-section__sub {
+  color: var(--color-on-accent-sub);
+}
+
+.hero-section__actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Note: button re-theming on accent backgrounds is handled centrally in
+   _base.css via Button's public --btn-* tokens — nothing button-specific here. */
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 100px 0 80px;
+    min-height: 80vh;
+  }
+
+  .hero-section__headline { font-size: clamp(36px, 9vw, 56px); }
+}

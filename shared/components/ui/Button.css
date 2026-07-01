@@ -25,7 +25,7 @@
   outline: none;
   border: none;
   background: none;
-  color: rgba(232, 230, 225, 0.82);
+  color: var(--btn-solid-text);
   -webkit-font-smoothing: antialiased;
   text-decoration: none;
 }
@@ -34,13 +34,10 @@
 
 .btn--solid {
   padding: 10px 26px;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-
-  /* fully opaque dark resting fill — ensures white hover is a clean contrast */
-  background: #0e0f12;
-
-  color: rgba(232, 230, 225, 0.82);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--btn-solid-border);
+  background: var(--btn-solid-bg);
+  color: var(--btn-solid-text);
   overflow: hidden;
 
   box-shadow: 0 0 0 0 transparent;
@@ -53,13 +50,9 @@
 }
 
 .btn--solid:hover {
-  /* fully opaque white fill */
-  background: var(--btn-fill, #ffffff);
-
-  border-color: rgba(255, 255, 255, 0.95);
-
-  /* text flips dark against the bright white fill */
-  color: rgba(12, 6, 2, 0.90);
+  background: var(--btn-solid-hover-bg);
+  border-color: var(--btn-solid-hover-border);
+  color: var(--btn-solid-hover-text);
 
   /* glow: tight bright ring + wider diffuse halo */
   box-shadow:
@@ -126,7 +119,7 @@
 
 .btn--ghost {
   padding: 11px 6px;
-  color: rgba(232, 230, 225, 0.50);
+  color: var(--btn-ghost-text);
   transition: color 0.25s ease;
 }
 
@@ -156,9 +149,9 @@
 
 .btn--ghost-bordered {
   padding: 10px 20px;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  color: rgba(232, 230, 225, 0.50);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--btn-ghost-border);
+  color: var(--btn-ghost-text);
   transition:
     color        0.25s ease,
     border-color 0.25s ease,
@@ -167,7 +160,7 @@
 }
 
 .btn--ghost-bordered:hover {
-  background: rgba(255, 255, 255, 0.025);
+  background: var(--btn-ghost-hover-bg);
   border-color: var(--btn-ghost-border-hover, rgba(255, 160, 58, 0.55));
   color: var(--btn-ghost-color, rgba(255, 188, 105, 0.95));
 

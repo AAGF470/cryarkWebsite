@@ -1,0 +1,65 @@
+/* ── FENCINGPATROL THEME ─────────────────────────────────────────────────── */
+/* General contractor — building orange, white, and black.
+   Overrides shared token defaults from tokens.css.                           */
+
+:root {
+
+  /* ── BACKGROUNDS ───────────────────────────────────────────────────────── */
+
+  --color-bg:           #ffffff;
+  --color-surface:      #f6f3f0;   /* warm light gray panels */
+  --color-surface-high: #ece7e2;
+
+  /* ── TEXT (near-black) ─────────────────────────────────────────────────── */
+
+  --color-text:         #141210;
+  --color-text-sub:     #5c554e;
+  --color-text-dim:     #8a827a;
+  --color-text-faint:   #b5ada4;
+
+  /* ── ACCENT (building orange) ──────────────────────────────────────────── */
+
+  --color-accent:        #e0600f;
+  --color-accent-sub:    rgba(224, 96, 15, 0.09);
+  --color-accent-dim:    rgba(224, 96, 15, 0.22);
+  --color-on-accent:     #ffffff;
+  --color-on-accent-sub: rgba(255, 255, 255, 0.80);
+
+  /* ── BORDERS ───────────────────────────────────────────────────────────── */
+
+  --color-border-sub:   #ece7e1;
+  --color-border-low:   #e1dad2;
+  --color-border-mid:   #cbc2b9;
+
+  /* ── SHADOWS ───────────────────────────────────────────────────────────── */
+
+  --shadow-sm:    0 1px 2px rgba(20, 18, 16, 0.05);
+  --shadow-md:    0 1px 4px rgba(20, 18, 16, 0.05), 0 10px 28px rgba(20, 18, 16, 0.06);
+  --shadow-lg:    0 6px 30px rgba(20, 18, 16, 0.10);
+  --shadow-modal: 0 10px 44px rgba(20, 18, 16, 0.18);
+
+  /* ── BUTTONS ───────────────────────────────────────────────────────────── */
+
+  --btn-solid-bg:           #e0600f;
+  --btn-solid-text:         #ffffff;
+  --btn-solid-border:       #e0600f;
+  --btn-solid-hover-bg:     #c4530b;
+  --btn-solid-hover-text:   #ffffff;
+  --btn-solid-hover-border: #c4530b;
+  --btn-fill:               #c4530b;
+
+  --btn-glow-tight:       rgba(224, 96, 15, 0.42);
+  --btn-glow-wide:        rgba(224, 96, 15, 0.16);
+
+  --btn-fill-lava:        #e0600f;
+  --btn-glow-tight-lava:  rgba(224, 96, 15, 0.45);
+  --btn-glow-wide-lava:   rgba(224, 96, 15, 0.18);
+
+  --btn-ghost-text:         #141210;
+  --btn-ghost-color:        #e0600f;
+  --btn-ghost-border:       #cbc2b9;
+  --btn-ghost-border-hover: #e0600f;
+  --btn-ghost-hover-bg:     rgba(224, 96, 15, 0.06);
+  --btn-ghost-glow:         rgba(224, 96, 15, 0.14);
+
+}

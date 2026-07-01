@@ -1,0 +1,108 @@
+/* ---------------------------------------------------------------------------
+   _base.css — shared section patterns
+   Imported by every section component. All values reference tokens.css.
+   Override tokens in your app's theme/theme.css to retheme all sections.
+--------------------------------------------------------------------------- */
+
+.section {
+  position: relative;
+  padding: 96px 0;
+  background: var(--color-bg);
+}
+
+.section--alt {
+  background: var(--color-surface);
+}
+
+.section--accent {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+
+  /* Re-theme buttons for a saturated colored background by overriding
+     Button's PUBLIC token API — no reaching into .btn internals.
+     All values derive from --color-on-accent so they adapt to any accent. */
+  --btn-solid-bg:           color-mix(in srgb, var(--color-on-accent) 16%, transparent);
+  --btn-solid-text:         var(--color-on-accent);
+  --btn-solid-border:       color-mix(in srgb, var(--color-on-accent) 42%, transparent);
+  --btn-solid-hover-bg:     color-mix(in srgb, var(--color-on-accent) 26%, transparent);
+  --btn-solid-hover-text:   var(--color-on-accent);
+  --btn-solid-hover-border: color-mix(in srgb, var(--color-on-accent) 62%, transparent);
+  --btn-glow-tight:         color-mix(in srgb, var(--color-on-accent) 24%, transparent);
+  --btn-glow-wide:          color-mix(in srgb, var(--color-on-accent) 10%, transparent);
+
+  --btn-ghost-text:         var(--color-on-accent);
+  --btn-ghost-color:        var(--color-on-accent);
+  --btn-ghost-border:       color-mix(in srgb, var(--color-on-accent) 35%, transparent);
+  --btn-ghost-border-hover: color-mix(in srgb, var(--color-on-accent) 58%, transparent);
+  --btn-ghost-hover-bg:     color-mix(in srgb, var(--color-on-accent) 12%, transparent);
+  --btn-ghost-glow:         color-mix(in srgb, var(--color-on-accent) 15%, transparent);
+}
+
+.section-container {
+  max-width: min(1200px, 100%);
+  margin: 0 auto;
+  padding: 0 48px;
+  box-sizing: border-box;
+}
+
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  opacity: 0.80;
+  margin: 0 0 16px;
+}
+
+.section-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 22px;
+  height: 1px;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+.section--accent .section-eyebrow {
+  color: var(--color-on-accent);
+  opacity: 0.72;
+}
+
+.section-title {
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--color-text);
+  margin: 0 0 14px;
+}
+
+.section--accent .section-title {
+  color: var(--color-on-accent);
+}
+
+.section-sub {
+  font-size: 16px;
+  color: var(--color-text-sub);
+  line-height: 1.72;
+  max-width: 540px;
+  margin: 0 0 48px;
+}
+
+.section--accent .section-sub {
+  color: var(--color-on-accent-sub);
+}
+
+@media (max-width: 768px) {
+  .section-container { padding: 0 24px; }
+  .section { padding: 72px 0; }
+}
+
+@media (max-width: 480px) {
+  .section-container { padding: 0 20px; }
+  .section { padding: 60px 0; }
+}

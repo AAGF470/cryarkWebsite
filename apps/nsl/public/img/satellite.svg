@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Teralink-1 satellite">
+  <rect width="800" height="600" fill="#0a0a0e"/>
+  <circle cx="640" cy="120" r="220" fill="none" stroke="rgba(212,27,44,0.18)" stroke-width="1"/>
+  <circle cx="640" cy="120" r="150" fill="none" stroke="rgba(212,27,44,0.12)" stroke-width="1"/>
+  <g stroke="#d41b2c" stroke-width="4" fill="none" stroke-linejoin="round">
+    <rect x="350" y="255" width="100" height="90" rx="6" fill="rgba(212,27,44,0.08)"/>
+    <rect x="250" y="278" width="90" height="44" fill="rgba(212,27,44,0.06)"/>
+    <rect x="460" y="278" width="90" height="44" fill="rgba(212,27,44,0.06)"/>
+    <line x1="230" y1="300" x2="250" y2="300"/><line x1="550" y1="300" x2="570" y2="300"/>
+  </g>
+  <g fill="rgba(255,255,255,0.9)"><circle cx="120" cy="140" r="1.6"/><circle cx="200" cy="90" r="1.2"/><circle cx="90" cy="420" r="1.4"/><circle cx="700" cy="470" r="1.6"/><circle cx="560" cy="520" r="1.2"/></g>
+  <rect x="48" y="52" width="40" height="3" fill="#d41b2c"/>
+  <text x="48" y="90" font-family="monospace" font-size="15" letter-spacing="3" fill="rgba(232,230,225,0.55)">NSL · TERALINK-1</text>
+</svg>

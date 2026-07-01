@@ -1,0 +1,49 @@
+/* ── NORTHEASTERN SATELLITE LAB THEME ────────────────────────────────────── */
+/* Cryark dark-glass base (from tokens.css) with a Northeastern red accent.
+   Only the accent/red-dependent tokens are overridden — everything else keeps
+   the cinematic dark defaults (near-black bg, glass surfaces, light text).    */
+
+:root {
+  /* ── ACCENT — Northeastern red ─────────────────────────────────────────── */
+  --color-accent:        #d41b2c;                    /* Northeastern red */
+  --color-accent-sub:    rgba(212, 27, 44, 0.14);   /* soft red fill */
+  --color-accent-dim:    rgba(212, 27, 44, 0.34);   /* red border / glow */
+  --color-on-accent:     #ffffff;
+  --color-on-accent-sub: rgba(255, 255, 255, 0.78);
+
+  /* Slightly cooler-black page for a cleaner red/black/white contrast */
+  --color-bg: #060608;
+
+  /* ── NAV — red glider + CTA ────────────────────────────────────────────── */
+  --nav-logo-accent:    #e63946;
+  --nav-glider-border:  rgba(212, 27, 44, 0.45);
+  --nav-glider-shadow:  0 2px 16px rgba(212, 27, 44, 0.18);
+  --nav-link-active:    #ffffff;
+  --nav-cta-color:      rgba(232, 230, 225, 0.80);
+  --nav-cta-hover-color: #ffffff;
+  --nav-cta-border:      rgba(212, 27, 44, 0.45);
+  --nav-cta-hover-border: #d41b2c;
+  --nav-cta-hover-bg:    #d41b2c;
+
+  /* ── BUTTONS — solid red with cinematic red glow ───────────────────────── */
+  --btn-solid-bg:           #d41b2c;
+  --btn-solid-text:         #ffffff;
+  --btn-solid-border:       #d41b2c;
+  --btn-solid-hover-bg:     #ef2434;
+  --btn-solid-hover-text:   #ffffff;
+  --btn-solid-hover-border: #ef2434;
+  --btn-fill:               #ef2434;
+  --btn-glow-tight:         rgba(239, 36, 52, 0.90);
+  --btn-glow-wide:          rgba(212, 27, 44, 0.34);
+
+  --btn-fill-lava:          #ef2434;
+  --btn-glow-tight-lava:    rgba(255, 90, 100, 0.90);
+  --btn-glow-wide-lava:     rgba(212, 27, 44, 0.36);
+
+  --btn-ghost-text:         rgba(232, 230, 225, 0.82);
+  --btn-ghost-color:        #ff5964;
+  --btn-ghost-border:       rgba(255, 255, 255, 0.12);
+  --btn-ghost-border-hover: rgba(212, 27, 44, 0.60);
+  --btn-ghost-hover-bg:     rgba(212, 27, 44, 0.08);
+  --btn-ghost-glow:         rgba(212, 27, 44, 0.30);
+}

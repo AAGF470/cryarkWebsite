@@ -90,7 +90,7 @@ export default function WorkCard({
         {/* ── Meta card ──────────────────────────────────────────────── */}
         <div className="wc__meta-cell">
 
-          {/* Top content */}
+          {/* Top content — clips description first, never the tags */}
           <div className="wc__meta-top">
             {status && (
               <span className={`wc__status wc__status--${status}`}>
@@ -99,12 +99,14 @@ export default function WorkCard({
             )}
             <h3 className="wc__title">{title}</h3>
             {description && <p className="wc__desc">{description}</p>}
-            {tags.length > 0 && (
-              <div className="wc__tags">
-                {tags.slice(0, 4).map(t => <Pill key={t} label={t} />)}
-              </div>
-            )}
           </div>
+
+          {/* Tags — pulled out of the clipping region so they always show */}
+          {tags.length > 0 && (
+            <div className="wc__tags">
+              {tags.slice(0, 4).map(t => <Pill key={t} label={t} />)}
+            </div>
+          )}
 
           {/* Footer — devlog + CTA */}
           <div className="wc__meta-footer">

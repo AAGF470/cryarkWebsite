@@ -1,0 +1,166 @@
+/* ---------------------------------------------------------------------------
+   PackageConfigurator.css — the configuration form.
+   Fully token-driven so it inherits the app theme.
+--------------------------------------------------------------------------- */
+
+.cfg {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 32px;
+  align-items: start;
+}
+
+/* ── Choices column ──────────────────────────────────────────────────────── */
+
+.cfg__group { border: none; margin: 0 0 32px; padding: 0; }
+.cfg__group:last-child { margin-bottom: 0; }
+
+.cfg__legend {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--color-text-dim); padding: 0; margin-bottom: 14px;
+}
+
+.cfg__pkgs { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+.cfg-pkg {
+  position: relative;
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 20px; cursor: pointer;
+  background: var(--color-bg);
+  border: 1.5px solid var(--color-border-low);
+  border-radius: var(--radius-xl);
+  transition: border-color 0.16s ease, box-shadow 0.16s ease;
+}
+.cfg-pkg:hover { border-color: var(--color-border-mid); }
+.cfg-pkg.is-active { border-color: var(--color-accent); box-shadow: 0 0 0 3px var(--color-accent-sub); }
+.cfg-pkg__radio { position: absolute; opacity: 0; pointer-events: none; }
+
+.cfg-pkg__head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.cfg-pkg__name { font-size: 15px; font-weight: 700; color: var(--color-text); }
+.cfg-pkg__badge {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: #fff; background: var(--color-accent); padding: 2px 8px; border-radius: var(--radius-pill);
+}
+.cfg-pkg__price { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; color: var(--color-text); }
+.cfg-pkg__price em { font-size: 12px; font-weight: 500; font-style: normal; color: var(--color-text-dim); }
+.cfg-pkg__desc { font-size: 13px; color: var(--color-text-sub); line-height: 1.5; }
+
+/* ── Add-ons ─────────────────────────────────────────────────────────────── */
+
+.cfg__addons { display: flex; flex-direction: column; gap: 10px; }
+
+.cfg-addon {
+  display: flex; flex-direction: column;
+  padding: 16px 18px;
+  background: var(--color-bg);
+  border: 1.5px solid var(--color-border-low);
+  border-radius: var(--radius-lg);
+  transition: border-color 0.16s ease, background 0.16s ease;
+}
+.cfg-addon:hover { border-color: var(--color-border-mid); }
+.cfg-addon.is-active { border-color: var(--color-accent); background: var(--color-accent-sub); }
+
+.cfg-addon__toggle { display: flex; align-items: flex-start; gap: 14px; cursor: pointer; }
+.cfg-addon__box { position: absolute; opacity: 0; pointer-events: none; }
+
+.cfg-addon__check {
+  flex-shrink: 0; width: 22px; height: 22px; margin-top: 1px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--color-border-mid);
+  background: var(--color-bg);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; transition: background 0.16s ease, border-color 0.16s ease;
+}
+.cfg-addon__check svg { width: 13px; height: 13px; opacity: 0; transition: opacity 0.12s ease; }
+.cfg-addon.is-active .cfg-addon__check { background: var(--color-accent); border-color: var(--color-accent); }
+.cfg-addon.is-active .cfg-addon__check svg { opacity: 1; }
+
+.cfg-addon__main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.cfg-addon__row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.cfg-addon__name { font-size: 14.5px; font-weight: 600; color: var(--color-text); }
+.cfg-addon__price { font-size: 14px; font-weight: 700; color: var(--color-accent); white-space: nowrap; }
+.cfg-addon__meta {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--color-text-faint);
+}
+.cfg-addon__body { font-size: 13px; color: var(--color-text-sub); line-height: 1.55; margin-top: 2px; }
+
+/* Per-unit quantity stepper */
+.cfg-addon__stepper {
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  margin-top: 14px; padding-top: 14px; padding-left: 36px;
+  border-top: 1px solid var(--color-border-low);
+}
+.cfg-addon__stepper-label { font-size: 13px; color: var(--color-text-sub); }
+.cfg-stepper {
+  display: inline-flex; align-items: center;
+  border: 1px solid var(--color-border-mid); border-radius: var(--radius-md);
+  overflow: hidden; background: var(--color-bg);
+}
+.cfg-stepper button {
+  width: 32px; height: 32px; border: none; background: var(--color-bg);
+  color: var(--color-text); font-size: 18px; line-height: 1; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.14s ease, color 0.14s ease;
+}
+.cfg-stepper button:hover { background: var(--color-accent-sub); color: var(--color-accent); }
+.cfg-stepper__val {
+  min-width: 44px; text-align: center; font-size: 14px; font-weight: 700;
+  color: var(--color-text); font-variant-numeric: tabular-nums;
+}
+.cfg-addon__linetotal { margin-left: auto; font-size: 15px; font-weight: 700; color: var(--color-accent); }
+
+/* ── Summary ─────────────────────────────────────────────────────────────── */
+
+.cfg__summary { position: sticky; top: 78px; }
+
+.cfg-sum {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-low);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+}
+.cfg-sum__title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--color-text-dim); margin: 0 0 16px;
+}
+.cfg-sum__lines { list-style: none; margin: 0 0 16px; padding: 0 0 16px; border-bottom: 1px solid var(--color-border-low); display: flex; flex-direction: column; gap: 8px; }
+.cfg-sum__line { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; color: var(--color-text); }
+.cfg-sum__line--sub { font-size: 13px; color: var(--color-text-sub); }
+
+.cfg-sum__totals { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+.cfg-sum__total { display: flex; justify-content: space-between; align-items: baseline; }
+.cfg-sum__total span { font-size: 13px; color: var(--color-text-sub); }
+.cfg-sum__total strong { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; color: var(--color-text); }
+.cfg-sum__total--sub strong { font-size: 15px; color: var(--color-text-sub); }
+
+.cfg-sum__quoted { font-size: 12px; color: var(--color-text-dim); line-height: 1.5; margin: 0 0 16px; }
+
+.cfg-sum__name {
+  width: 100%; padding: 10px 14px; margin-bottom: 10px;
+  border: 1px solid var(--color-border-mid); border-radius: var(--radius-md);
+  background: var(--color-bg); color: var(--color-text); font-size: 14px; font-family: inherit;
+  box-sizing: border-box;
+}
+.cfg-sum__name:focus { outline: none; border-color: var(--color-accent); box-shadow: 0 0 0 3px var(--color-accent-sub); }
+
+.cfg-sum__cta {
+  display: block; text-align: center; width: 100%;
+  padding: 12px 20px; border-radius: var(--radius-md);
+  background: var(--color-accent); color: #fff;
+  font-size: 14px; font-weight: 600; letter-spacing: 0.02em; text-decoration: none;
+  transition: background 0.18s ease, box-shadow 0.3s ease;
+}
+.cfg-sum__cta:hover { background: #1e3558; box-shadow: 0 4px 16px var(--color-accent-dim); }
+
+.cfg-sum__fine { font-size: 12px; color: var(--color-text-faint); line-height: 1.55; margin: 12px 0 0; }
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .cfg { grid-template-columns: 1fr; }
+  .cfg__summary { position: static; }
+}
+@media (max-width: 520px) {
+  .cfg__pkgs { grid-template-columns: 1fr; }
+}

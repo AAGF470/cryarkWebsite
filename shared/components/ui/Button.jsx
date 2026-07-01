@@ -46,17 +46,6 @@ import "./Button.css";
 //   />
 // ---------------------------------------------------------------------------
 
-const DEFAULT_THEME = {
-  glow_tight:         "rgba(235, 210, 160, 0.90)",
-  glow_wide:          "rgba(200, 165, 100, 0.28)",
-  fill_lava:          "rgb(195, 160, 95)",
-  glow_tight_lava:    "rgba(225, 195, 135, 0.90)",
-  glow_wide_lava:     "rgba(195, 160,  95, 0.32)",
-  ghost_color:        "rgba(225, 198, 148, 0.95)",
-  ghost_border_hover: "rgba(200, 169, 126, 0.55)",
-  ghost_glow:         "rgba(200, 165, 110, 0.22)",
-};
-
 export default function Button({
   variant                  = "solid",
   label,
@@ -64,26 +53,35 @@ export default function Button({
   onClick                  = null,
   lava                     = false,
   show_arrow               = true,
-  theme_glow_tight         = DEFAULT_THEME.glow_tight,
-  theme_glow_wide          = DEFAULT_THEME.glow_wide,
-  theme_fill_lava          = DEFAULT_THEME.fill_lava,
-  theme_glow_tight_lava    = DEFAULT_THEME.glow_tight_lava,
-  theme_glow_wide_lava     = DEFAULT_THEME.glow_wide_lava,
-  theme_ghost_color        = DEFAULT_THEME.ghost_color,
-  theme_ghost_border_hover = DEFAULT_THEME.ghost_border_hover,
-  theme_ghost_glow         = DEFAULT_THEME.ghost_glow,
+  className                = "",
+  // Theme props default to undefined: when omitted, the button inherits the
+  // --btn-* design tokens from the cascade (tokens.css → app theme.css →
+  // any scoped override like .section--accent). Pass a value to override
+  // the glow/ghost accent for a single instance (e.g. a cosmic CTA).
+  theme_glow_tight         = undefined,
+  theme_glow_wide          = undefined,
+  theme_fill_lava          = undefined,
+  theme_glow_tight_lava    = undefined,
+  theme_glow_wide_lava     = undefined,
+  theme_ghost_color        = undefined,
+  theme_ghost_border_hover = undefined,
+  theme_ghost_glow         = undefined,
 }) {
-  // CSS custom properties injected inline so theme is scoped to this element
-  const theme_css_vars = {
-    "--btn-glow-tight":         theme_glow_tight,
-    "--btn-glow-wide":          theme_glow_wide,
-    "--btn-fill-lava":          theme_fill_lava,
-    "--btn-glow-tight-lava":    theme_glow_tight_lava,
-    "--btn-glow-wide-lava":     theme_glow_wide_lava,
-    "--btn-ghost-color":        theme_ghost_color,
-    "--btn-ghost-border-hover": theme_ghost_border_hover,
-    "--btn-ghost-glow":         theme_ghost_glow,
-  };
+  // Only inject vars the caller explicitly set, so the token cascade wins
+  // by default and per-theme colors are respected.
+  const theme_css_vars = Object.fromEntries(
+    Object.entries({
+      "--btn-glow-tight":         theme_glow_tight,
+      "--btn-glow-wide":          theme_glow_wide,
+      "--btn-fill-lava":          theme_fill_lava,
+      "--btn-glow-tight-lava":    theme_glow_tight_lava,
+      "--btn-glow-wide-lava":     theme_glow_wide_lava,
+      "--btn-ghost-color":        theme_ghost_color,
+      "--btn-ghost-border-hover": theme_ghost_border_hover,
+      "--btn-ghost-glow":         theme_ghost_glow,
+    }).filter(([, v]) => v != null)
+  );
+  const style = Object.keys(theme_css_vars).length ? theme_css_vars : undefined;
 
   // Build class string
   const class_names = [
@@ -92,6 +90,7 @@ export default function Button({
     variant === "ghost"          ? "btn--ghost"           : null,
     variant === "ghost-bordered" ? "btn--ghost-bordered"  : null,
     lava && variant === "solid"  ? "btn--lava"            : null,
+    className || null,
   ].filter(Boolean).join(" ");
 
   // Arrow element — used by both ghost variants
@@ -114,7 +113,7 @@ export default function Button({
       <a
         href={href}
         className={class_names}
-        style={theme_css_vars}
+        style={style}
         onClick={onClick}
       >
         {button_content}

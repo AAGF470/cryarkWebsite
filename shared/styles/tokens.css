@@ -1,40 +1,161 @@
 /* ── SHARED DESIGN TOKENS ────────────────────────────────────────────────── */
-/* These are the base defaults — each app's theme.css can override any value. */
+/* Defaults = dark glass / dawn gold (cryark + guillen.studio).
+   Override any value in your app's theme.css — it loads after base.css.      */
 
 :root {
-  /* Typography */
+
+  /* ── TYPOGRAPHY ────────────────────────────────────────────────────────── */
+
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
 
-  /* Palette */
-  --color-bg:          #050508;   /* slightly blue-black */
-  --color-surface:     #0a090e;   /* elevated surface, subtle blue-black */
-  --color-text:        #e8e6e1;
-  --color-text-dim:    rgba(232, 230, 225, 0.42);
-  --color-text-faint:  rgba(232, 230, 225, 0.22);
-  --color-accent:      #c8a97e;   /* dawn gold — override per site */
-  --color-accent-dim:  rgba(200, 169, 126, 0.18);
+  /* ── BACKGROUNDS ───────────────────────────────────────────────────────── */
 
-  /* Borders */
-  --color-border-sub:  rgba(255, 255, 255, 0.06);
-  --color-border-low:  rgba(255, 255, 255, 0.10);
-  --color-border-mid:  rgba(255, 255, 255, 0.18);
+  --color-bg:           #050508;                      /* page background */
+  --color-surface:      rgba(255, 255, 255, 0.022);  /* card / panel glass */
+  --color-surface-high: rgba(255, 255, 255, 0.040);  /* elevated card */
 
-  /* Spacing scale */
-  --space-xs:  4px;
-  --space-sm:  8px;
+  /* ── TEXT ──────────────────────────────────────────────────────────────── */
+
+  --color-text:         #e8e6e1;
+  --color-text-sub:     rgba(232, 230, 225, 0.55);   /* secondary body */
+  --color-text-dim:     rgba(232, 230, 225, 0.42);   /* tertiary */
+  --color-text-faint:   rgba(232, 230, 225, 0.22);   /* placeholder / disabled */
+
+  /* ── ACCENT ────────────────────────────────────────────────────────────── */
+
+  --color-accent:       #c8a97e;                      /* dawn gold */
+  --color-accent-sub:   rgba(200, 169, 126, 0.15);   /* soft accent fill */
+  --color-accent-dim:   rgba(200, 169, 126, 0.18);   /* accent border */
+
+  /* Text/icons placed ON the accent color (e.g. .section--accent banners).
+     Default accent (gold) is light, so on-accent text is dark. Light themes
+     with a dark accent override this to white. */
+  --color-on-accent:    #161310;
+  --color-on-accent-sub: rgba(22, 19, 16, 0.66);
+
+  /* ── BORDERS ───────────────────────────────────────────────────────────── */
+
+  --color-border-sub:   rgba(255, 255, 255, 0.055);  /* barely-there */
+  --color-border-low:   rgba(255, 255, 255, 0.10);   /* card borders */
+  --color-border-mid:   rgba(255, 255, 255, 0.18);   /* interactive hover */
+
+  /* ── SPACING ───────────────────────────────────────────────────────────── */
+
+  --space-xs:   4px;
+  --space-sm:   8px;
   --space-md:  16px;
   --space-lg:  32px;
   --space-xl:  64px;
   --space-2xl: 96px;
 
-  /* Border radius */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
+  /* ── RADIUS ────────────────────────────────────────────────────────────── */
 
-  /* Z-index layers */
-  --z-nav:    100;
-  --z-modal:  200;
-  --z-toast:  300;
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   16px;
+  --radius-2xl:  20px;
+  --radius-pill: 999px;
+
+  /* ── SHADOWS ───────────────────────────────────────────────────────────── */
+
+  --shadow-sm:
+    0 1px 3px  rgba(0, 0, 0, 0.16),
+    0 1px 2px  rgba(0, 0, 0, 0.10);
+
+  --shadow-md:
+    0 4px 20px rgba(0, 0, 0, 0.30);
+
+  --shadow-lg:
+    0 8px 40px  rgba(0, 0, 0, 0.55),
+    0 1px 0     rgba(255, 255, 255, 0.06) inset;
+
+  --shadow-modal:
+    0 16px 48px rgba(0, 0, 0, 0.60);
+
+  /* ── NAV ───────────────────────────────────────────────────────────────── */
+
+  --nav-bg:         rgba(10, 10, 10, 0.86);
+  --nav-bg-open:    rgba( 8,  8,  8, 0.97);
+  --nav-mobile-bg:  rgba(10, 10, 10, 0.97);
+  --nav-blur:       blur(28px) saturate(180%);
+  --nav-border:     rgba(255, 255, 255, 0.06);
+  --nav-backdrop:   rgba(  0,   0,   0, 0.45);
+
+  /* Active-indicator glider */
+  --nav-glider-border:  rgba(200, 169, 126, 0.30);
+  --nav-glider-shadow:  0 2px 12px rgba(200, 169, 126, 0.08);
+
+  /* Logo */
+  --nav-logo-color:     rgba(232, 230, 225, 0.45);
+  --nav-logo-hover:     rgba(232, 230, 225, 0.88);
+  --nav-logo-accent:    var(--color-accent);
+
+  /* Desktop nav links */
+  --nav-link-rest:      rgba(232, 230, 225, 0.35);
+  --nav-link-hover:     rgba(232, 230, 225, 0.85);
+  --nav-link-active:    rgba(255, 255, 255, 0.92);
+  --nav-link-hover-bg:  rgba(255, 255, 255, 0.05);
+
+  /* CTA pill in nav bar */
+  --nav-cta-color:          rgba(232, 230, 225, 0.40);
+  --nav-cta-hover-color:    rgba(232, 230, 225, 0.88);
+  --nav-cta-border:         rgba(255, 255, 255, 0.08);
+  --nav-cta-hover-border:   rgba(255, 255, 255, 0.16);
+  --nav-cta-hover-bg:       rgba(255, 255, 255, 0.05);
+
+  /* Hamburger */
+  --nav-hamburger-bar:      rgba(232, 230, 225, 0.55);
+  --nav-hamburger-hover-bg: rgba(255, 255, 255, 0.05);
+
+  /* Mobile menu */
+  --nav-mobile-link:            rgba(232, 230, 225, 0.50);
+  --nav-mobile-link-hover:      rgba(232, 230, 225, 0.90);
+  --nav-mobile-link-active:     rgba(255, 255, 255, 0.90);
+  --nav-mobile-link-hover-bg:   rgba(255, 255, 255, 0.04);
+  --nav-mobile-link-active-bg:  rgba(255, 255, 255, 0.06);
+  --nav-mobile-top-border:      rgba(255, 255, 255, 0.06);
+  --nav-mobile-cta-color:       rgba(232, 230, 225, 0.55);
+  --nav-mobile-cta-hover:       rgba(232, 230, 225, 0.90);
+  --nav-mobile-cta-border:      rgba(255, 255, 255, 0.10);
+  --nav-mobile-cta-hover-border: rgba(255, 255, 255, 0.18);
+  --nav-mobile-cta-hover-bg:    rgba(255, 255, 255, 0.06);
+  --nav-mobile-strip-bg:        rgba( 10, 10, 10, 0.60);
+  --nav-mobile-strip-border:    rgba(255, 255, 255, 0.07);
+
+  /* ── BUTTONS ───────────────────────────────────────────────────────────── */
+
+  /* Solid */
+  --btn-solid-bg:           #0e0f12;
+  --btn-solid-text:         rgba(232, 230, 225, 0.82);
+  --btn-solid-border:       rgba(255, 255, 255, 0.14);
+  --btn-solid-hover-bg:     #ffffff;
+  --btn-solid-hover-text:   rgba( 12,   6,   2, 0.90);
+  --btn-solid-hover-border: rgba(255, 255, 255, 0.95);
+  --btn-fill:               #ffffff;   /* legacy alias for btn-solid-hover-bg */
+  --btn-glow-tight:         rgba(255, 215, 140, 0.90);
+  --btn-glow-wide:          rgba(255, 170,  60, 0.28);
+
+  /* Solid lava modifier */
+  --btn-fill-lava:           rgb(255, 148, 32);
+  --btn-glow-tight-lava:     rgba(255, 190,  80, 0.90);
+  --btn-glow-wide-lava:      rgba(255, 140,  20, 0.32);
+
+  /* Ghost */
+  --btn-ghost-text:          rgba(232, 230, 225, 0.50);
+  --btn-ghost-color:         rgba(255, 188, 105, 0.95);
+
+  /* Ghost bordered */
+  --btn-ghost-border:        rgba(255, 255, 255, 0.10);
+  --btn-ghost-border-hover:  rgba(255, 160,  58, 0.55);
+  --btn-ghost-hover-bg:      rgba(255, 255, 255, 0.025);
+  --btn-ghost-glow:          rgba(255, 140,  30, 0.22);
+
+  /* ── Z-INDEX ───────────────────────────────────────────────────────────── */
+
+  --z-nav:   100;
+  --z-modal: 200;
+  --z-toast: 300;
+
 }

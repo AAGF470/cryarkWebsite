@@ -1,0 +1,111 @@
+/* ── GUILLEN SOLUTIONS THEME ─────────────────────────────────────────────── */
+/* Light mode — navy accent, warm neutrals.
+   Overrides shared token defaults from tokens.css.                           */
+
+:root {
+
+  /* ── BACKGROUNDS ───────────────────────────────────────────────────────── */
+
+  --color-bg:           #ffffff;
+  --color-surface:      #f8f7f5;
+  --color-surface-high: #f0ede8;
+
+  /* ── TEXT ──────────────────────────────────────────────────────────────── */
+
+  --color-text:         #1a1818;
+  --color-text-sub:     #726c65;
+  --color-text-dim:     #9e9890;
+  --color-text-faint:   #b8b3ac;
+
+  /* ── ACCENT ────────────────────────────────────────────────────────────── */
+
+  --color-accent:       #2c4a6e;
+  --color-accent-sub:   rgba(44, 74, 110, 0.08);
+  --color-accent-dim:   rgba(44, 74, 110, 0.15);
+
+  /* Navy accent is dark — on-accent text is white */
+  --color-on-accent:     #ffffff;
+  --color-on-accent-sub: rgba(255, 255, 255, 0.72);
+
+  /* ── BORDERS ───────────────────────────────────────────────────────────── */
+
+  --color-border-sub:   #ede9e3;
+  --color-border-low:   #e5e0d8;
+  --color-border-mid:   #d0ccc6;
+
+  /* ── SHADOWS ───────────────────────────────────────────────────────────── */
+
+  --shadow-sm:    0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md:    0 1px 4px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.04);
+  --shadow-lg:    0 4px 20px rgba(0, 0, 0, 0.08);
+  --shadow-modal: 0 8px 40px rgba(0, 0, 0, 0.14);
+
+  /* ── NAV ───────────────────────────────────────────────────────────────── */
+
+  --nav-bg:         rgba(255, 255, 255, 0.95);
+  --nav-bg-open:    rgba(255, 255, 255, 0.99);
+  --nav-mobile-bg:  rgba(255, 255, 255, 0.99);
+  --nav-blur:       blur(12px) saturate(140%);
+  --nav-border:     #ede9e3;
+  --nav-backdrop:   rgba(0, 0, 0, 0.20);
+
+  --nav-glider-border: rgba(44, 74, 110, 0.25);
+  --nav-glider-shadow: 0 2px 12px rgba(44, 74, 110, 0.06);
+
+  --nav-logo-color:  rgba(26, 24, 24, 0.65);
+  --nav-logo-hover:  #1a1818;
+  --nav-logo-accent: #2c4a6e;
+
+  --nav-link-rest:     rgba(26, 24, 24, 0.50);
+  --nav-link-hover:    #1a1818;
+  --nav-link-active:   #1a1818;
+  --nav-link-hover-bg: rgba(0, 0, 0, 0.04);
+
+  --nav-cta-color:          #2c4a6e;
+  --nav-cta-hover-color:    #ffffff;
+  --nav-cta-border:         #2c4a6e;
+  --nav-cta-hover-border:   #2c4a6e;
+  --nav-cta-hover-bg:       #2c4a6e;
+
+  --nav-hamburger-bar:      rgba(26, 24, 24, 0.60);
+  --nav-hamburger-hover-bg: rgba(0, 0, 0, 0.04);
+
+  --nav-mobile-link:             rgba(26, 24, 24, 0.55);
+  --nav-mobile-link-hover:       #1a1818;
+  --nav-mobile-link-active:      #1a1818;
+  --nav-mobile-link-hover-bg:    rgba(0, 0, 0, 0.03);
+  --nav-mobile-link-active-bg:   rgba(44, 74, 110, 0.06);
+  --nav-mobile-top-border:       #ede9e3;
+  --nav-mobile-cta-color:        #2c4a6e;
+  --nav-mobile-cta-hover:        #ffffff;
+  --nav-mobile-cta-border:       rgba(44, 74, 110, 0.30);
+  --nav-mobile-cta-hover-border: #2c4a6e;
+  --nav-mobile-cta-hover-bg:     #2c4a6e;
+  --nav-mobile-strip-bg:         rgba(255, 255, 255, 0.92);
+  --nav-mobile-strip-border:     #ede9e3;
+
+  /* ── BUTTONS ───────────────────────────────────────────────────────────── */
+
+  --btn-solid-bg:           #2c4a6e;
+  --btn-solid-text:         #ffffff;
+  --btn-solid-border:       #2c4a6e;
+  --btn-solid-hover-bg:     #1e3558;
+  --btn-solid-hover-text:   #ffffff;
+  --btn-solid-hover-border: #1e3558;
+  --btn-fill:               #1e3558;
+
+  --btn-glow-tight:       rgba(44, 74, 110, 0.35);
+  --btn-glow-wide:        rgba(44, 74, 110, 0.12);
+
+  --btn-fill-lava:        #e86030;
+  --btn-glow-tight-lava:  rgba(232, 96, 48, 0.40);
+  --btn-glow-wide-lava:   rgba(232, 96, 48, 0.14);
+
+  --btn-ghost-text:         #2c4a6e;
+  --btn-ghost-color:        #1e3558;
+  --btn-ghost-border:       #d0ccc6;
+  --btn-ghost-border-hover: #2c4a6e;
+  --btn-ghost-hover-bg:     rgba(44, 74, 110, 0.04);
+  --btn-ghost-glow:         rgba(44, 74, 110, 0.12);
+
+}

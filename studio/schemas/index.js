@@ -8,6 +8,22 @@ import { aboutProfileType }         from './aboutProfile'
 import { aboutProjectType }         from './aboutProject'
 import { siteLinkType }             from './siteLink'
 import { pageConfigType }           from './pageConfig'
+import { clientPageType }           from './clientPage'
+import {
+  ctaItemType,
+  heroSectionType,
+  featureGridSectionType,
+  stepsSectionType,
+  imageTextSectionType,
+  testimonialsSectionType,
+  ctaBannerSectionType,
+  contactSectionType,
+  pricingPlansSectionType,
+  serviceListSectionType,
+  hoursLocationSectionType,
+  gallerySectionType,
+  faqSectionType,
+} from './pageSections'
 import {
   codeBlockType,
   designDecisionType,
@@ -50,6 +66,22 @@ export const schemaTypes = [
   aboutProjectType,
   siteLinkType,
   pageConfigType,
+  clientPageType,
+
+  // ── Page builder section types ────────────────────────────────────────────
+  ctaItemType,
+  heroSectionType,
+  featureGridSectionType,
+  stepsSectionType,
+  imageTextSectionType,
+  testimonialsSectionType,
+  ctaBannerSectionType,
+  contactSectionType,
+  pricingPlansSectionType,
+  serviceListSectionType,
+  hoursLocationSectionType,
+  gallerySectionType,
+  faqSectionType,
 
   // ── Shared object / block types ───────────────────────────────────────────
   codeBlockType,

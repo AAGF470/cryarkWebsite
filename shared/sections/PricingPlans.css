@@ -1,0 +1,162 @@
+@import './_base.css';
+
+.pricing__header {
+  max-width: 600px;
+}
+
+.pricing__grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(var(--pricing-cols, 2), 1fr);
+  align-items: start;
+}
+
+.plan {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-low);
+  border-radius: var(--radius-2xl);
+  padding: 32px 28px;
+}
+
+.section--alt .plan {
+  background: var(--color-bg);
+}
+
+/* Highlighted plan — accent border + lift */
+.plan--featured {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-md);
+}
+
+.plan__badge {
+  position: absolute;
+  top: -11px;
+  left: 28px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+.plan__tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 8px;
+}
+
+.plan__name {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  margin: 0 0 14px;
+}
+
+.plan__price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.plan__amount {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.plan__period {
+  font-size: 13px;
+  color: var(--color-text-dim);
+}
+
+.plan__desc {
+  font-size: 14px;
+  color: var(--color-text-sub);
+  line-height: 1.6;
+  margin: 0 0 24px;
+}
+
+.plan__note {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-dim);
+  margin: 0 0 16px;
+  padding-bottom: 16px;
+  border-bottom: 0.5px solid var(--color-border-sub);
+}
+
+.plan__list {
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.plan__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--color-text-sub);
+  line-height: 1.5;
+}
+
+.plan__check {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-accent-sub);
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+.plan__check svg { width: 11px; height: 11px; }
+
+.plan__total-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 14px 0;
+  margin-bottom: 16px;
+  border-top: 0.5px solid var(--color-border-sub);
+}
+
+.plan__total-label {
+  font-size: 12px;
+  color: var(--color-text-dim);
+  letter-spacing: 0.02em;
+}
+
+.plan__total-amount {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.plan__btn {
+  width: 100%;
+}
+
+@media (max-width: 760px) {
+  .pricing__grid { grid-template-columns: 1fr; }
+}

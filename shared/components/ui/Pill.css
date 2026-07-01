@@ -19,9 +19,9 @@
   cursor: default;
 
   /* resting surface */
-  background: rgba(255, 255, 255, 0.045);
-  color: rgba(232, 230, 225, 0.45);
-  border: 1px solid rgba(200, 169, 126, 0.18);
+  background: var(--color-surface-high);
+  color: var(--color-text-dim);
+  border: 1px solid var(--color-accent-dim);
 
   /* color transitions driven by JS inline style changes */
   transition: color 0.3s ease, border-color 0.3s ease;

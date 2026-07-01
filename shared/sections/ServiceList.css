@@ -1,0 +1,78 @@
+@import './_base.css';
+
+.service-list__header {
+  max-width: 600px;
+}
+
+.service-list__grid {
+  display: grid;
+  gap: 0 56px;
+  grid-template-columns: repeat(var(--service-cols, 2), 1fr);
+}
+
+.service-list__col {
+  display: flex;
+  flex-direction: column;
+}
+
+.service-item {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 0.5px solid var(--color-border-sub);
+}
+
+.service-item:last-child { border-bottom: none; }
+
+.service-item__body {
+  /* Size to content (don't grow) so the dotted leader takes the slack */
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+.service-item__name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 4px;
+}
+
+.service-item__desc {
+  font-size: 13px;
+  color: var(--color-text-sub);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Dotted leader between name and price — classic menu look */
+.service-item__leader {
+  flex: 1;
+  border-bottom: 1px dotted var(--color-border-mid);
+  transform: translateY(-4px);
+  min-width: 16px;
+}
+
+.service-item__price {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-accent);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.service-item__price--from {
+  font-weight: 600;
+}
+
+.service-item__price--from::before {
+  content: 'from ';
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-text-dim);
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 700px) {
+  .service-list__grid { grid-template-columns: 1fr; gap: 0; }
+}

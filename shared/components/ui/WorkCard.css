@@ -110,6 +110,10 @@
   flex: 1;
   min-height: 0;
   overflow: hidden;
+  /* The description is the flexible element — it absorbs any clipping so
+     the tags row below always stays fully visible. */
+  display: flex;
+  flex-direction: column;
 }
 
 /* Status badge */
@@ -156,13 +160,17 @@
   margin-bottom: 12px;
 }
 
-/* Tag chips — single row, extras clipped rather than wrapping */
+/* Tag chips — single row, extras clipped rather than wrapping.
+   Sits between meta-top and footer as its own flex-shrink:0 band so it is
+   never swallowed by a tall title/description above it. */
 
 .wc__tags {
+  flex-shrink: 0;
   display: flex;
   flex-wrap: nowrap;
   gap: 5px;
   overflow: hidden;
+  margin-top: 12px;
   /* Fade the right edge so the clip looks intentional, not abrupt */
   mask-image: linear-gradient(to right, black 80%, transparent 100%);
   -webkit-mask-image: linear-gradient(to right, black 80%, transparent 100%);

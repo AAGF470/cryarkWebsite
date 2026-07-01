@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Completed driveway paving">
+  <rect width="800" height="600" fill="#1c1812"/>
+  <path d="M0 0 L150 0 L0 130 Z" fill="#e0600f"/>
+  <rect x="56" y="64" width="46" height="4" fill="#e0600f"/>
+  <text x="56" y="108" font-family="Inter, system-ui, sans-serif" font-size="18" letter-spacing="3" fill="#ffffff" opacity="0.5">FENCINGPATROL</text>
+  <text x="56" y="410" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="42" fill="#ffffff">Driveway — Suffolk</text>
+</svg>

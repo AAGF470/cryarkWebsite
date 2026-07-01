@@ -1,0 +1,205 @@
+/* ---------------------------------------------------------------------------
+   App.css — Guillen Solutions app shell (nav, footer) + page intros + the
+   component-showcase frame. Body content is composed from @shared/sections,
+   themed by theme.css tokens.
+--------------------------------------------------------------------------- */
+
+.gs-app { min-height: 100vh; display: flex; flex-direction: column; }
+.gs-app main { flex: 1; }
+
+/* ── NAV ─────────────────────────────────────────────────────────────────── */
+
+.gs-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: var(--z-nav, 100);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 clamp(20px, 5vw, 56px);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  border-bottom: 1px solid var(--color-border-sub);
+}
+
+.gs-nav__logo {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  text-decoration: none;
+}
+.gs-nav__logo span { color: var(--color-accent); }
+
+.gs-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  margin-left: auto;
+}
+
+.gs-nav__link {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-sub);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.gs-nav__link:hover { color: var(--color-text); }
+.gs-nav__link.is-active { color: var(--color-accent); font-weight: 600; }
+
+.gs-nav__cta {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  background: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  padding: 8px 18px;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.18s ease, box-shadow 0.3s ease;
+}
+.gs-nav__cta:hover { background: #1e3558; box-shadow: 0 4px 16px var(--color-accent-dim); }
+
+@media (max-width: 760px) {
+  .gs-nav { gap: 12px; padding: 0 20px; }
+  .gs-nav__links { display: none; }
+}
+
+/* ── PAGE INTRO (Components / About headers) ─────────────────────────────── */
+
+.gs-intro {
+  padding: 140px 0 56px;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border-sub);
+}
+.gs-intro__inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 48px);
+}
+.gs-intro__eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--color-accent); opacity: 0.85; margin-bottom: 16px;
+}
+.gs-intro__eyebrow::before { content: ''; width: 22px; height: 1px; background: currentColor; }
+.gs-intro__title {
+  font-size: clamp(34px, 5vw, 52px); font-weight: 700; letter-spacing: -0.03em;
+  line-height: 1.08; color: var(--color-text); margin: 0 0 18px; max-width: 760px;
+}
+.gs-intro__lead {
+  font-size: 17px; color: var(--color-text-sub); line-height: 1.72; max-width: 620px; margin: 0;
+}
+
+/* ── COMPONENT SHOWCASE FRAME ────────────────────────────────────────────── */
+
+.gs-showcase { padding: 64px 0 96px; }
+.gs-showcase__inner { max-width: 1140px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 48px); }
+
+.gs-spec { margin-bottom: 48px; }
+
+.gs-spec__head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap;
+  padding-bottom: 14px; margin-bottom: 0;
+  border-bottom: 1px solid var(--color-border-low);
+}
+.gs-spec__name {
+  font-size: 18px; font-weight: 700; letter-spacing: -0.01em; color: var(--color-text); margin: 0;
+}
+.gs-spec__tag {
+  font-family: var(--font-mono, monospace);
+  font-size: 12px; color: var(--color-accent);
+  background: var(--color-accent-sub); border: 1px solid var(--color-accent-dim);
+  padding: 3px 9px; border-radius: var(--radius-pill);
+}
+.gs-spec__desc {
+  font-size: 14px; color: var(--color-text-sub); line-height: 1.6;
+  margin: 10px 0 0; max-width: 680px;
+}
+
+/* The live component preview — bordered, clipped, so full-bleed sections read
+   as a contained example rather than bleeding into the page. */
+.gs-spec__demo {
+  margin-top: 20px;
+  border: 1px solid var(--color-border-low);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--color-bg);
+}
+/* Neutralize the big vertical rhythm of full sections inside the frame */
+.gs-spec__demo .section { padding: 44px 0; }
+.gs-spec__demo .hero-section { min-height: 0; padding: 56px 0; }
+.gs-spec__demo .section-container,
+.gs-spec__demo .hero-section .section-container { padding: 0 32px; }
+
+@media (max-width: 560px) {
+  .gs-spec__demo .section-container { padding: 0 20px; }
+}
+
+/* ── OWNERSHIP LIST (What you own / what we don't do) ─────────────────────── */
+
+.gs-own-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; max-width: 760px; }
+.gs-own-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  font-size: 15.5px; color: var(--color-text); line-height: 1.6;
+}
+.gs-own-item__mark {
+  flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%;
+  background: var(--color-accent-sub); color: var(--color-accent);
+  display: flex; align-items: center; justify-content: center; margin-top: 1px;
+}
+.gs-own-item__mark svg { width: 13px; height: 13px; }
+.gs-note {
+  margin-top: 28px; padding: 18px 22px; border-radius: var(--radius-lg);
+  background: var(--color-surface-high); border: 1px solid var(--color-border-low);
+  font-size: 14px; color: var(--color-text-sub); line-height: 1.6; max-width: 760px;
+}
+
+.gs-showcase__foot {
+  margin-top: 8px; padding-top: 32px; border-top: 1px solid var(--color-border-low);
+  font-size: 16px; color: var(--color-text-sub);
+}
+.gs-showcase__foot a { color: var(--color-accent); font-weight: 600; text-decoration: none; }
+.gs-showcase__foot a:hover { text-decoration: underline; }
+
+/* ── FOOTER ──────────────────────────────────────────────────────────────── */
+
+.gs-footer {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border-sub);
+  padding: 56px 0 28px;
+}
+.gs-footer__inner {
+  max-width: 1140px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 48px);
+  display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+  padding-bottom: 40px;
+}
+.gs-footer__brand { font-size: 19px; font-weight: 800; letter-spacing: -0.02em; color: var(--color-text); text-decoration: none; }
+.gs-footer__brand span { color: var(--color-accent); }
+.gs-footer__tagline { margin-top: 12px; font-size: 14px; color: var(--color-text-sub); line-height: 1.65; max-width: 360px; }
+.gs-footer__col { display: flex; flex-direction: column; gap: 10px; }
+.gs-footer__col-title { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-text-dim); margin-bottom: 2px; }
+.gs-footer__col a { font-size: 14px; color: var(--color-text-sub); text-decoration: none; transition: color 0.15s ease; }
+.gs-footer__col a:hover { color: var(--color-accent); }
+.gs-footer__muted { font-size: 13px; color: var(--color-text-faint); }
+.gs-footer__bottom {
+  max-width: 1140px; margin: 0 auto; padding: 24px clamp(20px, 5vw, 48px) 0;
+  border-top: 1px solid var(--color-border-sub);
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  font-size: 13px; color: var(--color-text-dim);
+}
+.gs-footer__bottom a { color: var(--color-accent); text-decoration: none; }
+
+@media (max-width: 760px) {
+  .gs-footer__inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .gs-footer__brand-col { grid-column: 1 / -1; }
+}
+@media (max-width: 480px) {
+  .gs-footer__inner { grid-template-columns: 1fr; }
+}

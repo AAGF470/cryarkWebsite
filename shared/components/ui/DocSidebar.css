@@ -4,75 +4,68 @@
    Desktop: floating glass panel — same material as SiteNav.
    Mobile:  full-width collapsible strip; toggle is a text pill, not a
             hamburger, so it doesn't conflict with SiteNav's hamburger.
+   All colors reference design tokens — override in your app's theme.css.
 --------------------------------------------------------------------------- */
 
 /* ── Shell ──────────────────────────────────────────────────────────────── */
 
 .doc-sidebar {
   position: sticky;
-  /* 62px nav + 16px breathing room = 78px from viewport top */
-  top: 78px;
-  /* Full remaining height minus top offset (78px) and a 16px bottom gap */
+  top: 78px;   /* 62px nav + 16px breathing room */
   height: calc(100vh - 94px);
   overflow-y: auto;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
 
-  /* Float it away from the left grid edge */
   margin: 0 8px 16px 16px;
 
-  /* Frosted glass panel — matches the SiteNav aesthetic */
-  background: rgba(10, 10, 10, 0.86);
-  border: 0.5px solid rgba(255, 255, 255, 0.10);
-  border-radius: 14px;
-  box-shadow:
-    0 8px 40px rgba(0, 0, 0, 0.55),
-    0 1px 0 rgba(255, 255, 255, 0.06) inset;
-  backdrop-filter:         blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  background: var(--nav-bg);
+  border: 0.5px solid var(--color-border-low);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: var(--nav-blur);
+  -webkit-backdrop-filter: var(--nav-blur);
 
   scrollbar-width: thin;
-  scrollbar-color: rgba(200, 169, 126, 0.10) transparent;
+  scrollbar-color: var(--color-accent-dim) transparent;
   flex-shrink: 0;
 }
 
 .doc-sidebar::-webkit-scrollbar       { width: 3px; }
 .doc-sidebar::-webkit-scrollbar-track { background: transparent; }
 .doc-sidebar::-webkit-scrollbar-thumb {
-  background: rgba(200, 169, 126, 0.10);
-  border-radius: 99px;
+  background: var(--color-accent-dim);
+  border-radius: var(--radius-pill);
 }
 
-/* ── Header (back link + space name + mobile toggle) ────────────────────── */
+/* ── Header ─────────────────────────────────────────────────────────────── */
 
 .doc-sidebar__header {
   display: flex;
   flex-direction: column;
   padding: 18px 16px 14px;
-  border-bottom: 0.5px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 0.5px solid var(--color-border-sub);
   flex-shrink: 0;
   gap: 8px;
 }
 
-/* Back-to-project link */
 .doc-sidebar__back {
   display: inline-flex;
   align-items: center;
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.01em;
-  color: rgba(232, 230, 225, 0.28);
+  color: var(--color-text-faint);
   text-decoration: none;
   transition: color 0.16s ease;
   line-height: 1;
 }
 
 .doc-sidebar__back:hover {
-  color: rgba(232, 230, 225, 0.70);
+  color: var(--color-text-sub);
 }
 
-/* Row: space-name (left) + mobile toggle (right) */
 .doc-sidebar__header-row {
   display: flex;
   align-items: center;
@@ -85,30 +78,31 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(200, 169, 126, 0.80);
+  color: var(--color-accent);
   text-decoration: none;
   transition: color 0.16s ease;
   line-height: 1.3;
   min-width: 0;
+  opacity: 0.80;
 }
 
 .doc-sidebar__space-name:hover {
-  color: rgba(200, 169, 126, 1);
+  opacity: 1;
 }
 
-/* Mobile toggle — text pill, hidden on desktop */
+/* Mobile toggle pill */
 .doc-sidebar__toggle {
   display: none;
   align-items: center;
   gap: 4px;
   padding: 3px 9px;
-  border-radius: 99px;
-  border: 0.5px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.05);
-  color: rgba(232, 230, 225, 0.55);
+  border-radius: var(--radius-pill);
+  border: 0.5px solid var(--color-border-mid);
+  background: var(--color-surface);
+  color: var(--color-text-sub);
   font-size: 11px;
   font-weight: 500;
-  font-family: var(--font-sans, system-ui, sans-serif);
+  font-family: var(--font-sans);
   letter-spacing: 0.04em;
   cursor: pointer;
   white-space: nowrap;
@@ -117,9 +111,9 @@
 }
 
 .doc-sidebar__toggle:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(232, 230, 225, 0.88);
-  border-color: rgba(255, 255, 255, 0.20);
+  background: var(--color-surface-high);
+  color: var(--color-text);
+  border-color: var(--color-border-mid);
 }
 
 /* ── Nav tree ────────────────────────────────────────────────────────────── */
@@ -138,22 +132,19 @@
 
 /* ── Nav item row ────────────────────────────────────────────────────────── */
 
-.doc-sidebar__item {
-  /* no own padding — handled by .doc-sidebar__row padding-left */
-}
+.doc-sidebar__item { }
 
 .doc-sidebar__row {
   display: flex;
   align-items: center;
   gap: 4px;
-  /* padding-left set inline via depth */
   padding-right: 14px;
   padding-top: 2px;
   padding-bottom: 2px;
   position: relative;
 }
 
-/* Active page — gold left bar */
+/* Active page — accent left bar */
 .doc-sidebar__row--active::before {
   content: '';
   position: absolute;
@@ -162,7 +153,8 @@
   bottom: 2px;
   width: 2px;
   border-radius: 2px;
-  background: rgba(200, 169, 126, 0.75);
+  background: var(--color-accent);
+  opacity: 0.75;
 }
 
 /* ── Chevron ─────────────────────────────────────────────────────────────── */
@@ -175,7 +167,7 @@
   align-items: center;
   justify-content: center;
   font-size: 12px;
-  color: rgba(232, 230, 225, 0.20);
+  color: var(--color-text-faint);
   background: transparent;
   border: none;
   cursor: pointer;
@@ -187,7 +179,7 @@
 
 .doc-sidebar__chevron--open {
   transform: rotate(90deg);
-  color: rgba(232, 230, 225, 0.40);
+  color: var(--color-text-dim);
 }
 
 /* ── Link ─────────────────────────────────────────────────────────────────── */
@@ -198,18 +190,18 @@
   font-size: 13px;
   line-height: 1.4;
   padding: 5px 0;
-  color: rgba(232, 230, 225, 0.45);
+  color: var(--color-text-dim);
   text-decoration: none;
   transition: color 0.16s ease;
   word-break: break-word;
 }
 
 .doc-sidebar__link:hover {
-  color: rgba(232, 230, 225, 0.85);
+  color: var(--color-text);
 }
 
 .doc-sidebar__row--active .doc-sidebar__link {
-  color: rgba(232, 230, 225, 0.92);
+  color: var(--color-text);
   font-weight: 500;
 }
 
@@ -217,17 +209,15 @@
 
 @media (max-width: 860px) {
   .doc-sidebar {
-    /* Reset floating-panel styles — full-width inline strip */
     position: static;
     height: auto;
     top: auto;
     margin: 0;
     border-radius: 0;
     box-shadow: none;
-    /* Simpler inline strip */
-    background: rgba(10, 10, 10, 0.60);
+    background: var(--nav-mobile-strip-bg);
     border: none;
-    border-bottom: 0.5px solid rgba(255, 255, 255, 0.07);
+    border-bottom: 0.5px solid var(--nav-mobile-strip-border);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
 
@@ -249,10 +239,8 @@
     border-bottom: none;
   }
 
-  /* On mobile the header always shows as a single row:
-     back link (if any) | space name | toggle pill */
   .doc-sidebar__back {
-    display: none;  /* hidden on mobile — too cramped; back is in the toggle row */
+    display: none;
   }
 
   .doc-sidebar__header-row {
@@ -265,6 +253,6 @@
 
   .doc-sidebar__nav {
     padding-bottom: 16px;
-    border-top: 0.5px solid rgba(255, 255, 255, 0.05);
+    border-top: 0.5px solid var(--color-border-sub);
   }
 }

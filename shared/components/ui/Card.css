@@ -40,9 +40,9 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.032);
-  border: 0.5px solid rgba(255, 255, 255, 0.07);
-  border-radius: 14px;
+  background: var(--color-surface);
+  border: 0.5px solid var(--color-border-sub);
+  border-radius: var(--radius-xl);
   padding: 20px;
   z-index: 1;
 }
@@ -52,9 +52,9 @@
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 14px;
-  border-top: 0.5px solid rgba(255, 255, 255, 0.14);
-  border-left: 0.5px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-xl);
+  border-top: 0.5px solid var(--color-border-mid);
+  border-left: 0.5px solid var(--color-border-sub);
   pointer-events: none;
   z-index: 5;
 }
@@ -88,8 +88,8 @@
   border-radius: 8px;
   overflow: hidden;  /* thumbnail clips itself */
   margin-bottom: 14px;
-  background: rgba(255, 255, 255, 0.035);
-  border: 0.5px solid rgba(255, 255, 255, 0.06);
+  background: var(--color-surface-high);
+  border: 0.5px solid var(--color-border-sub);
   object-fit: cover;
   display: block;
 }
@@ -98,11 +98,11 @@
 .card__thumbnail_placeholder {
   width: 100%;
   height: 160px;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   overflow: hidden;
   margin-bottom: 14px;
-  background: rgba(255, 255, 255, 0.035);
-  border: 0.5px solid rgba(255, 255, 255, 0.06);
+  background: var(--color-surface-high);
+  border: 0.5px solid var(--color-border-sub);
 }
 
 /* ── Header row (title + arrow) ─────────────────────────────────────────── */
@@ -118,14 +118,14 @@
 .card__title {
   font-size: 14px;
   font-weight: 500;
-  color: #f0ede8;
+  color: var(--color-text);
   line-height: 1.3;
   margin: 0;
 }
 
 .card__arrow {
   font-size: 12px;
-  color: rgba(200, 169, 126, 0.30);
+  color: var(--color-accent-dim);
   flex-shrink: 0;
   margin-top: 2px;
   transition: color 0.4s ease;
@@ -133,14 +133,14 @@
 }
 
 .card__wrapper:hover .card__arrow {
-  color: rgba(200, 169, 126, 0.95);
+  color: var(--color-accent);
 }
 
 /* ── Description text ───────────────────────────────────────────────────── */
 
 .card__description {
   font-size: 12px;
-  color: rgba(232, 230, 225, 0.42);
+  color: var(--color-text-dim);
   line-height: 1.6;
   margin: 0 0 14px 0;
   /* grow to fill available space so meta row always sits at the bottom */
@@ -151,7 +151,7 @@
 
 .card__divider {
   height: 0.5px;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--color-border-sub);
   margin: 12px 0;
   border: none;
 }
@@ -177,11 +177,11 @@
 .card__pill {
   font-size: 10px;
   padding: 3px 8px;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   letter-spacing: 0.04em;
-  background: rgba(255, 255, 255, 0.045);
-  color: rgba(232, 230, 225, 0.38);
-  border: 0.5px solid rgba(255, 255, 255, 0.07);
+  background: var(--color-surface-high);
+  color: var(--color-text-faint);
+  border: 0.5px solid var(--color-border-sub);
   white-space: nowrap;
   user-select: none;
 }
@@ -256,7 +256,7 @@
 .card__stat {
   text-align: center;
   padding: 0 8px;
-  border-right: 0.5px solid rgba(255, 255, 255, 0.06);
+  border-right: 0.5px solid var(--color-border-sub);
 }
 
 .card__stat:last-child {
@@ -266,13 +266,13 @@
 .card__stat_number {
   font-size: 15px;
   font-weight: 500;
-  color: #c8a97e;
+  color: var(--color-accent);
   display: block;
 }
 
 .card__stat_label {
   font-size: 10px;
-  color: rgba(232, 230, 225, 0.32);
+  color: var(--color-text-faint);
   letter-spacing: 0.06em;
   margin-top: 2px;
   display: block;

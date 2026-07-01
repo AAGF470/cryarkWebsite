@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lumière Salon — wireframe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="wireframe.css" />
+</head>
+<body class="theme-salon">
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="#" class="nav__logo">Lumière <span>Salon</span></a>
+    <div class="nav__links">
+      <a href="#menu">Menu</a>
+      <a href="#looks">Looks</a>
+      <a href="#pricing">Memberships</a>
+      <a href="#visit">Visit</a>
+      <a href="#book" class="btn btn--solid" style="padding:8px 18px;">Book now</a>
+    </div>
+  </nav>
+
+  <!-- HERO (image split) -->
+  <header class="section hero">
+    <div class="hero__glow"></div>
+    <div class="container hero--image">
+      <div class="hero__inner">
+        <h1>Your best hair, every visit.</h1>
+        <p>A modern salon in the heart of downtown. Expert color, precision cuts,
+           and a chair that finally feels like yours.</p>
+        <div class="hero__actions">
+          <a href="#book" class="btn btn--solid">Book an appointment</a>
+          <a href="#menu" class="btn btn--ghost">View the menu →</a>
+        </div>
+      </div>
+      <div class="hero__photo"></div>
+    </div>
+  </header>
+
+  <!-- FEATURES -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="header-block">
+        <p class="eyebrow">The Lumière difference</p>
+        <h2 class="title">More than a haircut</h2>
+      </div>
+      <div class="features">
+        <div class="feature"><div class="feature__icon">✂</div><h3>Master stylists</h3><p>Every stylist has 8+ years behind the chair and trains in the latest techniques quarterly.</p></div>
+        <div class="feature"><div class="feature__icon">✿</div><h3>Clean, calm space</h3><p>A relaxing, beautifully designed studio — complimentary drinks and zero rush.</p></div>
+        <div class="feature"><div class="feature__icon">♡</div><h3>Color specialists</h3><p>Balayage, dimensional color, and corrections from people who genuinely love what they do.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE MENU -->
+  <section class="section" id="menu">
+    <div class="container">
+      <div class="header-block">
+        <p class="eyebrow">Our menu</p>
+        <h2 class="title">Services &amp; pricing</h2>
+        <p class="sub">Pricing starts here — your stylist will confirm based on length and thickness.</p>
+      </div>
+      <div class="services">
+        <div>
+          <div class="service"><div class="service__body"><div class="service__name">Women's cut &amp; style</div><div class="service__desc">Consultation, cut, blow-dry</div></div><span class="service__leader"></span><span class="service__price">from $65</span></div>
+          <div class="service"><div class="service__body"><div class="service__name">Men's cut</div><div class="service__desc">Clipper or scissor, style</div></div><span class="service__leader"></span><span class="service__price">$40</span></div>
+          <div class="service"><div class="service__body"><div class="service__name">Blowout</div><div class="service__desc">Wash &amp; professional style</div></div><span class="service__leader"></span><span class="service__price">$45</span></div>
+        </div>
+        <div>
+          <div class="service"><div class="service__body"><div class="service__name">Full balayage</div><div class="service__desc">Hand-painted, dimensional</div></div><span class="service__leader"></span><span class="service__price">from $180</span></div>
+          <div class="service"><div class="service__body"><div class="service__name">All-over color</div><div class="service__desc">Single-process, roots to ends</div></div><span class="service__leader"></span><span class="service__price">from $95</span></div>
+          <div class="service"><div class="service__body"><div class="service__name">Special occasion updo</div><div class="service__desc">Weddings, events, formals</div></div><span class="service__leader"></span><span class="service__price">from $85</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOOKS / GALLERY -->
+  <section class="section section--alt" id="looks">
+    <div class="container">
+      <div class="header-block">
+        <p class="eyebrow">From our chairs</p>
+        <h2 class="title">Recent looks</h2>
+      </div>
+      <div class="gallery">
+        <div class="gallery__item"><span>Balayage blonde</span></div>
+        <div class="gallery__item"><span>Copper transformation</span></div>
+        <div class="gallery__item"><span>Textured bob</span></div>
+        <div class="gallery__item"><span>Bridal updo</span></div>
+        <div class="gallery__item"><span>Dimensional brunette</span></div>
+        <div class="gallery__item"><span>Curtain bangs</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEMBERSHIPS / PRICING -->
+  <section class="section" id="pricing">
+    <div class="container">
+      <div class="header-block">
+        <p class="eyebrow">Memberships</p>
+        <h2 class="title">Save on every visit</h2>
+        <p class="sub">Regulars save the most. Cancel anytime — no long-term contracts.</p>
+      </div>
+      <div class="plans">
+        <div class="plan">
+          <div class="plan__tag">The Basics</div>
+          <div class="plan__price"><span class="plan__amount">$49</span><span class="plan__period">/mo</span></div>
+          <p class="plan__desc">Perfect for cut-and-style regulars who visit monthly.</p>
+          <ul class="plan__list">
+            <li class="plan__item"><span class="plan__check">✓</span>One cut &amp; style per month</li>
+            <li class="plan__item"><span class="plan__check">✓</span>15% off all color services</li>
+            <li class="plan__item"><span class="plan__check">✓</span>10% off retail products</li>
+            <li class="plan__item"><span class="plan__check">✓</span>Priority booking</li>
+          </ul>
+          <a href="#book" class="btn btn--bordered" style="width:100%;justify-content:center;">Choose Basics</a>
+        </div>
+        <div class="plan plan--featured">
+          <span class="plan__badge">Most popular</span>
+          <div class="plan__tag">The Full Lumière</div>
+          <div class="plan__price"><span class="plan__amount">$99</span><span class="plan__period">/mo</span></div>
+          <p class="plan__desc">For the color-committed who want the works every month.</p>
+          <ul class="plan__list">
+            <li class="plan__item"><span class="plan__check">✓</span>One cut &amp; style per month</li>
+            <li class="plan__item"><span class="plan__check">✓</span>One color refresh per month</li>
+            <li class="plan__item"><span class="plan__check">✓</span>25% off add-on treatments</li>
+            <li class="plan__item"><span class="plan__check">✓</span>20% off retail products</li>
+            <li class="plan__item"><span class="plan__check">✓</span>Free birthday blowout</li>
+          </ul>
+          <a href="#book" class="btn btn--solid" style="width:100%;justify-content:center;">Choose Full Lumière</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="header-block">
+        <p class="eyebrow">Loved by our guests</p>
+        <h2 class="title">Don't take our word for it</h2>
+      </div>
+      <div class="quotes">
+        <div class="quote"><p>"I've finally found my person. My balayage has never looked this natural — I get compliments constantly."</p><div class="quote__who"><div class="quote__avatar">JL</div><div><div class="quote__name">Jenna L.</div><div class="quote__role">Member since 2024</div></div></div></div>
+        <div class="quote"><p>"The space is gorgeous and so relaxing. It feels like a treat every single time I come in."</p><div class="quote__who"><div class="quote__avatar">AP</div><div><div class="quote__name">Amara P.</div><div class="quote__role">Regular guest</div></div></div></div>
+        <div class="quote"><p>"They did my wedding updo and I cried (happy tears). Booking my whole bridal party here next time."</p><div class="quote__who"><div class="quote__avatar">MR</div><div><div class="quote__name">Mia R.</div><div class="quote__role">Bride</div></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <div class="header-block">
+        <p class="eyebrow">Before you book</p>
+        <h2 class="title">Questions, answered</h2>
+      </div>
+      <div class="faq">
+        <details open><summary>How do I book an appointment?<span class="faq__icon"></span></summary><p>Tap "Book now" anytime to see live availability and reserve your spot, or give us a call during business hours.</p></details>
+        <details><summary>What's your cancellation policy?<span class="faq__icon"></span></summary><p>We ask for 24 hours' notice. Late cancellations may be charged 50% of the service price.</p></details>
+        <details><summary>Do you offer consultations?<span class="faq__icon"></span></summary><p>Yes — complimentary 15-minute color consultations are available before any major color service.</p></details>
+        <details><summary>Can I freeze my membership?<span class="faq__icon"></span></summary><p>Of course. You can pause or cancel your membership anytime from your account, no questions asked.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOURS + LOCATION -->
+  <section class="section section--alt" id="visit">
+    <div class="container">
+      <div class="hours-loc">
+        <div>
+          <p class="eyebrow">Come see us</p>
+          <h2 class="title" style="margin-bottom:24px;">Hours</h2>
+          <ul class="hours">
+            <li><span class="day">Monday</span><span class="closed">Closed</span></li>
+            <li class="today"><span class="day">Tuesday</span><span>10:00 AM – 7:00 PM</span></li>
+            <li><span class="day">Wednesday</span><span>10:00 AM – 7:00 PM</span></li>
+            <li><span class="day">Thursday</span><span>10:00 AM – 8:00 PM</span></li>
+            <li><span class="day">Friday</span><span>9:00 AM – 8:00 PM</span></li>
+            <li><span class="day">Saturday</span><span>9:00 AM – 6:00 PM</span></li>
+            <li><span class="day">Sunday</span><span>11:00 AM – 4:00 PM</span></li>
+          </ul>
+        </div>
+        <div>
+          <div class="detail"><div class="detail__icon">◎</div><div><div class="detail__label">Find us</div><div class="detail__value">218 Magnolia Street<br>Downtown, CA 90211</div></div></div>
+          <div class="detail"><div class="detail__icon">✆</div><div><div class="detail__label">Call</div><div class="detail__value">(555) 776-3320</div></div></div>
+          <div class="detail"><div class="detail__icon">✉</div><div><div class="detail__label">Email</div><div class="detail__value">hello@lumieresalon.com</div></div></div>
+          <div class="map">Map embed</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--accent cta" id="book">
+    <div class="container">
+      <p class="eyebrow">Ready for a change?</p>
+      <h2 class="title">Book your chair today.</h2>
+      <p class="sub">New guests get 15% off their first color service. We can't wait to meet you.</p>
+      <a href="#" class="btn btn--solid">Book an appointment</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__logo">Lumière <span>Salon</span></div>
+      <div class="footer__copy">© 2026 Lumière Salon · Built by Guillen Solutions</div>
+    </div>
+  </footer>
+
+</body>
+</html>

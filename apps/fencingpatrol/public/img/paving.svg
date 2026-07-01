@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Paving and blacktop project">
+  <rect width="800" height="600" fill="#15120e"/>
+  <path d="M0 0 L170 0 L0 150 Z" fill="#e0600f"/>
+  <path d="M180 300 L620 300 L540 210 L260 210 Z" fill="none" stroke="#e0600f" stroke-width="9" stroke-linejoin="round" opacity="0.9"/>
+  <line x1="400" y1="218" x2="400" y2="292" stroke="#e0600f" stroke-width="6" stroke-dasharray="16 14" opacity="0.9"/>
+  <rect x="56" y="64" width="46" height="4" fill="#e0600f"/>
+  <text x="56" y="108" font-family="Inter, system-ui, sans-serif" font-size="18" letter-spacing="3" fill="#ffffff" opacity="0.5">FENCINGPATROL</text>
+  <text x="56" y="430" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="56" fill="#ffffff">Paving &amp; Blacktop</text>
+</svg>

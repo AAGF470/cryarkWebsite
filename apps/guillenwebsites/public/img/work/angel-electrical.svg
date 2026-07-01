@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Angel Electrical Services website">
+  <rect width="1200" height="800" fill="#12151c"/>
+  <!-- nav -->
+  <text x="64" y="56" font-family="Inter, sans-serif" font-size="24" font-weight="800" fill="#ffffff">Angel <tspan fill="#f2b53a">Electrical</tspan></text>
+  <g fill="#8a93a3" font-family="Inter, sans-serif" font-size="15">
+    <text x="900" y="54">Services</text><text x="1000" y="54">About</text><text x="1084" y="54">Call</text>
+  </g>
+  <!-- hero copy -->
+  <text x="64" y="330" font-family="Inter, sans-serif" font-size="16" letter-spacing="4" fill="#f2b53a">LICENSED · INSURED · DALLAS, TX</text>
+  <text x="60" y="420" font-family="Inter, sans-serif" font-size="82" font-weight="800" fill="#ffffff">Powering Dallas,</text>
+  <text x="60" y="510" font-family="Inter, sans-serif" font-size="82" font-weight="800" fill="#ffffff">safely.</text>
+  <rect x="64" y="560" width="230" height="60" rx="10" fill="#f2b53a"/>
+  <text x="96" y="598" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#12151c">Get a free quote</text>
+  <!-- bolt motif -->
+  <path d="M880 210 L790 470 L900 470 L840 660 L1010 400 L905 400 Z" fill="#f2b53a" opacity="0.92"/>
+</svg>

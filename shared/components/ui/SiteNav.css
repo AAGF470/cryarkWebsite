@@ -3,8 +3,8 @@
 
    Items always show icon + label (no expand animation) so the layout never
    shifts and the liquid-glass glider always lands on the right spot.
-   Gold is accent-only: border outline + text-shadow glow on active.
-   Fill backgrounds use neutral glass, never gold.
+   Accent is outline-only on the glider, never a fill.
+   All colors reference design tokens — override in your app's theme.css.
 --------------------------------------------------------------------------- */
 
 /* ── FLOATING DOCK ──────────────────────────────────────────────────────── */
@@ -12,27 +12,23 @@
 .sitenav {
   position: fixed;
   top: 14px;
-  /* Align with where the actual page content starts — not just the container edge.
-     Content uses: max-width:min(1920px,94vw) + margin:auto + padding:0 48px
-     So content left edge = (100vw - min(1920px,94vw)) / 2  +  48px
-     A 768px breakpoint matches the content's responsive padding drop to 24px. */
+  /* Align with where page content starts:
+     max-width:min(1920px,94vw) + margin:auto + padding:0 48px */
   left: max(20px, calc((100vw - min(1920px, 94vw)) / 2 + 48px));
-  z-index: 200;
+  z-index: var(--z-modal);
 
   display: flex;
   align-items: center;
   gap: 2px;
   padding: 6px 8px;
 
-  border-radius: 14px;
-  border: 0.5px solid rgba(255, 255, 255, 0.10);
-  background: rgba(10, 10, 10, 0.86);
-  box-shadow:
-    0 8px 40px rgba(0, 0, 0, 0.55),
-    0 1px 0 rgba(255, 255, 255, 0.06) inset;
+  border-radius: var(--radius-xl);
+  border: 0.5px solid var(--color-border-low);
+  background: var(--nav-bg);
+  box-shadow: var(--shadow-lg);
 
-  backdrop-filter:         blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  backdrop-filter: var(--nav-blur);
+  -webkit-backdrop-filter: var(--nav-blur);
 
   transition:
     transform 0.30s cubic-bezier(0.4, 0, 0.2, 1),
@@ -46,8 +42,8 @@
 }
 
 .sitenav--menu-open {
-  background: rgba(8, 8, 8, 0.97);
-  border-color: rgba(255, 255, 255, 0.10);
+  background: var(--nav-bg-open);
+  border-color: var(--color-border-low);
 }
 
 /* ── LOGO ─────────────────────────────────────────────────────────────────── */
@@ -58,23 +54,23 @@
   justify-content: center;
   width: 34px;
   height: 34px;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   text-decoration: none;
-  color: rgba(232, 230, 225, 0.45);
+  color: var(--nav-logo-color);
   flex-shrink: 0;
   transition: color 0.16s ease, background 0.16s ease;
 }
 
 .sitenav__logo:hover {
-  background: rgba(255, 255, 255, 0.06);
-  color: rgba(232, 230, 225, 0.88);
+  background: var(--nav-link-hover-bg);
+  color: var(--nav-logo-hover);
 }
 
 .sitenav__logo_text {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.10em;
-  font-family: var(--font-sans, system-ui, sans-serif);
+  font-family: var(--font-sans);
 }
 
 .sitenav__logo_img {
@@ -85,7 +81,7 @@
 }
 
 .sitenav__logo_accent {
-  color: rgba(200, 169, 126, 0.85);
+  color: var(--nav-logo-accent);
 }
 
 /* ── SEPARATOR ────────────────────────────────────────────────────────────── */
@@ -94,14 +90,13 @@
   display: block;
   width: 0.5px;
   height: 18px;
-  background: rgba(255, 255, 255, 0.07);
+  background: var(--nav-border);
   flex-shrink: 0;
   margin: 0 3px;
 }
 
 /* ── NAV LINKS + GLIDER ───────────────────────────────────────────────────── */
 
-/* Relative so the glider can be positioned inside */
 .sitenav__links {
   position: relative;
   display: flex;
@@ -109,66 +104,59 @@
   gap: 2px;
 }
 
-/* ── Liquid-glass glider ─────────────────────────────────────────────────────
-   Neutral glass fill + gold outline. Slides on route change with a spring
-   on the x-axis for the water-drop feel.                                     */
+/* Liquid-glass glider — slides via left/width inline styles */
 .sitenav__glider {
   position: absolute;
   top: 0;
   height: 100%;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
 
-  /* Neutral glass fill — gold is only the border */
-  background: rgba(255, 255, 255, 0.07);
-  border: 0.5px solid rgba(200, 169, 126, 0.30);
+  background: var(--color-surface);
+  border: 0.5px solid var(--nav-glider-border);
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.07) inset,
-    0 2px 12px rgba(200, 169, 126, 0.08);
+    0 1px 0 var(--color-border-sub) inset,
+    var(--nav-glider-shadow);
 
   pointer-events: none;
   z-index: 0;
 
   transition:
-    left    0.38s cubic-bezier(0.34, 1.28, 0.64, 1),   /* spring — water-drop flow */
+    left    0.38s cubic-bezier(0.34, 1.28, 0.64, 1),
     width   0.30s cubic-bezier(0.4,  0,    0.2,  1),
     opacity 0.20s ease;
 }
 
-/* Items sit above the glider */
 .sitenav__link {
   position: relative;
   z-index: 1;
 
   display: flex;
   align-items: center;
-  gap: 7px;               /* fixed gap — never changes, no layout shift */
-  padding: 7px 11px;      /* fixed padding — same at rest and active */
-  border-radius: 8px;
+  gap: 7px;
+  padding: 7px 11px;
+  border-radius: var(--radius-md);
   text-decoration: none;
-  color: rgba(232, 230, 225, 0.35);
+  color: var(--nav-link-rest);
   white-space: nowrap;
 
   transition: color 0.16s ease, background 0.16s ease;
 }
 
-/* Hover: neutral highlight */
 .sitenav__link:hover {
-  color: rgba(232, 230, 225, 0.85);
-  background: rgba(255, 255, 255, 0.05);
+  color: var(--nav-link-hover);
+  background: var(--nav-link-hover-bg);
 }
 
-/* Active: white text, subtle gold glow — NO gold fill */
 .sitenav__link--active {
-  color: rgba(255, 255, 255, 0.92);
-  background: transparent;   /* glider provides the highlight */
+  color: var(--nav-link-active);
+  background: transparent;
 }
 
 .sitenav__link--active:hover {
   background: transparent;
-  color: rgba(255, 255, 255, 1);
+  color: var(--nav-link-active);
 }
 
-/* Icon */
 .sitenav__icon {
   display: flex;
   align-items: center;
@@ -178,13 +166,11 @@
   flex-shrink: 0;
 }
 
-/* Label — always visible, opacity only transitions */
 .sitenav__label {
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.01em;
-  font-family: var(--font-sans, system-ui, sans-serif);
-  /* No max-width animation — always in flow to prevent layout shifts */
+  font-family: var(--font-sans);
 }
 
 /* ── CTA ──────────────────────────────────────────────────────────────────── */
@@ -193,21 +179,21 @@
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.04em;
-  font-family: var(--font-sans, system-ui, sans-serif);
-  color: rgba(232, 230, 225, 0.40);
+  font-family: var(--font-sans);
+  color: var(--nav-cta-color);
   text-decoration: none;
   padding: 7px 13px;
-  border-radius: 8px;
-  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  border: 0.5px solid var(--nav-cta-border);
   background: transparent;
   transition: color 0.16s ease, border-color 0.16s ease, background 0.16s ease;
   white-space: nowrap;
 }
 
 .sitenav__cta:hover {
-  color: rgba(232, 230, 225, 0.88);
-  border-color: rgba(255, 255, 255, 0.16);
-  background: rgba(255, 255, 255, 0.05);
+  color: var(--nav-cta-hover-color);
+  border-color: var(--nav-cta-hover-border);
+  background: var(--nav-cta-hover-bg);
 }
 
 /* ── HAMBURGER (mobile only) ─────────────────────────────────────────────── */
@@ -224,20 +210,20 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   transition: background 0.16s ease;
   margin-left: auto;
 }
 
 .sitenav__hamburger:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--nav-hamburger-hover-bg);
 }
 
 .sitenav__hamburger span {
   display: block;
   width: 14px;
   height: 1px;
-  background: rgba(232, 230, 225, 0.55);
+  background: var(--nav-hamburger-bar);
   border-radius: 1px;
   transform-origin: center;
   transition: transform 0.22s ease, opacity 0.18s ease, width 0.18s ease;
@@ -254,14 +240,14 @@
   top: 68px;
   left: 14px;
   right: 14px;
-  z-index: 199;
+  z-index: calc(var(--z-modal) - 1);
 
-  border-radius: 16px;
-  border: 0.5px solid rgba(255, 255, 255, 0.08);
-  background: rgba(10, 10, 10, 0.97);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.60);
-  backdrop-filter:         blur(28px) saturate(160%);
-  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  border-radius: var(--radius-xl);
+  border: 0.5px solid var(--color-border-low);
+  background: var(--nav-mobile-bg);
+  box-shadow: var(--shadow-modal);
+  backdrop-filter: var(--nav-blur);
+  -webkit-backdrop-filter: var(--nav-blur);
 
   overflow: hidden;
   opacity: 0;
@@ -289,25 +275,25 @@
   align-items: center;
   gap: 12px;
   padding: 14px 16px;
-  border-radius: 10px;
+  border-radius: var(--radius-lg);
   text-decoration: none;
   font-size: 15px;
   font-weight: 500;
   letter-spacing: 0.01em;
-  font-family: var(--font-sans, system-ui, sans-serif);
-  color: rgba(232, 230, 225, 0.50);
+  font-family: var(--font-sans);
+  color: var(--nav-mobile-link);
   transition: background 0.14s ease, color 0.14s ease;
 }
 
 .sitenav__mobile_link:hover {
-  background: rgba(255, 255, 255, 0.04);
-  color: rgba(232, 230, 225, 0.90);
+  background: var(--nav-mobile-link-hover-bg);
+  color: var(--nav-mobile-link-hover);
 }
 
 .sitenav__mobile_link--active {
-  color: rgba(255, 255, 255, 0.90);
-  background: rgba(255, 255, 255, 0.06);
-  border: 0.5px solid rgba(200, 169, 126, 0.22);
+  color: var(--nav-mobile-link-active);
+  background: var(--nav-mobile-link-active-bg);
+  border: 0.5px solid var(--color-accent-dim);
 }
 
 .sitenav__mobile_icon {
@@ -325,7 +311,7 @@
 
 .sitenav__mobile_cta {
   padding: 8px 8px 10px;
-  border-top: 0.5px solid rgba(255, 255, 255, 0.06);
+  border-top: 0.5px solid var(--nav-mobile-top-border);
   margin-top: 4px;
 }
 
@@ -333,22 +319,22 @@
   display: block;
   text-align: center;
   padding: 13px;
-  border-radius: 10px;
-  border: 0.5px solid rgba(255, 255, 255, 0.10);
-  background: rgba(255, 255, 255, 0.03);
-  color: rgba(232, 230, 225, 0.55);
+  border-radius: var(--radius-lg);
+  border: 0.5px solid var(--nav-mobile-cta-border);
+  background: transparent;
+  color: var(--nav-mobile-cta-color);
   text-decoration: none;
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.04em;
-  font-family: var(--font-sans, system-ui, sans-serif);
+  font-family: var(--font-sans);
   transition: background 0.16s ease, color 0.16s ease, border-color 0.16s ease;
 }
 
 .sitenav__mobile_cta_link:hover {
-  background: rgba(255, 255, 255, 0.06);
-  color: rgba(232, 230, 225, 0.90);
-  border-color: rgba(255, 255, 255, 0.18);
+  background: var(--nav-mobile-cta-hover-bg);
+  color: var(--nav-mobile-cta-hover);
+  border-color: var(--nav-mobile-cta-hover-border);
 }
 
 /* ── BACKDROP ─────────────────────────────────────────────────────────────── */
@@ -356,15 +342,14 @@
 .sitenav__backdrop {
   position: fixed;
   inset: 0;
-  z-index: 198;
-  background: rgba(0, 0, 0, 0.45);
+  z-index: calc(var(--z-modal) - 2);
+  background: var(--nav-backdrop);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 }
 
 /* ── RESPONSIVE ──────────────────────────────────────────────────────────── */
 
-/* Tablet range (641–768px): content padding drops from 48px to 24px */
 @media (max-width: 768px) {
   .sitenav {
     left: max(20px, calc((100vw - min(1920px, 94vw)) / 2 + 24px));

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="FencingPatrol crew on the job">
+  <rect width="800" height="600" fill="#16130f"/>
+  <path d="M0 600 L0 430 L330 600 Z" fill="#e0600f"/>
+  <path d="M520 600 L800 600 L800 380 Z" fill="#e0600f" opacity="0.35"/>
+  <g stroke="#e0600f" stroke-width="10" opacity="0.85" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M150 250 L400 150 L650 250"/>
+    <line x1="400" y1="150" x2="400" y2="300"/>
+  </g>
+  <rect x="56" y="64" width="46" height="4" fill="#e0600f"/>
+  <text x="56" y="108" font-family="Inter, system-ui, sans-serif" font-size="18" letter-spacing="3" fill="#ffffff" opacity="0.5">FENCINGPATROL</text>
+  <text x="56" y="430" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="50" fill="#ffffff">On the job</text>
+</svg>

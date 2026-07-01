@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "guillenwebsites",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev:gws"],
+      "port": 5174
+    },
+    {
+      "name": "guillen",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev:guillen"],
+      "port": 5173
+    }
+  ]
+}

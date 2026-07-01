@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Roofing project">
+  <rect width="800" height="600" fill="#17140f"/>
+  <path d="M0 600 L0 450 L300 600 Z" fill="#e0600f"/>
+  <path d="M120 230 L400 120 L680 230" fill="none" stroke="#e0600f" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+  <rect x="56" y="64" width="46" height="4" fill="#e0600f"/>
+  <text x="56" y="108" font-family="Inter, system-ui, sans-serif" font-size="18" letter-spacing="3" fill="#ffffff" opacity="0.5">FENCINGPATROL</text>
+  <text x="56" y="400" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="62" fill="#ffffff">Roofing</text>
+</svg>
