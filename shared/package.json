@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "description": "Guillen Solutions shared component library — section blocks, UI primitives, design tokens, and Sanity page rendering.",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AAGF470/cryarkWebsite.git",
+    "directory": "shared"
+  },
   "sideEffects": [
     "*.css"
   ],
