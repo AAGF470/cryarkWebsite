@@ -1,0 +1,21 @@
+/* Freelance template — fixed professional light neutrals.
+   The ACCENT (and everything derived from it) is applied at runtime from
+   site.config.js by applyTheme.js, so a client build only picks a brand color. */
+:root {
+  --color-bg:           #ffffff;
+  --color-surface:      #f7f5f2;
+  --color-surface-high: #efe9e2;
+
+  --color-text:         #1a1818;
+  --color-text-sub:     #6b645d;
+  --color-text-dim:     #948d85;
+  --color-text-faint:   #b9b3ab;
+
+  --color-border-sub:   #eee9e3;
+  --color-border-low:   #e4ddd4;
+  --color-border-mid:   #cfc6bb;
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 1px 4px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.05);
+  --shadow-lg: 0 4px 20px rgba(0,0,0,0.08);
+}
