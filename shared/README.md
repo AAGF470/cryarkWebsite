@@ -23,9 +23,9 @@ dependencies** — the consuming site provides them.
 1. **Auth** — the package lives on GitHub Packages. Add an `.npmrc` in the repo:
    ```
    @aagf470:registry=https://npm.pkg.github.com
-   //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
+   //npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}
    ```
-   (`GITHUB_TOKEN` = a GitHub PAT with `read:packages`.)
+   (`NODE_AUTH_TOKEN` = a GitHub PAT with `read:packages`.)
 
 2. **Install**
    ```bash
