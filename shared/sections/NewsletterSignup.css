@@ -1,0 +1,76 @@
+@import './_base.css';
+
+.newsletter__inner {
+  max-width: 640px;
+}
+
+.newsletter__form {
+  margin-top: 28px;
+}
+
+/* Visually hidden label — the placeholder carries the visual cue */
+.newsletter__label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.newsletter__row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.newsletter__input {
+  flex: 1 1 240px;
+  padding: 13px 16px;
+  font: inherit;
+  font-size: 15px;
+  color: var(--color-text);
+  background: var(--color-surface-high);
+  border: 1px solid var(--color-border-mid);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.newsletter__input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-sub);
+}
+
+.newsletter__btn {
+  padding: 13px 22px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--btn-solid-text, var(--color-on-accent));
+  background: var(--btn-solid-bg, var(--color-accent));
+  border: 1px solid var(--btn-solid-border, var(--color-accent));
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.newsletter__btn:hover {
+  background: var(--btn-solid-hover-bg, var(--color-accent));
+}
+
+.newsletter__disclaimer {
+  margin: 12px 0 0;
+  font-size: 12.5px;
+  color: var(--color-text-dim);
+}
+
+/* Accent background: fields sit on the colored band */
+.section--accent .newsletter__input {
+  background: color-mix(in srgb, var(--color-on-accent) 12%, transparent);
+  border-color: color-mix(in srgb, var(--color-on-accent) 35%, transparent);
+  color: var(--color-on-accent);
+}
+
+.section--accent .newsletter__input::placeholder { color: var(--color-on-accent-sub); }
+.section--accent .newsletter__disclaimer { color: var(--color-on-accent-sub); }
