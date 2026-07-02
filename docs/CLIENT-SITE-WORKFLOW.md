@@ -95,6 +95,8 @@ layouts and pushed — the bespoke React pages remain only as fallbacks. Rules:
 | Widened TS literals in shared field helpers | `not assignable to type 'Field'` | `type: 'select' as const` etc. in helper objects |
 | Blank template has no `public/` | runner-stage COPY fails | commit `public/.gitkeep` |
 | New library export used before publish | site CI build fails on missing import | ORDER: publish `@aagf470/ui` first, then deploy site |
+| Lockfile pins the old `@aagf470/ui` | registry has the new version but CI still installs the old one → `MISSING_EXPORT` in the bundler | when a site starts using a new library export, ALSO raise its dependency floor (`^0.1.0` → `^0.1.2`) — a satisfied semver range never updates past the lock pin |
+| Duplicate `publish-ui` dispatch | `409 Cannot publish over existing version` | harmless — the version is already live; GH Packages never overwrites |
 | CORS | localhost dev can't fetch live CMS | expected — config allows only the site origin; test on the deployed site |
 
 ### Non-negotiable security defaults
