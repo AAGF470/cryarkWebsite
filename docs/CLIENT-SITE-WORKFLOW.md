@@ -133,6 +133,15 @@ layouts and pushed — the bespoke React pages remain only as fallbacks. Rules:
   locked us out of the server.
 - `ssh-keyscan` can flake under `set -e` — make it `|| true` and use
   `StrictHostKeyChecking=accept-new`.
+- **Hostinger's edge screens port 22**: GitHub-runner (Azure) IPs get silently
+  dropped upstream of the VPS — timeouts with NOTHING in sshd logs, while your
+  own machine connects fine. Fix: sshd also listens on **2222** and CI connects
+  there (`-p 2222`); the edge doesn't screen non-22 ports.
+- **sshd is systemd socket-activated** on modern Ubuntu: `Port` lines in
+  sshd_config are IGNORED. Add ports via an `ssh.socket` override — and when
+  resetting `ListenStream=`, re-add **both** `0.0.0.0:PORT` and `[::]:PORT`,
+  or sshd goes IPv6-only and you lock out all IPv4 (recover over IPv6:
+  `ssh root@<v6-addr>`).
 - Deploy keys for pulls (read-only, per-repo); a dedicated CI keypair for
   Actions (revocable by deleting one `authorized_keys` line).
 
