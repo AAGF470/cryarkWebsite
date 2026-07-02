@@ -1,0 +1,56 @@
+@import './_base.css';
+
+/* Checklist — ported 1:1 from the Guillen Solutions ownership list
+   (gs-own-list / gs-own-item / gs-note), fully tokenized. */
+
+.checklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+  max-width: 760px;
+}
+
+.checklist__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 15.5px;
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.checklist__mark {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color-accent-sub);
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+.checklist__mark svg { width: 13px; height: 13px; }
+
+.checklist__note {
+  margin: 28px 0 0;
+  padding: 18px 22px;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-high);
+  border: 1px solid var(--color-border-low);
+  font-size: 14px;
+  color: var(--color-text-sub);
+  line-height: 1.6;
+  max-width: 760px;
+}
+
+/* Accent background: keep marks and text readable */
+.section--accent .checklist__item { color: var(--color-on-accent); }
+.section--accent .checklist__mark {
+  background: color-mix(in srgb, var(--color-on-accent) 18%, transparent);
+  color: var(--color-on-accent);
+}

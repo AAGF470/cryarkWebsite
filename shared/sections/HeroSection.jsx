@@ -11,6 +11,7 @@ import Button from '../components/ui/Button'
 //   subtext  string           — supporting paragraph
 //   ctas     Array<{label, href, variant?}>  — action buttons
 //   layout   "left"|"centered"  — text alignment (default: "left")
+//   size     "full"|"compact"   — full-viewport opener vs. compact page intro (default: "full")
 //   variant  "default"|"alt"|"accent"  — section background
 // ---------------------------------------------------------------------------
 
@@ -20,10 +21,11 @@ export default function HeroSection({
   subtext,
   ctas = [],
   layout = 'left',
+  size = 'full',
   variant = 'default',
 }) {
   return (
-    <section className={`section hero-section section--${variant} hero-section--${layout}`}>
+    <section className={`section hero-section section--${variant} hero-section--${layout} hero-section--${size}`}>
       <div className="hero-section__glow" aria-hidden="true" />
       <div className="section-container">
         <div className="hero-section__content">
