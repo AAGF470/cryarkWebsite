@@ -1,0 +1,34 @@
+# guillensolutions.com CMS — graduated (stateful) stack on RAYA.
+#   • Postgres on an INTERNAL network only — never exposed to the internet.
+#   • DB data bind-mounted under /srv/docker → captured by ops/raya/backup.sh.
+#   • NPM routes cms.guillensolutions.com -> guillensolutions-cms:3000 (proxy net).
+services:
+  guillensolutions-cms:
+    build: .
+    container_name: guillensolutions-cms
+    restart: unless-stopped
+    environment:
+      DATABASE_URI: postgres://payload:${DB_PASSWORD}@guillensolutions-cms-db:5432/payload
+      PAYLOAD_SECRET: ${PAYLOAD_SECRET}
+      PAYLOAD_PUBLIC_SERVER_URL: https://cms.guillensolutions.com
+      SITE_URL: https://guillensolutions.com
+    volumes:
+      - /srv/docker/guillensolutions-cms/media:/home/node/app/media   # uploads persist off-container
+    depends_on: [guillensolutions-cms-db]
+    networks: [proxy, internal]
+
+  guillensolutions-cms-db:
+    image: postgres:16-alpine
+    container_name: guillensolutions-cms-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: payload
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: payload
+    volumes:
+      - /srv/docker/guillensolutions-cms/pgdata:/var/lib/postgresql/data
+    networks: [internal]          # not on proxy → unreachable from outside
+
+networks:
+  proxy:    { external: true }
+  internal: {}
