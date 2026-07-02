@@ -139,7 +139,7 @@ export const CMS_NOTE =
   'Because you own it, you can add or remove products and adjust page layouts yourself, anytime — no coding required, and no charge. The add-on fees are only for when you\'d rather we handle it for you.'
 
 export const CMS_LEAD =
-  'This is the core of what we do: we build you a custom CMS — a control panel tailored to your business that exposes only the handful of things you actually change (prices, photos, products, hours) and hides everything else. Not a generic dashboard with a hundred settings you\'ll never touch, and not a static site you can\'t edit at all. A curated, safe place to run your own site — impossible to break, and yours to keep.'
+  'A CMS is just the screen where you log in to update your own site — change your words, prices, and photos, no code involved. Most are bloated and confusing. Yours is custom-built: it shows only the handful of things you actually change (prices, photos, products, hours) and hides everything else. A simple, safe place to run your own site — impossible to break, and yours to keep.'
 
 export const CMS_POINTS = [
   { icon: 'layers', title: 'Only what you need',        body: 'We expose the exact controls your business uses and hide the rest — no overwhelming admin, no fields you\'ll never open.' },

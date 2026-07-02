@@ -33,7 +33,7 @@ const ADDON_SERVICES = ADDONS.map(a => ({
 
 const WHAT_WE_DO = [
   { icon: 'star',   title: 'A custom-designed site',    body: 'Designed around your business on our in-house component system — custom-tier looks, not a cookie-cutter template.' },
-  { icon: 'layers', title: 'A CMS tailored to you',     body: 'A simple control panel that exposes only what you actually change — so you run your own site without touching code or breaking the design.' },
+  { icon: 'layers', title: 'Update it yourself',        body: 'A simple control panel — your own CMS — that shows only what you actually change, so you can update the site yourself without touching code or breaking the design.' },
   { icon: 'shield', title: 'Managed hosting & security', body: 'SSL, backups, and uptime handled for you. You never have to think about servers or certificates.' },
   { icon: 'check',  title: 'You own everything',        body: 'Domain, content, accounts, and logins in your name from day one. Leave anytime with all of it.' },
 ]
@@ -79,9 +79,9 @@ export default function Home() {
   return (
     <>
       <HeroSection
-        eyebrow="Guillen Solutions · Tailored, self-editable sites"
+        eyebrow="Guillen Solutions · Sites you can update yourself"
         headline="Get your business online — and own every piece of it."
-        subtext="We build you a custom website with a CMS tailored to your business — a simple control panel that exposes only what you need to update, so you can run it yourself. Then we hand you the keys: your domain, content, and logins, no lock-in."
+        subtext="We build you a custom website you can actually run yourself — with a simple control panel (a CMS) that shows only what you need to change. Then we hand you the keys: your domain, content, and logins, no lock-in."
         ctas={[
           { label: 'See packages',     href: '#packages',  variant: 'solid' },
           { label: 'Build your quote', href: '#configure', variant: 'ghost' },
@@ -129,7 +129,7 @@ export default function Home() {
       <ServiceList
         eyebrow="Add-ons"
         headline="Pick only what fits"
-        subtext="Optional extras — add any to a package, or none. Most of this you can do yourself in the CMS for free; these are for when you'd rather we handle it. Tailored combinations are quoted per business."
+        subtext="Optional extras — add any to a package, or none. Most everyday changes you can make yourself for free once the site is live; these are for when you'd rather we handle it. Tailored combinations are quoted per business."
         services={ADDON_SERVICES}
         columns={2}
         variant="alt"
@@ -166,8 +166,8 @@ export default function Home() {
 
       {/* Your custom CMS — the core offering */}
       <FeatureGrid
-        eyebrow="Your custom CMS"
-        headline="A CMS built around your business — nothing you don't need"
+        eyebrow="Run it yourself"
+        headline="Your own control panel — built around your business"
         subtext={CMS_LEAD}
         items={CMS_POINTS}
         columns={4}
