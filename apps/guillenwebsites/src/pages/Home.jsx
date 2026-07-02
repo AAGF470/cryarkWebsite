@@ -196,6 +196,15 @@ export default function Home() {
             nothing alike — Cryark (cinematic), a university CubeSat team, and guillen.studio.
             That's how you get custom-tier design at near-template cost.
           </p>
+
+          <div className="gs-libpeek__stat">
+            <span className="gs-libpeek__num">47<sup>+</sup></span>
+            <span className="gs-libpeek__stat-copy">
+              <span className="gs-libpeek__stat-label">components and counting</span>
+              <span className="gs-libpeek__stat-sub">Yours to use — no code required.</span>
+            </span>
+          </div>
+
           <div className="gs-libpeek__grid">
             {LIBRARY_PEEK.map(item => (
               <div key={item.title} className="gs-libpeek__card">

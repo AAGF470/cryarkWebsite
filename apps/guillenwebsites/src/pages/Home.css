@@ -25,11 +25,30 @@
 
 /* ── Component library peek ──────────────────────────────────────────────── */
 
+.gs-libpeek__stat {
+  display: flex; align-items: center; gap: 20px;
+  padding: 22px 28px; margin-bottom: 32px;
+  border: 1px solid var(--color-accent-dim); border-radius: var(--radius-xl);
+  background: var(--color-accent-sub);
+}
+.gs-libpeek__num {
+  font-size: 52px; font-weight: 800; letter-spacing: -0.03em; line-height: 1;
+  color: var(--color-accent); flex-shrink: 0;
+}
+.gs-libpeek__num sup { font-size: 24px; font-weight: 700; }
+.gs-libpeek__stat-copy { display: flex; flex-direction: column; }
+.gs-libpeek__stat-label { font-size: 16px; font-weight: 700; color: var(--color-text); }
+.gs-libpeek__stat-sub { font-size: 14px; color: var(--color-text-sub); margin-top: 2px; }
+
 .gs-libpeek__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
   margin-bottom: 36px;
+}
+@media (max-width: 480px) {
+  .gs-libpeek__stat { gap: 14px; padding: 18px 20px; }
+  .gs-libpeek__num { font-size: 42px; }
 }
 .gs-libpeek__card {
   padding: 22px 20px;
