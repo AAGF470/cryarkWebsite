@@ -67,6 +67,21 @@ stage boundary is what keeps engagements fixed-scope (deposit gate lives here).
 4. Author pages programmatically with `cms/scripts/push-pages.mjs` (logs into
    the live API, upserts by slug, idempotent) — this is the AI-authoring loop.
 
+**DEFAULT: every page ends CMS-authored.** The static build (Stage 1) is the
+cheap showcase; after approval, ALL of its pages get converted to block
+layouts and pushed — the bespoke React pages remain only as fallbacks. Rules:
+- Import shared copy (pricing, promises) into push-pages from the site's
+  `data.js` — one source of truth until the CMS takes over as the live copy.
+- Standard sections → library blocks 1:1.
+- Highly custom sections → `customHtml` blocks carrying the exact bespoke
+  markup (the classes still exist because the fallback pages stay bundled);
+  promote recurring patterns into `@aagf470/ui` as real components over time.
+- Anchors: set a block's built-in "Block Name" to e.g. `packages` — the
+  renderer wraps it in `<div id="packages">` so `#packages` links keep working.
+- Images: `imageText`/`gallery` blocks use Media uploads; authored pages start
+  imageless — upload media in `/admin` after the push (or extend push-pages to
+  upload files).
+
 ### Stage-4 pitfalls (all hit in production — check every one)
 
 | Pitfall | Symptom | Fix |
