@@ -139,13 +139,13 @@ export const CMS_NOTE =
   'Because you own it, you can add or remove products and adjust page layouts yourself, anytime — no coding required, and no charge. The add-on fees are only for when you\'d rather we handle it for you.'
 
 export const CMS_LEAD =
-  'The old way traps you: a static site you can\'t change without a developer — and can\'t take with you. We build the opposite. We curate and design a content system around your business so it\'s genuinely easy to use, then hand it over. No coding, no gatekeeping, no fees to make everyday changes.'
+  'This is the core of what we do: we build you a custom CMS — a control panel tailored to your business that exposes only the handful of things you actually change (prices, photos, products, hours) and hides everything else. Not a generic dashboard with a hundred settings you\'ll never touch, and not a static site you can\'t edit at all. A curated, safe place to run your own site — impossible to break, and yours to keep.'
 
 export const CMS_POINTS = [
-  { icon: 'check',  title: 'No coding, ever',          body: 'We curate and design the CMS so it\'s genuinely simple — you edit your site in plain language, with zero technical experience needed.' },
-  { icon: 'wrench', title: 'Tailored to your business', body: 'We shape and adjust the CMS around what you actually manage — your products, menu, or listings — so the controls fit you, not a generic template.' },
-  { icon: 'layers', title: 'Change it yourself, free',  body: 'Because you own it, you can add and remove products and adjust page layouts (within reason) anytime — without paying us a cent.' },
-  { icon: 'shield', title: 'Never held hostage',        body: 'No more static site you can\'t touch. You\'re never stuck waiting on — or paying — a developer just to change a price or swap a photo.' },
+  { icon: 'layers', title: 'Only what you need',        body: 'We expose the exact controls your business uses and hide the rest — no overwhelming admin, no fields you\'ll never open.' },
+  { icon: 'wrench', title: 'Tailored to your business', body: 'Products, menu, listings, hours — the CMS is shaped around what you actually manage, like a custom template built just for you.' },
+  { icon: 'shield', title: 'Impossible to break',       body: 'Design and layout are locked into the components, so editing content can never break how your site looks. Safe to hand to anyone on your team.' },
+  { icon: 'check',  title: 'Edit it yourself — free',   body: 'Add, change, and remove content anytime at no charge. Our fees only apply when you\'d rather we make the change for you.' },
 ]
 
 export const SECURITY_LEAD =

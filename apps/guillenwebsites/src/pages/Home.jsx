@@ -32,10 +32,10 @@ const ADDON_SERVICES = ADDONS.map(a => ({
 }))
 
 const WHAT_WE_DO = [
-  { icon: 'star',   title: 'Custom design',            body: 'A website designed around your business — built on our in-house component system, fast and easy to update.' },
+  { icon: 'star',   title: 'A custom-designed site',    body: 'Designed around your business on our in-house component system — custom-tier looks, not a cookie-cutter template.' },
+  { icon: 'layers', title: 'A CMS tailored to you',     body: 'A simple control panel that exposes only what you actually change — so you run your own site without touching code or breaking the design.' },
   { icon: 'shield', title: 'Managed hosting & security', body: 'SSL, backups, and uptime handled for you. You never have to think about servers or certificates.' },
-  { icon: 'check',  title: 'You own everything',        body: 'Domain, content, accounts, and logins are all in your name from day one. Leave anytime with everything.' },
-  { icon: 'users',  title: 'Guidance, in plain English', body: 'We set it up, explain it, and hand you the keys — plus honest advice on your digital presence.' },
+  { icon: 'check',  title: 'You own everything',        body: 'Domain, content, accounts, and logins in your name from day one. Leave anytime with all of it.' },
 ]
 
 const STEPS = [
@@ -79,9 +79,9 @@ export default function Home() {
   return (
     <>
       <HeroSection
-        eyebrow="Guillen Solutions · You own everything"
+        eyebrow="Guillen Solutions · Tailored, self-editable sites"
         headline="Get your business online — and own every piece of it."
-        subtext="Choose a package, add only what you need. We set everything up, explain it, and hand you the keys — you own your domain, accounts, content, and logins. No lock-in, and we never touch your ad spend or your money."
+        subtext="We build you a custom website with a CMS tailored to your business — a simple control panel that exposes only what you need to update, so you can run it yourself. Then we hand you the keys: your domain, content, and logins, no lock-in."
         ctas={[
           { label: 'See packages',     href: '#packages',  variant: 'solid' },
           { label: 'Build your quote', href: '#configure', variant: 'ghost' },
@@ -164,10 +164,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Your CMS — curated, no-coding, no-hostage */}
+      {/* Your custom CMS — the core offering */}
       <FeatureGrid
-        eyebrow="Your CMS"
-        headline="A content system made for you — and owned by you"
+        eyebrow="Your custom CMS"
+        headline="A CMS built around your business — nothing you don't need"
         subtext={CMS_LEAD}
         items={CMS_POINTS}
         columns={4}
