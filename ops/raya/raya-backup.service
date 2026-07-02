@@ -1,0 +1,11 @@
+[Unit]
+Description=RAYA nightly backup (restic -> Backblaze B2)
+Wants=network-online.target
+After=network-online.target docker.service
+
+[Service]
+Type=oneshot
+# Adjust this path to wherever you placed the kit on RAYA (README fixes it via sed).
+ExecStart=/opt/cryark-ops/ops/raya/backup.sh
+Nice=10
+IOSchedulingClass=idle

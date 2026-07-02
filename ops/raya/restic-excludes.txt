@@ -1,0 +1,7 @@
+# Regenerable / noisy — skip to keep snapshots lean.
+**/node_modules
+**/.git
+**/.cache
+**/*.log
+# Crafty writes its own Minecraft world backups; don't double-store the big ones.
+/srv/docker/crafty/**/backups
