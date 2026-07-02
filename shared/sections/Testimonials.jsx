@@ -35,7 +35,7 @@ export default function Testimonials({
               <div key={i} className="testimonial-card">
                 <p className="testimonial-card__quote">{item.quote}</p>
                 <div className="testimonial-card__author-row">
-                  <div className="testimonial-card__avatar">{initials}</div>
+                  <div className="testimonial-card__avatar" aria-hidden="true">{initials}</div>
                   <div>
                     <p className="testimonial-card__author">{item.author}</p>
                     {(item.role || item.company) && (

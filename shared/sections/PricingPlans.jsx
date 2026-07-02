@@ -27,7 +27,7 @@ import Button from '../components/ui/Button'
 // ---------------------------------------------------------------------------
 
 const CheckIcon = () => (
-  <svg viewBox="0 0 13 13" fill="none" stroke="currentColor"
+  <svg viewBox="0 0 13 13" aria-hidden="true" focusable="false" fill="none" stroke="currentColor"
     strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <polyline points="1.5 6.5 5 10 11.5 2.5" />
   </svg>
