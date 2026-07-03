@@ -66,3 +66,61 @@
 @media (max-width: 600px) {
   .feature-grid__grid { grid-template-columns: 1fr; }
 }
+
+
+/* ── EXPRESSIONS — structural variants of the same content ────────────────── */
+
+/* list: numbered editorial rows */
+.feature-grid__grid--x-list {
+  display: block;
+  counter-reset: feature;
+  border-top: 1px solid var(--color-border-low);
+}
+
+.feature-grid__grid--x-list .feature-card {
+  counter-increment: feature;
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  grid-template-areas: "num title" "num body";
+  column-gap: 24px;
+  align-items: start;
+  background: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--color-border-low);
+}
+
+.feature-grid__grid--x-list .feature-card::before {
+  content: counter(feature, decimal-leading-zero);
+  grid-area: num;
+  font-family: var(--font-display);
+  font-weight: var(--font-display-weight);
+  font-size: 30px;
+  line-height: 1.1;
+  color: var(--color-accent);
+}
+
+.feature-grid__grid--x-list .feature-card__icon { display: none; }
+.feature-grid__grid--x-list .feature-card__title { grid-area: title; margin: 0 0 6px; }
+.feature-grid__grid--x-list .feature-card__body { grid-area: body; margin: 0; max-width: 60ch; }
+
+/* columns: quiet ruled columns, no card chrome */
+.feature-grid__grid--x-columns .feature-card {
+  background: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 18px 0 0;
+  border-top: 2px solid var(--color-accent);
+}
+
+.feature-grid__grid--x-columns .feature-card__icon {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 12px;
+}
+
+.feature-grid__grid--x-columns .feature-card__icon svg { width: 15px; height: 15px; }

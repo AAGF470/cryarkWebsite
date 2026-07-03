@@ -17,23 +17,23 @@
 /* ── Variant colours ─────────────────────────────────────────────────────── */
 
 .callout--note {
-  border-color: rgba(200, 169, 126, 0.55);
-  background: rgba(200, 169, 126, 0.055);
+  border-color: color-mix(in srgb, var(--color-accent) 55%, transparent);
+  background: color-mix(in srgb, var(--color-accent) 5.5%, transparent);
 }
 
 .callout--tip {
-  border-color: rgba(100, 200, 120, 0.55);
-  background: rgba(100, 200, 120, 0.055);
+  border-color: color-mix(in srgb, var(--callout-tip, rgb(100, 200, 120)) 55%, transparent);
+  background: color-mix(in srgb, var(--callout-tip, rgb(100, 200, 120)) 5.5%, transparent);
 }
 
 .callout--warning {
-  border-color: rgba(220, 110, 70, 0.55);
-  background: rgba(220, 110, 70, 0.055);
+  border-color: color-mix(in srgb, var(--callout-warning, rgb(220, 110, 70)) 55%, transparent);
+  background: color-mix(in srgb, var(--callout-warning, rgb(220, 110, 70)) 5.5%, transparent);
 }
 
 .callout--info {
-  border-color: rgba(90, 150, 220, 0.55);
-  background: rgba(90, 150, 220, 0.055);
+  border-color: color-mix(in srgb, var(--callout-info, rgb(90, 150, 220)) 55%, transparent);
+  background: color-mix(in srgb, var(--callout-info, rgb(90, 150, 220)) 5.5%, transparent);
 }
 
 /* ── Label ───────────────────────────────────────────────────────────────── */
@@ -45,17 +45,17 @@
   text-transform: uppercase;
 }
 
-.callout--note .callout__label    { color: rgba(200, 169, 126, 0.90); }
-.callout--tip .callout__label     { color: rgba(100, 200, 120, 0.90); }
-.callout--warning .callout__label { color: rgba(220, 110, 70,  0.90); }
-.callout--info .callout__label    { color: rgba(90,  150, 220, 0.90); }
+.callout--note .callout__label    { color: color-mix(in srgb, var(--color-accent) 90%, transparent); }
+.callout--tip .callout__label     { color: color-mix(in srgb, var(--callout-tip, rgb(100, 200, 120)) 90%, transparent); }
+.callout--warning .callout__label { color: color-mix(in srgb, var(--callout-warning, rgb(220, 110, 70)) 90%, transparent); }
+.callout--info .callout__label    { color: color-mix(in srgb, var(--callout-info, rgb(90, 150, 220)) 90%, transparent); }
 
 /* ── Body ────────────────────────────────────────────────────────────────── */
 
 .callout__body {
   font-size: 14px;
   line-height: 1.72;
-  color: rgba(232, 230, 225, 0.65);
+  color: color-mix(in srgb, var(--color-text) 65%, transparent);
   margin: 0;
 }
 

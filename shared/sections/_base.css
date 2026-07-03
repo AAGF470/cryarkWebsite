@@ -6,7 +6,7 @@
 
 .section {
   position: relative;
-  padding: 96px 0;
+  padding: var(--section-space) 0;
   background: var(--color-bg);
 }
 
@@ -39,7 +39,7 @@
 }
 
 .section-container {
-  max-width: min(1200px, 100%);
+  max-width: min(var(--container-max), 100%);
   margin: 0 auto;
   padding: 0 48px;
   box-sizing: border-box;
@@ -73,9 +73,10 @@
 }
 
 .section-title {
+  font-family: var(--font-display);
   font-size: clamp(26px, 4vw, 38px);
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-weight: var(--font-display-weight);
+  letter-spacing: var(--font-display-tracking);
   line-height: 1.15;
   color: var(--color-text);
   margin: 0 0 14px;
@@ -99,10 +100,10 @@
 
 @media (max-width: 768px) {
   .section-container { padding: 0 24px; }
-  .section { padding: 72px 0; }
+  .section { padding: calc(var(--section-space) * 0.75) 0; }
 }
 
 @media (max-width: 480px) {
   .section-container { padding: 0 20px; }
-  .section { padding: 60px 0; }
+  .section { padding: calc(var(--section-space) * 0.625) 0; }
 }

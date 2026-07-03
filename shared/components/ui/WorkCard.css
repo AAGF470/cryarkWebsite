@@ -18,7 +18,7 @@
   border-radius: 20px;
   border: 0.5px solid rgba(255, 255, 255, 0.07);
   /* Frosted dark glass — semi-transparent so page grain bleeds through */
-  background: rgba(5, 5, 10, 0.72);
+  background: color-mix(in srgb, var(--color-bg) 72%, transparent);
   backdrop-filter: blur(20px) saturate(160%);
   -webkit-backdrop-filter: blur(20px) saturate(160%);
   padding: 10px;
@@ -27,7 +27,7 @@
 }
 
 .wc:hover {
-  border-color: rgba(200, 169, 126, 0.28);
+  border-color: color-mix(in srgb, var(--color-accent) 28%, transparent);
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45);
 }
 
@@ -52,7 +52,7 @@
 /* ── Image card ──────────────────────────────────────────────────────────── */
 
 .wc__img-cell {
-  background: rgba(4, 4, 9, 0.92);
+  background: color-mix(in srgb, var(--color-bg) 92%, transparent);
   height: 260px;
   position: relative;
 }
@@ -93,13 +93,13 @@
   font-size: 10px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(232, 230, 225, 0.12);
+  color: color-mix(in srgb, var(--color-text) 12%, transparent);
 }
 
 /* ── Meta card ───────────────────────────────────────────────────────────── */
 
 .wc__meta-cell {
-  background: rgba(4, 4, 9, 0.92);
+  background: color-mix(in srgb, var(--color-bg) 92%, transparent);
   height: 260px;        /* same as image — makes both top cards visually equal */
   display: flex;
   flex-direction: column;
@@ -130,18 +130,18 @@
   width: fit-content;
 }
 
-.wc__status--released { color: rgba(160, 220, 160, 0.90); background: rgba(80,  190, 80,  0.10); }
-.wc__status--in_dev   { color: rgba(160, 195, 245, 0.90); background: rgba(80,  140, 225, 0.10); }
-.wc__status--research { color: rgba(190, 165, 245, 0.90); background: rgba(140, 90,  225, 0.10); }
-.wc__status--live     { color: rgba(100, 220, 150, 0.90); background: rgba(50,  175, 90,  0.10); }
-.wc__status--collab   { color: rgba(200, 169, 126, 0.90); background: rgba(200, 169, 126, 0.10); }
+.wc__status--released { color: var(--wc-status-released-text, rgba(160, 220, 160, 0.90)); background: var(--wc-status-released-bg, rgba(80, 190, 80, 0.10)); }
+.wc__status--in_dev   { color: var(--wc-status-indev-text, rgba(160, 195, 245, 0.90)); background: var(--wc-status-indev-bg, rgba(80, 140, 225, 0.10)); }
+.wc__status--research { color: var(--wc-status-research-text, rgba(190, 165, 245, 0.90)); background: var(--wc-status-research-bg, rgba(140, 90, 225, 0.10)); }
+.wc__status--live     { color: var(--wc-status-live-text, rgba(100, 220, 150, 0.90)); background: var(--wc-status-live-bg, rgba(50, 175, 90, 0.10)); }
+.wc__status--collab   { color: color-mix(in srgb, var(--color-accent) 90%, transparent); background: color-mix(in srgb, var(--color-accent) 10%, transparent); }
 
 /* Title */
 
 .wc__title {
   font-size: 18px;
   font-weight: 600;
-  color: #f0ede8;
+  color: var(--color-text);
   line-height: 1.2;
   letter-spacing: -0.02em;
   margin-bottom: 10px;
@@ -151,7 +151,7 @@
 
 .wc__desc {
   font-size: 12.5px;
-  color: rgba(232, 230, 225, 0.38);
+  color: color-mix(in srgb, var(--color-text) 38%, transparent);
   line-height: 1.7;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -210,14 +210,14 @@
   font-weight: 700;
   letter-spacing: 0.13em;
   text-transform: uppercase;
-  color: rgba(200, 169, 126, 0.50);
+  color: color-mix(in srgb, var(--color-accent) 50%, transparent);
   flex-shrink: 0;
 }
 
 .wc__devlog-link__title {
   font-size: 11px;
   font-weight: 500;
-  color: rgba(232, 230, 225, 0.62);
+  color: color-mix(in srgb, var(--color-text) 62%, transparent);
   line-height: 1.35;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -227,7 +227,7 @@
 
 .wc__devlog-link__date {
   font-size: 10px;
-  color: rgba(232, 230, 225, 0.24);
+  color: color-mix(in srgb, var(--color-text) 24%, transparent);
   letter-spacing: 0.03em;
   flex-shrink: 0;
 }
@@ -238,21 +238,21 @@
   font-size: 11px;
   letter-spacing: 0.06em;
   text-decoration: none;
-  color: rgba(200, 169, 126, 0.45);
+  color: color-mix(in srgb, var(--color-accent) 45%, transparent);
   white-space: nowrap;
   flex-shrink: 0;
   transition: color 0.22s ease;
 }
 
 .wc:hover .wc__cta {
-  color: rgba(200, 169, 126, 0.90);
+  color: color-mix(in srgb, var(--color-accent) 90%, transparent);
 }
 
 /* ── Code card ───────────────────────────────────────────────────────────── */
 
 .wc__code-cell {
   grid-column: 1 / -1;  /* always spans full width */
-  background: rgba(3, 3, 7, 0.94);
+  background: color-mix(in srgb, var(--color-bg) 94%, transparent);
   height: 260px;         /* hard fixed height — code CANNOT expand the card */
   overflow: hidden;      /* clips any snippet that exceeds this */
   display: flex;
@@ -275,9 +275,9 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(200, 169, 126, 0.55);
-  background: rgba(200, 169, 126, 0.08);
-  border: 0.5px solid rgba(200, 169, 126, 0.14);
+  color: color-mix(in srgb, var(--color-accent) 55%, transparent);
+  background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+  border: 0.5px solid color-mix(in srgb, var(--color-accent) 14%, transparent);
   border-radius: 3px;
   padding: 2px 6px;
   flex-shrink: 0;
@@ -285,7 +285,7 @@
 
 .wc__code-label {
   font-size: 11px;
-  color: rgba(232, 230, 225, 0.22);
+  color: var(--color-text-faint);
   font-family: ui-monospace, "Cascadia Code", Menlo, Consolas, monospace;
   white-space: nowrap;
   overflow: hidden;
@@ -298,7 +298,7 @@
   font-family: ui-monospace, "JetBrains Mono", "Fira Code", Menlo, Consolas, monospace;
   font-size: 11.5px;
   line-height: 1.68;
-  color: rgba(232, 230, 225, 0.45);
+  color: color-mix(in srgb, var(--color-text) 45%, transparent);
   white-space: pre;
   overflow: hidden;
   flex: 1;

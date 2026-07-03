@@ -18,7 +18,7 @@
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.14em;
-  color: rgba(200, 169, 126, 0.90);
+  color: color-mix(in srgb, var(--color-accent) 90%, transparent);
   text-transform: uppercase;
   padding-left: 14px;
   position: relative;
@@ -30,7 +30,7 @@
   left: 0; top: 0; bottom: 0;
   width: 2px;
   border-radius: 2px;
-  background: linear-gradient(to bottom, rgba(200, 169, 126, 0.88), rgba(200, 169, 126, 0));
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--color-accent) 88%, transparent), color-mix(in srgb, var(--color-accent) 0%, transparent));
 }
 
 /* ── Grid ────────────────────────────────────────────────────────────────── */
@@ -57,8 +57,8 @@
 }
 
 .asset-grid__card:hover {
-  border-color: rgba(200, 169, 126, 0.25);
-  background: rgba(200, 169, 126, 0.03);
+  border-color: color-mix(in srgb, var(--color-accent) 25%, transparent);
+  background: color-mix(in srgb, var(--color-accent) 3%, transparent);
 }
 
 /* ── Preview image ───────────────────────────────────────────────────────── */
@@ -104,10 +104,10 @@
   border-radius: 4px;
 }
 
-.asset-grid__license--free        { background: rgba(74, 140, 111, 0.85); color: #c8f0dc; }
-.asset-grid__license--cc0         { background: rgba(74, 122, 155, 0.85); color: #c8dcf0; }
-.asset-grid__license--attribution { background: rgba(155, 138, 74, 0.85); color: #f0e6c8; }
-.asset-grid__license--patreon     { background: rgba(200, 169, 126, 0.85); color: #2a1f0a; }
+.asset-grid__license--free        { background: var(--asset-license-free-bg, rgba(74, 140, 111, 0.85)); color: var(--asset-license-free-text, #c8f0dc); }
+.asset-grid__license--cc0         { background: var(--asset-license-cc0-bg, rgba(74, 122, 155, 0.85)); color: var(--asset-license-cc0-text, #c8dcf0); }
+.asset-grid__license--attribution { background: var(--asset-license-attribution-bg, rgba(155, 138, 74, 0.85)); color: var(--asset-license-attribution-text, #f0e6c8); }
+.asset-grid__license--patreon     { background: color-mix(in srgb, var(--color-accent) 85%, transparent); color: var(--asset-license-patreon-text, #2a1f0a); }
 
 /* ── Card body ───────────────────────────────────────────────────────────── */
 
@@ -123,19 +123,19 @@
   font-size: 9px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(200, 169, 126, 0.65);
+  color: color-mix(in srgb, var(--color-accent) 65%, transparent);
 }
 
 .asset-grid__name {
   font-size: 15px;
   font-weight: 600;
-  color: rgba(240, 237, 232, 0.90);
+  color: color-mix(in srgb, var(--color-text) 90%, transparent);
   letter-spacing: -0.01em;
 }
 
 .asset-grid__desc {
   font-size: 12px;
-  color: rgba(232, 230, 225, 0.40);
+  color: color-mix(in srgb, var(--color-text) 40%, transparent);
   line-height: 1.6;
   margin-top: 4px;
 }
@@ -157,7 +157,7 @@
   padding: 2px 6px;
   border-radius: 3px;
   background: rgba(255, 255, 255, 0.06);
-  color: rgba(232, 230, 225, 0.50);
+  color: color-mix(in srgb, var(--color-text) 50%, transparent);
   border: 0.5px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -168,7 +168,7 @@
 
 .asset-grid__size {
   font-size: 11px;
-  color: rgba(232, 230, 225, 0.28);
+  color: color-mix(in srgb, var(--color-text) 28%, transparent);
 }
 
 /* ── Download footer ─────────────────────────────────────────────────────── */
@@ -188,22 +188,22 @@
   letter-spacing: 0.10em;
   text-transform: uppercase;
   text-decoration: none;
-  border: 0.5px solid rgba(200, 169, 126, 0.28);
-  color: rgba(200, 169, 126, 0.85);
-  background: rgba(200, 169, 126, 0.06);
+  border: 0.5px solid color-mix(in srgb, var(--color-accent) 28%, transparent);
+  color: color-mix(in srgb, var(--color-accent) 85%, transparent);
+  background: color-mix(in srgb, var(--color-accent) 6%, transparent);
   transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .asset-grid__dl_btn:hover {
-  background: rgba(200, 169, 126, 0.14);
-  border-color: rgba(200, 169, 126, 0.55);
-  color: rgba(200, 169, 126, 1);
+  background: color-mix(in srgb, var(--color-accent) 14%, transparent);
+  border-color: color-mix(in srgb, var(--color-accent) 55%, transparent);
+  color: var(--color-accent);
 }
 
 .asset-grid__dl_btn--patreon {
-  border-color: rgba(200, 169, 126, 0.45);
-  color: #c8a97e;
-  background: rgba(200, 169, 126, 0.10);
+  border-color: color-mix(in srgb, var(--color-accent) 45%, transparent);
+  color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 10%, transparent);
 }
 
 /* ── Responsive ──────────────────────────────────────────────────────────── */

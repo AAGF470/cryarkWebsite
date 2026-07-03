@@ -17,7 +17,7 @@
 .related-products__eyebrow {
   font-size: 10px;
   letter-spacing: 0.22em;
-  color: rgba(200, 169, 126, 0.65);
+  color: color-mix(in srgb, var(--color-accent) 65%, transparent);
   text-transform: uppercase;
   display: flex;
   align-items: center;
@@ -28,7 +28,7 @@
   content: '';
   flex: 1;
   height: 0.5px;
-  background: linear-gradient(to right, rgba(200, 169, 126, 0.16), transparent);
+  background: linear-gradient(to right, color-mix(in srgb, var(--color-accent) 16%, transparent), transparent);
 }
 
 /* ── Grid ────────────────────────────────────────────────────────────────── */
@@ -54,8 +54,8 @@
 }
 
 .related-products__card:hover {
-  border-color: rgba(200, 169, 126, 0.28);
-  background: rgba(200, 169, 126, 0.03);
+  border-color: color-mix(in srgb, var(--color-accent) 28%, transparent);
+  background: color-mix(in srgb, var(--color-accent) 3%, transparent);
   transform: translateY(-2px);
 }
 
@@ -83,13 +83,13 @@
 .related-products__thumb_placeholder {
   width: 100%;
   height: 100%;
-  background: rgba(200, 169, 126, 0.03);
+  background: color-mix(in srgb, var(--color-accent) 3%, transparent);
 }
 
 .related-products__thumb_veil {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, transparent 40%, rgba(5, 5, 8, 0.70) 100%);
+  background: linear-gradient(to bottom, transparent 40%, color-mix(in srgb, var(--color-bg) 70%, transparent) 100%);
 }
 
 /* ── Info ────────────────────────────────────────────────────────────────── */
@@ -110,22 +110,22 @@
   margin-bottom: 4px;
 }
 
-.related-products__status--released  { color: rgba(200, 169, 126, 0.85); }
-.related-products__status--in_dev    { color: rgba(100, 181, 196, 0.85); }
-.related-products__status--live      { color: rgba(100, 196, 140, 0.85); }
-.related-products__status--research  { color: rgba(180, 140, 210, 0.85); }
-.related-products__status--collab    { color: rgba(210, 170, 100, 0.85); }
+.related-products__status--released  { color: color-mix(in srgb, var(--color-accent) 85%, transparent); }
+.related-products__status--in_dev    { color: color-mix(in srgb, var(--related-status-indev, rgb(100, 181, 196)) 85%, transparent); }
+.related-products__status--live      { color: color-mix(in srgb, var(--related-status-live, rgb(100, 196, 140)) 85%, transparent); }
+.related-products__status--research  { color: color-mix(in srgb, var(--related-status-research, rgb(180, 140, 210)) 85%, transparent); }
+.related-products__status--collab    { color: color-mix(in srgb, var(--related-status-collab, rgb(210, 170, 100)) 85%, transparent); }
 
 .related-products__title {
   font-size: 15px;
   font-weight: 600;
-  color: rgba(240, 237, 232, 0.90);
+  color: color-mix(in srgb, var(--color-text) 90%, transparent);
   letter-spacing: -0.01em;
 }
 
 .related-products__subtitle {
   font-size: 12px;
-  color: rgba(232, 230, 225, 0.38);
+  color: color-mix(in srgb, var(--color-text) 38%, transparent);
   line-height: 1.5;
 }
 
@@ -144,7 +144,7 @@
   border-radius: 3px;
   background: rgba(255, 255, 255, 0.05);
   border: 0.5px solid rgba(255, 255, 255, 0.08);
-  color: rgba(232, 230, 225, 0.38);
+  color: color-mix(in srgb, var(--color-text) 38%, transparent);
 }
 
 /* ── Arrow ───────────────────────────────────────────────────────────────── */
@@ -154,12 +154,12 @@
   bottom: 16px;
   right: 16px;
   font-size: 14px;
-  color: rgba(200, 169, 126, 0.35);
+  color: color-mix(in srgb, var(--color-accent) 35%, transparent);
   transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .related-products__card:hover .related-products__arrow {
-  color: rgba(200, 169, 126, 0.80);
+  color: color-mix(in srgb, var(--color-accent) 80%, transparent);
   transform: translateX(3px);
 }
 

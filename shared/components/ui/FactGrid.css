@@ -18,7 +18,7 @@
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.14em;
-  color: rgba(200, 169, 126, 0.90);
+  color: color-mix(in srgb, var(--color-accent) 90%, transparent);
   text-transform: uppercase;
   margin-bottom: 36px;
   display: flex;
@@ -37,14 +37,14 @@
   left: 0; top: 0; bottom: 0;
   width: 2px;
   border-radius: 2px;
-  background: linear-gradient(to bottom, rgba(200, 169, 126, 0.88), rgba(200, 169, 126, 0));
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--color-accent) 88%, transparent), color-mix(in srgb, var(--color-accent) 0%, transparent));
 }
 
 .fact-grid__heading::after {
   content: '';
   flex: 1;
   height: 0.5px;
-  background: linear-gradient(to right, rgba(200, 169, 126, 0.16), rgba(255, 255, 255, 0.03));
+  background: linear-gradient(to right, color-mix(in srgb, var(--color-accent) 16%, transparent), rgba(255, 255, 255, 0.03));
 }
 
 /* ── Grid ─────────────────────────────────────────────────────────────────── */
@@ -85,8 +85,8 @@
   flex-direction: column;
   gap: 6px;
   padding: 32px 28px;
-  background: rgba(200, 169, 126, 0.03);
-  border: 0.5px solid rgba(200, 169, 126, 0.10);
+  background: color-mix(in srgb, var(--color-accent) 3%, transparent);
+  border: 0.5px solid color-mix(in srgb, var(--color-accent) 10%, transparent);
   transition: background 0.2s ease, border-color 0.2s ease;
   position: relative;
   overflow: hidden;
@@ -98,7 +98,7 @@
   inset: 0;
   background: radial-gradient(
     ellipse 80% 60% at 20% 100%,
-    rgba(200, 169, 126, 0.06) 0%,
+    color-mix(in srgb, var(--color-accent) 6%, transparent) 0%,
     transparent 70%
   );
   opacity: 0;
@@ -106,8 +106,8 @@
 }
 
 .fact-grid__card:hover {
-  background: rgba(200, 169, 126, 0.055);
-  border-color: rgba(200, 169, 126, 0.22);
+  background: color-mix(in srgb, var(--color-accent) 5.5%, transparent);
+  border-color: color-mix(in srgb, var(--color-accent) 22%, transparent);
 }
 
 .fact-grid__card:hover::before {
@@ -121,12 +121,12 @@
   font-weight: 500;
   letter-spacing: -0.03em;
   line-height: 1;
-  color: rgba(232, 230, 225, 0.92);
+  color: color-mix(in srgb, var(--color-text) 92%, transparent);
   /* Subtle gold gradient on the number */
   background: linear-gradient(
     135deg,
-    rgba(232, 230, 225, 0.95) 0%,
-    rgba(200, 169, 126, 0.90) 100%
+    color-mix(in srgb, var(--color-text) 95%, transparent) 0%,
+    color-mix(in srgb, var(--color-accent) 90%, transparent) 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -139,7 +139,7 @@
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.04em;
-  color: rgba(232, 230, 225, 0.55);
+  color: var(--color-text-sub);
   text-transform: uppercase;
 }
 
@@ -147,7 +147,7 @@
 
 .fact-grid__desc {
   font-size: 12px;
-  color: rgba(232, 230, 225, 0.30);
+  color: color-mix(in srgb, var(--color-text) 30%, transparent);
   line-height: 1.5;
   margin-top: 2px;
 }

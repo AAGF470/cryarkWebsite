@@ -1,6 +1,6 @@
 {
   "name": "@aagf470/ui",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Guillen Solutions shared component library — section blocks, UI primitives, design tokens, and Sanity page rendering.",
   "type": "module",
   "repository": {

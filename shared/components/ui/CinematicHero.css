@@ -10,7 +10,7 @@
   height: 100svh;
   min-height: 560px;
   overflow: hidden;
-  background: #050508;
+  background: var(--color-bg);
 }
 
 /* ── BACKGROUND MEDIA ────────────────────────────────────────────────────── */
@@ -36,11 +36,11 @@
   width: 100%;
   height: 100%;
   background:
-    linear-gradient(160deg, rgba(40, 28, 12, 0.55) 0%, rgba(5, 5, 8, 0) 55%),
+    linear-gradient(160deg, rgba(40, 28, 12, 0.55) 0%, color-mix(in srgb, var(--color-bg) 0%, transparent) 55%),
     repeating-linear-gradient(
       -45deg,
-      rgba(200, 169, 126, 0.025) 0px,
-      rgba(200, 169, 126, 0.025) 1px,
+      color-mix(in srgb, var(--color-accent) 2.5%, transparent) 0px,
+      color-mix(in srgb, var(--color-accent) 2.5%, transparent) 1px,
       transparent 1px,
       transparent 44px
     );
@@ -54,15 +54,15 @@
   z-index: 1;
   background:
     linear-gradient(to top,
-      rgba(5, 5, 8, 0.95) 0%,
-      rgba(5, 5, 8, 0.68) 26%,
-      rgba(5, 5, 8, 0.32) 52%,
-      rgba(5, 5, 8, 0.12) 72%,
-      rgba(5, 5, 8, 0.04) 100%
+      color-mix(in srgb, var(--color-bg) 95%, transparent) 0%,
+      color-mix(in srgb, var(--color-bg) 68%, transparent) 26%,
+      color-mix(in srgb, var(--color-bg) 32%, transparent) 52%,
+      color-mix(in srgb, var(--color-bg) 12%, transparent) 72%,
+      color-mix(in srgb, var(--color-bg) 4%, transparent) 100%
     ),
     linear-gradient(to right,
-      rgba(5, 5, 8, 0.52) 0%,
-      rgba(5, 5, 8, 0.00) 48%
+      color-mix(in srgb, var(--color-bg) 52%, transparent) 0%,
+      color-mix(in srgb, var(--color-bg) 0%, transparent) 48%
     );
 }
 
@@ -91,7 +91,7 @@
 .cinematic-hero__eyebrow {
   font-size: 10px;
   letter-spacing: 0.22em;
-  color: rgba(200, 169, 126, 0.88);
+  color: color-mix(in srgb, var(--color-accent) 88%, transparent);
   text-transform: uppercase;
   display: flex;
   align-items: center;
@@ -103,7 +103,7 @@
   content: '';
   width: 18px;
   height: 0.5px;
-  background: rgba(200, 169, 126, 0.88);
+  background: color-mix(in srgb, var(--color-accent) 88%, transparent);
   flex-shrink: 0;
 }
 
@@ -116,14 +116,14 @@
   font-weight: 500;
   line-height: 1.07;
   letter-spacing: -0.025em;
-  color: #f5f3ef;
+  color: var(--color-text);
   margin-bottom: 20px;
   text-shadow: 0 2px 48px rgba(0, 0, 0, 0.65);
 }
 
 .cinematic-hero__subtitle {
   font-size: 15px;
-  color: rgba(232, 230, 225, 0.55);
+  color: var(--color-text-sub);
   line-height: 1.68;
   margin-bottom: 34px;
   max-width: 480px;
@@ -159,13 +159,13 @@
   font-size: 9px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(232, 230, 225, 0.22);
+  color: var(--color-text-faint);
 }
 
 .cinematic-hero__scroll_line {
   width: 0.5px;
   height: 30px;
-  background: linear-gradient(to bottom, rgba(232, 230, 225, 0.25), transparent);
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--color-text) 25%, transparent), transparent);
   animation: ch-scroll-pulse 2.6s ease-in-out infinite;
 }
 

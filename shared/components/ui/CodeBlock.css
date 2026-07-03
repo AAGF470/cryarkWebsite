@@ -8,7 +8,7 @@
 
 .code-block {
   position: relative;
-  background: #07060c;
+  background: var(--code-canvas, #07060c);
   border: 0.5px solid rgba(255, 255, 255, 0.08);
   border-radius: 10px;
   overflow: hidden;
@@ -336,7 +336,7 @@
   left: 0;
   right: 0;
   height: 96px;
-  background: linear-gradient(to bottom, transparent 0%, #07060c 100%);
+  background: linear-gradient(to bottom, transparent 0%, var(--code-canvas, #07060c) 100%);
   pointer-events: none;
 }
 

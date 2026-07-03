@@ -13,6 +13,10 @@ import Button from '../components/ui/Button'
 //   layout   "left"|"centered"  — text alignment (default: "left")
 //   size     "full"|"compact"   — full-viewport opener vs. compact page intro (default: "full")
 //   variant  "default"|"alt"|"accent"  — section background
+//   expression "classic"|"editorial"|"statement" — structural layout (default: "classic").
+//     classic:   left/centered column (the original)
+//     editorial: masthead rule, headline left, supporting copy in a right column
+//     statement: poster-scale headline, actions under a hairline
 // ---------------------------------------------------------------------------
 
 export default function HeroSection({
@@ -23,9 +27,10 @@ export default function HeroSection({
   layout = 'left',
   size = 'full',
   variant = 'default',
+  expression = 'classic',
 }) {
   return (
-    <section className={`section hero-section section--${variant} hero-section--${layout} hero-section--${size}`}>
+    <section className={`section hero-section section--${variant} hero-section--${layout} hero-section--${size} hero-section--x-${expression}`}>
       <div className="hero-section__glow" aria-hidden="true" />
       <div className="section-container">
         <div className="hero-section__content">

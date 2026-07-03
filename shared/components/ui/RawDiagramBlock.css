@@ -22,7 +22,7 @@
   width:        3px;
   height:       14px;
   border-radius: 2px;
-  background:   rgba(200, 169, 126, 0.70);
+  background:   color-mix(in srgb, var(--color-accent) 70%, transparent);
   flex-shrink:  0;
 }
 
@@ -31,7 +31,7 @@
   font-weight:    600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color:          rgba(200, 169, 126, 0.82);
+  color:          color-mix(in srgb, var(--color-accent) 82%, transparent);
 }
 
 /* ── Frame wrapper ──────────────────────────────────────────────────────────── */
@@ -40,7 +40,7 @@
   position:      relative;
   width:         100%;
   overflow:      hidden;
-  background:    #07060c; /* matches page canvas — no border, no card shadow */
+  background:    var(--color-bg); /* matches page canvas — no border, no card shadow */
 }
 
 /* ── Iframe ─────────────────────────────────────────────────────────────────── */
@@ -59,7 +59,7 @@
 .rdb-caption {
   margin:      10px 0 0;
   font-size:   0.74rem;
-  color:       rgba(228, 226, 222, 0.30);
+  color:       color-mix(in srgb, var(--color-text) 30%, transparent);
   text-align:  center;
   font-style:  italic;
   letter-spacing: 0.02em;

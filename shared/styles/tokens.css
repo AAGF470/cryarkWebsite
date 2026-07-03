@@ -9,6 +9,18 @@
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
 
+  /* Display face for the big statements (section titles, hero headlines).
+     Defaults to the sans so existing themes are unchanged; a theme swaps in
+     a serif/slab/etc. for an instant identity shift. */
+  --font-display: var(--font-sans);
+  --font-display-weight: 700;
+  --font-display-tracking: -0.02em;
+
+  /* ── RHYTHM ────────────────────────────────────────────────────────────── */
+  /* Section vertical breathing + content width — the page's pacing. */
+  --section-space: 96px;
+  --container-max: 1200px;
+
   /* ── BACKGROUNDS ───────────────────────────────────────────────────────── */
 
   --color-bg:           #050508;                      /* page background */

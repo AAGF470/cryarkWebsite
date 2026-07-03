@@ -12,6 +12,10 @@ import { SectionIcon } from './SectionIcons'
 //   columns  2|3          — number of columns at desktop (default: 3)
 //   items    Array<{icon?, title, body}>
 //   variant  "default"|"alt"
+//   expression "cards"|"list"|"columns" — structural layout (default: "cards").
+//     cards:   icon cards in a grid (the classic)
+//     list:    numbered editorial rows, no icons — reads like a manifesto
+//     columns: plain ruled columns, quiet chrome — reads like a broadsheet
 // ---------------------------------------------------------------------------
 
 export default function FeatureGrid({
@@ -21,6 +25,7 @@ export default function FeatureGrid({
   items = [],
   columns = 3,
   variant = 'default',
+  expression = 'cards',
 }) {
   return (
     <section className={`section section--${variant}`}>
@@ -33,7 +38,7 @@ export default function FeatureGrid({
           </div>
         )}
         <div
-          className="feature-grid__grid"
+          className={`feature-grid__grid feature-grid__grid--x-${expression}`}
           style={{ '--feature-cols': columns }}
         >
           {items.map((item, i) => (

@@ -10,7 +10,7 @@
   /* Size is set via inline style — default 32px */
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.05);
-  border: 0.5px solid rgba(200, 169, 126, 0.14);
+  border: 0.5px solid color-mix(in srgb, var(--color-accent) 14%, transparent);
   overflow: hidden;
   flex-shrink: 0;
   /* Padding ensures every icon — square, wide, tall — has uniform breathing room */

@@ -10,7 +10,7 @@
   gap: 20px;
   padding: 12px 48px;
   border-bottom: 0.5px solid var(--color-border-sub);
-  background: rgba(5, 5, 8, 0.90);
+  background: color-mix(in srgb, var(--color-bg) 90%, transparent);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
@@ -22,7 +22,7 @@
   align-items: center;
   gap: 7px;
   font-size: 11px;
-  color: rgba(232, 230, 225, 0.32);
+  color: color-mix(in srgb, var(--color-text) 32%, transparent);
   text-decoration: none;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -61,7 +61,7 @@
 
 .product-info-bar__tag {
   font-size: 10px;
-  color: rgba(232, 230, 225, 0.28);
+  color: color-mix(in srgb, var(--color-text) 28%, transparent);
   letter-spacing: 0.06em;
   padding: 2px 0;
 }

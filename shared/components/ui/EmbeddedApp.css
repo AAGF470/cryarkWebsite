@@ -18,7 +18,7 @@
 .embedded-app__eyebrow {
   font-size: 10px;
   letter-spacing: 0.22em;
-  color: rgba(200, 169, 126, 0.75);
+  color: color-mix(in srgb, var(--color-accent) 75%, transparent);
   text-transform: uppercase;
   margin-bottom: 12px;
   display: flex;
@@ -30,7 +30,7 @@
   content: '';
   width: 18px;
   height: 0.5px;
-  background: rgba(200, 169, 126, 0.75);
+  background: color-mix(in srgb, var(--color-accent) 75%, transparent);
   flex-shrink: 0;
 }
 
@@ -38,14 +38,14 @@
   font-size: clamp(20px, 3vw, 32px);
   font-weight: 500;
   letter-spacing: -0.022em;
-  color: #f5f3ef;
+  color: var(--color-text);
   line-height: 1.1;
   margin-bottom: 12px;
 }
 
 .embedded-app__desc {
   font-size: 14px;
-  color: rgba(232, 230, 225, 0.48);
+  color: color-mix(in srgb, var(--color-text) 48%, transparent);
   line-height: 1.7;
 }
 
@@ -54,7 +54,7 @@
 .embedded-app__frame {
   position: relative;
   width: 100%;
-  background: #050508;
+  background: var(--color-bg);
   overflow: hidden;
 }
 
@@ -85,7 +85,7 @@
   align-items: center;
   justify-content: center;
   gap: 16px;
-  background: #050508;
+  background: var(--color-bg);
   z-index: 2;
   pointer-events: none;
 }
@@ -95,8 +95,8 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  border: 1.5px solid rgba(200, 169, 126, 0.14);
-  border-top-color: rgba(200, 169, 126, 0.85);
+  border: 1.5px solid color-mix(in srgb, var(--color-accent) 14%, transparent);
+  border-top-color: color-mix(in srgb, var(--color-accent) 85%, transparent);
   animation: ea-spin 0.9s linear infinite;
 }
 
@@ -108,7 +108,7 @@
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(232, 230, 225, 0.22);
+  color: var(--color-text-faint);
 }
 
 /* ── Pre-launch overlay ──────────────────────────────────────────────────── */
@@ -153,9 +153,9 @@
   gap: 12px;
   padding: 14px 32px;
   border-radius: 8px;
-  border: 1px solid rgba(200, 169, 126, 0.35);
-  background: rgba(200, 169, 126, 0.10);
-  color: rgba(232, 230, 225, 0.90);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 35%, transparent);
+  background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  color: color-mix(in srgb, var(--color-text) 90%, transparent);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.10em;
@@ -166,19 +166,19 @@
 }
 
 .embedded-app__launch_btn:hover {
-  background: rgba(200, 169, 126, 0.18);
-  border-color: rgba(200, 169, 126, 0.65);
+  background: color-mix(in srgb, var(--color-accent) 18%, transparent);
+  border-color: color-mix(in srgb, var(--color-accent) 65%, transparent);
   transform: translateY(-1px);
 }
 
 .embedded-app__launch_icon {
   font-size: 11px;
-  color: rgba(200, 169, 126, 0.90);
+  color: color-mix(in srgb, var(--color-accent) 90%, transparent);
 }
 
 .embedded-app__warning {
   font-size: 11px;
-  color: rgba(232, 230, 225, 0.28);
+  color: color-mix(in srgb, var(--color-text) 28%, transparent);
   letter-spacing: 0.05em;
   text-align: center;
 }

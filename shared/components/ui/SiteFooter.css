@@ -44,9 +44,9 @@
   letter-spacing: 0.06em;
   margin-top: 6px;
   text-shadow:
-    0 0 6px  rgba(200, 169, 126, 0.70),
-    0 0 14px rgba(200, 169, 126, 0.40),
-    0 0 30px rgba(200, 169, 126, 0.18);
+    0 0 6px  color-mix(in srgb, var(--color-accent) 70%, transparent),
+    0 0 14px color-mix(in srgb, var(--color-accent) 40%, transparent),
+    0 0 30px color-mix(in srgb, var(--color-accent) 18%, transparent);
 }
 
 .site-footer__credit {

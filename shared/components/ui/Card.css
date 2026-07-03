@@ -202,33 +202,33 @@
 }
 
 .card__status_badge--released {
-  background: rgba(200, 169, 126, 0.10);
-  color: rgba(200, 169, 126, 0.85);
-  border: 0.5px solid rgba(200, 169, 126, 0.20);
+  background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  color: color-mix(in srgb, var(--color-accent) 85%, transparent);
+  border: 0.5px solid color-mix(in srgb, var(--color-accent) 20%, transparent);
 }
 
 .card__status_badge--in_dev {
-  background: rgba(180, 100, 220, 0.08);
-  color: rgba(200, 150, 240, 0.80);
-  border: 0.5px solid rgba(180, 100, 220, 0.20);
+  background: var(--card-badge-purple-bg, rgba(180, 100, 220, 0.08));
+  color: var(--card-badge-purple-text, rgba(200, 150, 240, 0.80));
+  border: 0.5px solid var(--card-badge-purple-border, rgba(180, 100, 220, 0.20));
 }
 
 .card__status_badge--research {
-  background: rgba(90, 130, 220, 0.10);
-  color: rgba(140, 170, 240, 0.85);
-  border: 0.5px solid rgba(90, 130, 220, 0.20);
+  background: var(--card-badge-blue-bg, rgba(90, 130, 220, 0.10));
+  color: var(--card-badge-blue-text, rgba(140, 170, 240, 0.85));
+  border: 0.5px solid var(--card-badge-blue-border, rgba(90, 130, 220, 0.20));
 }
 
 .card__status_badge--live {
-  background: rgba(30, 160, 100, 0.10);
-  color: rgba(80, 200, 140, 0.85);
-  border: 0.5px solid rgba(30, 160, 100, 0.22);
+  background: var(--card-badge-green-bg, rgba(30, 160, 100, 0.10));
+  color: var(--card-badge-green-text, rgba(80, 200, 140, 0.85));
+  border: 0.5px solid var(--card-badge-green-border, rgba(30, 160, 100, 0.22));
 }
 
 .card__status_badge--collab {
-  background: rgba(90, 130, 220, 0.10);
-  color: rgba(140, 170, 240, 0.85);
-  border: 0.5px solid rgba(90, 130, 220, 0.20);
+  background: var(--card-badge-blue-bg, rgba(90, 130, 220, 0.10));
+  color: var(--card-badge-blue-text, rgba(140, 170, 240, 0.85));
+  border: 0.5px solid var(--card-badge-blue-border, rgba(90, 130, 220, 0.20));
 }
 
 /* Live dot pulse animation — used inside status_badge--live */
@@ -236,7 +236,7 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: rgba(80, 200, 140, 0.9);
+  background: var(--card-live-dot, rgba(80, 200, 140, 0.9));
   flex-shrink: 0;
   animation: card_live_dot_pulse 2s ease-in-out infinite;
 }

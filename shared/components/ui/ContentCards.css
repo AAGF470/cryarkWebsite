@@ -26,7 +26,7 @@
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.14em;
-  color: rgba(200, 169, 126, 0.90);
+  color: color-mix(in srgb, var(--color-accent) 90%, transparent);
   text-transform: uppercase;
   margin: 0 48px 36px;
   display: flex;
@@ -46,14 +46,14 @@
   left: 0; top: 0; bottom: 0;
   width: 2px;
   border-radius: 2px;
-  background: linear-gradient(to bottom, rgba(200, 169, 126, 0.88), rgba(200, 169, 126, 0));
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--color-accent) 88%, transparent), color-mix(in srgb, var(--color-accent) 0%, transparent));
 }
 
 .content-cards__heading::after {
   content: '';
   flex: 1;
   height: 0.5px;
-  background: linear-gradient(to right, rgba(200, 169, 126, 0.16), rgba(255, 255, 255, 0.03));
+  background: linear-gradient(to right, color-mix(in srgb, var(--color-accent) 16%, transparent), rgba(255, 255, 255, 0.03));
 }
 
 /* ── Grid ─────────────────────────────────────────────────────────────────── */
@@ -89,14 +89,14 @@
   position: relative;
   height: var(--card-h, 280px);
   overflow: hidden;               /* keeps page layout stable — no shifting */
-  background: rgba(200, 169, 126, 0.04);
-  border: 0.5px solid rgba(200, 169, 126, 0.10);
+  background: color-mix(in srgb, var(--color-accent) 4%, transparent);
+  border: 0.5px solid color-mix(in srgb, var(--color-accent) 10%, transparent);
   cursor: default;
   transition: border-color 0.25s ease;
 }
 
 .content-cards__card:hover {
-  border-color: rgba(200, 169, 126, 0.24);
+  border-color: color-mix(in srgb, var(--color-accent) 24%, transparent);
 }
 
 /* ── Background image ────────────────────────────────────────────────────── */
@@ -131,9 +131,9 @@
   z-index: 1;
   background: linear-gradient(
     to top,
-    rgba(5, 5, 8, 0.97) 0%,
-    rgba(5, 5, 8, 0.80) 35%,
-    rgba(5, 5, 8, 0.25) 65%,
+    color-mix(in srgb, var(--color-bg) 97%, transparent) 0%,
+    color-mix(in srgb, var(--color-bg) 80%, transparent) 35%,
+    color-mix(in srgb, var(--color-bg) 25%, transparent) 65%,
     transparent 100%
   );
   transition: background 0.3s ease;
@@ -142,9 +142,9 @@
 .content-cards__card:hover .content-cards__veil {
   background: linear-gradient(
     to top,
-    rgba(5, 5, 8, 0.98) 0%,
-    rgba(5, 5, 8, 0.88) 45%,
-    rgba(5, 5, 8, 0.40) 75%,
+    color-mix(in srgb, var(--color-bg) 98%, transparent) 0%,
+    color-mix(in srgb, var(--color-bg) 88%, transparent) 45%,
+    color-mix(in srgb, var(--color-bg) 40%, transparent) 75%,
     transparent 100%
   );
 }
@@ -174,7 +174,7 @@
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(200, 169, 126, 0.65);
+  color: color-mix(in srgb, var(--color-accent) 65%, transparent);
   margin-bottom: 7px;
 }
 
@@ -185,7 +185,7 @@
   font-weight: 600;
   letter-spacing: -0.015em;
   line-height: 1.25;
-  color: rgba(232, 230, 225, 0.92);
+  color: color-mix(in srgb, var(--color-text) 92%, transparent);
   margin: 0;
   /* Very subtle upward nudge on hover adds to the "rising" feel */
   transition: transform 0.35s cubic-bezier(0.25, 0, 0.1, 1);
@@ -220,7 +220,7 @@
 .content-cards__desc {
   font-size: 13px;
   line-height: 1.68;
-  color: rgba(232, 230, 225, 0.52);
+  color: color-mix(in srgb, var(--color-text) 52%, transparent);
   margin: 0;
   padding-top: 10px;
   padding-bottom: 2px;
@@ -228,5 +228,5 @@
 }
 
 .content-cards__card:hover .content-cards__desc {
-  color: rgba(232, 230, 225, 0.68);
+  color: color-mix(in srgb, var(--color-text) 68%, transparent);
 }

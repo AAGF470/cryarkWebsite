@@ -8,7 +8,7 @@
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: #050508;
+  background: var(--color-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,11 +35,11 @@
   font-weight: 500;
   letter-spacing: 0.30em;
   text-transform: uppercase;
-  color: rgba(200, 169, 126, 0.82);
+  color: color-mix(in srgb, var(--color-accent) 82%, transparent);
   text-shadow:
-    0 0 6px  rgba(200, 169, 126, 0.70),
-    0 0 14px rgba(200, 169, 126, 0.40),
-    0 0 30px rgba(200, 169, 126, 0.18);
+    0 0 6px  color-mix(in srgb, var(--color-accent) 70%, transparent),
+    0 0 14px color-mix(in srgb, var(--color-accent) 40%, transparent),
+    0 0 30px color-mix(in srgb, var(--color-accent) 18%, transparent);
   /* Gentle pulse while loading */
   animation: loader-pulse 1.6s ease-in-out infinite;
 }
