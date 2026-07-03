@@ -4,8 +4,10 @@
 //  Everything below drives the page; delete optional sections to hide them.
 // ═══════════════════════════════════════════════════════════════════════════
 export default {
-  // Brand — the accent color derives the whole palette (see applyTheme.js)
-  brand:  { name: 'Maria Delgado', accent: '#2f6f5e' },
+  // Brand — pick a style recipe + ONE accent color; the recipe derives the
+  // rest (typography, neutrals, rhythm, corners, shadows, expressions).
+  // Recipes: editorial-paper · bold-trade · dark-cinematic · coastal-light · workshop
+  brand:  { name: 'Maria Delgado', accent: '#2f6f5e', recipe: 'coastal-light' },
   title:  'Maria Delgado — Bookkeeping for Small Businesses',
   phone:  '(555) 555-0100',            // shown as tap-to-call; '' to hide
   email:  '',                          // '' = phone-only business

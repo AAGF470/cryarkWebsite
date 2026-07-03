@@ -7,7 +7,7 @@ import cfg from './site.config'
 import FreelanceSite from './FreelanceSite.jsx'
 
 // One config → brand color palette + document title, then render.
-applyTheme(cfg.brand.accent)
+applyTheme(cfg.brand.accent, cfg.brand.recipe)
 if (cfg.title) document.title = cfg.title
 
 createRoot(document.getElementById('root')).render(

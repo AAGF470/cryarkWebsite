@@ -23,6 +23,20 @@ it for the yearly fee. Bounded, fixed-scope, setup-and-handoff.
 
 Build a standalone Vite app composing sections from **`@aagf470/ui`**:
 
+- **Start from a style recipe** (`@aagf470/ui` → `applyRecipe(recipeId, accent)`;
+  catalog in `shared/lib/recipes.js`): editorial-paper · bold-trade ·
+  dark-cinematic · coastal-light · workshop. The recipe fixes typography,
+  neutrals, rhythm, corners, shadows, and default section expressions; the
+  client contributes ONE accent color. Never assemble from raw defaults — that
+  is how sites end up generic.
+- **Use the recipe's expression biases** as the starting skeleton (hero/grid
+  `expression` props), then vary per page. Two pages with identical
+  section-expression sequences is a template tell.
+- **Every client site gets ONE signature element** — a hand-made flourish the
+  system can't generate: a piece of SVG art (FencingPatrol's lighthouse), a
+  custom icon style, a distinctive hero treatment. Budget about an hour; it is
+  the hour the client actually perceives. No site ships without one.
+
 - `.npmrc`: `@aagf470:registry=https://npm.pkg.github.com` +
   `//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}` (classic PAT,
   `read:packages`).

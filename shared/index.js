@@ -57,3 +57,6 @@ export * from './components/ui/SocialIcon'
 // - DiagramBlock                → lazy-imports `mermaid` (heavy dep; future './diagram' subpath export)
 // - ModelViewer                 → imports `@google/model-viewer` (heavy dep; future subpath export)
 // Sites build their own footer.
+
+// Style recipes — named art directions (recipe + client accent → full theme).
+export { RECIPES, recipeVars, applyRecipe, loadRecipeFont } from './lib/recipes'
