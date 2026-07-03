@@ -40,13 +40,13 @@ export default function ContentCards({
           >
             {/* Background image + subtle zoom on hover */}
             {card.image_src && (
-              <div className="content-cards__bg">
-                <img src={card.image_src} alt="" />
+              <div className="content-cards__bg" aria-hidden="true">
+                <img src={card.image_src} alt="" loading="lazy" />
               </div>
             )}
 
             {/* Dark gradient overlay — deeper at bottom for legibility */}
-            <div className="content-cards__veil" />
+            <div className="content-cards__veil" aria-hidden="true" />
 
             {/* Content block — pinned to bottom, grows upward as desc expands */}
             <div className="content-cards__inner">

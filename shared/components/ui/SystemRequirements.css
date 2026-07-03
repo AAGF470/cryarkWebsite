@@ -5,7 +5,7 @@
 
 .sysreq {
   padding: 72px 48px;
-  border-bottom: 0.5px solid var(--color-border-sub, rgba(255,255,255,0.07));
+  border-bottom: 0.5px solid var(--color-border-sub);
 }
 
 .sysreq__inner {
@@ -16,7 +16,7 @@
 /* ── Heading ─────────────────────────────────────────────────────────────── */
 
 .sysreq__heading {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.14em;
   color: color-mix(in srgb, var(--color-accent) 90%, transparent);
@@ -32,12 +32,12 @@
   left: 0; top: 0; bottom: 0;
   width: 2px;
   border-radius: 2px;
-  background: linear-gradient(to bottom, color-mix(in srgb, var(--color-accent) 88%, transparent), color-mix(in srgb, var(--color-accent) 0%, transparent));
+  background: color-mix(in srgb, var(--color-accent) 70%, transparent);
 }
 
 .sysreq__platform_note {
   font-size: 12px;
-  color: color-mix(in srgb, var(--color-text) 35%, transparent);
+  color: var(--color-text-dim);
   letter-spacing: 0.04em;
   margin-bottom: 28px;
   padding-left: 14px;
@@ -47,8 +47,8 @@
 
 .sysreq__table_wrap {
   overflow-x: auto;
-  border: 0.5px solid rgba(255, 255, 255, 0.07);
-  border-radius: 8px;
+  border: 0.5px solid var(--color-border-sub);
+  border-radius: var(--radius-md);
 }
 
 /* ── Table ───────────────────────────────────────────────────────────────── */
@@ -68,13 +68,13 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  border-bottom: 0.5px solid rgba(255, 255, 255, 0.07);
-  background: rgba(255, 255, 255, 0.015);
+  border-bottom: 0.5px solid var(--color-border-sub);
+  background: var(--color-surface);
 }
 
 .sysreq__th--label {
   width: 100px;
-  color: color-mix(in srgb, var(--color-text) 25%, transparent);
+  color: var(--color-text-faint);
 }
 
 .sysreq__th--min { color: var(--color-text-sub); }
@@ -83,13 +83,13 @@
 /* ── Data rows ───────────────────────────────────────────────────────────── */
 
 .sysreq__row {
-  border-bottom: 0.5px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 0.5px solid var(--color-border-sub);
   transition: background 0.15s ease;
 }
 
 .sysreq__row:last-child { border-bottom: none; }
 
-.sysreq__row:hover { background: rgba(255, 255, 255, 0.018); }
+.sysreq__row:hover { background: var(--color-surface); }
 
 .sysreq__cell {
   padding: 14px 20px;
@@ -103,21 +103,21 @@
   font-weight: 600;
   letter-spacing: 0.10em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--color-text) 30%, transparent);
+  color: var(--color-text-dim);
 }
 
 .sysreq__cell--min { color: color-mix(in srgb, var(--color-text) 65%, transparent); }
 .sysreq__cell--rec { color: color-mix(in srgb, var(--color-text) 85%, transparent); }
 
-.sysreq__empty { color: color-mix(in srgb, var(--color-text) 18%, transparent); }
+.sysreq__empty { color: var(--color-text-faint); }
 
 /* ── Footer ──────────────────────────────────────────────────────────────── */
 
 .sysreq__tested {
   font-size: 11px;
-  color: color-mix(in srgb, var(--color-text) 25%, transparent);
+  color: var(--color-text-dim);
   letter-spacing: 0.04em;
-  margin-top: 18px;
+  margin-top: 16px;
   padding-left: 14px;
 }
 
@@ -133,5 +133,5 @@
 @media (max-width: 480px) {
   .sysreq { padding: 36px 0px; }
   .sysreq__inner { padding: 0 20px; }
-  .sysreq__table_wrap { border-radius: 6px; }
+  .sysreq__table_wrap { border-radius: var(--radius-sm); }
 }

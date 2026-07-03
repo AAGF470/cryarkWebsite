@@ -25,6 +25,7 @@ function SvgIcon({ size = 20, path, viewBox = "0 0 24 24", label }) {
       fill="currentColor"
       aria-label={label}
       role="img"
+      focusable="false"
       style={{ display: "block", flexShrink: 0 }}
     >
       <title>{label}</title>
@@ -40,6 +41,7 @@ function ImgIcon({ size = 20, src, label }) {
       alt={label}
       width={size}
       height={size}
+      loading="lazy"
       style={{ display: "block", flexShrink: 0, objectFit: "contain" }}
       className="social-icon--img"
     />

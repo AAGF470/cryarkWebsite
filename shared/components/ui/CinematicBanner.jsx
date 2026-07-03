@@ -36,13 +36,13 @@ export default function CinematicBanner({
     >
       {/* Background image */}
       {image_src && (
-        <div className="cinematic-banner__bg">
-          <img src={image_src} alt="" />
+        <div className="cinematic-banner__bg" aria-hidden="true">
+          <img src={image_src} alt="" loading="lazy" />
         </div>
       )}
 
       {/* Gradient veil — fades page colour in at top + bottom */}
-      <div className="cinematic-banner__veil" />
+      <div className="cinematic-banner__veil" aria-hidden="true" />
 
       {/* Content */}
       <div className="cinematic-banner__content">

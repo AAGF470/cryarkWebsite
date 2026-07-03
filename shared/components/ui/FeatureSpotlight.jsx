@@ -17,6 +17,8 @@ import "./FeatureSpotlight.css";
 //   platforms    array?    — string slugs OR { platform, src? } objects for PlatformBadge
 //   actions      array?    — [{ label, href, variant?, lava? }]
 //   flip         boolean?  — swap media/content sides (default: false = media left)
+//   media_fit    "cover"|"contain"  — object-fit for the media (default: "cover")
+//   media_bg     string?   — CSS background for the media panel (e.g. for contain fit)
 // ---------------------------------------------------------------------------
 
 export default function FeatureSpotlight({

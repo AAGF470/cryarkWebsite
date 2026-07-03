@@ -31,15 +31,13 @@
 
 .page-loader__text {
   font-family: var(--font-sans, system-ui, sans-serif);
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 13px;
+  font-weight: 600;
   letter-spacing: 0.30em;
   text-transform: uppercase;
   color: color-mix(in srgb, var(--color-accent) 82%, transparent);
-  text-shadow:
-    0 0 6px  color-mix(in srgb, var(--color-accent) 70%, transparent),
-    0 0 14px color-mix(in srgb, var(--color-accent) 40%, transparent),
-    0 0 30px color-mix(in srgb, var(--color-accent) 18%, transparent);
+  /* Single soft halo — enough sheen without the stacked-glow look */
+  text-shadow: 0 0 18px color-mix(in srgb, var(--color-accent) 40%, transparent);
   /* Gentle pulse while loading */
   animation: loader-pulse 1.6s ease-in-out infinite;
 }
@@ -47,4 +45,9 @@
 @keyframes loader-pulse {
   0%, 100% { opacity: 0.75; }
   50%       { opacity: 1.00; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-loader { transition: none; }
+  .page-loader__text { animation: none; opacity: 0.9; }
 }

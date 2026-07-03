@@ -4,14 +4,15 @@ import "./PlatformBadge.css";
 // PlatformBadge
 //
 // Square container for non-text, square-format platform logos (Godot, Blender,
-// Steam, etc.). Image fills the container with 4px internal padding.
+// Steam, etc.). Image fills the container with uniform internal padding.
 // If the icon fails to load the badge renders as an empty container.
 //
 // Icons should live at /public/icons/{platform}.svg
 //
 // Props:
-//   platform   string  — one of the PLATFORMS keys (e.g. "godot", "blender")
-//   size       number  — container size in px (default: 32)
+//   platform   string   — one of the PLATFORMS keys (e.g. "godot", "blender")
+//   size       number   — container size in px (default: 32)
+//   src        string?  — explicit icon URL (overrides the /icons/ convention)
 //
 // Usage:
 //   <PlatformBadge platform="godot" />
@@ -46,6 +47,7 @@ export default function PlatformBadge({ platform, size = 32, src = null }) {
         src={icon_src}
         alt={label}
         className="platform-badge__icon"
+        loading="lazy"
         onError={e => { e.currentTarget.style.display = "none"; }}
       />
     </div>

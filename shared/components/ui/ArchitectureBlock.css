@@ -61,9 +61,9 @@
 }
 
 .ab-block__heading-text {
-  font-size:      0.72rem;
-  font-weight:    600;
-  letter-spacing: 0.12em;
+  font-size:      11px;
+  font-weight:    700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color:          color-mix(in srgb, var(--color-accent) 85%, transparent);
 }
@@ -73,10 +73,9 @@
 .ab-block__canvas {
   position:      relative;
   background:    var(--color-bg);
-  border:        1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 14px;
-  box-shadow:    inset 0 1px 0 color-mix(in srgb, var(--color-accent) 8%, transparent),
-                 0 2px 24px rgba(0, 0, 0, 0.4);
+  border:        1px solid var(--color-border-sub);
+  border-radius: var(--radius-xl);
+  box-shadow:    var(--shadow-md);
   padding:       48px 40px;
   min-height:    300px;
   flex:          1;       /* stretch to match sibling column height */
@@ -87,11 +86,11 @@
 
 .ab-block__caption {
   margin:      12px 0 0;
-  font-size:   0.75rem;
-  color:       color-mix(in srgb, var(--color-text) 38%, transparent);
+  font-size:   12px;
+  color:       var(--color-text-dim);
   text-align:  center;
-  font-style:  italic;
   letter-spacing: 0.02em;
+  line-height: 1.5;
 }
 
 /* ==========================================================================
@@ -106,13 +105,15 @@
   border:         none;
   padding:        0;
   cursor:         pointer;
-  transition:     transform 0.18s ease, filter 0.18s ease;
 }
 
-.ab-node:hover,
-.ab-node--active {
-  transform: translateY(-2px);
-  filter:    brightness(1.12);
+.ab-node:focus-visible {
+  outline: none;
+}
+
+.ab-node:focus-visible .ab-node__inner {
+  outline: 2px solid color-mix(in srgb, var(--color-accent) 60%, transparent);
+  outline-offset: 2px;
 }
 
 .ab-node__inner {
@@ -121,52 +122,49 @@
   align-items:    center;
   gap:            var(--ab-node-gap, 8px);
   padding:        var(--ab-node-pad, 16px 22px);
-  border-radius:  11px;
-  border:         1px solid rgba(255, 255, 255, 0.07);
-  background:     color-mix(in srgb, var(--color-bg) 78%, transparent);
-  backdrop-filter: blur(12px) saturate(140%);
-  -webkit-backdrop-filter: blur(12px) saturate(140%);
-  transition:     border-color 0.18s ease, box-shadow 0.18s ease;
+  border-radius:  var(--radius-lg);
+  border:         1px solid var(--color-border-sub);
+  background:     var(--color-bg);
+  transition:     border-color 0.15s ease;
   min-width:      var(--ab-node-min-w, 148px);
   max-width:      var(--ab-node-max-w, 210px);
   text-align:     center;
 }
 
-/* Role-specific border + shadow on hover/active — gold/gray palette only */
-.ab-node--orchestrator.ab-node--active .ab-node__inner,
-.ab-node--orchestrator:hover .ab-node__inner {
+/* Role-specific border on hover; active adds a soft glow — one clear change
+   per state, gold/gray palette only */
+.ab-node--orchestrator:hover .ab-node__inner,
+.ab-node--orchestrator.ab-node--active .ab-node__inner {
   border-color: color-mix(in srgb, var(--color-accent) 50%, transparent);
-  box-shadow:   0 0 18px color-mix(in srgb, var(--color-accent) 14%, transparent);
 }
 
-.ab-node--reader.ab-node--active .ab-node__inner,
-.ab-node--reader:hover .ab-node__inner {
+.ab-node--reader:hover .ab-node__inner,
+.ab-node--reader.ab-node--active .ab-node__inner {
   border-color: rgba(185, 178, 165, 0.42);
-  box-shadow:   0 0 18px rgba(185, 178, 165, 0.08);
 }
 
-.ab-node--processor.ab-node--active .ab-node__inner,
-.ab-node--processor:hover .ab-node__inner {
+.ab-node--processor:hover .ab-node__inner,
+.ab-node--processor.ab-node--active .ab-node__inner {
   border-color: rgba(165, 162, 155, 0.40);
-  box-shadow:   0 0 18px rgba(165, 162, 155, 0.08);
 }
 
-.ab-node--renderer.ab-node--active .ab-node__inner,
-.ab-node--renderer:hover .ab-node__inner {
+.ab-node--renderer:hover .ab-node__inner,
+.ab-node--renderer.ab-node--active .ab-node__inner {
   border-color: rgba(210, 190, 155, 0.45);
-  box-shadow:   0 0 18px rgba(210, 190, 155, 0.10);
 }
 
-.ab-node--writer.ab-node--active .ab-node__inner,
-.ab-node--writer:hover .ab-node__inner {
+.ab-node--writer:hover .ab-node__inner,
+.ab-node--writer.ab-node--active .ab-node__inner {
   border-color: rgba(148, 168, 150, 0.40);
-  box-shadow:   0 0 18px rgba(148, 168, 150, 0.08);
 }
 
-.ab-node--utility.ab-node--active .ab-node__inner,
-.ab-node--utility:hover .ab-node__inner {
+.ab-node--utility:hover .ab-node__inner,
+.ab-node--utility.ab-node--active .ab-node__inner {
   border-color: rgba(130, 128, 124, 0.38);
-  box-shadow:   0 0 18px rgba(130, 128, 124, 0.07);
+}
+
+.ab-node--active .ab-node__inner {
+  box-shadow: var(--shadow-sm);
 }
 
 /* ── Role badge pill ─────────────────────────────────────────────────────────── */
@@ -174,7 +172,7 @@
 .ab-node__badge {
   display:        inline-block;
   padding:        2px 8px;
-  border-radius:  100px;
+  border-radius:  var(--radius-pill);
   font-size:      var(--ab-badge-size, 0.62rem);
   font-weight:    600;
   letter-spacing: 0.08em;
@@ -233,21 +231,24 @@
 
 .ab-detail {
   /* Normal flow — sits below the canvas, never clips */
+  position:      relative;
   width:         100%;
-  background:    color-mix(in srgb, var(--color-bg) 82%, transparent);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border:        1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
+  background:    var(--color-bg);
+  border:        1px solid var(--color-border-low);
+  border-radius: var(--radius-lg);
   padding:       18px 22px 16px;
-  margin-top:    10px;
-  box-shadow:    0 4px 24px rgba(0, 0, 0, 0.45);
+  margin-top:    12px;
+  box-shadow:    var(--shadow-md);
   animation:     ab-detail-in 0.18s ease;
 }
 
 @keyframes ab-detail-in {
-  from { opacity: 0; transform: translateY(8px) scale(0.97); }
-  to   { opacity: 1; transform: translateY(0)  scale(1);     }
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ab-detail { animation: none; }
 }
 
 .ab-detail__close {
@@ -256,11 +257,11 @@
   right:      12px;
   background: none;
   border:     none;
-  color:      color-mix(in srgb, var(--color-text) 35%, transparent);
+  color:      var(--color-text-dim);
   font-size:  0.78rem;
   cursor:     pointer;
   padding:    4px 6px;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   transition: color 0.15s;
   line-height: 1;
 }
@@ -269,10 +270,15 @@
   color: color-mix(in srgb, var(--color-text) 70%, transparent);
 }
 
+.ab-detail__close:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--color-accent) 60%, transparent);
+  outline-offset: 1px;
+}
+
 .ab-detail__head {
   display:     flex;
   flex-direction: column;
-  gap:         7px;
+  gap:         8px;
   margin-bottom: 12px;
 }
 
@@ -301,13 +307,13 @@
   flex-direction: column;
   gap:        6px;
   padding-top: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-top: 1px solid var(--color-border-sub);
 }
 
 .ab-detail__edge {
   display:     flex;
   align-items: center;
-  gap:         7px;
+  gap:         8px;
   font-size:   0.75rem;
 }
 
@@ -331,7 +337,7 @@
 }
 
 .ab-detail__edge-label {
-  color:       color-mix(in srgb, var(--color-text) 38%, transparent);
+  color:       var(--color-text-dim);
   font-style:  italic;
   font-size:   0.70rem;
 }
@@ -358,7 +364,7 @@
 .ab-hub__line {
   stroke:       color-mix(in srgb, var(--color-accent) 22%, transparent);
   stroke-width: 1.5px;
-  transition:   stroke 0.2s ease;
+  transition:   stroke 0.15s ease;
 }
 
 .ab-hub__line--active {
@@ -389,7 +395,7 @@
   color:      color-mix(in srgb, var(--color-accent) 65%, transparent);
   background: color-mix(in srgb, var(--color-bg) 85%, transparent);
   padding:    2px 6px;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   pointer-events: none;
   white-space:  nowrap;
   z-index:    3;
@@ -447,7 +453,7 @@
 .ab-linear__path-label {
   font-size:   10px;
   fill:        color-mix(in srgb, var(--color-accent) 55%, transparent);
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
   font-style:  italic;
 }
 
@@ -538,12 +544,7 @@
   }
 
   .ab-detail {
-    position:   relative;
-    inset:      auto;
-    width:      100%;
     margin-top: 16px;
-    bottom:     auto;
-    right:      auto;
   }
 
   .ab-linear__row {

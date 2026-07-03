@@ -90,7 +90,6 @@ export default function VideoPlayer({
             <button
               className="video-player__play_btn"
               aria-label="Play video"
-              tabIndex={0}
               onClick={handle_play}
             >
               {/* Triangle */}
@@ -99,6 +98,7 @@ export default function VideoPlayer({
                 viewBox="0 0 24 24"
                 fill="currentColor"
                 aria-hidden="true"
+                focusable="false"
               >
                 <path d="M8 5.14v14l11-7-11-7z" />
               </svg>

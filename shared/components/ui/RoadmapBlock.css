@@ -5,8 +5,7 @@
 
 .roadmap {
   padding: 72px 48px;
-  border-bottom: 0.5px solid var(--color-border-sub, rgba(255,255,255,0.07));
-  /* No overflow: hidden here — it would clip the node hover scale transform */
+  border-bottom: 0.5px solid var(--color-border-sub);
 }
 
 /* ── Header ──────────────────────────────────────────────────────────────── */
@@ -16,9 +15,10 @@
 }
 
 .roadmap__eyebrow {
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  color: color-mix(in srgb, var(--color-accent) 75%, transparent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: color-mix(in srgb, var(--color-accent) 80%, transparent);
   text-transform: uppercase;
   margin-bottom: 10px;
   display: flex;
@@ -28,16 +28,17 @@
 
 .roadmap__eyebrow::before {
   content: '';
-  width: 18px;
-  height: 0.5px;
-  background: color-mix(in srgb, var(--color-accent) 75%, transparent);
+  width: 22px;
+  height: 1px;
+  background: currentColor;
   flex-shrink: 0;
 }
 
 .roadmap__heading {
+  font-family: var(--font-display);
   font-size: clamp(18px, 2.5vw, 28px);
-  font-weight: 500;
-  letter-spacing: -0.02em;
+  font-weight: var(--font-display-weight);
+  letter-spacing: var(--font-display-tracking);
   color: var(--color-text);
 }
 
@@ -46,8 +47,8 @@
 .roadmap__progress_wrap {
   position: relative;
   height: 2px;
-  background: rgba(255, 255, 255, 0.06);
-  border-radius: 99px;
+  background: var(--color-border-sub);
+  border-radius: var(--radius-pill);
   margin-bottom: 44px;
   overflow: visible;
 }
@@ -57,10 +58,9 @@
   top: 0;
   left: 0;
   height: 100%;
-  border-radius: 99px;
-  background: linear-gradient(to right, color-mix(in srgb, var(--color-accent) 70%, transparent), var(--color-accent));
-  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 0 8px color-mix(in srgb, var(--color-accent) 40%, transparent);
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .roadmap__progress_label {
@@ -77,9 +77,6 @@
 .roadmap__track {
   position: relative;
   overflow-x: auto;
-  /* padding-top gives headroom for the node scale(1.1) hover without clipping.
-     overflow-x:auto forces overflow-y:auto too, so we need padding rather than
-     relying on overflow:visible. */
   padding-top: 8px;
   padding-bottom: 12px;
   scrollbar-width: thin;
@@ -88,7 +85,7 @@
 
 .roadmap__track::-webkit-scrollbar       { height: 2px; }
 .roadmap__track::-webkit-scrollbar-track { background: transparent; }
-.roadmap__track::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--color-accent) 15%, transparent); border-radius: 99px; }
+.roadmap__track::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--color-accent) 15%, transparent); border-radius: var(--radius-pill); }
 
 /* Horizontal connecting line */
 .roadmap__line {
@@ -97,7 +94,7 @@
   left: 0;
   right: 0;
   height: 0.5px;
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--color-border-sub);
   pointer-events: none;
 }
 
@@ -136,11 +133,6 @@
   position: relative;
   z-index: 1;
   flex-shrink: 0;
-  transition: transform 0.2s ease;
-}
-
-.roadmap__item:hover .roadmap__node {
-  transform: scale(1.10);
 }
 
 .roadmap__symbol {
@@ -153,26 +145,29 @@
   background: color-mix(in srgb, var(--color-accent) 15%, transparent);
   border-color: color-mix(in srgb, var(--color-accent) 75%, transparent);
   color: color-mix(in srgb, var(--color-accent) 95%, transparent);
-  box-shadow: 0 0 12px color-mix(in srgb, var(--color-accent) 20%, transparent);
 }
 
 .roadmap__item--in_progress .roadmap__node {
   background: color-mix(in srgb, var(--roadmap-indev, rgb(100, 181, 196)) 12%, transparent);
   border-color: color-mix(in srgb, var(--roadmap-indev, rgb(100, 181, 196)) 70%, transparent);
   color: color-mix(in srgb, var(--roadmap-indev, rgb(100, 181, 196)) 95%, transparent);
-  box-shadow: 0 0 12px color-mix(in srgb, var(--roadmap-indev, rgb(100, 181, 196)) 18%, transparent);
   animation: roadmap-pulse 2.4s ease-in-out infinite;
 }
 
 @keyframes roadmap-pulse {
-  0%, 100% { box-shadow: 0 0 12px color-mix(in srgb, var(--roadmap-indev, rgb(100, 181, 196)) 18%, transparent); }
-  50%       { box-shadow: 0 0 20px color-mix(in srgb, var(--roadmap-indev, rgb(100, 181, 196)) 35%, transparent); }
+  0%, 100% { box-shadow: 0 0 0    color-mix(in srgb, var(--roadmap-indev, rgb(100, 181, 196)) 0%, transparent); }
+  50%      { box-shadow: 0 0 16px color-mix(in srgb, var(--roadmap-indev, rgb(100, 181, 196)) 30%, transparent); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .roadmap__item--in_progress .roadmap__node { animation: none; }
+  .roadmap__progress_bar { transition: none; }
 }
 
 .roadmap__item--planned .roadmap__node {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(255, 255, 255, 0.14);
-  color: color-mix(in srgb, var(--color-text) 35%, transparent);
+  background: var(--color-surface-high);
+  border-color: var(--color-border-low);
+  color: var(--color-text-dim);
 }
 
 .roadmap__item--cut .roadmap__node {
@@ -198,15 +193,15 @@
 }
 
 .roadmap__item--done    .roadmap__item_label { color: color-mix(in srgb, var(--color-accent) 90%, transparent); }
-.roadmap__item--planned .roadmap__item_label { color: color-mix(in srgb, var(--color-text) 38%, transparent); }
+.roadmap__item--planned .roadmap__item_label { color: var(--color-text-dim); }
 .roadmap__item--cut     .roadmap__item_label {
-  color: color-mix(in srgb, var(--color-text) 25%, transparent);
+  color: var(--color-text-faint);
   text-decoration: line-through;
 }
 
 .roadmap__item_desc {
   font-size: 10px;
-  color: color-mix(in srgb, var(--color-text) 28%, transparent);
+  color: var(--color-text-dim);
   letter-spacing: 0.02em;
   max-width: 100px;
   line-height: 1.4;
@@ -246,7 +241,7 @@
     top: 36px;
     bottom: 0;
     width: 0.5px;
-    background: rgba(255, 255, 255, 0.06);
+    background: var(--color-border-sub);
   }
 
   .roadmap__item:last-child::after { display: none; }

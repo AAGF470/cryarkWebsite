@@ -6,7 +6,7 @@
 
 .changelog {
   padding: 72px 48px;
-  border-bottom: 0.5px solid var(--color-border-sub, rgba(255,255,255,0.07));
+  border-bottom: 0.5px solid var(--color-border-sub);
 }
 
 /* ── Heading ─────────────────────────────────────────────────────────────── */
@@ -16,7 +16,7 @@
 }
 
 .changelog__heading {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.14em;
   color: color-mix(in srgb, var(--color-accent) 90%, transparent);
@@ -31,7 +31,7 @@
   left: 0; top: 0; bottom: 0;
   width: 2px;
   border-radius: 2px;
-  background: linear-gradient(to bottom, color-mix(in srgb, var(--color-accent) 88%, transparent), color-mix(in srgb, var(--color-accent) 0%, transparent));
+  background: color-mix(in srgb, var(--color-accent) 70%, transparent);
 }
 
 /* ── Card grid ───────────────────────────────────────────────────────────── */
@@ -46,19 +46,18 @@
 /* ── Card ────────────────────────────────────────────────────────────────── */
 
 .changelog__card {
-  background: rgba(255, 255, 255, 0.022);
-  border: 0.5px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
+  background: var(--color-surface);
+  border: 0.5px solid var(--color-border-low);
+  border-radius: var(--radius-md);
   padding: 18px 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  transition: border-color 0.2s ease, background 0.2s ease;
+  transition: border-color 0.15s ease;
 }
 
 .changelog__card:hover {
-  border-color: color-mix(in srgb, var(--color-accent) 20%, transparent);
-  background: color-mix(in srgb, var(--color-accent) 2.5%, transparent);
+  border-color: color-mix(in srgb, var(--color-accent) 22%, transparent);
 }
 
 /* ── Card meta (version + date) ──────────────────────────────────────────── */
@@ -77,13 +76,13 @@
   color: color-mix(in srgb, var(--color-accent) 95%, transparent);
   background: color-mix(in srgb, var(--color-accent) 10%, transparent);
   border: 0.5px solid color-mix(in srgb, var(--color-accent) 28%, transparent);
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   padding: 2px 8px;
 }
 
 .changelog__date {
   font-size: 10px;
-  color: color-mix(in srgb, var(--color-text) 25%, transparent);
+  color: var(--color-text-faint);
   letter-spacing: 0.04em;
 }
 
@@ -117,12 +116,12 @@
 
 .changelog__change_tag {
   flex-shrink: 0;
-  font-size: 8px;
+  font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 2px 5px;
-  border-radius: 3px;
+  padding: 1px 5px;
+  border-radius: var(--radius-sm);
   margin-top: 1px;
 }
 
@@ -130,7 +129,7 @@
 .changelog__change_tag--blue   { background: var(--changelog-tag-blue-bg, rgba(74, 122, 155, 0.20)); color: var(--changelog-tag-blue, #82b8dc); }
 .changelog__change_tag--yellow { background: var(--changelog-tag-yellow-bg, rgba(155, 138, 74, 0.20)); color: var(--changelog-tag-yellow, #dcd082); }
 .changelog__change_tag--red    { background: var(--changelog-tag-red-bg, rgba(155, 74, 74, 0.20));  color: var(--changelog-tag-red, #dc8282); }
-.changelog__change_tag--dim    { background: rgba(255, 255, 255, 0.05); color: color-mix(in srgb, var(--color-text) 28%, transparent); }
+.changelog__change_tag--dim    { background: var(--color-surface-high); color: var(--color-text-dim); }
 
 .changelog__change_text {
   color: color-mix(in srgb, var(--color-text) 52%, transparent);
@@ -145,22 +144,26 @@
 
 .changelog__toggle {
   background: none;
-  border: 0.5px solid rgba(255, 255, 255, 0.10);
-  color: color-mix(in srgb, var(--color-text) 38%, transparent);
+  border: 0.5px solid var(--color-border-low);
+  color: var(--color-text-dim);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   padding: 8px 16px;
-  border-radius: 6px;
+  border-radius: var(--radius-md);
   cursor: pointer;
-  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  transition: color 0.15s ease, border-color 0.15s ease;
 }
 
 .changelog__toggle:hover {
   color: color-mix(in srgb, var(--color-text) 80%, transparent);
-  border-color: rgba(255, 255, 255, 0.20);
-  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--color-border-mid);
+}
+
+.changelog__toggle:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--color-accent) 60%, transparent);
+  outline-offset: 2px;
 }
 
 /* ── Responsive ──────────────────────────────────────────────────────────── */

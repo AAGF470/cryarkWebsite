@@ -35,7 +35,7 @@ export default function CinematicHero({
     <div className={`cinematic-hero${align === "center" ? " cinematic-hero--center" : ""}`}>
 
       {/* Background */}
-      <div className="cinematic-hero__bg">
+      <div className="cinematic-hero__bg" aria-hidden="true">
         {video_src ? (
           <video
             autoPlay
@@ -55,7 +55,7 @@ export default function CinematicHero({
       </div>
 
       {/* Gradient overlay — only over real media */}
-      {has_media && <div className="cinematic-hero__overlay" />}
+      {has_media && <div className="cinematic-hero__overlay" aria-hidden="true" />}
 
       {/* Text content */}
       <div className="cinematic-hero__content">

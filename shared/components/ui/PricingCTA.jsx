@@ -69,7 +69,7 @@ export default function PricingCTA({
           >
             <span className="pricing-cta__patreon_icon" aria-hidden="true">
               {/* Patreon "P" wordmark as SVG */}
-              <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
                 <path d="M14.82 2.41C11.57 2.41 8.93 5.05 8.93 8.3c0 3.24 2.64 5.87 5.89 5.87 3.24 0 5.88-2.63 5.88-5.87 0-3.25-2.64-5.89-5.88-5.89zM2 21.6h3.5V2.41H2V21.6z"/>
               </svg>
             </span>

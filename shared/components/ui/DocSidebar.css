@@ -113,7 +113,11 @@
 .doc-sidebar__toggle:hover {
   background: var(--color-surface-high);
   color: var(--color-text);
-  border-color: var(--color-border-mid);
+}
+
+.doc-sidebar__toggle:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 
 /* ── Nav tree ────────────────────────────────────────────────────────────── */
@@ -131,8 +135,6 @@
 }
 
 /* ── Nav item row ────────────────────────────────────────────────────────── */
-
-.doc-sidebar__item { }
 
 .doc-sidebar__row {
   display: flex;
@@ -182,6 +184,12 @@
   color: var(--color-text-dim);
 }
 
+.doc-sidebar__chevron:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
+  border-radius: var(--radius-sm);
+}
+
 /* ── Link ─────────────────────────────────────────────────────────────────── */
 
 .doc-sidebar__link {
@@ -198,6 +206,12 @@
 
 .doc-sidebar__link:hover {
   color: var(--color-text);
+}
+
+.doc-sidebar__link:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
+  border-radius: var(--radius-sm);
 }
 
 .doc-sidebar__row--active .doc-sidebar__link {
@@ -223,7 +237,7 @@
 
     overflow: hidden;
     max-height: 50px;
-    transition: max-height 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: max-height 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .doc-sidebar--open {
@@ -254,5 +268,16 @@
   .doc-sidebar__nav {
     padding-bottom: 16px;
     border-top: 0.5px solid var(--color-border-sub);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .doc-sidebar,
+  .doc-sidebar__chevron,
+  .doc-sidebar__toggle,
+  .doc-sidebar__link,
+  .doc-sidebar__back,
+  .doc-sidebar__space-name {
+    transition: none;
   }
 }

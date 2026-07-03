@@ -25,6 +25,16 @@ import "./WorkCard.css";
 // cannot expand the card regardless of snippet length.
 //
 // Devlog link is folded into the meta cell footer rather than a 4th cell.
+//
+// Props:
+//   id            string    — Sanity project _id (used to fetch latest devlog)
+//   title         string    — project name
+//   slug          string    — route segment for /work/:slug
+//   description   string?   — short summary (clamped to 3 lines)
+//   tags          string[]  — tech/category pills (first 4 shown)
+//   status        string?   — "released" | "in_dev" | "research" | "live" | "collab"
+//   thumbnail     object?   — Sanity image asset for the image cell
+//   preview_code  object?   — { code, language?, label? } for the code cell
 // ---------------------------------------------------------------------------
 
 const STATUS_LABEL = {

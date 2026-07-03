@@ -15,7 +15,7 @@
 /* ── Section heading (same style as other section labels) ────────────────── */
 
 .fact-grid__heading {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.14em;
   color: color-mix(in srgb, var(--color-accent) 90%, transparent);
@@ -37,14 +37,14 @@
   left: 0; top: 0; bottom: 0;
   width: 2px;
   border-radius: 2px;
-  background: linear-gradient(to bottom, color-mix(in srgb, var(--color-accent) 88%, transparent), color-mix(in srgb, var(--color-accent) 0%, transparent));
+  background: color-mix(in srgb, var(--color-accent) 70%, transparent);
 }
 
 .fact-grid__heading::after {
   content: '';
   flex: 1;
   height: 0.5px;
-  background: linear-gradient(to right, color-mix(in srgb, var(--color-accent) 16%, transparent), rgba(255, 255, 255, 0.03));
+  background: var(--color-border-sub);
 }
 
 /* ── Grid ─────────────────────────────────────────────────────────────────── */
@@ -75,7 +75,7 @@
   .fact-grid[data-cols="3"] .fact-grid__list,
   .fact-grid[data-cols="4"] .fact-grid__list { grid-template-columns: 1fr 1fr; }
 
-  .fact-grid__card { padding: 22px 16px; }
+  .fact-grid__card { padding: 20px 16px; }
 }
 
 /* ── Card ─────────────────────────────────────────────────────────────────── */
@@ -87,50 +87,22 @@
   padding: 32px 28px;
   background: color-mix(in srgb, var(--color-accent) 3%, transparent);
   border: 0.5px solid color-mix(in srgb, var(--color-accent) 10%, transparent);
-  transition: background 0.2s ease, border-color 0.2s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.fact-grid__card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse 80% 60% at 20% 100%,
-    color-mix(in srgb, var(--color-accent) 6%, transparent) 0%,
-    transparent 70%
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: border-color 0.15s ease;
 }
 
 .fact-grid__card:hover {
-  background: color-mix(in srgb, var(--color-accent) 5.5%, transparent);
-  border-color: color-mix(in srgb, var(--color-accent) 22%, transparent);
-}
-
-.fact-grid__card:hover::before {
-  opacity: 1;
+  border-color: color-mix(in srgb, var(--color-accent) 26%, transparent);
 }
 
 /* ── Value (the big number) ───────────────────────────────────────────────── */
 
 .fact-grid__value {
+  font-family: var(--font-display);
   font-size: clamp(32px, 4.5vw, 52px);
-  font-weight: 500;
-  letter-spacing: -0.03em;
+  font-weight: var(--font-display-weight);
+  letter-spacing: var(--font-display-tracking);
   line-height: 1;
-  color: color-mix(in srgb, var(--color-text) 92%, transparent);
-  /* Subtle gold gradient on the number */
-  background: linear-gradient(
-    135deg,
-    color-mix(in srgb, var(--color-text) 95%, transparent) 0%,
-    color-mix(in srgb, var(--color-accent) 90%, transparent) 100%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-text);
 }
 
 /* ── Label ────────────────────────────────────────────────────────────────── */
@@ -147,7 +119,7 @@
 
 .fact-grid__desc {
   font-size: 12px;
-  color: color-mix(in srgb, var(--color-text) 30%, transparent);
+  color: var(--color-text-dim);
   line-height: 1.5;
   margin-top: 2px;
 }

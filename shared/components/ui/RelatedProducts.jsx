@@ -54,10 +54,10 @@ function RelatedCard({ product }) {
       {/* Thumbnail */}
       <div className="related-products__thumb">
         {thumbnail?.asset
-          ? <img src={`${thumbnail.asset._ref}`} alt={title} />
-          : <div className="related-products__thumb_placeholder" />
+          ? <img src={`${thumbnail.asset._ref}`} alt={title} loading="lazy" />
+          : <div className="related-products__thumb_placeholder" aria-hidden="true" />
         }
-        <div className="related-products__thumb_veil" />
+        <div className="related-products__thumb_veil" aria-hidden="true" />
       </div>
 
       {/* Info */}

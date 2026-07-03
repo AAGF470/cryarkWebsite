@@ -69,10 +69,17 @@
   background: var(--nav-link-hover-bg);
 }
 
-.doc-layout__nav_item--active {
-  color: var(--color-accent) !important;
-  background: var(--color-accent-sub) !important;
-  border-left-color: var(--color-accent) !important;
+.doc-layout__nav_item:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
+}
+
+/* Declared after :hover so it wins the cascade — no !important needed */
+.doc-layout__nav_item--active,
+.doc-layout__nav_item--active:hover {
+  color: var(--color-accent);
+  background: var(--color-accent-sub);
+  border-left-color: var(--color-accent);
 }
 
 /* ── MAIN CONTENT ────────────────────────────────────────────────────────── */
@@ -119,7 +126,7 @@
     -webkit-backdrop-filter: var(--nav-blur);
     border-right: 0.5px solid var(--color-accent-dim);
     transform: translateX(-100%);
-    transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .doc-layout__sidebar--open {
@@ -161,5 +168,18 @@
   .doc-layout__toggle--open {
     color: var(--color-text-sub);
     border-color: var(--color-border-mid);
+  }
+
+  .doc-layout__toggle:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .doc-layout__sidebar,
+  .doc-layout__nav_item,
+  .doc-layout__toggle {
+    transition: none;
   }
 }

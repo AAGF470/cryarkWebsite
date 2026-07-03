@@ -5,7 +5,7 @@
 
 .asset-grid {
   padding: 72px 48px;
-  border-bottom: 0.5px solid var(--color-border-sub, rgba(255,255,255,0.07));
+  border-bottom: 0.5px solid var(--color-border-sub);
 }
 
 /* ── Heading ─────────────────────────────────────────────────────────────── */
@@ -15,7 +15,7 @@
 }
 
 .asset-grid__heading {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.14em;
   color: color-mix(in srgb, var(--color-accent) 90%, transparent);
@@ -30,7 +30,7 @@
   left: 0; top: 0; bottom: 0;
   width: 2px;
   border-radius: 2px;
-  background: linear-gradient(to bottom, color-mix(in srgb, var(--color-accent) 88%, transparent), color-mix(in srgb, var(--color-accent) 0%, transparent));
+  background: color-mix(in srgb, var(--color-accent) 70%, transparent);
 }
 
 /* ── Grid ────────────────────────────────────────────────────────────────── */
@@ -49,16 +49,15 @@
 .asset-grid__card {
   display: flex;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.022);
-  border: 0.5px solid rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
+  background: var(--color-surface);
+  border: 0.5px solid var(--color-border-low);
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  transition: border-color 0.22s ease, background 0.22s ease;
+  transition: border-color 0.18s ease;
 }
 
 .asset-grid__card:hover {
   border-color: color-mix(in srgb, var(--color-accent) 25%, transparent);
-  background: color-mix(in srgb, var(--color-accent) 3%, transparent);
 }
 
 /* ── Preview image ───────────────────────────────────────────────────────── */
@@ -66,7 +65,7 @@
 .asset-grid__preview {
   position: relative;
   aspect-ratio: 16 / 9;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--color-surface-high);
   overflow: hidden;
 }
 
@@ -75,11 +74,16 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.35s ease;
+  transition: transform 0.2s ease;
 }
 
 .asset-grid__card:hover .asset-grid__preview img {
-  transform: scale(1.04);
+  transform: scale(1.03);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .asset-grid__preview img { transition: none; }
+  .asset-grid__card:hover .asset-grid__preview img { transform: none; }
 }
 
 .asset-grid__preview_placeholder {
@@ -101,7 +105,7 @@
   letter-spacing: 0.10em;
   text-transform: uppercase;
   padding: 3px 7px;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
 }
 
 .asset-grid__license--free        { background: var(--asset-license-free-bg, rgba(74, 140, 111, 0.85)); color: var(--asset-license-free-text, #c8f0dc); }
@@ -135,7 +139,7 @@
 
 .asset-grid__desc {
   font-size: 12px;
-  color: color-mix(in srgb, var(--color-text) 40%, transparent);
+  color: var(--color-text-dim);
   line-height: 1.6;
   margin-top: 4px;
 }
@@ -155,10 +159,10 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   padding: 2px 6px;
-  border-radius: 3px;
-  background: rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-high);
   color: color-mix(in srgb, var(--color-text) 50%, transparent);
-  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  border: 0.5px solid var(--color-border-sub);
 }
 
 .asset-grid__type_badge--large {
@@ -168,7 +172,7 @@
 
 .asset-grid__size {
   font-size: 11px;
-  color: color-mix(in srgb, var(--color-text) 28%, transparent);
+  color: var(--color-text-dim);
 }
 
 /* ── Download footer ─────────────────────────────────────────────────────── */
@@ -180,9 +184,9 @@
 .asset-grid__dl_btn {
   display: block;
   width: 100%;
-  padding: 9px 0;
+  padding: 8px 0;
   text-align: center;
-  border-radius: 6px;
+  border-radius: var(--radius-md);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.10em;
@@ -191,13 +195,17 @@
   border: 0.5px solid color-mix(in srgb, var(--color-accent) 28%, transparent);
   color: color-mix(in srgb, var(--color-accent) 85%, transparent);
   background: color-mix(in srgb, var(--color-accent) 6%, transparent);
-  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  transition: background 0.15s ease, border-color 0.15s ease;
 }
 
 .asset-grid__dl_btn:hover {
   background: color-mix(in srgb, var(--color-accent) 14%, transparent);
   border-color: color-mix(in srgb, var(--color-accent) 55%, transparent);
-  color: var(--color-accent);
+}
+
+.asset-grid__dl_btn:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--color-accent) 60%, transparent);
+  outline-offset: 2px;
 }
 
 .asset-grid__dl_btn--patreon {

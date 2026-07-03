@@ -69,8 +69,8 @@ export default function EmbeddedApp({
 
         {/* Loading overlay shown between launch click and iframe onLoad */}
         {launched && !loaded && (
-          <div className="embedded-app__loading" aria-hidden="true">
-            <span className="embedded-app__spinner" />
+          <div className="embedded-app__loading" role="status">
+            <span className="embedded-app__spinner" aria-hidden="true" />
             <span className="embedded-app__loading_label">Loading…</span>
           </div>
         )}

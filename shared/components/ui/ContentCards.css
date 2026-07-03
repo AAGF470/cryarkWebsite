@@ -22,8 +22,9 @@
 
 /* ── Section heading ─────────────────────────────────────────────────────── */
 
+/* Small uppercase label — follows the section-eyebrow idiom */
 .content-cards__heading {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.14em;
   color: color-mix(in srgb, var(--color-accent) 90%, transparent);
@@ -53,7 +54,7 @@
   content: '';
   flex: 1;
   height: 0.5px;
-  background: linear-gradient(to right, color-mix(in srgb, var(--color-accent) 16%, transparent), rgba(255, 255, 255, 0.03));
+  background: linear-gradient(to right, color-mix(in srgb, var(--color-accent) 16%, transparent), var(--color-border-sub));
 }
 
 /* ── Grid ─────────────────────────────────────────────────────────────────── */
@@ -92,7 +93,7 @@
   background: color-mix(in srgb, var(--color-accent) 4%, transparent);
   border: 0.5px solid color-mix(in srgb, var(--color-accent) 10%, transparent);
   cursor: default;
-  transition: border-color 0.25s ease;
+  transition: border-color 0.18s ease;
 }
 
 .content-cards__card:hover {
@@ -123,7 +124,10 @@
 }
 
 /* ── Gradient veil ───────────────────────────────────────────────────────── */
-/* Heavy at bottom for legibility, fades to transparent at top */
+/* Heavy at bottom for legibility, fades to transparent at top.
+   The deeper hover state lives on ::after and crossfades via opacity —
+   gradients themselves can't interpolate, so this is the only way the
+   deepening actually animates instead of snapping. */
 
 .content-cards__veil {
   position: absolute;
@@ -136,10 +140,12 @@
     color-mix(in srgb, var(--color-bg) 25%, transparent) 65%,
     transparent 100%
   );
-  transition: background 0.3s ease;
 }
 
-.content-cards__card:hover .content-cards__veil {
+.content-cards__veil::after {
+  content: '';
+  position: absolute;
+  inset: 0;
   background: linear-gradient(
     to top,
     color-mix(in srgb, var(--color-bg) 98%, transparent) 0%,
@@ -147,6 +153,12 @@
     color-mix(in srgb, var(--color-bg) 40%, transparent) 75%,
     transparent 100%
   );
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.content-cards__card:hover .content-cards__veil::after {
+  opacity: 1;
 }
 
 /* ── Inner content block ─────────────────────────────────────────────────── */
@@ -170,12 +182,12 @@
 
 .content-cards__category {
   display: block;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: color-mix(in srgb, var(--color-accent) 65%, transparent);
-  margin-bottom: 7px;
+  margin-bottom: 8px;
 }
 
 /* ── Title ────────────────────────────────────────────────────────────────── */
@@ -187,12 +199,8 @@
   line-height: 1.25;
   color: color-mix(in srgb, var(--color-text) 92%, transparent);
   margin: 0;
-  /* Very subtle upward nudge on hover adds to the "rising" feel */
-  transition: transform 0.35s cubic-bezier(0.25, 0, 0.1, 1);
-}
-
-.content-cards__card:hover .content-cards__title {
-  transform: translateY(-2px);
+  /* The expanding description below already lifts the title —
+     no extra nudge needed. */
 }
 
 /* ── Description reveal ──────────────────────────────────────────────────── */
@@ -220,13 +228,21 @@
 .content-cards__desc {
   font-size: 13px;
   line-height: 1.68;
-  color: color-mix(in srgb, var(--color-text) 52%, transparent);
+  color: color-mix(in srgb, var(--color-text) 62%, transparent);
   margin: 0;
   padding-top: 10px;
   padding-bottom: 2px;
-  transition: color 0.2s ease;
 }
 
-.content-cards__card:hover .content-cards__desc {
-  color: color-mix(in srgb, var(--color-text) 68%, transparent);
+/* Reduced motion: reveal instantly, keep media still */
+@media (prefers-reduced-motion: reduce) {
+  .content-cards__desc_reveal,
+  .content-cards__veil::after,
+  .content-cards__card,
+  .content-cards__bg img {
+    transition: none;
+  }
+  .content-cards__card:hover .content-cards__bg img {
+    transform: none;
+  }
 }

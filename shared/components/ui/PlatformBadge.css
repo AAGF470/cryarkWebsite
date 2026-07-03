@@ -8,8 +8,8 @@
   align-items: center;
   justify-content: center;
   /* Size is set via inline style — default 32px */
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-high);
   border: 0.5px solid color-mix(in srgb, var(--color-accent) 14%, transparent);
   overflow: hidden;
   flex-shrink: 0;

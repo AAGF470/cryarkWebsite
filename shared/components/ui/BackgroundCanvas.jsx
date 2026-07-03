@@ -12,6 +12,9 @@ import "./BackgroundCanvas.css";
 // Five orbs drift slowly across a near-black background, bouncing off
 // edges with a sine-wave wobble so motion never feels mechanical.
 // Colors: deep purple, dark blue, amber — matching the Cryark palette.
+// Honors prefers-reduced-motion: renders a single static frame instead.
+//
+// Props: (none)
 //
 // Usage — place once inside the page root, before all other content:
 //   <BackgroundCanvas />
@@ -53,18 +56,21 @@ export default function BackgroundCanvas() {
     let tick_count  = 0;
     let raf_id      = null;
 
+    // Honor prefers-reduced-motion — paint one static frame, no animation loop
+    const reduced_motion_query = window.matchMedia("(prefers-reduced-motion: reduce)");
+
     function resize_canvas_to_window() {
       canvas_element.width  = window.innerWidth;
       canvas_element.height = window.innerHeight;
+      // Repaint immediately when static, otherwise the next frame handles it
+      if (reduced_motion_query.matches) draw_frame();
     }
-    resize_canvas_to_window();
-    window.addEventListener("resize", resize_canvas_to_window);
 
     function draw_frame() {
       const W = canvas_element.width;
       const H = canvas_element.height;
 
-      // Near-black base — #04050a is almost pure black with faint blue tint
+      // Near-black base — matches --color-bg so canvas and page agree
       ctx.fillStyle = "#04050a";
       ctx.fillRect(0, 0, W, H);
 
@@ -89,6 +95,9 @@ export default function BackgroundCanvas() {
         ctx.fillRect(0, 0, W, H);
       });
 
+      // Static mode: stop here — one painted frame, no motion
+      if (reduced_motion_query.matches) return;
+
       // Advance orb positions and bounce off edges
       orbs.forEach(orb => {
         orb.x += orb.vx;
@@ -101,11 +110,23 @@ export default function BackgroundCanvas() {
       raf_id = requestAnimationFrame(draw_frame);
     }
 
-    raf_id = requestAnimationFrame(draw_frame);
+    function start() {
+      cancelAnimationFrame(raf_id);
+      raf_id = requestAnimationFrame(draw_frame);
+    }
+
+    resize_canvas_to_window();
+    window.addEventListener("resize", resize_canvas_to_window);
+
+    // React live to OS-level motion preference changes
+    reduced_motion_query.addEventListener?.("change", start);
+
+    start();
 
     return () => {
       cancelAnimationFrame(raf_id);
       window.removeEventListener("resize", resize_canvas_to_window);
+      reduced_motion_query.removeEventListener?.("change", start);
     };
   }, []);
 

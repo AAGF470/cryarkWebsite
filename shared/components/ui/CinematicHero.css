@@ -88,9 +88,11 @@
   max-width: 700px;
 }
 
+/* Small uppercase label — follows the section-eyebrow idiom */
 .cinematic-hero__eyebrow {
-  font-size: 10px;
-  letter-spacing: 0.22em;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
   color: color-mix(in srgb, var(--color-accent) 88%, transparent);
   text-transform: uppercase;
   display: flex;
@@ -112,12 +114,14 @@
 }
 
 .cinematic-hero__title {
+  font-family: var(--font-display);
   font-size: clamp(28px, 5vw, 58px);
-  font-weight: 500;
+  font-weight: var(--font-display-weight);
   line-height: 1.07;
-  letter-spacing: -0.025em;
+  letter-spacing: var(--font-display-tracking);
   color: var(--color-text);
   margin-bottom: 20px;
+  /* Photo scrim — keeps the title legible over bright media (exempt from tokens) */
   text-shadow: 0 2px 48px rgba(0, 0, 0, 0.65);
 }
 
@@ -172,6 +176,10 @@
 @keyframes ch-scroll-pulse {
   0%, 100% { opacity: 0.35; }
   50%       { opacity: 0.85; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cinematic-hero__scroll_line { animation: none; opacity: 0.6; }
 }
 
 /* ── RESPONSIVE ──────────────────────────────────────────────────────────── */

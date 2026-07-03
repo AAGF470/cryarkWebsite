@@ -9,6 +9,7 @@ import "./ArchitectureBlock.css";
 //   caption    string          — optional note below the diagram
 //   layout     "hub"|"linear"|"tree"
 //   center_id  string          — node id of the hub orchestrator (hub mode only)
+//   node_size  "default"|"compact"|"wide" — node density preset
 //   nodes[]    { id, label, description, role, badge }
 //   edges[]    { from, to, label, bidirectional }
 //
@@ -126,7 +127,7 @@ function HubLayout({ nodes, edges, center_id, active_id, onNodeClick }) {
       style={{ "--spoke-count": count }}
     >
       {/* Connector lines rendered as SVG overlay */}
-      <svg className="ab-hub__svg" aria-hidden="true">
+      <svg className="ab-hub__svg" aria-hidden="true" focusable="false">
         {spokes.map((spoke, i) => {
           const angle_deg = (360 / count) * i - 90;
           const angle_rad = (angle_deg * Math.PI) / 180;
@@ -331,6 +332,7 @@ function LinearLayout({ nodes, edges, active_id, onNodeClick }) {
       <svg
         className="ab-linear__svg"
         aria-hidden="true"
+        focusable="false"
         style={{ height: `calc(100% + ${extra_h}px)` }}
       >
         <defs>

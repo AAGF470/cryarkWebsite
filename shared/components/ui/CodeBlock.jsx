@@ -7,7 +7,6 @@ import "./CodeBlock.css";
 // Styled code panel that fits the Cryark / Guillen dark aesthetic.
 // Features:
 //   • Mac-style window dots in the header
-//   • Gold top-sheen border
 //   • Language badge with per-language accent colour
 //   • Copy-to-clipboard button
 //   • Collapse/expand toggle when the snippet exceeds 14 lines

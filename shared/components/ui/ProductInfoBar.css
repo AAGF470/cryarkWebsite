@@ -35,6 +35,12 @@
   color: var(--color-accent);
 }
 
+.product-info-bar__back:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
 .product-info-bar__back_arrow {
   font-size: 13px;
   line-height: 1;
@@ -70,7 +76,7 @@
 .product-info-bar__tag::before {
   content: '·';
   margin-right: 8px;
-  color: rgba(255, 255, 255, 0.12);
+  color: var(--color-text-faint);
 }
 
 /* ── PLATFORMS ───────────────────────────────────────────────────────────── */
@@ -93,4 +99,14 @@
 
   .product-info-bar__meta { order: 2; flex-basis: 100%; }
   .product-info-bar__platforms { order: 3; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-info-bar__back,
+  .product-info-bar__back_arrow {
+    transition: none;
+  }
+  .product-info-bar__back:hover .product-info-bar__back_arrow {
+    transform: none;
+  }
 }

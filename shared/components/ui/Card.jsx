@@ -151,7 +151,12 @@ export default function Card({
       role="button"
       tabIndex={0}
       aria-label={`View ${title}`}
-      onKeyDown={(e) => e.key === "Enter" && handle_card_click()}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          handle_card_click();
+        }
+      }}
     >
       {/* Outline glow canvas — sits outside the card edge, z-index above everything */}
       <canvas ref={outline_canvas_ref} className="card__outline_canvas" aria-hidden="true" />

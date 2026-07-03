@@ -43,7 +43,14 @@ export default function RoadmapBlock({ eyebrow = null, heading = null, milestone
       )}
 
       {/* ── Progress bar ──────────────────────────────────────────────────── */}
-      <div className="roadmap__progress_wrap" aria-label={`${progress}% complete`}>
+      <div
+        className="roadmap__progress_wrap"
+        role="progressbar"
+        aria-label="Roadmap progress"
+        aria-valuenow={progress}
+        aria-valuemin={0}
+        aria-valuemax={100}
+      >
         <div
           className="roadmap__progress_bar"
           style={{ width: `${progress}%` }}
