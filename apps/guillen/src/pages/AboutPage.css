@@ -1,6 +1,41 @@
 /*
-  All styles for the About page live in:
-  shared/components/about/AboutPage.css
+  Guillen-specific overrides on the shared About page
+  (shared/components/about/AboutPage.css — shared with cryark, so its base
+  styles stay untouched; the dark-pastel adjustments live here, scoped to
+  .ab-page--guillen).
 
-  Add Guillen-specific overrides here if needed.
+  Two passes from the guillen.studio redesign:
+    1. Font coverage — the hero name joins the display face.
+    2. Washed-out fix — reading surfaces lift onto the theme contrast scale
+       (the shared file hard-codes rgba() text well below the new
+       --color-text-sub / --color-text-dim values).
 */
+
+/* Shell inherits the theme instead of the shared file's hard-coded neutrals */
+.ab-page--guillen {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans, system-ui, sans-serif);
+}
+
+/* ── Font coverage — display face on the page's display-scale text ───────── */
+
+.ab-page--guillen .ab-hero__name {
+  font-family: var(--font-display);
+  font-weight: var(--font-display-weight);
+  letter-spacing: var(--font-display-tracking);
+}
+
+/* ── Washed-out fix — body/reading text on the token contrast scale ──────── */
+
+.ab-page--guillen .ab-hero__bio,
+.ab-page--guillen .ab-item__desc,
+.ab-page--guillen .ab-proj__desc,
+.ab-page--guillen .ab-proj__body-text {
+  color: var(--color-text-sub);
+}
+
+.ab-page--guillen .ab-item__sub,
+.ab-page--guillen .ab-proj__role-text {
+  color: var(--color-text-dim);
+}

@@ -11,15 +11,18 @@
 // ---------------------------------------------------------------------------
 
 import SharedAboutPage from "@shared/components/about/AboutPage";
-import { GUILLEN_NAV } from "../nav.jsx";
+import { GUILLEN_NAV, GUILLEN_NAV_CTA } from "../nav.jsx";
+import "./AboutPage.css";
 
 export default function AboutPage() {
   return (
-    <SharedAboutPage nav_preset="minimal"
+    <SharedAboutPage nav_preset="bar"
       site="guillen"
       variant="guillen"
       nav_links={GUILLEN_NAV}
       logo_text="AG"
+      nav_cta_label={GUILLEN_NAV_CTA.cta_label}
+      nav_cta_href={GUILLEN_NAV_CTA.cta_href}
     />
   );
 }

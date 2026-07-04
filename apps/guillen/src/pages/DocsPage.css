@@ -22,6 +22,11 @@
   align-items: start;
   position: relative;
   z-index: 2;
+  /* Library page — cap the three-column shell at the wide content width
+     so ultra-wide viewports don't stretch the sidebar/TOC to the edges. */
+  max-width: var(--content-wide-max, var(--container-max));
+  margin: 0 auto;
+  width: 100%;
 }
 
 @media (max-width: 1200px) {
@@ -45,7 +50,7 @@
 .docs-main {
   min-width: 0;                       /* prevent grid blowout */
   padding: 56px 64px 96px;
-  max-width: 780px;
+  max-width: 860px;                   /* prose measure inside the wide shell */
 }
 
 @media (max-width: 1200px) {

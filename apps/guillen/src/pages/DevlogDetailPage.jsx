@@ -21,7 +21,7 @@ import RawDiagramBlock    from "@shared/components/ui/RawDiagramBlock";
 import ArchitectureBlock  from "@shared/components/ui/ArchitectureBlock";
 import HierarchyBlock     from "@shared/components/ui/HierarchyBlock";
 import "./DevlogDetailPage.css";
-import { GUILLEN_NAV } from "../nav.jsx";
+import { GUILLEN_NAV, GUILLEN_NAV_CTA } from "../nav.jsx";
 
 // ---------------------------------------------------------------------------
 // DevlogDetailPage — guillen.studio/devlog/:slug
@@ -317,7 +317,7 @@ export default function DevlogDetailPage() {
     return (
       <div className="page">
         <div className="gh-grain" aria-hidden="true" />
-        <SiteNav links={GUILLEN_NAV} logo_text="AG" preset="minimal" />
+        <SiteNav links={GUILLEN_NAV} logo_text="AG" preset="bar" {...GUILLEN_NAV_CTA} />
       </div>
     );
   }
@@ -326,7 +326,7 @@ export default function DevlogDetailPage() {
     return (
       <div className="page">
         <div className="gh-grain" aria-hidden="true" />
-        <SiteNav links={GUILLEN_NAV} logo_text="AG" preset="minimal" />
+        <SiteNav links={GUILLEN_NAV} logo_text="AG" preset="bar" {...GUILLEN_NAV_CTA} />
         <main className="dd-page">
           <div className="dd-not-found">
             <p>Entry not found.</p>
@@ -342,7 +342,7 @@ export default function DevlogDetailPage() {
     <div className="page">
       <div className="gh-grain" aria-hidden="true" />
 
-      <SiteNav links={GUILLEN_NAV} logo_text="AG" preset="minimal" />
+      <SiteNav links={GUILLEN_NAV} logo_text="AG" preset="bar" {...GUILLEN_NAV_CTA} />
 
       <article className="dd-page">
 

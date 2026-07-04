@@ -1,43 +1,44 @@
 /* ── GUILLEN.STUDIO THEME ────────────────────────────────────────────────── */
-/* Identity: the "dark-cinematic" recipe with the dawn-gold accent (#c8a97e).
-   This block is the materialized output of:
+/* Identity: the "dark-pastel" recipe with the dawn-gold accent (#c8a97e).
+   Soft pastel color on deep ink — workshop after dark. This block is the
+   materialized output of:
 
-     recipeVars('dark-cinematic', '#c8a97e')   — shared/lib/recipes.js
+     recipeVars('dark-pastel', '#c8a97e')   — shared/lib/recipes.js
 
    Loaded after @shared/styles/base.css (see main.jsx), so every value below
    overrides the token defaults in shared/styles/tokens.css.
    Regenerate with:
-     node -e "import('./shared/lib/recipes.js').then(m => console.log(m.recipeVars('dark-cinematic','#c8a97e').vars))"
-   The recipe's font (Space Grotesk) is loaded statically in index.html.       */
+     node -e "import('./shared/lib/recipes.js').then(m => console.log(m.recipeVars('dark-pastel','#c8a97e').vars))"
+   The recipe's font (Bricolage Grotesque) is loaded statically in index.html. */
 
 :root {
   /* type */
-  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
   --font-display-weight: 600;
-  --font-display-tracking: -0.02em;
+  --font-display-tracking: -0.01em;
 
-  /* neutrals */
-  --color-bg: #0a0a10;
-  --color-surface: rgba(255, 255, 255, 0.03);
-  --color-surface-high: rgba(255, 255, 255, 0.055);
-  --color-text: #ecebe7;
-  --color-text-sub: rgba(236, 235, 231, 0.60);
-  --color-text-dim: rgba(236, 235, 231, 0.42);
-  --color-text-faint: rgba(236, 235, 231, 0.24);
-  --color-border-sub: rgba(255, 255, 255, 0.07);
-  --color-border-low: rgba(255, 255, 255, 0.11);
-  --color-border-mid: rgba(255, 255, 255, 0.20);
+  /* neutrals — lavender-tinted glass on soft ink */
+  --color-bg: #101017;
+  --color-surface: rgba(185, 174, 227, 0.05);
+  --color-surface-high: rgba(185, 174, 227, 0.09);
+  --color-text: #f0eee9;
+  --color-text-sub: rgba(240, 238, 233, 0.72);
+  --color-text-dim: rgba(240, 238, 233, 0.52);
+  --color-text-faint: rgba(240, 238, 233, 0.30);
+  --color-border-sub: rgba(185, 174, 227, 0.10);
+  --color-border-low: rgba(185, 174, 227, 0.16);
+  --color-border-mid: rgba(185, 174, 227, 0.28);
 
   /* accent family */
   --color-accent: #c8a97e;
   --color-accent-sub: color-mix(in srgb, #c8a97e 9%, transparent);
   --color-accent-dim: color-mix(in srgb, #c8a97e 18%, transparent);
-  --color-on-accent: #ecebe7;
-  --color-on-accent-sub: color-mix(in srgb, #ecebe7 75%, transparent);
+  --color-on-accent: #17130d;
+  --color-on-accent-sub: color-mix(in srgb, #17130d 75%, transparent);
 
   /* rhythm + corners + depth */
-  --section-space: 112px;
-  --container-max: 1240px;
+  --section-space: 108px;
+  --container-max: 1320px;
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 14px;
@@ -50,74 +51,143 @@
 
   /* buttons */
   --btn-solid-bg: #c8a97e;
-  --btn-solid-text: #ecebe7;
+  --btn-solid-text: #17130d;
   --btn-solid-border: #c8a97e;
   --btn-solid-hover-bg: color-mix(in srgb, #c8a97e 84%, black);
-  --btn-solid-hover-text: #ecebe7;
+  --btn-solid-hover-text: #17130d;
   --btn-solid-hover-border: color-mix(in srgb, #c8a97e 84%, black);
   --btn-fill: color-mix(in srgb, #c8a97e 84%, black);
   --btn-glow-tight: color-mix(in srgb, #c8a97e 35%, transparent);
   --btn-glow-wide: color-mix(in srgb, #c8a97e 14%, transparent);
   --btn-ghost-text: #c8a97e;
   --btn-ghost-color: color-mix(in srgb, #c8a97e 84%, black);
-  --btn-ghost-border: rgba(255, 255, 255, 0.20);
+  --btn-ghost-border: rgba(185, 174, 227, 0.28);
   --btn-ghost-border-hover: #c8a97e;
   --btn-ghost-hover-bg: color-mix(in srgb, #c8a97e 6%, transparent);
   --btn-ghost-glow: color-mix(in srgb, #c8a97e 14%, transparent);
 
   /* nav (derived from the same primitives) */
-  --nav-bg: color-mix(in srgb, #0a0a10 97%, transparent);
-  --nav-bg-open: color-mix(in srgb, #0a0a10 99%, transparent);
-  --nav-mobile-bg: color-mix(in srgb, #0a0a10 99%, transparent);
-  --nav-border: rgba(255, 255, 255, 0.07);
-  --nav-backdrop: color-mix(in srgb, #ecebe7 20%, transparent);
+  --nav-bg: color-mix(in srgb, #101017 97%, transparent);
+  --nav-bg-open: color-mix(in srgb, #101017 99%, transparent);
+  --nav-mobile-bg: color-mix(in srgb, #101017 99%, transparent);
+  --nav-border: rgba(185, 174, 227, 0.10);
+  --nav-backdrop: color-mix(in srgb, #f0eee9 20%, transparent);
   --nav-glider-border: color-mix(in srgb, #c8a97e 25%, transparent);
   --nav-glider-shadow: 0 2px 12px color-mix(in srgb, #c8a97e 6%, transparent);
-  --nav-logo-color: color-mix(in srgb, #ecebe7 70%, transparent);
-  --nav-logo-hover: #ecebe7;
+  --nav-logo-color: color-mix(in srgb, #f0eee9 70%, transparent);
+  --nav-logo-hover: #f0eee9;
   --nav-logo-accent: #c8a97e;
-  --nav-link-rest: color-mix(in srgb, #ecebe7 52%, transparent);
-  --nav-link-hover: #ecebe7;
-  --nav-link-active: #ecebe7;
-  --nav-link-hover-bg: color-mix(in srgb, #ecebe7 4%, transparent);
+  --nav-link-rest: color-mix(in srgb, #f0eee9 52%, transparent);
+  --nav-link-hover: #f0eee9;
+  --nav-link-active: #f0eee9;
+  --nav-link-hover-bg: color-mix(in srgb, #f0eee9 4%, transparent);
   --nav-cta-color: #c8a97e;
-  --nav-cta-hover-color: #ecebe7;
+  --nav-cta-hover-color: #17130d;
   --nav-cta-border: #c8a97e;
   --nav-cta-hover-border: #c8a97e;
   --nav-cta-hover-bg: #c8a97e;
-  --nav-hamburger-bar: color-mix(in srgb, #ecebe7 60%, transparent);
-  --nav-hamburger-hover-bg: color-mix(in srgb, #ecebe7 4%, transparent);
-  --nav-mobile-link: color-mix(in srgb, #ecebe7 55%, transparent);
-  --nav-mobile-link-hover: #ecebe7;
-  --nav-mobile-link-active: #ecebe7;
-  --nav-mobile-link-hover-bg: color-mix(in srgb, #ecebe7 3%, transparent);
+  --nav-hamburger-bar: color-mix(in srgb, #f0eee9 60%, transparent);
+  --nav-hamburger-hover-bg: color-mix(in srgb, #f0eee9 4%, transparent);
+  --nav-mobile-link: color-mix(in srgb, #f0eee9 55%, transparent);
+  --nav-mobile-link-hover: #f0eee9;
+  --nav-mobile-link-active: #f0eee9;
+  --nav-mobile-link-hover-bg: color-mix(in srgb, #f0eee9 3%, transparent);
   --nav-mobile-link-active-bg: color-mix(in srgb, #c8a97e 7%, transparent);
-  --nav-mobile-top-border: rgba(255, 255, 255, 0.07);
+  --nav-mobile-top-border: rgba(185, 174, 227, 0.10);
   --nav-mobile-cta-color: #c8a97e;
-  --nav-mobile-cta-hover: #ecebe7;
+  --nav-mobile-cta-hover: #17130d;
   --nav-mobile-cta-border: color-mix(in srgb, #c8a97e 30%, transparent);
   --nav-mobile-cta-hover-border: #c8a97e;
   --nav-mobile-cta-hover-bg: #c8a97e;
-  --nav-mobile-strip-bg: color-mix(in srgb, #0a0a10 92%, transparent);
-  --nav-mobile-strip-border: rgba(255, 255, 255, 0.07);
+  --nav-mobile-strip-bg: color-mix(in srgb, #101017 92%, transparent);
+  --nav-mobile-strip-border: rgba(185, 174, 227, 0.10);
+
+  /* pastel set (recipe extras) */
+  --pastel-mint: #a3d9c3;
+  --pastel-lavender: #b9aee3;
+  --pastel-sky: #9cc3de;
+  --pastel-rose: #dba8b8;
+  --pastel-peach: #e6c39e;
 }
 
-/* App-level correction on top of the recipe output:
-   the recipe's luminance heuristic picks the (light) theme text as "ink on
-   accent", but dawn gold is a light accent — light-on-gold is illegible
-   (~1.8:1). Use the dark warm ink from the token defaults instead.           */
+/* ── PASTEL CATEGORY TOKENS ──────────────────────────────────────────────── */
+/* Map the component-scoped category tokens (all declared with fallbacks in
+   their shared component CSS) onto the pastel set, so content pages carry
+   soft color instead of monochrome glass.                                    */
+
 :root {
-  --color-on-accent: #161310;
-  --color-on-accent-sub: color-mix(in srgb, #161310 70%, transparent);
-  --btn-solid-text: #161310;
-  --btn-solid-hover-text: #161310;
-  --nav-cta-hover-color: #161310;
-  --nav-mobile-cta-hover: #161310;
+  /* ChangelogBlock tags */
+  --changelog-tag-green:      var(--pastel-mint);
+  --changelog-tag-green-bg:   color-mix(in srgb, var(--pastel-mint) 14%, transparent);
+  --changelog-tag-blue:       var(--pastel-sky);
+  --changelog-tag-blue-bg:    color-mix(in srgb, var(--pastel-sky) 14%, transparent);
+  --changelog-tag-yellow:     var(--pastel-peach);
+  --changelog-tag-yellow-bg:  color-mix(in srgb, var(--pastel-peach) 14%, transparent);
+  --changelog-tag-red:        var(--pastel-rose);
+  --changelog-tag-red-bg:     color-mix(in srgb, var(--pastel-rose) 14%, transparent);
+
+  /* RoadmapBlock states */
+  --roadmap-indev:        var(--pastel-sky);
+  --roadmap-blocked:      var(--pastel-rose);
+  --roadmap-blocked-text: var(--pastel-rose);
+
+  /* CalloutBlock variants */
+  --callout-tip:     var(--pastel-mint);
+  --callout-warning: var(--pastel-peach);
+  --callout-info:    var(--pastel-sky);
+
+  /* WorkCard status badges */
+  --wc-status-released-text: var(--pastel-mint);
+  --wc-status-released-bg:   color-mix(in srgb, var(--pastel-mint) 11%, transparent);
+  --wc-status-indev-text:    var(--pastel-sky);
+  --wc-status-indev-bg:      color-mix(in srgb, var(--pastel-sky) 11%, transparent);
+  --wc-status-research-text: var(--pastel-lavender);
+  --wc-status-research-bg:   color-mix(in srgb, var(--pastel-lavender) 11%, transparent);
+  --wc-status-live-text:     var(--pastel-mint);
+  --wc-status-live-bg:       color-mix(in srgb, var(--pastel-mint) 11%, transparent);
+
+  /* RelatedProducts status */
+  --related-status-indev:    var(--pastel-sky);
+  --related-status-live:     var(--pastel-mint);
+  --related-status-research: var(--pastel-lavender);
+  --related-status-collab:   var(--color-accent);
+
+  /* Card badges */
+  --card-badge-purple-bg:     color-mix(in srgb, var(--pastel-lavender) 10%, transparent);
+  --card-badge-purple-text:   var(--pastel-lavender);
+  --card-badge-purple-border: color-mix(in srgb, var(--pastel-lavender) 24%, transparent);
+  --card-badge-blue-bg:       color-mix(in srgb, var(--pastel-sky) 10%, transparent);
+  --card-badge-blue-text:     var(--pastel-sky);
+  --card-badge-blue-border:   color-mix(in srgb, var(--pastel-sky) 24%, transparent);
+  --card-badge-green-bg:      color-mix(in srgb, var(--pastel-mint) 10%, transparent);
+  --card-badge-green-text:    var(--pastel-mint);
+  --card-badge-green-border:  color-mix(in srgb, var(--pastel-mint) 24%, transparent);
+
+  /* AssetGrid license tints (chips overlay thumbnails — keep near-opaque) */
+  --asset-license-free-bg:          color-mix(in srgb, var(--pastel-mint) 30%, rgba(16, 16, 23, 0.88));
+  --asset-license-free-text:        color-mix(in srgb, var(--pastel-mint) 60%, white);
+  --asset-license-cc0-bg:           color-mix(in srgb, var(--pastel-sky) 30%, rgba(16, 16, 23, 0.88));
+  --asset-license-cc0-text:         color-mix(in srgb, var(--pastel-sky) 60%, white);
+  --asset-license-attribution-bg:   color-mix(in srgb, var(--pastel-peach) 30%, rgba(16, 16, 23, 0.88));
+  --asset-license-attribution-text: color-mix(in srgb, var(--pastel-peach) 60%, white);
+}
+
+/* ── WIDE CONTENT WIDTH ──────────────────────────────────────────────────── */
+/* Library/content pages (Work, Devlog, Docs) breathe wider than prose
+   sections — page CSS caps their list/grid containers at this value.        */
+
+:root {
+  --content-wide-max: min(1560px, 94vw);
 }
 
 /* ── APP-WIDE SHELL ──────────────────────────────────────────────────────── */
 /* One definition for the page wrapper + film grain (previously duplicated
    in every page's CSS file).                                                 */
+
+/* Nav brand mark ("AG") joins the display face (font coverage pass). */
+.sitenav__logo_text {
+  font-family: var(--font-display);
+}
 
 .page {
   background: var(--color-bg);

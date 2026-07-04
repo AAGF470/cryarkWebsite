@@ -4,14 +4,24 @@
     {
       "name": "guillenwebsites",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev:gws"],
+      "runtimeArgs": [
+        "run",
+        "dev:gws"
+      ],
       "port": 5174
     },
     {
       "name": "guillen",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev:guillen"],
-      "port": 5173
+      "runtimeArgs": [
+        "run",
+        "dev:guillen",
+        "--",
+        "--port",
+        "5175",
+        "--strictPort"
+      ],
+      "port": 5175
     }
   ]
 }

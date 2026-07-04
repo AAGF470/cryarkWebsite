@@ -51,3 +51,15 @@ export const GUILLEN_NAV = [
   { to: "/devlog", label: "Devlog", icon: <DevlogIcon /> },
   { to: "/about",  label: "About",  icon: <AboutIcon /> },
 ];
+
+// ── Contact CTA ────────────────────────────────────────────────────────────
+// TODO: no contact email exists in the app yet — hello@guillen.studio is a
+// placeholder; swap for the real inbox once it's set up.
+export const GUILLEN_CONTACT_EMAIL = "hello@guillen.studio";
+export const GUILLEN_CONTACT_MAILTO = `mailto:${GUILLEN_CONTACT_EMAIL}`;
+
+// Spread into every SiteNav so the "Get in touch" CTA is consistent site-wide.
+export const GUILLEN_NAV_CTA = {
+  cta_label: "Get in touch",
+  cta_href:  GUILLEN_CONTACT_MAILTO,
+};

@@ -82,15 +82,23 @@
   gap: 6px;
 }
 
+/* Tag chips cycle through the pastel set (matches the devlog list page). */
 .dd-tag {
+  --chip-tint: var(--pastel-lavender);
   font-size: 11px;
   letter-spacing: 0.05em;
-  color: color-mix(in srgb, var(--color-accent) 75%, transparent);
-  background: var(--color-accent-sub);
-  border: 1px solid color-mix(in srgb, var(--color-accent) 20%, transparent);
+  color: color-mix(in srgb, var(--chip-tint) 82%, var(--color-text));
+  background: color-mix(in srgb, var(--chip-tint) 7%, transparent);
+  border: 1px solid color-mix(in srgb, var(--chip-tint) 22%, transparent);
   border-radius: var(--radius-pill, 999px);
   padding: 3px 9px;
 }
+
+.dd-tags .dd-tag:nth-child(5n+1) { --chip-tint: var(--pastel-sky); }
+.dd-tags .dd-tag:nth-child(5n+2) { --chip-tint: var(--pastel-mint); }
+.dd-tags .dd-tag:nth-child(5n+3) { --chip-tint: var(--pastel-lavender); }
+.dd-tags .dd-tag:nth-child(5n+4) { --chip-tint: var(--pastel-peach); }
+.dd-tags .dd-tag:nth-child(5n)   { --chip-tint: var(--pastel-rose); }
 
 /* ── BODY ────────────────────────────────────────────────────────────────── */
 

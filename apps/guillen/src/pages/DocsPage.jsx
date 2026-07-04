@@ -14,7 +14,7 @@ import RawDiagramBlock            from "@shared/components/ui/RawDiagramBlock";
 import ArchitectureBlock          from "@shared/components/ui/ArchitectureBlock";
 import HierarchyBlock             from "@shared/components/ui/HierarchyBlock";
 import "./DocsPage.css";
-import { GUILLEN_NAV } from "../nav.jsx";
+import { GUILLEN_NAV, GUILLEN_NAV_CTA } from "../nav.jsx";
 
 // ---------------------------------------------------------------------------
 // DocsPage — guillen.studio/docs/:space_slug/:page_slug
@@ -221,7 +221,7 @@ export default function DocsPage() {
     return (
       <div className="page">
         <div className="gh-grain" aria-hidden="true" />
-        <SiteNav links={GUILLEN_NAV} logo_text="AG" preset="minimal" />
+        <SiteNav links={GUILLEN_NAV} logo_text="AG" preset="bar" {...GUILLEN_NAV_CTA} />
         <div className="docs-not-found">
           <p>Documentation not found.</p>
           <a href="/work">← Back to Work</a>
@@ -234,7 +234,7 @@ export default function DocsPage() {
   return (
     <div className="page">
       <div className="gh-grain" aria-hidden="true" />
-      <SiteNav links={GUILLEN_NAV} logo_text="AG" preset="minimal" />
+      <SiteNav links={GUILLEN_NAV} logo_text="AG" preset="bar" {...GUILLEN_NAV_CTA} />
 
       <div className="docs-layout">
 

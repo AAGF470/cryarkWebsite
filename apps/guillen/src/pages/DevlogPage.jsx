@@ -3,7 +3,7 @@ import { useCmsQuery, ALL_DEVLOGS, PAGE_CONFIG } from "@shared/lib/cms";
 import SiteNav    from "@shared/components/ui/SiteNav";
 import SiteFooter from "@shared/components/ui/SiteFooter";
 import "./DevlogPage.css";
-import { GUILLEN_NAV } from "../nav.jsx";
+import { GUILLEN_NAV, GUILLEN_NAV_CTA } from "../nav.jsx";
 
 // ---------------------------------------------------------------------------
 // DevlogPage — guillen.studio/devlog
@@ -206,7 +206,7 @@ export default function DevlogPage() {
     <div className="page">
       <div className="gh-grain" aria-hidden="true" />
 
-      <SiteNav links={GUILLEN_NAV} logo_text="AG" preset="minimal" />
+      <SiteNav links={GUILLEN_NAV} logo_text="AG" preset="bar" {...GUILLEN_NAV_CTA} />
 
       {/* ── Page header (with optional hero bg image) ───────────────── */}
       <header className={`dl-header${has_bg ? " dl-header--has-bg" : ""}`}>

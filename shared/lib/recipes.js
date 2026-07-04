@@ -141,6 +141,32 @@ export const RECIPES = {
     expressions: { hero: 'editorial', featureGrid: 'list' },
     nav: 'bar',
   },
+
+  'dark-pastel': {
+    name: 'Dark Pastel',
+    blurb: 'Soft color on deep ink — a workshop after dark. For personal studios and dev journals.',
+    fontUrl: 'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;600;700&display=swap',
+    display: { family: "'Bricolage Grotesque', system-ui, sans-serif", weight: 600, tracking: '-0.01em' },
+    dark: true,
+    palette: {
+      bg: '#101017', surface: 'rgba(185,174,227,0.05)', surfaceHigh: 'rgba(185,174,227,0.09)',
+      text: '#f0eee9', textSub: 'rgba(240,238,233,0.72)', textDim: 'rgba(240,238,233,0.52)', textFaint: 'rgba(240,238,233,0.30)',
+      borderSub: 'rgba(185,174,227,0.10)', borderLow: 'rgba(185,174,227,0.16)', borderMid: 'rgba(185,174,227,0.28)',
+    },
+    radius: { sm: '6px', md: '10px', lg: '14px', xl: '18px', xxl: '22px' },
+    rhythm: { sectionSpace: '108px', containerMax: '1320px' },
+    shadows: 'dramatic',
+    expressions: { hero: 'statement', featureGrid: 'list' },
+    nav: 'bar',
+    // Extra CSS vars merged verbatim into the recipe output — the pastel set.
+    extras: {
+      '--pastel-mint':     '#a3d9c3',
+      '--pastel-lavender': '#b9aee3',
+      '--pastel-sky':      '#9cc3de',
+      '--pastel-rose':     '#dba8b8',
+      '--pastel-peach':    '#e6c39e',
+    },
+  },
 }
 
 export function recipeVars(id, accent = '#2c4a6e') {
@@ -201,6 +227,8 @@ export function recipeVars(id, accent = '#2c4a6e') {
     '--nav-mobile-cta-color': accent, '--nav-mobile-cta-hover': onAccent,
     '--nav-mobile-cta-border': mix(accent, 30), '--nav-mobile-cta-hover-border': accent, '--nav-mobile-cta-hover-bg': accent,
     '--nav-mobile-strip-bg': mix(p.bg, 92), '--nav-mobile-strip-border': p.borderSub,
+    // recipe-specific extra vars (e.g. dark-pastel's pastel set)
+    ...(r.extras || {}),
   }
 
   return { id, name: r.name, blurb: r.blurb, dark: r.dark, vars, fontUrl: r.fontUrl, expressions: r.expressions, nav: r.nav }

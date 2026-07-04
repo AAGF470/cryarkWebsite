@@ -56,7 +56,8 @@
   z-index:   1;
   /* Top padding = nav height (62px) + original breathing room (64px) */
   padding:   126px 48px 48px;
-  max-width: var(--container-max);
+  /* Library page — runs wider than prose sections (see theme.css) */
+  max-width: var(--content-wide-max, var(--container-max));
   margin:    0 auto;
 }
 
@@ -123,7 +124,8 @@
   position: relative;
   z-index: 2;
   padding: 0 48px var(--section-space);
-  max-width: var(--container-max);
+  /* Library page — runs wider than prose sections (see theme.css) */
+  max-width: var(--content-wide-max, var(--container-max));
   margin: 0 auto;
 }
 
@@ -364,8 +366,10 @@
 }
 
 .dl-row__title {
+  font-family: var(--font-display);
   font-size: 15px;
-  font-weight: 600;
+  font-weight: var(--font-display-weight);
+  letter-spacing: var(--font-display-tracking);
   color: var(--color-text);
   line-height: 1.3;
   transition: color 0.16s ease;
@@ -406,14 +410,23 @@
   gap: 6px;
 }
 
+/* Tag chips cycle through the pastel set instead of monochrome
+   (tags are freeform in Sanity, so tint by position). */
 .dl-row__tag {
+  --chip-tint: var(--pastel-lavender);
   font-size: 10px;
   letter-spacing: 0.06em;
-  color: var(--color-text-faint);
+  color: color-mix(in srgb, var(--chip-tint) 78%, var(--color-text));
   padding: 2px 7px;
-  border: 1px solid var(--color-border-sub);
+  border: 1px solid color-mix(in srgb, var(--chip-tint) 22%, transparent);
   border-radius: var(--radius-sm);
 }
+
+.dl-row__tags .dl-row__tag:nth-child(5n+1) { --chip-tint: var(--pastel-sky); }
+.dl-row__tags .dl-row__tag:nth-child(5n+2) { --chip-tint: var(--pastel-mint); }
+.dl-row__tags .dl-row__tag:nth-child(5n+3) { --chip-tint: var(--pastel-lavender); }
+.dl-row__tags .dl-row__tag:nth-child(5n+4) { --chip-tint: var(--pastel-peach); }
+.dl-row__tags .dl-row__tag:nth-child(5n)   { --chip-tint: var(--pastel-rose); }
 
 /* Arrow column */
 .dl-row__arrow {

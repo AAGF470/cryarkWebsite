@@ -27,7 +27,7 @@ import AssetGrid          from "@shared/components/ui/AssetGrid";
 import SideBySide         from "@shared/components/ui/SideBySide";
 import Spacer             from "@shared/components/ui/Spacer";
 import "./WorkDetailPage.css";
-import { GUILLEN_NAV } from "../nav.jsx";
+import { GUILLEN_NAV, GUILLEN_NAV_CTA } from "../nav.jsx";
 
 // ---------------------------------------------------------------------------
 // WorkDetailPage — guillen.studio/work/:slug
@@ -310,7 +310,7 @@ export default function WorkDetailPage() {
     return (
       <div className="page">
         <div className="gh-grain" aria-hidden="true" />
-        <SiteNav links={GUILLEN_NAV} logo_text="AG" preset="minimal" />
+        <SiteNav links={GUILLEN_NAV} logo_text="AG" preset="bar" {...GUILLEN_NAV_CTA} />
         <div className="wd-not-found">
           <p>Project not found.</p>
           <Link to="/work" className="wd-back">← Work</Link>
@@ -324,7 +324,7 @@ export default function WorkDetailPage() {
     <div className="page">
       <div className="gh-grain" aria-hidden="true" />
 
-      <SiteNav links={GUILLEN_NAV} logo_text="AG" preset="minimal" />
+      <SiteNav links={GUILLEN_NAV} logo_text="AG" preset="bar" {...GUILLEN_NAV_CTA} />
 
       <article className="wd-page">
 

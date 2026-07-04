@@ -3,7 +3,7 @@ import WorkCard   from "@shared/components/ui/WorkCard";
 import SiteNav    from "@shared/components/ui/SiteNav";
 import SiteFooter from "@shared/components/ui/SiteFooter";
 import "./WorkPage.css";
-import { GUILLEN_NAV } from "../nav.jsx";
+import { GUILLEN_NAV, GUILLEN_NAV_CTA } from "../nav.jsx";
 
 // ---------------------------------------------------------------------------
 // WorkPage — guillen.studio/work
@@ -98,7 +98,7 @@ export default function WorkPage() {
     <div className="page">
       <div className="gh-grain" aria-hidden="true" />
 
-      <SiteNav links={GUILLEN_NAV} logo_text="AG" preset="minimal" />
+      <SiteNav links={GUILLEN_NAV} logo_text="AG" preset="bar" {...GUILLEN_NAV_CTA} />
 
       {/* ── Page header (with optional hero bg image) ────────────────── */}
       <header className={`work__header${has_bg ? " work__header--has-bg" : ""}`}>

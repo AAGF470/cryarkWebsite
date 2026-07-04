@@ -1,17 +1,19 @@
 import SiteFooter  from "@shared/components/ui/SiteFooter";
 import SiteNav     from "@shared/components/ui/SiteNav";
 import HeroSection from "@shared/sections/HeroSection";
+import FeatureGrid from "@shared/sections/FeatureGrid";
 import { useCmsQuery, ALL_SITE_LINKS } from "@shared/lib/cms";
 import "./GuillenHomePage.css";
-import { GUILLEN_NAV } from "../nav.jsx";
+import { GUILLEN_NAV, GUILLEN_NAV_CTA, GUILLEN_CONTACT_MAILTO } from "../nav.jsx";
 
 // ---------------------------------------------------------------------------
 // GuillenHomePage — guillen.studio
 //
-// Pre-launch: hero only until work + devlogs are published in Sanity.
-// The hero is the shared HeroSection in its "statement" expression — the
-// dark-cinematic recipe's default opener (poster type, actions under a
-// hairline). Add sections from @shared/sections as content goes live.
+// The studio's living front door: statement hero, then a compact
+// "Work with me" section (guillen.studio is devlogs + in-development
+// products + portfolio + a light work-with-me surface — cryark.net is the
+// cinematic showcase). Add Sanity-fed devlog/product feeds from
+// @shared/sections as content goes live.
 // ---------------------------------------------------------------------------
 
 
@@ -53,6 +55,43 @@ function Hero({ hero_links = [] }) {
   );
 }
 
+// ── Work with me ──────────────────────────────────────────────────────────
+// Honest, light-touch services section — no invented pricing, one mailto CTA.
+
+const WORK_WITH_ME_ITEMS = [
+  {
+    title: "Product & web design",
+    body:  "Sites and interfaces designed and built end to end — from first sketch to a fast, shipped thing you own outright.",
+  },
+  {
+    title: "Web systems & component libraries",
+    body:  "Shared UI systems, CMS-driven page builders, and the plumbing that keeps a family of sites consistent without repeating work.",
+  },
+  {
+    title: "Automation consulting for small businesses",
+    body:  "Scripts, pipelines, and small tools that take the repetitive stuff off your plate. Practical scope, no enterprise theater.",
+  },
+];
+
+function WorkWithMe() {
+  return (
+    <section aria-label="Work with me">
+      <FeatureGrid
+        eyebrow="Work with me"
+        headline="Available for select projects."
+        subtext="Alongside studio work I take on a small amount of outside work — design, web systems, and automation."
+        expression="list"
+        items={WORK_WITH_ME_ITEMS}
+      />
+      <div className="gh-wwm__cta">
+        <a href={GUILLEN_CONTACT_MAILTO} className="gh-wwm__link">
+          Have something in mind? Get in touch →
+        </a>
+      </div>
+    </section>
+  );
+}
+
 // ── Page ──────────────────────────────────────────────────────────────────
 
 export default function GuillenHomePage() {
@@ -63,10 +102,11 @@ export default function GuillenHomePage() {
     <div className="page">
       <div className="gh-grain" aria-hidden="true" />
 
-      {/* cta_label intentionally omitted — hides the nav CTA button */}
-      <SiteNav links={GUILLEN_NAV} logo_text="AG" preset="minimal" />
+      <SiteNav links={GUILLEN_NAV} logo_text="AG" preset="bar" {...GUILLEN_NAV_CTA} />
 
       <Hero hero_links={hero_links} />
+
+      <WorkWithMe />
 
       <SiteFooter variant="guillen" />
     </div>
