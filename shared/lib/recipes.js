@@ -14,9 +14,13 @@
 //
 // API:
 //   RECIPES                        — the catalog (id → definition)
-//   recipeVars(id, accent)         — pure: { name, blurb, vars, fontUrl, expressions }
-//   applyRecipe(id, accent, root?) — DOM: sets vars on :root (or a node) and
-//                                    injects the recipe's font stylesheet.
+//   recipeVars(id, accent)         — pure: { name, blurb, vars, fontUrl,
+//                                    expressions, nav }
+//   applyRecipe(id, accent, root?) — DOM: sets vars on :root (or a node),
+//                                    injects the recipe's font stylesheet,
+//                                    returns { expressions, nav }.
+//                                    `nav` is the SiteNav preset the recipe
+//                                    biases toward ('bar'|'center'|'minimal'|'split').
 // ---------------------------------------------------------------------------
 
 const luminance = hex => {
@@ -63,6 +67,7 @@ export const RECIPES = {
     rhythm: { sectionSpace: '104px', containerMax: '1200px' },
     shadows: 'soft',
     expressions: { hero: 'editorial', featureGrid: 'list' },
+    nav: 'bar',
   },
 
   'bold-trade': {
@@ -80,6 +85,7 @@ export const RECIPES = {
     rhythm: { sectionSpace: '88px', containerMax: '1160px' },
     shadows: 'flat',
     expressions: { hero: 'statement', featureGrid: 'columns' },
+    nav: 'split',
   },
 
   'dark-cinematic': {
@@ -97,6 +103,7 @@ export const RECIPES = {
     rhythm: { sectionSpace: '112px', containerMax: '1240px' },
     shadows: 'dramatic',
     expressions: { hero: 'statement', featureGrid: 'cards' },
+    nav: 'minimal',
   },
 
   'coastal-light': {
@@ -114,6 +121,7 @@ export const RECIPES = {
     rhythm: { sectionSpace: '116px', containerMax: '1180px' },
     shadows: 'soft',
     expressions: { hero: 'classic', featureGrid: 'columns' },
+    nav: 'center',
   },
 
   'workshop': {
@@ -131,6 +139,7 @@ export const RECIPES = {
     rhythm: { sectionSpace: '92px', containerMax: '1140px' },
     shadows: 'flat',
     expressions: { hero: 'editorial', featureGrid: 'list' },
+    nav: 'bar',
   },
 }
 
@@ -192,14 +201,14 @@ export function recipeVars(id, accent = '#2c4a6e') {
     '--nav-mobile-strip-bg': mix(p.bg, 92), '--nav-mobile-strip-border': p.borderSub,
   }
 
-  return { id, name: r.name, blurb: r.blurb, dark: r.dark, vars, fontUrl: r.fontUrl, expressions: r.expressions }
+  return { id, name: r.name, blurb: r.blurb, dark: r.dark, vars, fontUrl: r.fontUrl, expressions: r.expressions, nav: r.nav }
 }
 
 export function applyRecipe(id, accent, root = document.documentElement) {
-  const { vars, fontUrl, expressions } = recipeVars(id, accent)
+  const { vars, fontUrl, expressions, nav } = recipeVars(id, accent)
   for (const [k, v] of Object.entries(vars)) root.style.setProperty(k, v)
   loadRecipeFont(fontUrl)
-  return expressions
+  return { expressions, nav }
 }
 
 // Inject (or swap) the recipe's font stylesheet. Deduped by id.

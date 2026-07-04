@@ -19,7 +19,7 @@ into revenue, or protects it.
 | 1.2 | Full catalog exported & tokenized (47 components) | ✅ ui 0.1.4–0.1.6 | Studio-dark hardcodes gone; category colors themable |
 | 1.3 | Expressions wave 1 — Hero (classic/editorial/statement), FeatureGrid (cards/list/columns) | ✅ ui 0.1.5 | CMS-selectable |
 | 1.4 | Style recipes ×5 + `applyRecipe` (recipe + accent = full identity) | ✅ ui 0.1.7 | Wired into freelance template; live demo on Work & Library |
-| 1.5 | **Nav/header presets** — SiteNav `preset`: bar/center/minimal/split + built-in mobile drawer; recipes gain nav bias | 🔄 in progress | The header is the strongest "template tell" after the hero |
+| 1.5 | **Nav/header presets** — SiteNav `preset`: bar/center/minimal/split + built-in mobile drawer; recipes gain nav bias | ✅ ui 0.1.8 | The header is the strongest "template tell" after the hero |
 | 1.6 | Expressions wave 2 — ImageText, Testimonials, CtaBanner, PricingPlans (2–3 skeletons each) | next | Kills the remaining shared-skeleton tells |
 | 1.7 | **Per-section width** — a `width` option (narrow/default/wide/full-bleed) per block, on top of `--container-max` | next | Today width is per-theme only |
 | 1.8 | Footer presets (SiteFooter is still Sanity-coupled and excluded) — rebuild as a tokenized, preset-driven component | queued | Every site currently hand-rolls its footer |
