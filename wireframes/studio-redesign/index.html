@@ -3,185 +3,197 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Angel A. Guillen — guillen.studio</title>
+<title>guillen.studio — Angel A. Guillen</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,450..650;1,9..144,450..650&family=Inter:wght@400;500;550;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<nav class="nav">
-  <a class="nav__logo" href="index.html">A<em>G</em></a>
-  <a class="nav__link is-active" href="index.html">Home</a>
-  <a class="nav__link" href="work.html">Work</a>
-  <a class="nav__link" href="#devlog">Devlog</a>
-  <a class="nav__link" href="#about">About</a>
-  <a class="nav__cta" href="mailto:hello@guillen.studio">Get in touch</a>
-</nav>
+<header class="mast">
+  <div class="mast__in">
+    <a class="mast__brand" href="index.html">guillen<em>.studio</em></a>
+    <span class="mast__date">Boston · Est. 2022</span>
+    <nav>
+      <a class="is-active" href="index.html">Front page</a>
+      <a href="work.html">Work</a>
+      <a href="index.html#devlog">Devlog</a>
+      <a href="index.html#services">About</a>
+      <a class="cta" href="mailto:hello@guillen.studio">Get in touch</a>
+    </nav>
+  </div>
+</header>
 
-<!-- ── HERO ─────────────────────────────────────────────────────────────── -->
+<!-- ── FRONT-PAGE MASTHEAD ──────────────────────────────────────────────── -->
 <section class="hero">
-  <div class="aura aura--lavender" style="width:560px;height:560px;top:-120px;right:6%"></div>
-  <div class="aura aura--mint" style="width:420px;height:420px;bottom:-80px;left:-60px"></div>
-  <div class="aura aura--rose" style="width:300px;height:300px;top:38%;left:44%"></div>
+  <div class="aura aura--lavender" style="width:520px;height:520px;top:-160px;right:4%"></div>
+  <div class="aura aura--mint" style="width:340px;height:340px;bottom:-120px;left:-40px"></div>
   <div class="wrap">
-    <p class="hero__motto">vivere est creare — to live is to create</p>
-    <h1>Angel A. Guillen<span class="soft">builds tools &amp; worlds.</span></h1>
-    <p class="hero__role">Engineer and game developer. I design procedural systems,
-      developer tools, and games — and I write down how they're built as I go.</p>
-    <div class="hero__actions">
-      <a class="btn btn--solid" href="work.html">View work</a>
-      <a class="btn btn--soft" href="#devlog">Read the devlog</a>
+    <hr class="hero__rule">
+    <div class="hero__deck rv">
+      <span>Angel A. Guillen Flores · Engineer — Game Developer</span>
+      <em>vivere est creare</em>
+      <span>Vol. II · 2026</span>
+    </div>
+    <h1 class="rv">Tools, worlds, and the <span class="tint">notes</span> from building them.</h1>
+    <div class="hero__foot rv">
+      <p>Procedural systems, developer tooling, and games — documented as they're
+        made. This is a working studio: the devlog is the front page, the
+        architecture essays are the long reads.</p>
+      <a class="lk lk--c" style="--c: var(--lavender)" href="work.html">Browse all work →</a>
     </div>
   </div>
 </section>
 
-<!-- ── NOW BUILDING ─────────────────────────────────────────────────────── -->
-<section>
-  <div class="aura aura--sky" style="width:380px;height:380px;top:0;right:-100px"></div>
-  <div class="wrap">
-    <p class="kicker" style="--kick: var(--mint)">Now building</p>
-    <h2 class="sec-title">On the workbench.</h2>
-    <p class="sec-sub">Two tools in active development — architecture essays and
-      progress live on each project page.</p>
-    <div class="grid grid--2">
-      <a class="card" href="project.html" style="--tint: var(--mint)">
-        <div class="chips">
-          <span class="chip chip--solid" style="--chip: var(--mint)">In dev</span>
-          <span class="chip" style="--chip: var(--mint)">Blender</span>
-          <span class="chip" style="--chip: var(--mint)">Python</span>
-          <span class="chip" style="--chip: var(--mint)">Product</span>
+<!-- ── LEAD STORY + BRIEFS ──────────────────────────────────────────────── -->
+<section style="padding-top:20px">
+  <div class="wrap front">
+    <article class="lead rv" style="--c: var(--mint)">
+      <div class="tags">
+        <span class="tag" style="--c: var(--mint)">In dev</span>
+        <span class="tag" style="--c: var(--mint)">Blender</span>
+        <span class="tag" style="--c: var(--mint)">Python</span>
+        <span class="tag" style="--c: var(--mint)">Product offering</span>
+      </div>
+      <div class="lead__art"></div>
+      <h3><a href="project.html">Simply Simple Foliage: own the logic, not the stack</a></h3>
+      <p class="standfirst">A node-based foliage creator for game development,
+        animation, and digital art — built on the bet that Blender should do the
+        heavy lifting while SSF owns the ideas. The architecture essay covers the
+        growth field, containers, and why predictable limitations beat fragile
+        features.</p>
+      <p style="margin-top:16px"><a class="lk lk--c" style="--c: var(--mint)" href="project.html">Read the architecture essay →</a></p>
+    </article>
+
+    <aside class="sidecol rv" id="devlog">
+      <div class="dept" style="border-top:none;padding-top:0;--dc: var(--sky)">
+        <b>The Devlog</b><span>build notes &amp; releases</span>
+      </div>
+      <a class="brief" href="#" style="--c: var(--sky)">
+        <h4>DERG for MacOS</h4>
+        <p>Full dmg installation, no-dependency status — downloadable now via
+          Guillen Studio.</p>
+        <div class="tags">
+          <span class="tag" style="--c: var(--sky)">Python</span>
+          <span class="tag" style="--c: var(--sky)">MacOS</span>
         </div>
+      </a>
+      <a class="brief" href="project.html" style="--c: var(--mint)">
+        <h4>SSF: the core architecture, resolved</h4>
+        <p>Data flow, persistence, and sustainability practices — designed before
+          the first line of core code.</p>
+        <div class="tags"><span class="tag" style="--c: var(--mint)">Architecture</span></div>
+      </a>
+      <a class="brief" href="#" style="--c: var(--peach)">
+        <h4>One Night Defense: demo shipped</h4>
+        <p>Five waves, charged bowling-ball physics, and a five-minute timer
+          keeping every run tense.</p>
+        <div class="tags">
+          <span class="tag" style="--c: var(--peach)">Unity</span>
+          <span class="tag" style="--c: var(--peach)">C#</span>
+        </div>
+      </a>
+    </aside>
+  </div>
+</section>
+
+<!-- ── THE INDEX — all work, dense ──────────────────────────────────────── -->
+<section>
+  <div class="wrap">
+    <div class="dept rv" style="--dc: var(--lavender)">
+      <b>The Index</b><span>all projects, all types</span>
+      <a class="more lk lk--c" style="--c: var(--lavender)" href="work.html">Full index →</a>
+    </div>
+    <div class="index rv">
+      <a class="row" href="project.html" style="--c: var(--mint)">
+        <span class="row__status">In dev</span>
         <h3>Simply Simple Foliage</h3>
-        <p>A node-based foliage creator for game development, animation, and digital
-          art. Own the logic, not the stack: Blender does the heavy lifting, SSF owns
-          the ideas.</p>
-        <span class="go">Architecture &amp; roadmap →</span>
+        <p>Node-based foliage creator. Blender backend, procedural growth fields,
+          honest limitations.</p>
+        <span class="row__meta">Blender · Python</span>
       </a>
-      <a class="card" href="#" style="--tint: var(--peach)">
-        <div class="chips">
-          <span class="chip chip--solid" style="--chip: var(--peach)">In dev</span>
-          <span class="chip" style="--chip: var(--peach)">Unity</span>
-          <span class="chip" style="--chip: var(--peach)">C#</span>
-        </div>
-        <h3>One Night Defense</h3>
-        <p>A wave-based FPS survival demo — charge and hurl bowling balls through five
-          escalating zombie waves, with fully simulated ragdoll physics doing the
-          comedy.</p>
-        <span class="go">View project →</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ── DEVLOG ───────────────────────────────────────────────────────────── -->
-<section id="devlog">
-  <div class="wrap">
-    <p class="kicker" style="--kick: var(--sky)">Devlog</p>
-    <h2 class="sec-title">Latest from the bench.</h2>
-    <p class="sec-sub">Build notes, releases, and the occasional hard-won lesson.</p>
-    <div class="grid grid--2">
-      <a class="card" href="#" style="--tint: var(--sky)">
-        <div class="chips">
-          <span class="chip" style="--chip: var(--sky)">Python</span>
-          <span class="chip" style="--chip: var(--sky)">Blender</span>
-          <span class="chip" style="--chip: var(--sky)">MacOS</span>
-        </div>
-        <h3>DERG for MacOS</h3>
-        <p>Full dmg installation and no-dependency status — DERG's batch renderer is
-          now a first-class citizen on Mac, downloadable via Guillen Studio.</p>
-        <span class="go">Read entry →</span>
-      </a>
-      <div class="card" style="--tint: var(--lavender)">
-        <div class="chips"><span class="chip">Meta</span></div>
-        <h3>More entries incoming</h3>
-        <p>SSF's core architecture series is being written as the foundational code
-          lands — the growth field, containers, and the disable/delete system each
-          get their own entry.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── RELEASED WORK ────────────────────────────────────────────────────── -->
-<section>
-  <div class="aura aura--peach" style="width:420px;height:420px;bottom:-120px;right:10%"></div>
-  <div class="wrap">
-    <p class="kicker" style="--kick: var(--rose)">Selected work</p>
-    <h2 class="sec-title">Shipped &amp; running.</h2>
-    <div class="grid grid--2">
-      <a class="card" href="work.html" style="--tint: var(--sky)">
-        <div class="chips">
-          <span class="chip chip--solid" style="--chip: var(--sky)">Released</span>
-          <span class="chip" style="--chip: var(--sky)">Python</span>
-          <span class="chip" style="--chip: var(--sky)">Blender</span>
-          <span class="chip" style="--chip: var(--sky)">Rust</span>
-        </div>
+      <a class="row" href="#" style="--c: var(--sky)">
+        <span class="row__status">Released</span>
         <h3>DERG</h3>
-        <p>A batch rendering pipeline for Blender that runs a designer script before
-          every render — each output in a batch is a unique variation of the same
-          scene. Built for NU Aerospace; re-architected into a general-purpose tool.</p>
-        <span class="go">View project →</span>
+        <p>Batch rendering pipeline that renders a decision space, not a scene —
+          a designer script runs before every render.</p>
+        <span class="row__meta">Python · Blender · Rust</span>
       </a>
-      <a class="card" href="work.html" style="--tint: var(--lavender)">
-        <div class="chips"><span class="chip">Everything else</span></div>
-        <h3>The full board</h3>
-        <p>Games, developer tools, asset libraries, and programs — every project
-          across every type, with status, stack, and the code behind them.</p>
-        <span class="go">Browse all work →</span>
+      <a class="row" href="#" style="--c: var(--peach)">
+        <span class="row__status">In dev</span>
+        <h3>One Night Defense</h3>
+        <p>Wave-based FPS survival demo. Ragdoll physics, environmental
+          interaction, escalating waves.</p>
+        <span class="row__meta">Unity · C#</span>
       </a>
     </div>
   </div>
 </section>
 
-<!-- ── WORK WITH ME ─────────────────────────────────────────────────────── -->
-<section id="about">
+<!-- ── SERVICES — the classifieds ───────────────────────────────────────── -->
+<section id="services">
+  <div class="aura aura--peach" style="width:380px;height:380px;bottom:-140px;right:8%"></div>
   <div class="wrap">
-    <p class="kicker" style="--kick: var(--butter)">Work with me</p>
-    <h2 class="sec-title">Available for the right projects.</h2>
-    <p class="sec-sub">Alongside my own tools, I take on selected work:</p>
-    <div class="grid grid--3">
-      <div class="card" style="--tint: var(--butter)">
+    <div class="dept rv" style="--dc: var(--butter)">
+      <b>Commissions</b><span>available for the right projects</span>
+    </div>
+    <div class="index rv">
+      <div class="row" style="--c: var(--butter); cursor:default">
+        <span class="row__status">Open</span>
         <h3>Product &amp; web design</h3>
-        <p>Design systems, sites, and interfaces with a component-driven approach —
-          built once, themed forever.</p>
+        <p>Design systems, sites, and interfaces — component-driven, built once,
+          themed forever.</p>
+        <span class="row__meta">guillensolutions.com</span>
       </div>
-      <div class="card" style="--tint: var(--mint)">
+      <div class="row" style="--c: var(--mint); cursor:default">
+        <span class="row__status">Open</span>
         <h3>Web systems</h3>
         <p>Component libraries, headless CMS setups, and the infrastructure to run
-          them — you own everything.</p>
+          them. You own everything.</p>
+        <span class="row__meta">Docker · Payload · React</span>
       </div>
-      <div class="card" style="--tint: var(--sky)">
+      <div class="row" style="--c: var(--sky); cursor:default">
+        <span class="row__status">Open</span>
         <h3>Automation consulting</h3>
         <p>Pipelines that remove the boring parts — batch processing, procedural
-          generation, and glue that holds.</p>
+          generation, glue that holds.</p>
+        <span class="row__meta">Python · Blender</span>
       </div>
     </div>
-    <div class="hero__actions" style="margin-top:40px">
-      <a class="btn btn--solid" href="mailto:hello@guillen.studio">Get in touch</a>
-      <a class="btn btn--soft" href="#">GitHub ↗</a>
-    </div>
+    <p class="rv" style="margin-top:26px">
+      <a class="lk lk--c" style="--c: var(--butter)" href="mailto:hello@guillen.studio">Write to the studio →</a>
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      <a class="lk" href="#">GitHub ↗</a>
+    </p>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">
-    <div class="foot">
-      <div>
-        <b style="color:var(--tx-1);font-size:17px">guillen.studio</b>
-        <p class="foot__motto">vivere est creare</p>
-        <small>© 2026 Angel A. Guillen Flores</small>
-      </div>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="work.html">Work</a>
-        <a href="#devlog">Devlog</a>
-        <a href="#about">About</a>
-      </nav>
+  <div class="wrap colophon">
+    <div>
+      <b>guillen.studio</b>
+      <p class="motto">vivere est creare</p>
+      <small>© 2026 Angel A. Guillen Flores</small>
     </div>
+    <nav>
+      <a class="lk" href="index.html">Front page</a>
+      <a class="lk" href="work.html">Work</a>
+      <a class="lk" href="index.html#devlog">Devlog</a>
+      <a class="lk" href="mailto:hello@guillen.studio">Get in touch</a>
+    </nav>
   </div>
 </footer>
+
+<script>
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), { threshold: 0.12 });
+  document.querySelectorAll('.rv').forEach((el, i) => {
+    el.style.transitionDelay = `${(i % 4) * 70}ms`;
+    io.observe(el);
+  });
+</script>
 
 </body>
 </html>

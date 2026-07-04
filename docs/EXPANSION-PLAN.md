@@ -27,6 +27,7 @@ into revenue, or protects it.
 | 1.10 | Deep component rebuilds flagged by the refinement pass: Card (JS nav, glow machinery), ArchitectureBlock layout math, CodeBlock syntax highlighting (Shiki), CinematicHero/Banner heading-level prop | backlog | Do Card first — oldest-feeling piece |
 | 1.11 | Subpath exports for heavy deps: `@aagf470/ui/diagrams` (mermaid), `/model-viewer` | backlog | Unlocks DiagramBlock/ModelViewer for consumers without bundle cost |
 | 1.12 | Recipe expansion: more recipes as client niches appear; per-recipe icon styles | ongoing | A recipe per vertical eventually |
+| 1.13 | **Motion system** — the library has no animation layer (owner: sites "feel hollow when interacting"). Motion tokens (durations/easings), scroll-reveal primitive, drawn-underline links, MPA view transitions, hover grammar | next | Prototyped in the Midnight Print redesign (reveals, underlines, @view-transition); generalize into @aagf470/ui |
 
 ## Track 2 — CMS & platform
 

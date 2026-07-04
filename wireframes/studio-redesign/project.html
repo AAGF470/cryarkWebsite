@@ -6,116 +6,115 @@
 <title>Simply Simple Foliage — guillen.studio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,450..650;1,9..144,450..650&family=Inter:wght@400;500;550;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body style="--accent: var(--mint)">
 
-<nav class="nav">
-  <a class="nav__logo" href="index.html">A<em>G</em></a>
-  <a class="nav__link" href="index.html">Home</a>
-  <a class="nav__link is-active" href="work.html">Work</a>
-  <a class="nav__link" href="index.html#devlog">Devlog</a>
-  <a class="nav__link" href="index.html#about">About</a>
-  <a class="nav__cta" href="mailto:hello@guillen.studio">Get in touch</a>
-</nav>
-
-<!-- ── PROJECT HERO — the project's pastel identity is mint ─────────────── -->
-<section class="hero" style="min-height:70vh">
-  <div class="aura aura--mint" style="width:600px;height:600px;top:-140px;right:0"></div>
-  <div class="aura aura--sky" style="width:320px;height:320px;bottom:-40px;left:8%"></div>
-  <div class="wrap">
-    <p class="kicker" style="--kick: var(--mint)">Cryark Tools · ← Work</p>
-    <h1 style="font-size:clamp(44px,6.5vw,84px)">Simply Simple Foliage</h1>
-    <div class="chips" style="margin-top:26px">
-      <span class="chip chip--solid" style="--chip: var(--mint)">In dev</span>
-      <span class="chip" style="--chip: var(--mint)">Blender</span>
-      <span class="chip" style="--chip: var(--mint)">Python</span>
-      <span class="chip" style="--chip: var(--mint)">Foliage</span>
-      <span class="chip" style="--chip: var(--mint)">Product offering</span>
-    </div>
-    <p class="hero__role">A node-based foliage creator for game development,
-      animation, and digital art — without a subscription, and without fighting an
-      aging interface to do it.</p>
+<header class="mast">
+  <div class="mast__in">
+    <a class="mast__brand" href="index.html">guillen<em>.studio</em></a>
+    <span class="mast__date">Cryark Tools · Long read</span>
+    <nav>
+      <a href="index.html">Front page</a>
+      <a class="is-active" href="work.html">Work</a>
+      <a href="index.html#devlog">Devlog</a>
+      <a href="index.html#services">About</a>
+      <a class="cta" href="mailto:hello@guillen.studio">Get in touch</a>
+    </nav>
   </div>
-</section>
+</header>
 
-<!-- ── OVERVIEW + ROADMAP ───────────────────────────────────────────────── -->
-<section style="padding-top:0">
-  <div class="wrap wrap--prose prose" style="--kick: var(--mint)">
-    <h2>Sustainable foliage tool</h2>
-    <p>You author a tree as a set of connected nodes, shaping how it grows through an
-      intuitive field-based system, then let Blender handle the heavy lifting of mesh
-      generation, UVs, normals, and armatures behind the scenes. The result is clean,
-      animation-ready foliage you can drop straight into your engine.</p>
-    <p>SSF is built for indie developers who need custom trees, vines, and plants but
-      don't want to pay forever for software they never own. It does one thing and
-      does it well: <strong>get you from idea to a game-ready tree, fast.</strong></p>
+<div class="wrap article-head" style="--c: var(--mint)">
+  <div class="aura aura--mint" style="width:460px;height:460px;top:-100px;right:0"></div>
+  <a class="crumb" href="work.html">← The Index · Cryark Tools</a>
+  <h1 class="rv">Simply Simple Foliage</h1>
+  <p class="standfirst rv">A node-based foliage creator for game development,
+    animation, and digital art — without a subscription, and without fighting an
+    aging interface to do it.</p>
+  <div class="meta rv tags">
+    <span class="tag" style="--c: var(--mint)">In dev</span>
+    <span class="tag" style="--c: var(--mint)">Blender</span>
+    <span class="tag" style="--c: var(--mint)">Python</span>
+    <span class="tag" style="--c: var(--mint)">Foliage</span>
+    <span class="tag" style="--c: var(--mint)">Product offering</span>
+  </div>
+</div>
 
-    <h2>Development roadmap</h2>
-    <div class="road">
-      <div class="road__bar"><div class="road__fill" style="width:17%"></div></div>
-      <div class="step step--done">
-        <span class="step__dot">✓</span>
-        <div><h4>Core architecture</h4><p>Data flow, persistence, and long-term code
-          sustainability — designed before a line of core code was written.</p></div>
-      </div>
-      <div class="step step--active">
-        <span class="step__dot">◎</span>
-        <div><h4>Core class build</h4><p>The core classes and essential functions —
-          in progress now.</p></div>
-      </div>
-      <div class="step">
-        <span class="step__dot">○</span>
-        <div><h4>Connection-based system</h4><p>The interaction layers between
-          classes.</p></div>
-      </div>
-      <div class="step">
-        <span class="step__dot">○</span>
-        <div><h4>GUI development</h4><p>A node-based editor that reads and attaches
-          to the core underneath.</p></div>
-      </div>
-      <div class="step">
-        <span class="step__dot">○</span>
-        <div><h4>Beta → Full release</h4><p>Standalone Windows and macOS apps, then
-          the 3D viewport for advanced tooling.</p></div>
-      </div>
-    </div>
+<section style="padding-top:44px">
+  <div class="wrap">
+    <div class="prose" style="--c: var(--mint)">
 
-    <h2>The core bet</h2>
-    <p>Most tools in this space — SpeedTree, Tree It, various Blender add-ons — build
-      their own everything: renderer, mesh pipeline, viewport. That works at first
-      and decays over time. Tree It is the cautionary example: impressive in 2012,
-      built on DirectX 9, and now actively breaking down because the foundation
-      underneath it moved on.</p>
-    <div class="pull" style="--kick: var(--mint)">
-      <strong>Own the logic, not the stack.</strong> The renderer, mesh construction,
-      UV math, and armature generation are delegated to Blender — a project with
-      hundreds of contributors that will maintain those systems indefinitely. What
-      SSF owns is what differentiates it: the procedural model, the editing system,
-      the data architecture, and the workflow. Those age well. A hand-rolled renderer
-      does not.
-    </div>
-    <p>SSF never embeds Blender or modifies it. It runs Blender as an external
-      process, hands it data, and lets it do the heavy lifting — a pattern validated
-      in DERG, which spawns headless Blender subprocesses to render synthetic
-      training footage.</p>
+      <p class="rv">You author a tree as a set of connected nodes, shaping how it
+        grows through an intuitive field-based system, then let Blender handle the
+        heavy lifting of mesh generation, UVs, normals, and armatures behind the
+        scenes. The result is clean, animation-ready foliage you can drop straight
+        into your engine.</p>
+      <p class="rv">SSF is built for indie developers who need custom trees, vines,
+        and plants but don't want to pay forever for software they never own. It
+        does one thing and does it well: <strong>get you from idea to a game-ready
+        tree, fast.</strong></p>
 
-    <h2>The growth field</h2>
-    <p>A tree's shape comes from a vector field — a 3D grid of directions that nodes
-      follow as they grow. A node steps forward, samples the field at its location,
-      bends according to what the field says, and steps again.</p>
-    <p>The design choice worth noting: the tree never holds a reference to the field.
-      Nodes sample it by position during generation, then forget it.
-      <strong>The connection is emergent, not wired</strong> — and emergent
-      connections can't fall out of sync.</p>
-
-    <div class="code">
-      <div class="code__bar">
-        <span class="chip" style="--chip: var(--mint)">PYTHON</span>
-        <span class="chip" style="--chip: var(--sky)">Base foliage class</span>
+      <h2 class="rv"><span class="no">№ 1 — Roadmap</span>Build map</h2>
+      <div class="progress rv"><span>17%</span><div class="progress__bar"><div class="progress__fill" style="width:17%"></div></div><span>beta → full release</span></div>
+      <div class="timetable rv">
+        <div class="tt-row done">
+          <span class="st">✓</span>
+          <h4>Core architecture</h4>
+          <p>Data flow, persistence, and long-term sustainability — designed before
+            the first line of core code.</p>
+        </div>
+        <div class="tt-row active">
+          <span class="st">◎</span>
+          <h4>Core class build</h4>
+          <p>The core classes and essential functions — in progress now.</p>
+        </div>
+        <div class="tt-row">
+          <span class="st">○</span>
+          <h4>Connection-based system</h4>
+          <p>The interaction layers between classes.</p>
+        </div>
+        <div class="tt-row">
+          <span class="st">○</span>
+          <h4>GUI development</h4>
+          <p>A node-based editor reading the core underneath.</p>
+        </div>
+        <div class="tt-row">
+          <span class="st">○</span>
+          <h4>Beta → Full release</h4>
+          <p>Standalone Windows/macOS apps, then the 3D viewport.</p>
+        </div>
       </div>
-      <pre><span class="c-k">from</span> __future__ <span class="c-k">import</span> annotations
+
+      <h2 class="rv"><span class="no">№ 2 — Strategy</span>The core bet</h2>
+      <p class="rv">Most tools in this space — SpeedTree, Tree It, various Blender
+        add-ons — build their own everything: renderer, mesh pipeline, viewport.
+        That works at first and decays over time. Tree It is the cautionary
+        example: impressive in 2012, built on DirectX 9, and now actively breaking
+        down because the foundation underneath it moved on.</p>
+      <div class="pull rv"><b>Own the logic, not the stack.</b> The renderer, mesh
+        construction, UV math, and armature generation are delegated to Blender.
+        What SSF owns is what differentiates it: the procedural model, the editing
+        system, the data architecture, and the workflow. Those age well. A
+        hand-rolled renderer does not.</div>
+      <p class="rv">SSF never embeds Blender or modifies it. It runs Blender as an
+        external process, hands it data, and lets it do the heavy lifting — a
+        pattern validated in DERG, which spawns headless Blender subprocesses to
+        render synthetic training footage.</p>
+
+      <h2 class="rv"><span class="no">№ 3 — Systems</span>The growth field</h2>
+      <p class="rv">A tree's shape comes from a vector field — a 3D grid of
+        directions that nodes follow as they grow. A node steps forward, samples
+        the field at its location, bends according to what the field says, and
+        steps again.</p>
+      <p class="rv">The design choice worth noting: the tree never holds a
+        reference to the field. Nodes sample it by position during generation, then
+        forget it. <strong>The connection is emergent, not wired</strong> — and
+        emergent connections can't fall out of sync.</p>
+
+      <div class="figure rv" style="--c: var(--mint)">
+        <div class="figure__cap"><b>Python</b><span>foliage_abc.py — the shared interface</span></div>
+        <pre><span class="c-k">from</span> __future__ <span class="c-k">import</span> annotations
 
 <span class="c-k">from</span> abc <span class="c-k">import</span> ABC, abstractmethod
 <span class="c-k">from</span> typing <span class="c-k">import</span> TYPE_CHECKING, Any
@@ -124,72 +123,78 @@
     <span class="c-s">"""
     Abstract interface shared by every foliage type.
 
-    Subclasses are expected to maintain:
-      - a registry of BranchGroup objects (the Level 1 procedural rules), and
-      - a current generated skeleton (the Level 2 node data), produced by the
-        Generator and possibly empty until generate() is called.
+    Subclasses maintain a registry of BranchGroup objects (the Level 1
+    procedural rules) and a generated skeleton (the Level 2 node data),
+    produced by the Generator and possibly empty until generate() runs.
     """</span>
 
-    <span class="c-c"># Capability flags — what this foliage does or does not support</span>
+    <span class="c-c"># Capability flags — what this foliage supports</span>
     <span class="c-k">@property</span>
     <span class="c-k">@abstractmethod</span>
     <span class="c-k">def</span> <span class="c-f">support_cards</span>(self) -> <span class="c-f">bool</span>:
-        <span class="c-s">"""Does the foliage asset support foliage cards for populate"""</span>
+        <span class="c-s">"""Does the asset support foliage cards for populate"""</span>
         <span class="c-k">raise</span> NotImplementedError</pre>
-    </div>
+      </div>
 
-    <h2>Containers: localizing change</h2>
-    <p>A tree isn't a flat pile of nodes. It's composed of containers — typed objects
-      (trunk, branch, branchlet, root) that each hold a line of nodes. When a user
-      hand-edits one branch, that edit is bounded inside its container; a touched
-      container is flagged so the system preserves it rather than regenerating over
-      the user's work — directly addressing the most common SpeedTree complaint.</p>
-    <p>Containers connect by reference, not stored position: a branch records
-      "I attach to exit point 2 of trunk 5" and resolves that to a position only when
-      it regenerates. Compute on demand rather than cache — nothing to keep in sync.
-      Regeneration order isn't designed; it's <strong>forced by the data itself</strong>.</p>
+      <h2 class="rv"><span class="no">№ 4 — Systems</span>Containers: localizing change</h2>
+      <p class="rv">A tree isn't a flat pile of nodes. It's composed of containers —
+        typed objects (trunk, branch, branchlet, root) that each hold a line of
+        nodes. When a user hand-edits one branch, that edit is bounded inside its
+        container; a touched container is flagged so the system preserves it rather
+        than regenerating over the user's work — directly addressing the most
+        common SpeedTree complaint.</p>
+      <p class="rv">Containers connect by reference, not stored position: a branch
+        records "I attach to exit point 2 of trunk 5" and resolves that to a
+        position only when it regenerates. Compute on demand rather than cache —
+        nothing to keep in sync. Regeneration order isn't designed; it's
+        <strong>forced by the data itself</strong>.</p>
 
-    <h2>Deliberate limitations</h2>
-    <p>When a hand-edited branch's parent later moves, SSF doesn't guess how the
-      branch should re-grow. It freezes it as custom geometry and rigidly moves it
-      with its parent. The user keeps their work, exactly as they made it.</p>
-    <div class="pull" style="--kick: var(--peach)">
-      <strong>A predictable limitation beats a fragile feature.</strong> A feature
-      that's right most of the time and silently wrong the rest is worse than a
-      limitation that's always honest.
-    </div>
+      <h2 class="rv"><span class="no">№ 5 — Philosophy</span>Deliberate limitations</h2>
+      <p class="rv">When a hand-edited branch's parent later moves, SSF doesn't
+        guess how the branch should re-grow. It freezes it as custom geometry and
+        rigidly moves it with its parent. The user keeps their work, exactly as
+        they made it.</p>
+      <div class="pull rv" style="--c: var(--peach)"><b>A predictable limitation
+        beats a fragile feature.</b> A feature that's right most of the time and
+        silently wrong the rest is worse than a limitation that's always honest.</div>
+      <p class="rv">The throughline: push complexity into the data model so it
+        doesn't live in fragile coordinating code. Connections are computed, not
+        cached. Order falls out of dependencies. Failure modes are designed out
+        structurally.</p>
 
-    <h2>What this reflects</h2>
-    <p>The throughline: push complexity into the data model so it doesn't live in
-      fragile coordinating code. Connections are computed, not cached. Order falls
-      out of dependencies. Failure modes are designed out structurally. And where a
-      problem is genuinely ambiguous, the system takes a clear, honest limitation
-      over an unreliable guess.</p>
-
-    <div class="chips" style="margin-top:44px">
-      <span class="chip" style="--chip: var(--peach)">Built with · Python</span>
-      <span class="chip" style="--chip: var(--sky)">Built with · Blender</span>
+      <div class="meta rv tags" style="border-bottom:none">
+        <span class="tag" style="--c: var(--peach)">Built with · Python</span>
+        <span class="tag" style="--c: var(--sky)">Built with · Blender</span>
+      </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">
-    <div class="foot">
-      <div>
-        <b style="color:var(--tx-1);font-size:17px">guillen.studio</b>
-        <p class="foot__motto">vivere est creare</p>
-        <small>© 2026 Angel A. Guillen Flores</small>
-      </div>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="work.html">Work</a>
-        <a href="index.html#devlog">Devlog</a>
-        <a href="index.html#about">About</a>
-      </nav>
+  <div class="wrap colophon">
+    <div>
+      <b>guillen.studio</b>
+      <p class="motto">vivere est creare</p>
+      <small>© 2026 Angel A. Guillen Flores</small>
     </div>
+    <nav>
+      <a class="lk" href="index.html">Front page</a>
+      <a class="lk" href="work.html">Work</a>
+      <a class="lk" href="index.html#devlog">Devlog</a>
+      <a class="lk" href="mailto:hello@guillen.studio">Get in touch</a>
+    </nav>
   </div>
 </footer>
+
+<script>
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), { threshold: 0.12 });
+  document.querySelectorAll('.rv').forEach((el, i) => {
+    el.style.transitionDelay = `${(i % 4) * 70}ms`;
+    io.observe(el);
+  });
+</script>
 
 </body>
 </html>
