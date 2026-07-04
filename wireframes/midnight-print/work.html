@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Index — guillen.studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,450..650;1,9..144,450..650&family=Inter:wght@400;500;550;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="mast">
+  <div class="mast__in">
+    <a class="mast__brand" href="index.html">guillen<em>.studio</em></a>
+    <span class="mast__date">The Index</span>
+    <nav>
+      <a href="index.html">Front page</a>
+      <a class="is-active" href="work.html">Work</a>
+      <a href="index.html#devlog">Devlog</a>
+      <a href="index.html#services">About</a>
+      <a class="cta" href="mailto:hello@guillen.studio">Get in touch</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap article-head">
+  <div class="aura aura--lavender" style="width:440px;height:440px;top:-120px;right:6%"></div>
+  <h1 class="rv">Project &amp; work.</h1>
+  <p class="standfirst rv" style="--c: var(--lavender)">All projects across all
+    types — games, developer tools, asset libraries, and programs.</p>
+</div>
+
+<!-- lead story -->
+<section style="padding-top:48px">
+  <div class="wrap front">
+    <article class="lead rv" style="--c: var(--mint)">
+      <div class="tags">
+        <span class="tag" style="--c: var(--mint)">Featured</span>
+        <span class="tag" style="--c: var(--mint)">In dev</span>
+        <span class="tag" style="--c: var(--mint)">Product offering</span>
+      </div>
+      <div class="lead__art"></div>
+      <h3><a href="project.html">Simply Simple Foliage</a></h3>
+      <p class="standfirst">Node-based foliage creation for game development,
+        animation, and digital art. The long read covers the growth field,
+        containers, and the case for honest limitations.</p>
+      <p style="margin-top:16px"><a class="lk lk--c" style="--c: var(--mint)" href="project.html">Read the architecture essay →</a></p>
+    </article>
+    <aside class="sidecol rv">
+      <div class="dept" style="border-top:none;padding-top:0;--dc: var(--lavender)">
+        <b>By status</b>
+      </div>
+      <div class="brief" style="--c: var(--mint); cursor:default">
+        <h4 style="color:var(--mint)">In development</h4>
+        <p>Simply Simple Foliage · One Night Defense</p>
+      </div>
+      <div class="brief" style="--c: var(--sky); cursor:default">
+        <h4 style="color:var(--sky)">Released</h4>
+        <p>DERG — MacOS &amp; Windows, with documentation</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- the full index -->
+<section style="padding-top:16px">
+  <div class="wrap">
+    <div class="dept rv" style="--dc: var(--lavender)">
+      <b>The Index</b><span>3 projects · Cryark Tools &amp; games</span>
+    </div>
+    <div class="index rv">
+      <a class="row" href="project.html" style="--c: var(--mint)">
+        <span class="row__status">In dev</span>
+        <h3>Simply Simple Foliage</h3>
+        <p>Node-based foliage creator on a Blender backend — procedural growth
+          fields, containers, append-only branch editing.</p>
+        <span class="row__meta">Blender · Python</span>
+      </a>
+      <a class="row" href="#" style="--c: var(--sky)">
+        <span class="row__status">Released</span>
+        <h3>DERG</h3>
+        <p>Batch renderer for Blender scenes with partial procedural generation
+          and level scripting. Query → design → execute, per render. Built for NU
+          Aerospace's Legolass project; now general-purpose.</p>
+        <span class="row__meta">Python · Blender · Rust</span>
+      </a>
+      <a class="row" href="#" style="--c: var(--peach)">
+        <span class="row__status">In dev</span>
+        <h3>One Night Defense</h3>
+        <p>Wave-based FPS survival demo in Unity — charged bowling-ball throws,
+          full ragdoll physics, five escalating waves, five-minute runs.</p>
+        <span class="row__meta">Unity · C#</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap colophon">
+    <div>
+      <b>guillen.studio</b>
+      <p class="motto">vivere est creare</p>
+      <small>© 2026 Angel A. Guillen Flores</small>
+    </div>
+    <nav>
+      <a class="lk" href="index.html">Front page</a>
+      <a class="lk" href="work.html">Work</a>
+      <a class="lk" href="index.html#devlog">Devlog</a>
+      <a class="lk" href="mailto:hello@guillen.studio">Get in touch</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), { threshold: 0.12 });
+  document.querySelectorAll('.rv').forEach((el, i) => {
+    el.style.transitionDelay = `${(i % 4) * 70}ms`;
+    io.observe(el);
+  });
+</script>
+
+</body>
+</html>
