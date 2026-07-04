@@ -15,7 +15,7 @@ import { GUILLEN_NAV } from "../nav.jsx";
 
 export default function AboutPage() {
   return (
-    <SharedAboutPage
+    <SharedAboutPage nav_preset="minimal"
       site="guillen"
       variant="guillen"
       nav_links={GUILLEN_NAV}

@@ -221,7 +221,7 @@ export default function DocsPage() {
     return (
       <div className="page">
         <div className="gh-grain" aria-hidden="true" />
-        <SiteNav links={GUILLEN_NAV} logo_text="AG" />
+        <SiteNav links={GUILLEN_NAV} logo_text="AG" preset="minimal" />
         <div className="docs-not-found">
           <p>Documentation not found.</p>
           <a href="/work">← Back to Work</a>
@@ -234,7 +234,7 @@ export default function DocsPage() {
   return (
     <div className="page">
       <div className="gh-grain" aria-hidden="true" />
-      <SiteNav links={GUILLEN_NAV} logo_text="AG" />
+      <SiteNav links={GUILLEN_NAV} logo_text="AG" preset="minimal" />
 
       <div className="docs-layout">
 

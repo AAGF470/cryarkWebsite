@@ -1,56 +1,14 @@
 /* ---------------------------------------------------------------------------
    DevlogDetailPage.css — guillen.studio/devlog/:slug
+   Page shell (.page) and film grain (.gh-grain) live in theme/theme.css.
 --------------------------------------------------------------------------- */
-
-/* ── PAGE SHELL ─────────────────────────────────────────────────────────── */
-
-.page {
-  background: var(--color-bg, #050508);
-  min-height: 100vh;
-  color: var(--color-text, #e8e6e1);
-  font-family: var(--font-sans, system-ui, sans-serif);
-  padding-top: 62px;
-  overflow-x: hidden;
-}
-
-@media (max-width: 680px) {
-  .page { padding-top: 54px; }
-}
-
-/* ── FILM GRAIN ──────────────────────────────────────────────────────────── */
-
-.gh-grain {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.048;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 160px 160px;
-  animation: gh-grain-shift 0.18s steps(1) infinite;
-}
-
-@keyframes gh-grain-shift {
-  0%   { background-position:   0%    0%; }
-  10%  { background-position:  -5%  -10%; }
-  20%  { background-position: -15%    5%; }
-  30%  { background-position:   7%  -20%; }
-  40%  { background-position:  -5%   20%; }
-  50%  { background-position: -12%    8%; }
-  60%  { background-position:  14%    0%; }
-  70%  { background-position:   0%   12%; }
-  80%  { background-position:   4%   28%; }
-  90%  { background-position: -10%    6%; }
-  100% { background-position:   0%    0%; }
-}
 
 /* ── ARTICLE WRAPPER ─────────────────────────────────────────────────────── */
 
 .dd-page {
-  max-width: min(1100px, 94vw);
+  max-width: min(1100px, var(--container-max));
   margin: 0 auto;
-  padding: 0 48px 96px;
+  padding: 0 48px var(--section-space);
   position: relative;
   z-index: 2;
 }
@@ -67,36 +25,37 @@
   display: inline-block;
   font-size: 12px;
   letter-spacing: 0.04em;
-  color: rgba(200, 169, 126, 0.55);
+  color: color-mix(in srgb, var(--color-accent) 55%, transparent);
   text-decoration: none;
   margin-bottom: 28px;
   transition: color 0.16s ease;
 }
 
 .dd-back:hover {
-  color: rgba(200, 169, 126, 0.90);
+  color: var(--color-accent);
 }
 
 .dd-eyebrow {
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(200, 169, 126, 0.70);
+  color: color-mix(in srgb, var(--color-accent) 70%, transparent);
   margin-bottom: 14px;
 }
 
 .dd-title {
-  font-size: clamp(28px, 4vw, 44px);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: #f5f3ef;
-  line-height: 1.15;
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: var(--font-display-weight);
+  letter-spacing: var(--font-display-tracking);
+  color: var(--color-text);
+  line-height: 1.12;
   margin-bottom: 14px;
 }
 
 .dd-subtitle {
   font-size: 16px;
-  color: rgba(232, 230, 225, 0.48);
+  color: var(--color-text-sub);
   line-height: 1.6;
   margin-bottom: 0;
 }
@@ -114,7 +73,7 @@
 .dd-date {
   font-size: 11px;
   letter-spacing: 0.04em;
-  color: rgba(232, 230, 225, 0.30);
+  color: var(--color-text-faint);
 }
 
 .dd-tags {
@@ -126,10 +85,10 @@
 .dd-tag {
   font-size: 11px;
   letter-spacing: 0.05em;
-  color: rgba(200, 169, 126, 0.75);
-  background: rgba(200, 169, 126, 0.08);
-  border: 0.5px solid rgba(200, 169, 126, 0.20);
-  border-radius: 20px;
+  color: color-mix(in srgb, var(--color-accent) 75%, transparent);
+  background: var(--color-accent-sub);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 20%, transparent);
+  border-radius: var(--radius-pill, 999px);
   padding: 3px 9px;
 }
 
@@ -142,21 +101,23 @@
 /* Abstract — highlighted intro */
 .dd-abstract {
   font-size: 16px;
-  color: rgba(232, 230, 225, 0.72);
+  color: var(--color-text-sub);
   line-height: 1.75;
   padding: 20px 24px;
-  border-left: 2px solid rgba(200, 169, 126, 0.40);
+  border-left: 2px solid color-mix(in srgb, var(--color-accent) 40%, transparent);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   margin-bottom: 40px;
-  background: rgba(200, 169, 126, 0.04);
+  background: var(--color-accent-sub);
 }
 
 /* Section heading */
 .dd-section-heading {
+  font-family: var(--font-display);
   font-size: 18px;
-  font-weight: 600;
-  color: #f5f3ef;
+  font-weight: var(--font-display-weight);
+  color: var(--color-text);
   margin: 40px 0 16px;
-  letter-spacing: -0.01em;
+  letter-spacing: var(--font-display-tracking);
 }
 
 /* Section wrapper */
@@ -168,7 +129,7 @@
 .dd-tags--footer {
   margin-top: 56px;
   padding-top: 32px;
-  border-top: 0.5px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid var(--color-border-sub);
 }
 
 /* ── FULL-WIDTH SECTIONS (video, gallery, roadmap…) ─────────────────────── */
@@ -183,13 +144,13 @@
 /* ── DESIGN DECISION ─────────────────────────────────────────────────────── */
 
 .dd-decision {
-  border-left: 2px solid rgba(200, 169, 126, 0.35);
+  border-left: 2px solid color-mix(in srgb, var(--color-accent) 35%, transparent);
   padding: 10px 16px;
   margin: 18px 0;
   display: flex;
   flex-direction: column;
   gap: 5px;
-  background: rgba(200, 169, 126, 0.03);
+  background: var(--color-accent-sub);
 }
 
 .dd-decision__key {
@@ -197,12 +158,12 @@
   font-weight: 700;
   letter-spacing: 0.10em;
   text-transform: uppercase;
-  color: rgba(200, 169, 126, 0.75);
+  color: color-mix(in srgb, var(--color-accent) 75%, transparent);
 }
 
 .dd-decision__desc {
   font-size: 14px;
-  color: rgba(232, 230, 225, 0.60);
+  color: var(--color-text-sub);
   line-height: 1.65;
   margin: 0;
 }
@@ -210,9 +171,9 @@
 /* ── CODE BLOCK ──────────────────────────────────────────────────────────── */
 
 .dd-code {
-  background: rgba(255, 255, 255, 0.03);
-  border: 0.5px solid rgba(255, 255, 255, 0.08);
-  border-radius: 6px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-low);
+  border-radius: var(--radius-md);
   overflow: hidden;
   margin: 20px 0;
 }
@@ -222,8 +183,8 @@
   align-items: center;
   gap: 10px;
   padding: 8px 14px;
-  border-bottom: 0.5px solid rgba(255, 255, 255, 0.06);
-  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid var(--color-border-sub);
+  background: var(--color-surface);
 }
 
 .dd-code-hdr__lang {
@@ -231,16 +192,16 @@
   font-weight: 600;
   letter-spacing: 0.10em;
   text-transform: uppercase;
-  color: rgba(200, 169, 126, 0.55);
-  background: rgba(200, 169, 126, 0.08);
-  border: 0.5px solid rgba(200, 169, 126, 0.18);
-  border-radius: 3px;
+  color: color-mix(in srgb, var(--color-accent) 55%, transparent);
+  background: var(--color-accent-sub);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 18%, transparent);
+  border-radius: var(--radius-sm);
   padding: 2px 6px;
 }
 
 .dd-code-hdr__title {
   font-size: 11px;
-  color: rgba(232, 230, 225, 0.32);
+  color: var(--color-text-dim);
   letter-spacing: 0.02em;
 }
 
@@ -254,7 +215,7 @@
   font-family: var(--font-mono, "SF Mono", "Fira Code", monospace);
   font-size: 13px;
   line-height: 1.65;
-  color: rgba(232, 230, 225, 0.78);
+  color: color-mix(in srgb, var(--color-text) 78%, transparent);
   background: none;
   border: none;
   padding: 0;
@@ -264,55 +225,57 @@
 
 .dd-body p {
   font-size: 15px;
-  color: rgba(232, 230, 225, 0.62);
+  color: var(--color-text-sub);
   line-height: 1.75;
   margin: 0 0 18px;
 }
 
 .dd-body h1 {
+  font-family: var(--font-display);
   font-size: 26px;
-  font-weight: 600;
-  color: #f5f3ef;
-  letter-spacing: -0.02em;
+  font-weight: var(--font-display-weight);
+  color: var(--color-text);
+  letter-spacing: var(--font-display-tracking);
   margin: 36px 0 14px;
 }
 
 .dd-body h2 {
+  font-family: var(--font-display);
   font-size: 20px;
-  font-weight: 600;
-  color: #f5f3ef;
-  letter-spacing: -0.01em;
+  font-weight: var(--font-display-weight);
+  color: var(--color-text);
+  letter-spacing: var(--font-display-tracking);
   margin: 32px 0 12px;
 }
 
 .dd-body h3 {
   font-size: 16px;
   font-weight: 600;
-  color: #f5f3ef;
+  color: var(--color-text);
   margin: 28px 0 10px;
 }
 
 .dd-body strong {
-  color: #f5f3ef;
+  color: var(--color-text);
   font-weight: 600;
 }
 
 .dd-body em {
-  color: rgba(232, 230, 225, 0.72);
+  color: var(--color-text-sub);
   font-style: italic;
 }
 
 .dd-body a {
-  color: rgba(200, 169, 126, 0.85);
+  color: color-mix(in srgb, var(--color-accent) 85%, transparent);
   text-decoration: underline;
-  text-decoration-color: rgba(200, 169, 126, 0.35);
+  text-decoration-color: color-mix(in srgb, var(--color-accent) 35%, transparent);
   text-underline-offset: 2px;
   transition: color 0.16s ease, text-decoration-color 0.16s ease;
 }
 
 .dd-body a:hover {
-  color: rgba(200, 169, 126, 1);
-  text-decoration-color: rgba(200, 169, 126, 0.70);
+  color: var(--color-accent);
+  text-decoration-color: color-mix(in srgb, var(--color-accent) 70%, transparent);
 }
 
 .dd-body ul,
@@ -331,7 +294,7 @@
 
 .dd-body li {
   font-size: 15px;
-  color: rgba(232, 230, 225, 0.62);
+  color: var(--color-text-sub);
   line-height: 1.72;
   margin-bottom: 6px;
 }
@@ -339,10 +302,10 @@
 .dd-body code {
   font-family: var(--font-mono, "SF Mono", "Fira Code", monospace);
   font-size: 13px;
-  color: rgba(232, 230, 225, 0.80);
-  background: rgba(255, 255, 255, 0.06);
-  border: 0.5px solid rgba(255, 255, 255, 0.08);
-  border-radius: 3px;
+  color: color-mix(in srgb, var(--color-text) 80%, transparent);
+  background: var(--color-surface-high);
+  border: 1px solid var(--color-border-low);
+  border-radius: var(--radius-sm);
   padding: 1px 5px;
 }
 
@@ -355,7 +318,7 @@
   gap: 20px;
   padding: 96px 24px;
   text-align: center;
-  color: rgba(232, 230, 225, 0.36);
+  color: var(--color-text-dim);
   font-size: 15px;
 }
 
@@ -363,7 +326,7 @@
 
 @media (max-width: 768px) {
   .dd-page {
-    padding: 0 24px 96px;
+    padding: 0 24px calc(var(--section-space) * 0.75);
   }
 
   .dd-header {

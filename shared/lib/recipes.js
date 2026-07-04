@@ -148,8 +148,10 @@ export function recipeVars(id, accent = '#2c4a6e') {
   if (!r) throw new Error(`Unknown recipe "${id}". Options: ${Object.keys(RECIPES).join(', ')}`)
   const p = r.palette
   const mix = (c, pct) => `color-mix(in srgb, ${c} ${pct}%, transparent)`
-  // Text on the accent color: dark ink if the accent is light, warm white if dark.
-  const onAccent = luminance(accent) > 155 ? p.text : '#fdfcf9'
+  // Text on the accent color: a dark ink if the accent is light, warm white if
+  // dark. Light recipes can reuse their body ink; dark recipes need a dedicated
+  // dark ink (their p.text is near-white and would fail contrast on the accent).
+  const onAccent = luminance(accent) > 155 ? (r.dark ? '#17130d' : p.text) : '#fdfcf9'
   const darker = `color-mix(in srgb, ${accent} 84%, black)`
   const shadows = r.shadows === 'soft' ? SHADOWS.soft(p.text) : SHADOWS[r.shadows]
 

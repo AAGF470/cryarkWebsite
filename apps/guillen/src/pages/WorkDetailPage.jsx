@@ -310,7 +310,7 @@ export default function WorkDetailPage() {
     return (
       <div className="page">
         <div className="gh-grain" aria-hidden="true" />
-        <SiteNav links={GUILLEN_NAV} logo_text="AG" />
+        <SiteNav links={GUILLEN_NAV} logo_text="AG" preset="minimal" />
         <div className="wd-not-found">
           <p>Project not found.</p>
           <Link to="/work" className="wd-back">← Work</Link>
@@ -324,7 +324,7 @@ export default function WorkDetailPage() {
     <div className="page">
       <div className="gh-grain" aria-hidden="true" />
 
-      <SiteNav links={GUILLEN_NAV} logo_text="AG" />
+      <SiteNav links={GUILLEN_NAV} logo_text="AG" preset="minimal" />
 
       <article className="wd-page">
 

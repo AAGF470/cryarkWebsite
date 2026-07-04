@@ -1,5 +1,167 @@
 /* ── GUILLEN.STUDIO THEME ────────────────────────────────────────────────── */
-/* Shares the same gold/dark identity as cryark.net for now.                 */
-/* Diverge here when guillen gets its own visual direction.                  */
+/* Identity: the "dark-cinematic" recipe with the dawn-gold accent (#c8a97e).
+   This block is the materialized output of:
 
-/* No overrides needed — shared token defaults match cryark's palette exactly. */
+     recipeVars('dark-cinematic', '#c8a97e')   — shared/lib/recipes.js
+
+   Loaded after @shared/styles/base.css (see main.jsx), so every value below
+   overrides the token defaults in shared/styles/tokens.css.
+   Regenerate with:
+     node -e "import('./shared/lib/recipes.js').then(m => console.log(m.recipeVars('dark-cinematic','#c8a97e').vars))"
+   The recipe's font (Space Grotesk) is loaded statically in index.html.       */
+
+:root {
+  /* type */
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-display-weight: 600;
+  --font-display-tracking: -0.02em;
+
+  /* neutrals */
+  --color-bg: #0a0a10;
+  --color-surface: rgba(255, 255, 255, 0.03);
+  --color-surface-high: rgba(255, 255, 255, 0.055);
+  --color-text: #ecebe7;
+  --color-text-sub: rgba(236, 235, 231, 0.60);
+  --color-text-dim: rgba(236, 235, 231, 0.42);
+  --color-text-faint: rgba(236, 235, 231, 0.24);
+  --color-border-sub: rgba(255, 255, 255, 0.07);
+  --color-border-low: rgba(255, 255, 255, 0.11);
+  --color-border-mid: rgba(255, 255, 255, 0.20);
+
+  /* accent family */
+  --color-accent: #c8a97e;
+  --color-accent-sub: color-mix(in srgb, #c8a97e 9%, transparent);
+  --color-accent-dim: color-mix(in srgb, #c8a97e 18%, transparent);
+  --color-on-accent: #ecebe7;
+  --color-on-accent-sub: color-mix(in srgb, #ecebe7 75%, transparent);
+
+  /* rhythm + corners + depth */
+  --section-space: 112px;
+  --container-max: 1240px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+  --radius-2xl: 22px;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.45);
+  --shadow-md: 0 6px 24px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 12px 48px rgba(0, 0, 0, 0.55);
+  --shadow-modal: 0 24px 80px rgba(0, 0, 0, 0.7);
+
+  /* buttons */
+  --btn-solid-bg: #c8a97e;
+  --btn-solid-text: #ecebe7;
+  --btn-solid-border: #c8a97e;
+  --btn-solid-hover-bg: color-mix(in srgb, #c8a97e 84%, black);
+  --btn-solid-hover-text: #ecebe7;
+  --btn-solid-hover-border: color-mix(in srgb, #c8a97e 84%, black);
+  --btn-fill: color-mix(in srgb, #c8a97e 84%, black);
+  --btn-glow-tight: color-mix(in srgb, #c8a97e 35%, transparent);
+  --btn-glow-wide: color-mix(in srgb, #c8a97e 14%, transparent);
+  --btn-ghost-text: #c8a97e;
+  --btn-ghost-color: color-mix(in srgb, #c8a97e 84%, black);
+  --btn-ghost-border: rgba(255, 255, 255, 0.20);
+  --btn-ghost-border-hover: #c8a97e;
+  --btn-ghost-hover-bg: color-mix(in srgb, #c8a97e 6%, transparent);
+  --btn-ghost-glow: color-mix(in srgb, #c8a97e 14%, transparent);
+
+  /* nav (derived from the same primitives) */
+  --nav-bg: color-mix(in srgb, #0a0a10 97%, transparent);
+  --nav-bg-open: color-mix(in srgb, #0a0a10 99%, transparent);
+  --nav-mobile-bg: color-mix(in srgb, #0a0a10 99%, transparent);
+  --nav-border: rgba(255, 255, 255, 0.07);
+  --nav-backdrop: color-mix(in srgb, #ecebe7 20%, transparent);
+  --nav-glider-border: color-mix(in srgb, #c8a97e 25%, transparent);
+  --nav-glider-shadow: 0 2px 12px color-mix(in srgb, #c8a97e 6%, transparent);
+  --nav-logo-color: color-mix(in srgb, #ecebe7 70%, transparent);
+  --nav-logo-hover: #ecebe7;
+  --nav-logo-accent: #c8a97e;
+  --nav-link-rest: color-mix(in srgb, #ecebe7 52%, transparent);
+  --nav-link-hover: #ecebe7;
+  --nav-link-active: #ecebe7;
+  --nav-link-hover-bg: color-mix(in srgb, #ecebe7 4%, transparent);
+  --nav-cta-color: #c8a97e;
+  --nav-cta-hover-color: #ecebe7;
+  --nav-cta-border: #c8a97e;
+  --nav-cta-hover-border: #c8a97e;
+  --nav-cta-hover-bg: #c8a97e;
+  --nav-hamburger-bar: color-mix(in srgb, #ecebe7 60%, transparent);
+  --nav-hamburger-hover-bg: color-mix(in srgb, #ecebe7 4%, transparent);
+  --nav-mobile-link: color-mix(in srgb, #ecebe7 55%, transparent);
+  --nav-mobile-link-hover: #ecebe7;
+  --nav-mobile-link-active: #ecebe7;
+  --nav-mobile-link-hover-bg: color-mix(in srgb, #ecebe7 3%, transparent);
+  --nav-mobile-link-active-bg: color-mix(in srgb, #c8a97e 7%, transparent);
+  --nav-mobile-top-border: rgba(255, 255, 255, 0.07);
+  --nav-mobile-cta-color: #c8a97e;
+  --nav-mobile-cta-hover: #ecebe7;
+  --nav-mobile-cta-border: color-mix(in srgb, #c8a97e 30%, transparent);
+  --nav-mobile-cta-hover-border: #c8a97e;
+  --nav-mobile-cta-hover-bg: #c8a97e;
+  --nav-mobile-strip-bg: color-mix(in srgb, #0a0a10 92%, transparent);
+  --nav-mobile-strip-border: rgba(255, 255, 255, 0.07);
+}
+
+/* App-level correction on top of the recipe output:
+   the recipe's luminance heuristic picks the (light) theme text as "ink on
+   accent", but dawn gold is a light accent — light-on-gold is illegible
+   (~1.8:1). Use the dark warm ink from the token defaults instead.           */
+:root {
+  --color-on-accent: #161310;
+  --color-on-accent-sub: color-mix(in srgb, #161310 70%, transparent);
+  --btn-solid-text: #161310;
+  --btn-solid-hover-text: #161310;
+  --nav-cta-hover-color: #161310;
+  --nav-mobile-cta-hover: #161310;
+}
+
+/* ── APP-WIDE SHELL ──────────────────────────────────────────────────────── */
+/* One definition for the page wrapper + film grain (previously duplicated
+   in every page's CSS file).                                                 */
+
+.page {
+  background: var(--color-bg);
+  min-height: 100vh;
+  color: var(--color-text);
+  font-family: var(--font-sans, system-ui, sans-serif);
+  padding-top: 62px;
+  overflow-x: hidden;
+}
+
+@media (max-width: 680px) {
+  .page { padding-top: 54px; }
+}
+
+/* ── FILM GRAIN ──────────────────────────────────────────────────────────── */
+/* Fixed overlay above page content (below the nav, z 100) — grain sits on
+   top of the frame, like film. Animates background-position to flicker.     */
+
+.gh-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0.048;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 160px 160px;
+  animation: gh-grain-shift 0.18s steps(1) infinite;
+}
+
+@keyframes gh-grain-shift {
+  0%   { background-position:   0%    0%; }
+  10%  { background-position:  -5%  -10%; }
+  20%  { background-position: -15%    5%; }
+  30%  { background-position:   7%  -20%; }
+  40%  { background-position:  -5%   20%; }
+  50%  { background-position: -12%    8%; }
+  60%  { background-position:  14%    0%; }
+  70%  { background-position:   0%   12%; }
+  80%  { background-position:   4%   28%; }
+  90%  { background-position: -10%    6%; }
+  100% { background-position:   0%    0%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gh-grain { animation: none; }
+}

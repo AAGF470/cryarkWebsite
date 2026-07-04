@@ -98,7 +98,7 @@ export default function WorkPage() {
     <div className="page">
       <div className="gh-grain" aria-hidden="true" />
 
-      <SiteNav links={GUILLEN_NAV} logo_text="AG" />
+      <SiteNav links={GUILLEN_NAV} logo_text="AG" preset="minimal" />
 
       {/* ── Page header (with optional hero bg image) ────────────────── */}
       <header className={`work__header${has_bg ? " work__header--has-bg" : ""}`}>

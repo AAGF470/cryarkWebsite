@@ -1,7 +1,6 @@
 /* ---------------------------------------------------------------------------
    WorkDetailPage.css — guillen.studio/work/:slug
-   The .page shell, .gh-grain overlay, and @keyframes gh-grain-shift are
-   defined in WorkPage.css (shared via the page class). Do not redefine them.
+   Page shell (.page) and film grain (.gh-grain) live in theme/theme.css.
 --------------------------------------------------------------------------- */
 
 /* ── PAGE WRAPPER ────────────────────────────────────────────────────────── */
@@ -9,9 +8,9 @@
 .wd-page {
   position: relative;
   z-index: 2;
-  max-width: min(1600px, 94vw);
+  max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 48px 96px;
+  padding: 0 48px var(--section-space);
 }
 
 /* ── HERO SECTION ────────────────────────────────────────────────────────── */
@@ -28,14 +27,14 @@
   display: inline-block;
   font-size: 12px;
   letter-spacing: 0.06em;
-  color: rgba(200, 169, 126, 0.70);
+  color: color-mix(in srgb, var(--color-accent) 70%, transparent);
   text-decoration: none;
   margin-bottom: 32px;
   transition: color 0.16s ease;
 }
 
 .wd-back:hover {
-  color: rgba(200, 169, 126, 1);
+  color: var(--color-accent);
 }
 
 /* Eyebrow */
@@ -43,7 +42,7 @@
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(200, 169, 126, 0.70);
+  color: color-mix(in srgb, var(--color-accent) 70%, transparent);
   margin: 0 0 14px;
   display: flex;
   align-items: center;
@@ -54,18 +53,19 @@
   content: '';
   display: inline-block;
   width: 22px;
-  height: 0.5px;
-  background: rgba(200, 169, 126, 0.70);
+  height: 1px;
+  background: currentColor;
   flex-shrink: 0;
 }
 
 /* Title */
 .wd-title {
-  font-size: clamp(32px, 5vw, 52px);
-  font-weight: 600;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  color: #f5f3ef;
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: var(--font-display-weight);
+  line-height: 1.08;
+  letter-spacing: var(--font-display-tracking);
+  color: var(--color-text);
   margin: 0 0 20px;
 }
 
@@ -86,7 +86,7 @@
   letter-spacing: 0.10em;
   text-transform: uppercase;
   padding: 3px 8px;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   width: fit-content;
 }
 
@@ -94,7 +94,7 @@
 .wd-status--in_dev   { color: rgba(180, 200, 240, 0.90); background: rgba(100, 150, 220, 0.10); }
 .wd-status--research { color: rgba(200, 180, 240, 0.90); background: rgba(150, 100, 220, 0.10); }
 .wd-status--live     { color: rgba(120, 220, 160, 0.90); background: rgba(60,  180, 100, 0.10); }
-.wd-status--collab   { color: rgba(200, 169, 126, 0.90); background: rgba(200, 169, 126, 0.10); }
+.wd-status--collab   { color: var(--color-accent); background: var(--color-accent-sub); }
 
 /* Tag chips */
 .wd-tag {
@@ -102,30 +102,31 @@
   font-weight: 500;
   letter-spacing: 0.04em;
   padding: 3px 9px;
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.06);
-  color: rgba(232, 230, 225, 0.55);
-  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-high);
+  color: var(--color-text-sub);
+  border: 1px solid var(--color-border-sub);
 }
 
 /* Description */
 .wd-desc {
   font-size: 15px;
   line-height: 1.7;
-  color: rgba(232, 230, 225, 0.58);
-  margin: 0 0 0;
+  color: var(--color-text-sub);
+  margin: 0;
   max-width: 640px;
 }
 
 /* Hero / key art image */
 .wd-hero-img {
   width: 100%;
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   margin-top: 32px;
   object-fit: cover;
   max-height: 640px;
   display: block;
-  border: 0.5px solid rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--color-border-sub);
+  box-shadow: var(--shadow-lg);
 }
 
 /* CTA link row */
@@ -134,27 +135,6 @@
   flex-wrap: wrap;
   gap: 12px;
   margin-top: 28px;
-}
-
-.wd-cta-btn {
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 9px 20px;
-  border-radius: 6px;
-  border: 0.5px solid rgba(200, 169, 126, 0.36);
-  color: rgba(200, 169, 126, 0.90);
-  background: rgba(200, 169, 126, 0.06);
-  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
-}
-
-.wd-cta-btn:hover {
-  background: rgba(200, 169, 126, 0.12);
-  border-color: rgba(200, 169, 126, 0.60);
-  color: rgba(200, 169, 126, 1);
 }
 
 /* ── BODY ────────────────────────────────────────────────────────────────── */
@@ -173,10 +153,11 @@
 }
 
 .wd-section-heading {
+  font-family: var(--font-display);
   font-size: 20px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  color: #f5f3ef;
+  font-weight: var(--font-display-weight);
+  letter-spacing: var(--font-display-tracking);
+  color: var(--color-text);
   margin: 0;
 }
 
@@ -186,7 +167,7 @@
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(200, 169, 126, 0.55);
+  color: color-mix(in srgb, var(--color-accent) 55%, transparent);
   margin: 0 0 14px;
 }
 
@@ -195,7 +176,7 @@
 .wd-built-with-wrapper,
 .wd-platforms-wrapper {
   padding-top: 8px;
-  border-top: 0.5px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid var(--color-border-sub);
 }
 
 .wd-built-with {
@@ -212,10 +193,10 @@
   font-weight: 500;
   letter-spacing: 0.04em;
   padding: 4px 10px;
-  border-radius: 5px;
-  background: rgba(255, 255, 255, 0.05);
-  color: rgba(232, 230, 225, 0.55);
-  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-high);
+  color: var(--color-text-sub);
+  border: 1px solid var(--color-border-sub);
 }
 
 .wd-built-chip__logo {
@@ -240,17 +221,17 @@
   letter-spacing: 0.05em;
   text-decoration: none;
   padding: 5px 12px;
-  border-radius: 5px;
-  border: 0.5px solid rgba(255, 255, 255, 0.10);
-  color: rgba(232, 230, 225, 0.70);
-  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-low);
+  color: var(--color-text-sub);
+  background: var(--color-surface);
   transition: color 0.16s ease, border-color 0.16s ease, background 0.16s ease;
 }
 
 .wd-platform-link:hover {
-  color: #e8e6e1;
-  border-color: rgba(255, 255, 255, 0.20);
-  background: rgba(255, 255, 255, 0.06);
+  color: var(--color-text);
+  border-color: var(--color-border-mid);
+  background: var(--color-surface-high);
 }
 
 /* ── 404 / NOT FOUND ─────────────────────────────────────────────────────── */
@@ -265,7 +246,7 @@
   min-height: 60vh;
   gap: 16px;
   text-align: center;
-  color: rgba(232, 230, 225, 0.42);
+  color: var(--color-text-dim);
   font-size: 15px;
 }
 
@@ -274,7 +255,7 @@
 .wd-devlog-feed {
   margin-top: 64px;
   padding-top: 32px;
-  border-top: 0.5px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid var(--color-border-sub);
 }
 
 .wd-devlog-feed__header {
@@ -288,11 +269,11 @@
   font-size:       11px;
   font-weight:     500;
   letter-spacing:  0.06em;
-  color:           rgba(200, 169, 126, 0.60);
+  color:           color-mix(in srgb, var(--color-accent) 60%, transparent);
   text-decoration: none;
   transition:      color 0.16s ease;
 }
-.wd-devlog-feed__all:hover { color: rgba(200, 169, 126, 1); }
+.wd-devlog-feed__all:hover { color: var(--color-accent); }
 
 .wd-devlog-list {
   display:        flex;
@@ -306,31 +287,31 @@
   align-items:     start;
   gap:             20px;
   padding:         18px 0;
-  border-bottom:   0.5px solid rgba(255, 255, 255, 0.05);
+  border-bottom:   1px solid var(--color-border-sub);
   text-decoration: none;
   color:           inherit;
   transition:      background 0.16s ease;
-  border-radius:   6px;
+  border-radius:   var(--radius-sm);
 }
 
 .wd-devlog-row:first-child {
-  border-top: 0.5px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid var(--color-border-sub);
 }
 
 .wd-devlog-row:hover {
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--color-surface);
   padding-left: 10px;
   padding-right: 10px;
   margin: 0 -10px;
 }
 
-.wd-devlog-row:hover .wd-devlog-row__title  { color: #f5f3ef; }
-.wd-devlog-row:hover .wd-devlog-row__arrow  { color: rgba(200, 169, 126, 0.90); }
+.wd-devlog-row:hover .wd-devlog-row__title  { color: var(--color-text); }
+.wd-devlog-row:hover .wd-devlog-row__arrow  { color: var(--color-accent); }
 
 .wd-devlog-row__date {
   font-size:      11px;
   letter-spacing: 0.04em;
-  color:          rgba(232, 230, 225, 0.28);
+  color:          var(--color-text-faint);
   padding-top:    3px;
   white-space:    nowrap;
 }
@@ -346,7 +327,7 @@
   font-size:      14px;
   font-weight:    500;
   letter-spacing: -0.01em;
-  color:          rgba(232, 230, 225, 0.82);
+  color:          color-mix(in srgb, var(--color-text) 82%, transparent);
   line-height:    1.35;
   transition:     color 0.16s ease;
 }
@@ -354,7 +335,7 @@
 .wd-devlog-row__abstract {
   font-size:   13px;
   line-height: 1.6;
-  color:       rgba(232, 230, 225, 0.38);
+  color:       var(--color-text-dim);
   margin:      0;
   /* clamp to 2 lines */
   display:            -webkit-box;
@@ -372,7 +353,7 @@
 
 .wd-devlog-row__arrow {
   font-size:   13px;
-  color:       rgba(232, 230, 225, 0.20);
+  color:       var(--color-text-faint);
   padding-top: 3px;
   transition:  color 0.16s ease;
   justify-self: end;
@@ -382,7 +363,7 @@
 
 @media (max-width: 768px) {
   .wd-page {
-    padding: 0 24px 72px;
+    padding: 0 24px calc(var(--section-space) * 0.75);
   }
 
   .wd-hero {

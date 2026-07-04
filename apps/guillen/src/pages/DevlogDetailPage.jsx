@@ -317,7 +317,7 @@ export default function DevlogDetailPage() {
     return (
       <div className="page">
         <div className="gh-grain" aria-hidden="true" />
-        <SiteNav links={GUILLEN_NAV} logo_text="AG" />
+        <SiteNav links={GUILLEN_NAV} logo_text="AG" preset="minimal" />
       </div>
     );
   }
@@ -326,7 +326,7 @@ export default function DevlogDetailPage() {
     return (
       <div className="page">
         <div className="gh-grain" aria-hidden="true" />
-        <SiteNav links={GUILLEN_NAV} logo_text="AG" />
+        <SiteNav links={GUILLEN_NAV} logo_text="AG" preset="minimal" />
         <main className="dd-page">
           <div className="dd-not-found">
             <p>Entry not found.</p>
@@ -342,7 +342,7 @@ export default function DevlogDetailPage() {
     <div className="page">
       <div className="gh-grain" aria-hidden="true" />
 
-      <SiteNav links={GUILLEN_NAV} logo_text="AG" />
+      <SiteNav links={GUILLEN_NAV} logo_text="AG" preset="minimal" />
 
       <article className="dd-page">
 

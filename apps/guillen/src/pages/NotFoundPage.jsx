@@ -3,7 +3,7 @@ import "./NotFoundPage.css";
 export default function NotFoundPage() {
   return (
     <main className="nf">
-      <div className="nf__grain" aria-hidden="true" />
+      <div className="gh-grain" aria-hidden="true" />
 
       <div className="nf__content">
         <p className="nf-code">404</p>

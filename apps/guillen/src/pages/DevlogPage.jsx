@@ -206,7 +206,7 @@ export default function DevlogPage() {
     <div className="page">
       <div className="gh-grain" aria-hidden="true" />
 
-      <SiteNav links={GUILLEN_NAV} logo_text="AG" />
+      <SiteNav links={GUILLEN_NAV} logo_text="AG" preset="minimal" />
 
       {/* ── Page header (with optional hero bg image) ───────────────── */}
       <header className={`dl-header${has_bg ? " dl-header--has-bg" : ""}`}>

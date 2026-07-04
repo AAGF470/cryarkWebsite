@@ -340,6 +340,7 @@ export default function AboutPage({
   nav_links  = [],
   logo_text  = null,
   variant    = "guillen",
+  nav_preset = 'bar',   // SiteNav preset pass-through (additive; 'bar' = legacy default)
 }) {
   const { data: profile }    = useCmsQuery(ABOUT_PROFILE,      { site });
   const { data: skills_raw } = useCmsQuery(ALL_SKILLS,         { site });
@@ -371,7 +372,7 @@ export default function AboutPage({
 
       <div className="ab-grain" aria-hidden="true" />
 
-      <SiteNav links={nav_links} logo_text={logo_text} />
+      <SiteNav preset={nav_preset} links={nav_links} logo_text={logo_text} />
 
       {/* ── Hero ──────────────────────────────────────────────────────── */}
       <header className="ab-hero">
