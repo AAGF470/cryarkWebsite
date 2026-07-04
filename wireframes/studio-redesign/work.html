@@ -11,10 +11,11 @@
 </head>
 <body>
 
+<div class="backdrop"></div>
+
 <header class="mast">
   <div class="mast__in">
     <a class="mast__brand" href="index.html">guillen<em>.studio</em></a>
-    
     <nav>
       <a href="index.html">Home</a>
       <a class="is-active" href="work.html">Work</a>
@@ -26,55 +27,60 @@
 </header>
 
 <div class="wrap article-head">
-  <div class="aura aura--lavender" style="width:440px;height:440px;top:-120px;right:6%"></div>
   <h1 class="rv">Project &amp; work.</h1>
   <p class="sub rv">All projects across all types — games, developer tools, asset
     libraries, and programs.</p>
 </div>
 
-<div class="room rv" style="--room: var(--room-mint); --lc: var(--mint)">
-  <div class="line"><b>Featured</b></div>
-  <div class="grid grid--2" style="align-items:center">
-    <div>
-      <div class="chips">
-        <span class="chip" style="--cc: var(--mint)">In dev</span>
-        <span class="chip" style="--cc: var(--mint)">Blender</span>
-        <span class="chip" style="--cc: var(--mint)">Python</span>
-        <span class="chip" style="--cc: var(--mint)">Product offering</span>
+<!-- ── BAND · MINT — featured, two-column detail ────────────────────────── -->
+<div class="band rv" style="--bc: var(--mint)">
+  <div class="wrap">
+    <div class="line"><b>Featured</b></div>
+    <div class="detail">
+      <div>
+        <div class="chips">
+          <span class="chip" style="--cc: var(--mint)">In dev</span>
+          <span class="chip" style="--cc: var(--mint)">Blender</span>
+          <span class="chip" style="--cc: var(--mint)">Python</span>
+          <span class="chip" style="--cc: var(--mint)">Product offering</span>
+        </div>
+        <h2 class="t" style="margin-top:16px">Simply Simple Foliage</h2>
+        <p class="sub" style="margin-bottom:18px">Node-based foliage creation for
+          game development, animation, and digital art. The long read covers the
+          growth field, containers, and the case for honest limitations.</p>
+        <a class="lk" style="color: var(--mint)" href="project.html">Read the architecture essay →</a>
       </div>
-      <h2 class="t" style="margin-top:16px">Simply Simple Foliage</h2>
-      <p class="sub" style="margin-bottom:18px">Node-based foliage creation for
-        game development, animation, and digital art. The long read covers the
-        growth field, containers, and the case for honest limitations.</p>
-      <a class="lk" style="color: var(--mint)" href="project.html">Read the architecture essay →</a>
+      <div class="slab" style="--cc: var(--mint); aspect-ratio: 16/11"></div>
     </div>
-    <div class="slab" style="--cc: var(--mint); aspect-ratio: 16/11"></div>
   </div>
 </div>
 
-<div class="room rv" style="--room: var(--room-lav); --lc: var(--lavender)">
-  <div class="line"><b>The index</b></div>
-  <div class="rowlist">
-    <a class="rowitem" href="project.html" style="--cc: var(--mint)">
-      <span class="status" style="--cc: var(--mint)">In dev</span>
-      <span><h3>Simply Simple Foliage</h3>
-      <p>Node-based foliage creator on a Blender backend — growth fields, containers, append-only branch editing.</p></span>
-      <span class="meta">Blender · Python</span>
-    </a>
-    <a class="rowitem" href="#" style="--cc: var(--sky)">
-      <span class="status" style="--cc: var(--sky)">Released</span>
-      <span><h3>DERG</h3>
-      <p>Batch renderer for Blender scenes — query → design → execute per render. Built for NU Aerospace; now general-purpose.</p></span>
-      <span class="meta">Python · Blender · Rust</span>
-    </a>
-    <a class="rowitem" href="#" style="--cc: var(--peach)">
-      <span class="status" style="--cc: var(--peach)">In dev</span>
-      <span><h3>One Night Defense</h3>
-      <p>Wave-based FPS survival demo in Unity — charged throws, ragdoll physics, escalating waves.</p></span>
-      <span class="meta">Unity · C#</span>
-    </a>
+<!-- ── PLAIN — the index on the grid ────────────────────────────────────── -->
+<section class="blockp rv">
+  <div class="wrap">
+    <div class="line" style="--lc: var(--lavender)"><b>The index</b></div>
+    <div class="rowlist">
+      <a class="rowitem" href="project.html" style="--cc: var(--mint)">
+        <span class="status" style="--cc: var(--mint)">In dev</span>
+        <span><h3>Simply Simple Foliage</h3>
+        <p>Node-based foliage creator on a Blender backend — growth fields, containers, append-only branch editing.</p></span>
+        <span class="meta">Blender · Python</span>
+      </a>
+      <a class="rowitem" href="#" style="--cc: var(--sky)">
+        <span class="status" style="--cc: var(--sky)">Released</span>
+        <span><h3>DERG</h3>
+        <p>Batch renderer for Blender scenes — query → design → execute per render. Built for NU Aerospace; now general-purpose.</p></span>
+        <span class="meta">Python · Blender · Rust</span>
+      </a>
+      <a class="rowitem" href="#" style="--cc: var(--peach)">
+        <span class="status" style="--cc: var(--peach)">In dev</span>
+        <span><h3>One Night Defense</h3>
+        <p>Wave-based FPS survival demo in Unity — charged throws, ragdoll physics, escalating waves.</p></span>
+        <span class="meta">Unity · C#</span>
+      </a>
+    </div>
   </div>
-</div>
+</section>
 
 <footer>
   <div class="wrap colophon">

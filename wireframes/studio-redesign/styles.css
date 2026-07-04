@@ -1,9 +1,10 @@
 /* ═══════════════════════════════════════════════════════════════════════════
-   CALM LAB — guillen.studio redesign v3
+   CALM LAB — guillen.studio redesign v4
    Editorial-light · techie-moderate · dark · pastel · soft.
-   Neuralink-early, in dark mode. Sections are COLORED ROOMS — dark modes of
-   the pastels — not a unibody dark page. Semi-sharp softness (12–24px), one
-   soft sans, mono only as micro-labels, rules used sparingly.
+   Section treatments VARY: a fixed masked line-grid backdrop carries the
+   page (CubeSat-style), tinted hairline BANDS alternate with plain sections,
+   and a colored ROOM appears at most once per page as an accent moment.
+   Project pages are multi-column: sticky rail + prose, split figures, duos.
    ═══════════════════════════════════════════════════════════════════════════ */
 
 :root {
@@ -59,6 +60,23 @@ body {
 }
 
 ::selection { background: color-mix(in srgb, var(--lavender) 30%, transparent); color: var(--ink-1); }
+
+/* fixed backdrop — pastel glows + masked line grid (the CubeSat move) */
+.backdrop {
+  position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(ellipse 55% 45% at 82% -5%, color-mix(in srgb, var(--lavender) 9%, transparent), transparent 70%),
+    radial-gradient(ellipse 45% 38% at 8% 12%, color-mix(in srgb, var(--mint) 6%, transparent), transparent 70%);
+}
+.backdrop::after {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 90% 75% at 50% 0%, #000 25%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 75% at 50% 0%, #000 25%, transparent 80%);
+}
 
 .aura { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.10; pointer-events: none; }
 .aura--lavender { background: var(--lavender); }
@@ -137,6 +155,23 @@ body {
 }
 
 @media (max-width: 760px) { .room { padding: 44px 26px; margin: 14px 12px; } }
+
+/* BAND — full-width tinted strip with hairline borders (alternating rhythm) */
+.band {
+  padding: 72px 0;
+  margin: 44px 0;
+  background: color-mix(in srgb, var(--bc, var(--lavender)) 4%, rgba(255,255,255,0.012));
+  border-block: 1px solid color-mix(in srgb, var(--bc, var(--lavender)) 11%, transparent);
+}
+.band .line b { color: var(--bc, var(--accent)); }
+.band .line::after { background: color-mix(in srgb, var(--bc, var(--accent)) 18%, transparent); }
+
+/* plain block — sits directly on the grid backdrop */
+.blockp { padding: 64px 0; }
+
+/* two-column detail (text + media), CubeSat-style */
+.detail { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+@media (max-width: 860px) { .detail { grid-template-columns: 1fr; gap: 26px; } }
 
 /* dateline — techie-moderate section label */
 .line {
@@ -255,7 +290,50 @@ h2.t { font-size: clamp(26px, 3.2vw, 38px); margin-bottom: 12px; }
 .article-head h1 { font-size: clamp(36px, 4.8vw, 60px); max-width: 18ch; }
 .article-head .sub { font-size: 16.5px; margin-top: 20px; }
 
+/* project layout — sticky rail + content, no newspaper string */
+.projgrid {
+  display: grid; grid-template-columns: 292px minmax(0, 1fr);
+  gap: 56px; align-items: start; padding: 44px 0 72px;
+}
+.rail { position: sticky; top: 92px; display: grid; gap: 14px; }
+.railcard {
+  border-radius: var(--r-md); padding: 18px 20px;
+  background: color-mix(in srgb, var(--cc, var(--accent)) 6%, rgba(255,255,255,0.02));
+  border: 1px solid color-mix(in srgb, var(--cc, var(--accent)) 10%, transparent);
+}
+.railcard .lbl {
+  display: block; font-family: var(--mono); font-size: 10px; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--cc, var(--accent)); margin-bottom: 12px;
+}
+.milelist { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.milelist li { display: flex; gap: 10px; font-size: 12.5px; line-height: 1.45; color: var(--ink-3); align-items: baseline; }
+.milelist li .d { font-family: var(--mono); font-size: 11px; color: var(--sc, var(--ink-3)); flex-shrink: 0; }
+.milelist li.done { --sc: var(--mint); color: var(--ink-2); }
+.milelist li.active { --sc: var(--sky); color: var(--ink-1); font-weight: 600; }
+@media (max-width: 960px) {
+  .projgrid { grid-template-columns: 1fr; gap: 28px; }
+  .rail { position: static; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+}
+
+/* split — prose beside a figure, side by side */
+.split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 36px; align-items: start; margin: 28px 0 34px; }
+.split .figure { margin: 0; }
+@media (max-width: 900px) { .split { grid-template-columns: 1fr; } }
+
+/* duo — paired sub-points as two columns */
+.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 22px 0 30px; }
+.duo > div {
+  border-radius: var(--r-md); padding: 20px 22px;
+  background: color-mix(in srgb, var(--c, var(--accent)) 5%, rgba(255,255,255,0.02));
+}
+.duo h3 { font-size: 15.5px; margin: 0 0 8px; }
+.duo p { font-size: 13.5px; margin: 0; color: var(--ink-2); }
+@media (max-width: 800px) { .duo { grid-template-columns: 1fr; } }
+
 .prose { max-width: 700px; }
+.projgrid .prose { max-width: none; }
+.projgrid .prose > p { max-width: 66ch; }
 .prose h2 { font-size: 24px; margin: 0 0 14px; }
 .prose h2 .no { display: block; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--c, var(--accent)); margin-bottom: 10px; font-weight: 600; }
 .prose p { margin: 0 0 18px; font-size: 15px; }

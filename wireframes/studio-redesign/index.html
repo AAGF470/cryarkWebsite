@@ -11,6 +11,8 @@
 </head>
 <body>
 
+<div class="backdrop"></div>
+
 <header class="mast">
   <div class="mast__in">
     <a class="mast__brand" href="index.html">guillen<em>.studio</em></a>
@@ -24,10 +26,8 @@
   </div>
 </header>
 
-<!-- ── HERO — calm statement ────────────────────────────────────────────── -->
+<!-- ── HERO — calm statement on the grid ────────────────────────────────── -->
 <section class="hero">
-  <div class="aura aura--lavender" style="width:480px;height:480px;top:-140px;right:6%"></div>
-  <div class="aura aura--mint" style="width:300px;height:300px;bottom:-100px;left:-40px"></div>
   <div class="wrap">
     <p class="hero__kick rv">Angel A. Guillen Flores · Engineer — Game developer · <em>vivere est creare</em></p>
     <h1 class="rv">Building tools &amp; worlds, <span class="tint">documented</span> as they're made.</h1>
@@ -41,65 +41,69 @@
   </div>
 </section>
 
-<!-- ── ROOM · MINT — now building ───────────────────────────────────────── -->
-<div class="room rv" style="--room: var(--room-mint); --lc: var(--mint)">
-  <div class="line"><b>Now building</b></div>
-  <h2 class="t">On the workbench.</h2>
-  <p class="sub">Two tools in active development — progress and architecture notes
-    live on each project page.</p>
-  <div class="grid grid--2">
-    <a class="card" href="project.html" style="--cc: var(--mint)">
-      <div class="chips">
-        <span class="chip" style="--cc: var(--mint)">In dev</span>
-        <span class="chip" style="--cc: var(--mint)">Blender</span>
-        <span class="chip" style="--cc: var(--mint)">Python</span>
-      </div>
-      <h3>Simply Simple Foliage</h3>
-      <p>Node-based foliage creator for games, animation, and digital art. Own the
-        logic, not the stack — Blender does the heavy lifting.</p>
-      <span class="go">Architecture &amp; roadmap →</span>
-    </a>
-    <a class="card" href="#" style="--cc: var(--peach)">
-      <div class="chips">
-        <span class="chip" style="--cc: var(--peach)">In dev</span>
-        <span class="chip" style="--cc: var(--peach)">Unity</span>
-        <span class="chip" style="--cc: var(--peach)">C#</span>
-      </div>
-      <h3>One Night Defense</h3>
-      <p>Wave-based FPS survival demo — charged bowling-ball throws, full ragdoll
-        physics, five escalating waves.</p>
-      <span class="go">View project →</span>
-    </a>
+<!-- ── BAND · MINT — now building ───────────────────────────────────────── -->
+<div class="band rv" style="--bc: var(--mint)">
+  <div class="wrap">
+    <div class="line"><b>Now building</b></div>
+    <h2 class="t">On the workbench.</h2>
+    <p class="sub">Two tools in active development — progress and architecture notes
+      live on each project page.</p>
+    <div class="grid grid--2">
+      <a class="card" href="project.html" style="--cc: var(--mint)">
+        <div class="chips">
+          <span class="chip" style="--cc: var(--mint)">In dev</span>
+          <span class="chip" style="--cc: var(--mint)">Blender</span>
+          <span class="chip" style="--cc: var(--mint)">Python</span>
+        </div>
+        <h3>Simply Simple Foliage</h3>
+        <p>Node-based foliage creator for games, animation, and digital art. Own the
+          logic, not the stack — Blender does the heavy lifting.</p>
+        <span class="go">Architecture &amp; roadmap →</span>
+      </a>
+      <a class="card" href="#" style="--cc: var(--peach)">
+        <div class="chips">
+          <span class="chip" style="--cc: var(--peach)">In dev</span>
+          <span class="chip" style="--cc: var(--peach)">Unity</span>
+          <span class="chip" style="--cc: var(--peach)">C#</span>
+        </div>
+        <h3>One Night Defense</h3>
+        <p>Wave-based FPS survival demo — charged bowling-ball throws, full ragdoll
+          physics, five escalating waves.</p>
+        <span class="go">View project →</span>
+      </a>
+    </div>
   </div>
 </div>
 
-<!-- ── ROOM · SKY — devlog ──────────────────────────────────────────────── -->
-<div class="room rv" id="devlog" style="--room: var(--room-sky); --lc: var(--sky)">
-  <div class="line"><b>The devlog</b></div>
-  <h2 class="t">Latest from the bench.</h2>
-  <div class="rowlist" style="margin-top:28px">
-    <a class="rowitem" href="#" style="--cc: var(--sky)">
-      <span class="status" style="--cc: var(--sky)">Release</span>
-      <span><h3>DERG for MacOS</h3>
-      <p>Full dmg installation, no-dependency status — downloadable via Guillen Studio.</p></span>
-      <span class="meta">Python · MacOS</span>
-    </a>
-    <a class="rowitem" href="project.html" style="--cc: var(--mint)">
-      <span class="status" style="--cc: var(--mint)">Notes</span>
-      <span><h3>SSF: the core architecture, resolved</h3>
-      <p>Data flow, persistence, and sustainability — designed before the first line of core code.</p></span>
-      <span class="meta">Architecture</span>
-    </a>
-    <a class="rowitem" href="#" style="--cc: var(--peach)">
-      <span class="status" style="--cc: var(--peach)">Demo</span>
-      <span><h3>One Night Defense: demo shipped</h3>
-      <p>Five waves, ragdoll physics, five-minute runs — built to prove Unity proficiency end to end.</p></span>
-      <span class="meta">Unity · C#</span>
-    </a>
+<!-- ── PLAIN · devlog on the grid ───────────────────────────────────────── -->
+<section class="blockp rv" id="devlog">
+  <div class="wrap">
+    <div class="line" style="--lc: var(--sky)"><b>The devlog</b></div>
+    <h2 class="t">Latest from the bench.</h2>
+    <div class="rowlist" style="margin-top:28px">
+      <a class="rowitem" href="#" style="--cc: var(--sky)">
+        <span class="status" style="--cc: var(--sky)">Release</span>
+        <span><h3>DERG for MacOS</h3>
+        <p>Full dmg installation, no-dependency status — downloadable via Guillen Studio.</p></span>
+        <span class="meta">Python · MacOS</span>
+      </a>
+      <a class="rowitem" href="project.html" style="--cc: var(--mint)">
+        <span class="status" style="--cc: var(--mint)">Notes</span>
+        <span><h3>SSF: the core architecture, resolved</h3>
+        <p>Data flow, persistence, and sustainability — designed before the first line of core code.</p></span>
+        <span class="meta">Architecture</span>
+      </a>
+      <a class="rowitem" href="#" style="--cc: var(--peach)">
+        <span class="status" style="--cc: var(--peach)">Demo</span>
+        <span><h3>One Night Defense: demo shipped</h3>
+        <p>Five waves, ragdoll physics, five-minute runs — built to prove Unity proficiency end to end.</p></span>
+        <span class="meta">Unity · C#</span>
+      </a>
+    </div>
   </div>
-</div>
+</section>
 
-<!-- ── ROOM · LAVENDER — the index ──────────────────────────────────────── -->
+<!-- ── ROOM · LAVENDER — the one room accent: the index ─────────────────── -->
 <div class="room rv" style="--room: var(--room-lav); --lc: var(--lavender)">
   <div class="line"><b>All work</b></div>
   <h2 class="t">The index.</h2>
@@ -127,30 +131,32 @@
   <p style="margin-top:24px"><a class="lk" style="--c: var(--lavender); color: var(--lavender)" href="work.html">Full index →</a></p>
 </div>
 
-<!-- ── ROOM · PEACH — commissions ───────────────────────────────────────── -->
-<div class="room rv" id="services" style="--room: var(--room-peach); --lc: var(--peach)">
-  <div class="line"><b>Work with me</b></div>
-  <h2 class="t">Available for the right projects.</h2>
-  <div class="grid grid--3" style="margin-top:30px">
-    <div class="card" style="--cc: var(--peach)">
-      <h3>Product &amp; web design</h3>
-      <p>Design systems, sites, and interfaces — component-driven, built once,
-        themed forever.</p>
+<!-- ── BAND · PEACH — commissions ───────────────────────────────────────── -->
+<div class="band rv" id="services" style="--bc: var(--peach)">
+  <div class="wrap">
+    <div class="line"><b>Work with me</b></div>
+    <h2 class="t">Available for the right projects.</h2>
+    <div class="grid grid--3" style="margin-top:30px">
+      <div class="card" style="--cc: var(--peach)">
+        <h3>Product &amp; web design</h3>
+        <p>Design systems, sites, and interfaces — component-driven, built once,
+          themed forever.</p>
+      </div>
+      <div class="card" style="--cc: var(--mint)">
+        <h3>Web systems</h3>
+        <p>Component libraries, headless CMS setups, and the infrastructure to run
+          them. You own everything.</p>
+      </div>
+      <div class="card" style="--cc: var(--sky)">
+        <h3>Automation consulting</h3>
+        <p>Pipelines that remove the boring parts — batch processing, procedural
+          generation, glue that holds.</p>
+      </div>
     </div>
-    <div class="card" style="--cc: var(--mint)">
-      <h3>Web systems</h3>
-      <p>Component libraries, headless CMS setups, and the infrastructure to run
-        them. You own everything.</p>
+    <div class="hero__actions" style="margin-top:32px">
+      <a class="btn btn--solid" style="--accent: var(--peach)" href="mailto:hello@guillen.studio">Get in touch</a>
+      <a class="btn btn--soft" href="#">GitHub ↗</a>
     </div>
-    <div class="card" style="--cc: var(--sky)">
-      <h3>Automation consulting</h3>
-      <p>Pipelines that remove the boring parts — batch processing, procedural
-        generation, glue that holds.</p>
-    </div>
-  </div>
-  <div class="hero__actions" style="margin-top:32px">
-    <a class="btn btn--solid" style="--accent: var(--peach)" href="mailto:hello@guillen.studio">Get in touch</a>
-    <a class="btn btn--soft" href="#">GitHub ↗</a>
   </div>
 </div>
 
