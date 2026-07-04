@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Work — guillen.studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav__logo" href="index.html">A<em>G</em></a>
+  <a class="nav__link" href="index.html">Home</a>
+  <a class="nav__link is-active" href="work.html">Work</a>
+  <a class="nav__link" href="index.html#devlog">Devlog</a>
+  <a class="nav__link" href="index.html#about">About</a>
+  <a class="nav__cta" href="mailto:hello@guillen.studio">Get in touch</a>
+</nav>
+
+<section class="hero" style="min-height:52vh;padding-bottom:40px">
+  <div class="aura aura--lavender" style="width:480px;height:480px;top:-100px;right:12%"></div>
+  <div class="aura aura--mint" style="width:300px;height:300px;bottom:-60px;left:2%"></div>
+  <div class="wrap wrap--full">
+    <p class="kicker">Project &amp; work</p>
+    <h1 style="font-size:clamp(40px,6vw,76px)">Everything on the board.</h1>
+    <p class="hero__role">All projects across all types — games, developer tools,
+      asset libraries, and programs.</p>
+  </div>
+</section>
+
+<section style="padding-top:20px">
+  <div class="wrap wrap--full">
+
+    <!-- featured — big soft slab in the project's identity color -->
+    <a class="card" href="project.html" style="--tint: var(--mint); display:grid; grid-template-columns: 1.1fr 0.9fr; gap:40px; align-items:center; padding:46px; margin-bottom:30px">
+      <div>
+        <div class="chips">
+          <span class="chip chip--solid" style="--chip: var(--mint)">Featured</span>
+          <span class="chip" style="--chip: var(--mint)">In dev</span>
+          <span class="chip" style="--chip: var(--mint)">Blender</span>
+          <span class="chip" style="--chip: var(--mint)">Python</span>
+          <span class="chip" style="--chip: var(--mint)">Product offering</span>
+        </div>
+        <h3 style="font-size:36px">Simply Simple Foliage</h3>
+        <p style="font-size:17px">A node-based foliage creator for game development,
+          animation, and digital art. The architecture essay covers the growth field,
+          containers, and why SSF owns the logic — never the stack.</p>
+        <span class="go">View project →</span>
+      </div>
+      <div style="aspect-ratio:16/11;border-radius:22px;background:
+        radial-gradient(circle at 30% 70%, color-mix(in srgb, var(--mint) 34%, transparent), transparent 60%),
+        radial-gradient(circle at 75% 25%, color-mix(in srgb, var(--sky) 26%, transparent), transparent 55%),
+        var(--ink-2); box-shadow: inset 0 1px 0 rgba(255,255,255,0.05)"></div>
+    </a>
+
+    <div class="grid grid--2">
+      <a class="card" href="#" style="--tint: var(--sky)">
+        <div class="chips">
+          <span class="chip chip--solid" style="--chip: var(--sky)">Released</span>
+          <span class="chip" style="--chip: var(--sky)">Blender</span>
+          <span class="chip" style="--chip: var(--sky)">MacOS</span>
+          <span class="chip" style="--chip: var(--sky)">Windows</span>
+        </div>
+        <h3>DERG</h3>
+        <p>A desktop app for batch rendering Blender scenes with partial procedural
+          generation and level scripting. Renders a decision space, not a scene —
+          a designer script makes choices before every single render.</p>
+        <span class="go">View project →</span>
+      </a>
+      <a class="card" href="#" style="--tint: var(--peach)">
+        <div class="chips">
+          <span class="chip chip--solid" style="--chip: var(--peach)">In dev</span>
+          <span class="chip" style="--chip: var(--peach)">Unity</span>
+          <span class="chip" style="--chip: var(--peach)">C#</span>
+        </div>
+        <h3>One Night Defense</h3>
+        <p>Wave-based FPS survival: five escalating zombie waves, charged bowling-ball
+          throws, full ragdoll physics, and a five-minute timer keeping every run
+          tense. Built to demonstrate Unity proficiency end to end.</p>
+        <span class="go">View project →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <b style="color:var(--tx-1);font-size:17px">guillen.studio</b>
+        <p class="foot__motto">vivere est creare</p>
+        <small>© 2026 Angel A. Guillen Flores</small>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="work.html">Work</a>
+        <a href="index.html#devlog">Devlog</a>
+        <a href="index.html#about">About</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

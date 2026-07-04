@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Angel A. Guillen — guillen.studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav__logo" href="index.html">A<em>G</em></a>
+  <a class="nav__link is-active" href="index.html">Home</a>
+  <a class="nav__link" href="work.html">Work</a>
+  <a class="nav__link" href="#devlog">Devlog</a>
+  <a class="nav__link" href="#about">About</a>
+  <a class="nav__cta" href="mailto:hello@guillen.studio">Get in touch</a>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="aura aura--lavender" style="width:560px;height:560px;top:-120px;right:6%"></div>
+  <div class="aura aura--mint" style="width:420px;height:420px;bottom:-80px;left:-60px"></div>
+  <div class="aura aura--rose" style="width:300px;height:300px;top:38%;left:44%"></div>
+  <div class="wrap">
+    <p class="hero__motto">vivere est creare — to live is to create</p>
+    <h1>Angel A. Guillen<span class="soft">builds tools &amp; worlds.</span></h1>
+    <p class="hero__role">Engineer and game developer. I design procedural systems,
+      developer tools, and games — and I write down how they're built as I go.</p>
+    <div class="hero__actions">
+      <a class="btn btn--solid" href="work.html">View work</a>
+      <a class="btn btn--soft" href="#devlog">Read the devlog</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── NOW BUILDING ─────────────────────────────────────────────────────── -->
+<section>
+  <div class="aura aura--sky" style="width:380px;height:380px;top:0;right:-100px"></div>
+  <div class="wrap">
+    <p class="kicker" style="--kick: var(--mint)">Now building</p>
+    <h2 class="sec-title">On the workbench.</h2>
+    <p class="sec-sub">Two tools in active development — architecture essays and
+      progress live on each project page.</p>
+    <div class="grid grid--2">
+      <a class="card" href="project.html" style="--tint: var(--mint)">
+        <div class="chips">
+          <span class="chip chip--solid" style="--chip: var(--mint)">In dev</span>
+          <span class="chip" style="--chip: var(--mint)">Blender</span>
+          <span class="chip" style="--chip: var(--mint)">Python</span>
+          <span class="chip" style="--chip: var(--mint)">Product</span>
+        </div>
+        <h3>Simply Simple Foliage</h3>
+        <p>A node-based foliage creator for game development, animation, and digital
+          art. Own the logic, not the stack: Blender does the heavy lifting, SSF owns
+          the ideas.</p>
+        <span class="go">Architecture &amp; roadmap →</span>
+      </a>
+      <a class="card" href="#" style="--tint: var(--peach)">
+        <div class="chips">
+          <span class="chip chip--solid" style="--chip: var(--peach)">In dev</span>
+          <span class="chip" style="--chip: var(--peach)">Unity</span>
+          <span class="chip" style="--chip: var(--peach)">C#</span>
+        </div>
+        <h3>One Night Defense</h3>
+        <p>A wave-based FPS survival demo — charge and hurl bowling balls through five
+          escalating zombie waves, with fully simulated ragdoll physics doing the
+          comedy.</p>
+        <span class="go">View project →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── DEVLOG ───────────────────────────────────────────────────────────── -->
+<section id="devlog">
+  <div class="wrap">
+    <p class="kicker" style="--kick: var(--sky)">Devlog</p>
+    <h2 class="sec-title">Latest from the bench.</h2>
+    <p class="sec-sub">Build notes, releases, and the occasional hard-won lesson.</p>
+    <div class="grid grid--2">
+      <a class="card" href="#" style="--tint: var(--sky)">
+        <div class="chips">
+          <span class="chip" style="--chip: var(--sky)">Python</span>
+          <span class="chip" style="--chip: var(--sky)">Blender</span>
+          <span class="chip" style="--chip: var(--sky)">MacOS</span>
+        </div>
+        <h3>DERG for MacOS</h3>
+        <p>Full dmg installation and no-dependency status — DERG's batch renderer is
+          now a first-class citizen on Mac, downloadable via Guillen Studio.</p>
+        <span class="go">Read entry →</span>
+      </a>
+      <div class="card" style="--tint: var(--lavender)">
+        <div class="chips"><span class="chip">Meta</span></div>
+        <h3>More entries incoming</h3>
+        <p>SSF's core architecture series is being written as the foundational code
+          lands — the growth field, containers, and the disable/delete system each
+          get their own entry.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── RELEASED WORK ────────────────────────────────────────────────────── -->
+<section>
+  <div class="aura aura--peach" style="width:420px;height:420px;bottom:-120px;right:10%"></div>
+  <div class="wrap">
+    <p class="kicker" style="--kick: var(--rose)">Selected work</p>
+    <h2 class="sec-title">Shipped &amp; running.</h2>
+    <div class="grid grid--2">
+      <a class="card" href="work.html" style="--tint: var(--sky)">
+        <div class="chips">
+          <span class="chip chip--solid" style="--chip: var(--sky)">Released</span>
+          <span class="chip" style="--chip: var(--sky)">Python</span>
+          <span class="chip" style="--chip: var(--sky)">Blender</span>
+          <span class="chip" style="--chip: var(--sky)">Rust</span>
+        </div>
+        <h3>DERG</h3>
+        <p>A batch rendering pipeline for Blender that runs a designer script before
+          every render — each output in a batch is a unique variation of the same
+          scene. Built for NU Aerospace; re-architected into a general-purpose tool.</p>
+        <span class="go">View project →</span>
+      </a>
+      <a class="card" href="work.html" style="--tint: var(--lavender)">
+        <div class="chips"><span class="chip">Everything else</span></div>
+        <h3>The full board</h3>
+        <p>Games, developer tools, asset libraries, and programs — every project
+          across every type, with status, stack, and the code behind them.</p>
+        <span class="go">Browse all work →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── WORK WITH ME ─────────────────────────────────────────────────────── -->
+<section id="about">
+  <div class="wrap">
+    <p class="kicker" style="--kick: var(--butter)">Work with me</p>
+    <h2 class="sec-title">Available for the right projects.</h2>
+    <p class="sec-sub">Alongside my own tools, I take on selected work:</p>
+    <div class="grid grid--3">
+      <div class="card" style="--tint: var(--butter)">
+        <h3>Product &amp; web design</h3>
+        <p>Design systems, sites, and interfaces with a component-driven approach —
+          built once, themed forever.</p>
+      </div>
+      <div class="card" style="--tint: var(--mint)">
+        <h3>Web systems</h3>
+        <p>Component libraries, headless CMS setups, and the infrastructure to run
+          them — you own everything.</p>
+      </div>
+      <div class="card" style="--tint: var(--sky)">
+        <h3>Automation consulting</h3>
+        <p>Pipelines that remove the boring parts — batch processing, procedural
+          generation, and glue that holds.</p>
+      </div>
+    </div>
+    <div class="hero__actions" style="margin-top:40px">
+      <a class="btn btn--solid" href="mailto:hello@guillen.studio">Get in touch</a>
+      <a class="btn btn--soft" href="#">GitHub ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <b style="color:var(--tx-1);font-size:17px">guillen.studio</b>
+        <p class="foot__motto">vivere est creare</p>
+        <small>© 2026 Angel A. Guillen Flores</small>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="work.html">Work</a>
+        <a href="#devlog">Devlog</a>
+        <a href="#about">About</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
