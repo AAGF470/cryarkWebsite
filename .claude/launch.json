@@ -2,6 +2,18 @@
   "version": "0.0.1",
   "configurations": [
     {
+      "name": "wireframes",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "4318",
+        "--directory",
+        "wireframes"
+      ],
+      "port": 4318
+    },
+    {
       "name": "guillenwebsites",
       "runtimeExecutable": "npm",
       "runtimeArgs": [

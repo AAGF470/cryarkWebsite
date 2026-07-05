@@ -16,24 +16,33 @@
 <div class="shell">
 
 <aside class="side">
-  <a class="side__brand" href="index.html">guillen<em>.studio</em></a>
+  <div class="side__head">
+    <a class="side__brand" href="index.html">guillen<em>.studio</em></a>
+    <button class="side__toggle" aria-label="Collapse sidebar">‹</button>
+  </div>
   <nav class="side__nav">
     <span class="lbl">Navigate</span>
-    <a href="index.html">Home</a>
-    <a class="on" href="work.html">Work</a>
-    <a href="index.html#devlog">Devlog</a>
-    <a href="index.html#services">Commissions</a>
+    <a data-ic="H" href="index.html">Home</a>
+    <a class="on" data-ic="W" href="work.html">Work</a>
+    <a data-ic="D" href="index.html#devlog">Devlog</a>
+    <a data-ic="C" href="index.html#services">Commissions</a>
   </nav>
-  <div class="side__stat">
-    <span class="lbl">Status</span>
-    bench · <b>2 active builds</b><br>
-    commissions · <b class="ok">open</b><br>
-    latest · <b>DERG for MacOS</b>
+  <div class="side__outline" hidden>
+    <span class="lbl">On this page</span>
+    <nav class="side__toc"></nav>
   </div>
-  <a class="side__cta" href="mailto:hello@guillen.studio">Get in touch</a>
-  <div class="side__foot">
-    <em>vivere est creare</em>
-    © 2026 Angel A. Guillen Flores
+  <div class="side__tail">
+    <div class="side__stat">
+      <span class="lbl">Status</span>
+      bench · <b>2 active builds</b><br>
+      commissions · <b class="ok">open</b><br>
+      latest · <b>DERG for MacOS</b>
+    </div>
+    <a class="side__cta" href="mailto:hello@guillen.studio">Get in touch</a>
+    <div class="side__foot">
+      <em>vivere est creare</em>
+      © 2026 Angel A. Guillen Flores
+    </div>
   </div>
 </aside>
 
@@ -215,5 +224,6 @@
   });
 </script>
 
+<script src="sidebar.js"></script>
 </body>
 </html>
