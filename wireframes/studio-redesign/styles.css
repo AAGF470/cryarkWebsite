@@ -16,8 +16,8 @@
   --elev-1: #17161e;
   --elev-2: #1d1c26;
   --elev-3: #24222e;
-  --line-1: rgba(255,255,255,0.07);
-  --edge:   rgba(255,255,255,0.09);   /* lit-from-above top highlight */
+  --line-1: rgba(255,255,255,0.11);
+  --edge:   rgba(255,255,255,0.12);   /* lit-from-above top highlight */
 
   --ink-1: #f4f2ee;
   --ink-2: #c8c4bd;
@@ -33,7 +33,8 @@
   --rose:     var(--lavender);
   --butter:   var(--mint);
 
-  --accent: var(--lavender);
+  /* mint leads the brand; sky supports; lavender is a rare tertiary */
+  --accent: var(--mint);
 
   /* the rooms — dark modes of the cool pastels only */
   --room-mint:  #15211c;
@@ -73,15 +74,15 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-::selection { background: color-mix(in srgb, var(--lavender) 30%, transparent); color: var(--ink-1); }
+::selection { background: color-mix(in srgb, var(--mint) 30%, transparent); color: var(--ink-1); }
 
 /* fixed backdrop — pastel glows + masked line grid (the CubeSat move) */
 .backdrop {
   position: fixed; inset: 0; z-index: -1; pointer-events: none;
   background:
-    radial-gradient(ellipse 55% 45% at 82% -5%, color-mix(in srgb, var(--lavender) 14%, transparent), transparent 70%),
-    radial-gradient(ellipse 45% 38% at 8% 12%, color-mix(in srgb, var(--mint) 9%, transparent), transparent 70%),
-    radial-gradient(ellipse 50% 40% at 60% 105%, color-mix(in srgb, var(--peach) 6%, transparent), transparent 70%);
+    radial-gradient(ellipse 55% 45% at 82% -5%, color-mix(in srgb, var(--mint) 12%, transparent), transparent 70%),
+    radial-gradient(ellipse 45% 38% at 8% 12%, color-mix(in srgb, var(--sky) 9%, transparent), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 60% 105%, color-mix(in srgb, var(--sky) 6%, transparent), transparent 70%);
 }
 /* grain — kills gradient banding, gives the dark surface a physical feel */
 .backdrop::before {
@@ -171,7 +172,7 @@ body {
   padding: 64px 56px;
   border-radius: var(--r-room);
   background: var(--room, var(--room-slate));
-  border: 1px solid color-mix(in srgb, var(--lc, var(--accent)) 14%, var(--line-1));
+  border: 1px solid color-mix(in srgb, var(--lc, var(--accent)) 22%, var(--line-1));
   box-shadow: inset 0 1px 0 var(--edge);
   position: relative;
   overflow: hidden;
@@ -186,7 +187,7 @@ body {
   background: linear-gradient(180deg,
     color-mix(in srgb, var(--bc, var(--lavender)) 7%, var(--elev-1)),
     color-mix(in srgb, var(--bc, var(--lavender)) 3%, var(--paper)));
-  border-block: 1px solid color-mix(in srgb, var(--bc, var(--lavender)) 16%, transparent);
+  border-block: 1px solid color-mix(in srgb, var(--bc, var(--lavender)) 24%, transparent);
   box-shadow: inset 0 1px 0 color-mix(in srgb, var(--bc, var(--lavender)) 12%, transparent);
 }
 .band .line b { color: var(--bc, var(--accent)); }
@@ -227,7 +228,7 @@ h2.t { font-size: clamp(28px, 3.6vw, 44px); margin-bottom: 14px; }
 
 .hero h1 { font-size: clamp(46px, 6.4vw, 86px); max-width: 16ch; }
 .hero h1 .tint {
-  background: linear-gradient(100deg, var(--lavender) 10%, var(--mint) 90%);
+  background: linear-gradient(100deg, var(--mint) 10%, var(--sky) 90%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 
@@ -261,13 +262,15 @@ h2.t { font-size: clamp(28px, 3.6vw, 44px); margin-bottom: 14px; }
 .grid { display: grid; gap: 18px; }
 .grid--2 { grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); }
 .grid--3 { grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); }
+.grid--svc { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 1000px) { .grid--svc { grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); } }
 
 .card {
   display: block; text-decoration: none; color: inherit;
   background: linear-gradient(180deg,
     color-mix(in srgb, var(--cc, var(--accent)) 9%, var(--elev-2)),
     color-mix(in srgb, var(--cc, var(--accent)) 5%, var(--elev-1)));
-  border: 1px solid color-mix(in srgb, var(--cc, var(--accent)) 16%, var(--line-1));
+  border: 1px solid color-mix(in srgb, var(--cc, var(--accent)) 24%, var(--line-1));
   border-radius: var(--r-md);
   padding: 26px 28px;
   box-shadow: inset 0 1px 0 var(--edge);
@@ -275,7 +278,7 @@ h2.t { font-size: clamp(28px, 3.6vw, 44px); margin-bottom: 14px; }
 }
 .card:hover {
   transform: translateY(-3px);
-  border-color: color-mix(in srgb, var(--cc, var(--accent)) 32%, var(--line-1));
+  border-color: color-mix(in srgb, var(--cc, var(--accent)) 42%, var(--line-1));
   box-shadow: inset 0 1px 0 var(--edge),
     0 20px 44px -20px color-mix(in srgb, var(--cc, var(--accent)) 38%, transparent);
 }
@@ -337,7 +340,7 @@ h2.t { font-size: clamp(28px, 3.6vw, 44px); margin-bottom: 14px; }
 /* media slab */
 .slab {
   border-radius: var(--r-md);
-  border: 1px solid color-mix(in srgb, var(--cc, var(--mint)) 18%, var(--line-1));
+  border: 1px solid color-mix(in srgb, var(--cc, var(--mint)) 26%, var(--line-1));
   box-shadow: inset 0 1px 0 var(--edge);
   background:
     linear-gradient(color-mix(in srgb, var(--cc, var(--mint)) 7%, transparent) 1px, transparent 1px),
@@ -364,7 +367,7 @@ h2.t { font-size: clamp(28px, 3.6vw, 44px); margin-bottom: 14px; }
 .railcard {
   border-radius: var(--r-md); padding: 18px 20px;
   background: color-mix(in srgb, var(--cc, var(--accent)) 6%, var(--elev-1));
-  border: 1px solid color-mix(in srgb, var(--cc, var(--accent)) 13%, var(--line-1));
+  border: 1px solid color-mix(in srgb, var(--cc, var(--accent)) 20%, var(--line-1));
   box-shadow: inset 0 1px 0 var(--edge);
 }
 .railcard .lbl {
@@ -392,7 +395,7 @@ h2.t { font-size: clamp(28px, 3.6vw, 44px); margin-bottom: 14px; }
 .duo > div {
   border-radius: var(--r-md); padding: 20px 22px;
   background: color-mix(in srgb, var(--c, var(--accent)) 5%, var(--elev-1));
-  border: 1px solid color-mix(in srgb, var(--c, var(--accent)) 12%, var(--line-1));
+  border: 1px solid color-mix(in srgb, var(--c, var(--accent)) 20%, var(--line-1));
   box-shadow: inset 0 1px 0 var(--edge);
 }
 .duo h3 { font-size: 15.5px; margin: 0 0 8px; }
@@ -410,7 +413,7 @@ h2.t { font-size: clamp(28px, 3.6vw, 44px); margin-bottom: 14px; }
 .pull {
   border-radius: var(--r-md);
   background: color-mix(in srgb, var(--c, var(--accent)) 9%, var(--elev-1));
-  border: 1px solid color-mix(in srgb, var(--c, var(--accent)) 18%, var(--line-1));
+  border: 1px solid color-mix(in srgb, var(--c, var(--accent)) 26%, var(--line-1));
   box-shadow: inset 0 1px 0 var(--edge);
   padding: 22px 26px; margin: 24px 0;
   font-size: 16.5px; line-height: 1.55; color: var(--ink-1);
@@ -450,7 +453,7 @@ h2.t { font-size: clamp(28px, 3.6vw, 44px); margin-bottom: 14px; }
 @media (max-width: 700px) { .stepr { grid-template-columns: 34px 1fr; } .stepr p { grid-column: 2; } }
 
 /* ── footer ──────────────────────────────────────────────────────────────── */
-footer { padding: 56px 0 48px; }
+footer { padding: 48px 0; margin-top: 48px; border-top: 1px solid var(--line-1); }
 .colophon { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 24px; align-items: baseline; }
 .colophon b { font-size: 17px; color: var(--ink-1); font-weight: 800; }
 .colophon .motto { font-style: italic; color: var(--accent); font-size: 13.5px; margin: 4px 0 0; font-weight: 600; }
