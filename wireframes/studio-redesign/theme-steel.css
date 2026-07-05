@@ -1,0 +1,42 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   VARIANT · STEEL — dark mode, my pick.
+   The ghost/translucent aesthetic committed to the colors it works with:
+   steel blue, silver, graphite. Monochromatic cool — no green, no purple.
+   Loads AFTER styles.css and only overrides tokens + a few moments.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --paper:  #0f1216;
+  --elev-1: #151a21;
+  --elev-2: #1b212b;
+  --elev-3: #222a36;
+  --line-1: rgba(214, 228, 244, 0.13);
+  --edge:   rgba(214, 228, 244, 0.14);
+
+  --ink-1: #eef2f7;
+  --ink-2: #c2ccd7;
+  --ink-3: #8792a0;
+
+  /* the trio collapses to steel: ice blue leads, silver supports */
+  --mint:     #9dc6e8;   /* steel blue — primary */
+  --sky:      #c9d3de;   /* silver */
+  --lavender: #7f9cc0;   /* slate blue — rare */
+
+  --room-mint:  #151d28;
+  --room-sky:   #161b24;
+  --room-lav:   #141922;
+  --room-slate: #171d26;
+}
+
+/* glows go cold */
+.backdrop {
+  background:
+    radial-gradient(ellipse 55% 45% at 82% -5%, color-mix(in srgb, var(--mint) 13%, transparent), transparent 70%),
+    radial-gradient(ellipse 45% 38% at 8% 12%, color-mix(in srgb, var(--sky) 8%, transparent), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 60% 105%, color-mix(in srgb, var(--lavender) 7%, transparent), transparent 70%);
+}
+
+.hero h1 .tint {
+  background: linear-gradient(100deg, var(--mint) 10%, var(--sky) 90%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}

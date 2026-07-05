@@ -265,12 +265,11 @@ h2.t { font-size: clamp(28px, 3.6vw, 44px); margin-bottom: 14px; }
 .grid--svc { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 @media (max-width: 1000px) { .grid--svc { grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); } }
 
+/* cards — neutral silver surfaces; color lives in accents, not the fill */
 .card {
   display: block; text-decoration: none; color: inherit;
-  background: linear-gradient(180deg,
-    color-mix(in srgb, var(--cc, var(--accent)) 9%, var(--elev-2)),
-    color-mix(in srgb, var(--cc, var(--accent)) 5%, var(--elev-1)));
-  border: 1px solid color-mix(in srgb, var(--cc, var(--accent)) 24%, var(--line-1));
+  background: linear-gradient(180deg, var(--elev-2), var(--elev-1));
+  border: 1px solid var(--line-1);
   border-radius: var(--r-md);
   padding: 26px 28px;
   box-shadow: inset 0 1px 0 var(--edge);
@@ -302,8 +301,8 @@ h2.t { font-size: clamp(28px, 3.6vw, 44px); margin-bottom: 14px; }
   transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease, box-shadow 0.25s ease;
 }
 .rowitem:hover {
-  background: color-mix(in srgb, var(--cc, var(--accent)) 7%, var(--elev-2));
-  border-color: color-mix(in srgb, var(--cc, var(--accent)) 26%, var(--line-1));
+  background: var(--elev-2);
+  border-color: color-mix(in srgb, var(--cc, var(--accent)) 30%, var(--line-1));
   box-shadow: inset 0 1px 0 var(--edge),
     0 14px 34px -18px color-mix(in srgb, var(--cc, var(--accent)) 30%, transparent);
   transform: translateX(4px);
@@ -360,14 +359,14 @@ h2.t { font-size: clamp(28px, 3.6vw, 44px); margin-bottom: 14px; }
 
 /* project layout — sticky rail + content, no newspaper string */
 .projgrid {
-  display: grid; grid-template-columns: 292px minmax(0, 1fr);
-  gap: 56px; align-items: start; padding: 44px 0 72px;
+  display: grid; grid-template-columns: 320px minmax(0, 1fr);
+  gap: 64px; align-items: start; padding: 44px 0 72px;
 }
 .rail { position: sticky; top: 92px; display: grid; gap: 14px; }
 .railcard {
   border-radius: var(--r-md); padding: 18px 20px;
-  background: color-mix(in srgb, var(--cc, var(--accent)) 6%, var(--elev-1));
-  border: 1px solid color-mix(in srgb, var(--cc, var(--accent)) 20%, var(--line-1));
+  background: var(--elev-1);
+  border: 1px solid color-mix(in srgb, var(--cc, var(--accent)) 18%, var(--line-1));
   box-shadow: inset 0 1px 0 var(--edge);
 }
 .railcard .lbl {
@@ -394,17 +393,18 @@ h2.t { font-size: clamp(28px, 3.6vw, 44px); margin-bottom: 14px; }
 .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 22px 0 30px; }
 .duo > div {
   border-radius: var(--r-md); padding: 20px 22px;
-  background: color-mix(in srgb, var(--c, var(--accent)) 5%, var(--elev-1));
-  border: 1px solid color-mix(in srgb, var(--c, var(--accent)) 20%, var(--line-1));
+  background: var(--elev-1);
+  border: 1px solid color-mix(in srgb, var(--c, var(--accent)) 18%, var(--line-1));
   box-shadow: inset 0 1px 0 var(--edge);
 }
 .duo h3 { font-size: 15.5px; margin: 0 0 8px; }
 .duo p { font-size: 13.5px; margin: 0; color: var(--ink-2); }
 @media (max-width: 800px) { .duo { grid-template-columns: 1fr; } }
 
-.prose { max-width: 700px; }
+.prose { max-width: 760px; }
 .projgrid .prose { max-width: none; }
-.projgrid .prose > p { max-width: 66ch; }
+.projgrid .prose > p { max-width: 78ch; }
+.projgrid .prose h2 { font-size: 27px; }
 .prose h2 { font-size: 24px; margin: 0 0 14px; }
 .prose h2 .no { display: block; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--c, var(--accent)); margin-bottom: 10px; font-weight: 600; }
 .prose p { margin: 0 0 18px; font-size: 15px; }
@@ -412,8 +412,9 @@ h2.t { font-size: clamp(28px, 3.6vw, 44px); margin-bottom: 14px; }
 
 .pull {
   border-radius: var(--r-md);
-  background: color-mix(in srgb, var(--c, var(--accent)) 9%, var(--elev-1));
-  border: 1px solid color-mix(in srgb, var(--c, var(--accent)) 26%, var(--line-1));
+  background: var(--elev-1);
+  border: 1px solid var(--line-1);
+  border-left: 3px solid var(--c, var(--accent));
   box-shadow: inset 0 1px 0 var(--edge);
   padding: 22px 26px; margin: 24px 0;
   font-size: 16.5px; line-height: 1.55; color: var(--ink-1);
