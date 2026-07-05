@@ -3,219 +3,327 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Steel variant — guillen.studio</title>
+<title>Workbench variant — guillen.studio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="theme-steel.css">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ═════════════════════════════════════════════════════════════════════════
+   VARIANT · THE WORKBENCH — dark design variant (not a recolor).
+   IDE/journal layout: fixed sidebar, ledger devlog, table index.
+   Mono-forward, sharp corners, one steel accent. Density over spectacle.
+   ═════════════════════════════════════════════════════════════════════════ */
+:root {
+  --bg: #101318; --bg2: #14181f; --bg3: #1a202a;
+  --line: rgba(210, 226, 244, 0.13); --line-soft: rgba(210, 226, 244, 0.07);
+  --ink1: #edf1f7; --ink2: #b9c3cf; --ink3: #7f8a99;
+  --acc: #9dc6e8; --acc-dim: #5d7f9d;
+  --mono: 'JetBrains Mono', monospace;
+  --sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --disp: 'Bricolage Grotesque', sans-serif;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink2);
+  font-family: var(--sans); font-size: 15px; line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: color-mix(in srgb, var(--acc) 30%, transparent); color: var(--ink1); }
+a { color: inherit; }
+h1,h2,h3 { font-family: var(--disp); color: var(--ink1); margin: 0; letter-spacing: -0.02em; }
+
+.rv { opacity: 0; transform: translateY(10px); transition: opacity 0.45s ease, transform 0.45s ease; }
+.rv.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; transition: none; } }
+
+.shell { display: grid; grid-template-columns: 264px minmax(0, 1fr); min-height: 100vh; }
+
+/* ── SIDEBAR — the whole nav & identity lives here ─────────────────────── */
+.side {
+  position: sticky; top: 0; height: 100vh;
+  border-right: 1px solid var(--line);
+  padding: 30px 26px; display: flex; flex-direction: column; gap: 34px;
+  background: var(--bg2);
+}
+.side .brand { font-family: var(--disp); font-weight: 700; font-size: 17px; color: var(--ink1); text-decoration: none; }
+.side .brand em { font-style: normal; color: var(--acc); }
+.side .lbl {
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--ink3); display: block; margin-bottom: 12px;
+}
+.side nav { display: grid; gap: 2px; }
+.side nav a {
+  font-family: var(--mono); font-size: 12.5px; text-decoration: none;
+  color: var(--ink2); padding: 7px 10px; border-left: 2px solid transparent;
+}
+.side nav a:hover { color: var(--ink1); background: var(--bg3); }
+.side nav a.on { color: var(--acc); border-left-color: var(--acc); background: var(--bg3); }
+.side .stat { font-family: var(--mono); font-size: 11px; line-height: 2; color: var(--ink3); }
+.side .stat b { color: var(--ink2); font-weight: 500; }
+.side .stat .ok { color: var(--acc); }
+.side .foot { margin-top: auto; font-family: var(--mono); font-size: 10.5px; color: var(--ink3); }
+.side .foot em { color: var(--acc-dim); font-style: italic; display: block; margin-bottom: 6px; }
+
+/* ── MAIN ──────────────────────────────────────────────────────────────── */
+main { padding: 0 clamp(28px, 4.5vw, 72px) 80px; max-width: 1240px; }
+
+.sect { padding-top: 64px; }
+.sect > .rule {
+  display: flex; align-items: baseline; gap: 14px;
+  border-bottom: 1px solid var(--line); padding-bottom: 10px; margin-bottom: 26px;
+}
+.sect > .rule b {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--acc); font-weight: 600;
+}
+.sect > .rule span { font-family: var(--mono); font-size: 10.5px; color: var(--ink3); margin-left: auto; }
+
+/* manifest — replaces the hero */
+.manifest { padding-top: 72px; }
+.manifest .k { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink3); margin: 0 0 20px; }
+.manifest .k em { color: var(--acc); font-style: italic; text-transform: none; }
+.manifest h1 { font-size: clamp(34px, 4.2vw, 58px); line-height: 1.06; max-width: 20ch; }
+.manifest h1 .a { color: var(--acc); }
+.manifest p.lead { max-width: 60ch; font-size: 16px; margin: 22px 0 0; }
+.manifest .acts { display: flex; gap: 10px; margin-top: 30px; }
+.bt {
+  font-family: var(--mono); font-size: 12px; font-weight: 600; text-decoration: none;
+  padding: 11px 20px; border: 1px solid var(--line); color: var(--ink1);
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.bt:hover { background: var(--bg3); border-color: var(--acc-dim); }
+.bt.pri { background: var(--acc); border-color: var(--acc); color: #10151c; }
+.bt.pri:hover { background: color-mix(in srgb, var(--acc) 86%, #fff); }
+
+/* now building — wide workrows, not cards */
+.workrow {
+  display: grid; grid-template-columns: minmax(180px, 240px) minmax(0, 1fr) 200px;
+  gap: 28px; align-items: start;
+  padding: 22px 0; border-bottom: 1px solid var(--line-soft);
+  text-decoration: none;
+}
+.workrow:hover h3 { color: var(--acc); }
+.workrow h3 { font-size: 20px; transition: color 0.15s ease; }
+.workrow .sub { font-family: var(--mono); font-size: 10.5px; color: var(--ink3); display: block; margin-top: 6px; }
+.workrow p { margin: 0; font-size: 14px; }
+.workrow .pr { font-family: var(--mono); font-size: 10.5px; color: var(--ink3); }
+.workrow .bar { height: 4px; background: var(--bg3); margin-top: 8px; }
+.workrow .bar i { display: block; height: 100%; background: var(--acc); }
+
+/* devlog — ledger timeline */
+.ledger { border-left: 1px solid var(--line); padding-left: 28px; display: grid; gap: 26px; }
+.entry { position: relative; display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 22px; }
+.entry::before {
+  content: ''; position: absolute; left: -33px; top: 7px;
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--bg); border: 2px solid var(--acc);
+}
+.entry .dt { font-family: var(--mono); font-size: 11px; color: var(--ink3); padding-top: 2px; }
+.entry .dt b { display: block; color: var(--acc); font-weight: 600; font-size: 10px; letter-spacing: 0.14em; margin-top: 4px; }
+.entry h3 { font-size: 16.5px; }
+.entry h3 a { text-decoration: none; }
+.entry h3 a:hover { color: var(--acc); }
+.entry p { margin: 4px 0 0; font-size: 13.5px; color: var(--ink3); }
+
+/* index — a real table */
+table.idx { width: 100%; border-collapse: collapse; font-size: 14px; }
+table.idx th {
+  text-align: left; font-family: var(--mono); font-size: 9.5px; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink3);
+  padding: 0 14px 10px 0; border-bottom: 1px solid var(--line);
+}
+table.idx td { padding: 15px 14px 15px 0; border-bottom: 1px solid var(--line-soft); vertical-align: top; }
+table.idx td.nm { font-family: var(--disp); font-weight: 700; color: var(--ink1); font-size: 16px; white-space: nowrap; }
+table.idx td.ds { color: var(--ink2); font-size: 13.5px; max-width: 480px; }
+table.idx td.st, table.idx td.tg { font-family: var(--mono); font-size: 11px; color: var(--ink3); white-space: nowrap; }
+table.idx td.st i { font-style: normal; color: var(--acc); }
+table.idx tr:hover td { background: var(--bg2); }
+table.idx a { text-decoration: none; }
+
+/* commissions — numbered two-column list, no cards */
+.svc { display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; }
+.svc > div { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line-soft); }
+.svc .no { font-family: var(--mono); font-size: 11px; color: var(--acc); padding-top: 4px; }
+.svc h3 { font-size: 16px; }
+.svc p { margin: 4px 0 0; font-size: 13px; color: var(--ink3); }
+.note { font-family: var(--mono); font-size: 11px; color: var(--ink3); margin-top: 22px; }
+.note i { color: var(--acc); font-style: normal; }
+
+@media (max-width: 980px) {
+  .shell { grid-template-columns: 1fr; }
+  .side { position: static; height: auto; flex-direction: row; flex-wrap: wrap; align-items: center; border-right: 0; border-bottom: 1px solid var(--line); }
+  .side .foot { margin: 0; }
+  .workrow { grid-template-columns: 1fr; gap: 8px; }
+  .entry { grid-template-columns: 1fr; gap: 4px; }
+  .svc { grid-template-columns: 1fr; }
+}
+</style>
 </head>
 <body>
 
-<div class="backdrop"></div>
+<div class="shell">
 
-<header class="mast">
-  <div class="mast__in">
-    <a class="mast__brand" href="index.html">guillen<em>.studio</em></a>
-    <nav>
-      <a class="is-active" href="index.html">Home</a>
-      <a href="work.html">Work</a>
-      <a href="index.html#devlog">Devlog</a>
-      <a href="index.html#services">About</a>
-      <a class="cta" href="mailto:hello@guillen.studio">Get in touch</a>
-    </nav>
-  </div>
-</header>
-
-<!-- ── HERO — calm statement on the grid ────────────────────────────────── -->
-<section class="hero">
-  <div class="wrap">
-    <p class="hero__kick rv">Angel A. Guillen Flores · Engineer — Game developer · <em>vivere est creare</em></p>
-    <h1 class="rv">Building tools &amp; worlds, <span class="tint">documented</span> as they're made.</h1>
-    <p class="sub rv">Procedural systems, developer tooling, and games. This is a
-      working studio — the devlog is the front page, the architecture essays are
-      the long reads.</p>
-    <div class="hero__actions rv">
-      <a class="btn btn--solid" href="work.html">View work</a>
-      <a class="btn btn--soft" href="#devlog">Read the devlog</a>
-    </div>
-  </div>
-</section>
-
-<!-- ── BAND · MINT — now building ───────────────────────────────────────── -->
-<div class="band rv" style="--bc: var(--mint)">
-  <div class="wrap">
-    <div class="line"><b>Now building</b></div>
-    <h2 class="t">On the workbench.</h2>
-    <p class="sub">Two tools in active development — progress and architecture notes
-      live on each project page.</p>
-    <div class="grid grid--2">
-      <a class="card" href="project.html" style="--cc: var(--mint)">
-        <div class="chips">
-          <span class="chip" style="--cc: var(--mint)">In dev</span>
-          <span class="chip" style="--cc: var(--mint)">Blender</span>
-          <span class="chip" style="--cc: var(--mint)">Python</span>
-        </div>
-        <h3>Simply Simple Foliage</h3>
-        <p>Node-based foliage creator for games, animation, and digital art. Own the
-          logic, not the stack — Blender does the heavy lifting.</p>
-        <span class="go">Architecture &amp; roadmap →</span>
-      </a>
-      <a class="card" href="#" style="--cc: var(--peach)">
-        <div class="chips">
-          <span class="chip" style="--cc: var(--peach)">In dev</span>
-          <span class="chip" style="--cc: var(--peach)">Unity</span>
-          <span class="chip" style="--cc: var(--peach)">C#</span>
-        </div>
-        <h3>One Night Defense</h3>
-        <p>Wave-based FPS survival demo — charged bowling-ball throws, full ragdoll
-          physics, five escalating waves.</p>
-        <span class="go">View project →</span>
-      </a>
-    </div>
-  </div>
-</div>
-
-<!-- ── PLAIN · devlog on the grid ───────────────────────────────────────── -->
-<section class="blockp rv" id="devlog">
-  <div class="wrap">
-    <div class="line" style="--lc: var(--sky)"><b>The devlog</b></div>
-    <h2 class="t">Latest from the bench.</h2>
-    <div class="rowlist" style="margin-top:28px">
-      <a class="rowitem" href="#" style="--cc: var(--sky)">
-        <span class="status" style="--cc: var(--sky)">Release</span>
-        <span><h3>DERG for MacOS</h3>
-        <p>Full dmg installation, no-dependency status — downloadable via Guillen Studio.</p></span>
-        <span class="meta">Python · MacOS</span>
-      </a>
-      <a class="rowitem" href="project.html" style="--cc: var(--mint)">
-        <span class="status" style="--cc: var(--mint)">Notes</span>
-        <span><h3>SSF: the core architecture, resolved</h3>
-        <p>Data flow, persistence, and sustainability — designed before the first line of core code.</p></span>
-        <span class="meta">Architecture</span>
-      </a>
-      <a class="rowitem" href="#" style="--cc: var(--peach)">
-        <span class="status" style="--cc: var(--peach)">Demo</span>
-        <span><h3>One Night Defense: demo shipped</h3>
-        <p>Five waves, ragdoll physics, five-minute runs — built to prove Unity proficiency end to end.</p></span>
-        <span class="meta">Unity · C#</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ── ROOM — the one room accent: the index ────────────────────────────── -->
-<div class="room rv" style="--room: var(--room-sky); --lc: var(--sky)">
-  <div class="line"><b>All work</b></div>
-  <h2 class="t">The index.</h2>
-  <p class="sub">Games, developer tools, asset libraries, and programs.</p>
-  <div class="rowlist">
-    <a class="rowitem" href="project.html" style="--cc: var(--mint)">
-      <span class="status" style="--cc: var(--mint)">In dev</span>
-      <span><h3>Simply Simple Foliage</h3>
-      <p>Node-based foliage creator on a Blender backend.</p></span>
-      <span class="meta">Blender · Python</span>
-    </a>
-    <a class="rowitem" href="#" style="--cc: var(--sky)">
-      <span class="status" style="--cc: var(--sky)">Released</span>
-      <span><h3>DERG</h3>
-      <p>Batch renderer that renders a decision space — a designer script runs before every render.</p></span>
-      <span class="meta">Python · Blender · Rust</span>
-    </a>
-    <a class="rowitem" href="#" style="--cc: var(--peach)">
-      <span class="status" style="--cc: var(--peach)">In dev</span>
-      <span><h3>One Night Defense</h3>
-      <p>Wave-based FPS survival demo in Unity.</p></span>
-      <span class="meta">Unity · C#</span>
-    </a>
-  </div>
-  <p style="margin-top:24px"><a class="lk" style="--c: var(--sky); color: var(--sky)" href="work.html">Full index →</a></p>
-</div>
-
-<!-- ── BAND · SKY — commissions (CMS-driven card list on the real site) ──── -->
-<div class="band rv" id="services" style="--bc: var(--sky)">
-  <div class="wrap">
-    <div class="line"><b>Commissions</b></div>
-    <h2 class="t">What I take on.</h2>
-    <p class="sub">Studio work runs alongside the products. Scope and availability
-      shift with the semester — this list is managed in the CMS and changes as it
-      does.</p>
-    <div class="grid grid--svc" style="margin-top:30px">
-      <div class="card">
-        <span class="chip">01</span>
-        <h3>Web systems</h3>
-        <p>Sites, component libraries, and headless CMS builds — built once,
-          owned by you.</p>
-      </div>
-      <div class="card">
-        <span class="chip">02</span>
-        <h3>Game development</h3>
-        <p>Gameplay systems, tooling, and playable demos in Unity and custom
-          stacks.</p>
-      </div>
-      <div class="card">
-        <span class="chip">03</span>
-        <h3>Animation &amp; cinematics</h3>
-        <p>Procedural and rendered sequences on a Blender pipeline — DERG runs
-          the farm.</p>
-      </div>
-      <div class="card">
-        <span class="chip">04</span>
-        <h3>Design systems</h3>
-        <p>Tokens, recipes, and component sets that keep a product consistent
-          without slowing it down.</p>
-      </div>
-      <div class="card">
-        <span class="chip">05</span>
-        <h3>AI &amp; automation</h3>
-        <p>Batch pipelines, render orchestration, and agent tooling — the boring
-          parts, removed.</p>
-      </div>
-      <div class="card">
-        <span class="chip">06</span>
-        <h3>Consulting</h3>
-        <p>Architecture reviews and build-vs-buy calls for small teams shipping
-          real things.</p>
-      </div>
-    </div>
-    <div class="hero__actions" style="margin-top:34px">
-      <a class="btn btn--solid" href="mailto:hello@guillen.studio">Get in touch</a>
-      <a class="btn btn--soft" href="#">GitHub ↗</a>
-    </div>
-  </div>
-</div>
-
-<footer>
-  <div class="wrap colophon">
+  <aside class="side">
+    <a class="brand" href="index.html">guillen<em>.studio</em></a>
     <div>
-      <b>guillen.studio</b>
-      <p class="motto">vivere est creare</p>
-      <small>© 2026 Angel A. Guillen Flores</small>
+      <span class="lbl">Navigate</span>
+      <nav>
+        <a class="on" href="#">~/home</a>
+        <a href="work.html">~/work</a>
+        <a href="#devlog">~/devlog</a>
+        <a href="#services">~/commissions</a>
+        <a href="mailto:hello@guillen.studio">~/contact</a>
+      </nav>
     </div>
-    <nav>
-      <a class="lk" href="index.html">Home</a>
-      <a class="lk" href="work.html">Work</a>
-      <a class="lk" href="index.html#devlog">Devlog</a>
-      <a class="lk" href="mailto:hello@guillen.studio">Get in touch</a>
-    </nav>
-  </div>
-</footer>
+    <div>
+      <span class="lbl">Status</span>
+      <div class="stat">
+        bench <b>· 2 active builds</b><br>
+        commissions <b class="ok">· open</b><br>
+        last entry <b>· DERG for MacOS</b>
+      </div>
+    </div>
+    <div class="foot">
+      <em>vivere est creare</em>
+      © 2026 Angel A. Guillen Flores
+    </div>
+  </aside>
+
+  <main>
+
+    <!-- manifest -->
+    <section class="manifest">
+      <p class="k rv">Angel A. Guillen Flores · Engineer — Game developer</p>
+      <h1 class="rv">Building tools &amp; worlds, <span class="a">documented</span> as they're made.</h1>
+      <p class="lead rv">Procedural systems, developer tooling, and games. This is
+        a working studio — the devlog is the front page, the architecture essays
+        are the long reads.</p>
+      <div class="acts rv">
+        <a class="bt pri" href="work.html">View work</a>
+        <a class="bt" href="#devlog">Read the devlog</a>
+      </div>
+    </section>
+
+    <!-- now building -->
+    <section class="sect">
+      <div class="rule rv"><b>Now building</b><span>02 projects</span></div>
+      <a class="workrow rv" href="project.html">
+        <div>
+          <h3>Simply Simple Foliage</h3>
+          <span class="sub">Blender · Python</span>
+        </div>
+        <p>Node-based foliage creator for games, animation, and digital art. Own
+          the logic, not the stack — Blender does the heavy lifting. Architecture
+          essay and build map on the project page.</p>
+        <div>
+          <span class="pr">17% · core class build</span>
+          <div class="bar"><i style="width:17%"></i></div>
+        </div>
+      </a>
+      <a class="workrow rv" href="#">
+        <div>
+          <h3>One Night Defense</h3>
+          <span class="sub">Unity · C#</span>
+        </div>
+        <p>Wave-based FPS survival demo — charged bowling-ball throws, full
+          ragdoll physics, five escalating waves. Demo shipped; systems writeup
+          in progress.</p>
+        <div>
+          <span class="pr">demo · playable</span>
+          <div class="bar"><i style="width:62%"></i></div>
+        </div>
+      </a>
+    </section>
+
+    <!-- devlog ledger -->
+    <section class="sect" id="devlog">
+      <div class="rule rv"><b>The devlog</b><span>latest three</span></div>
+      <div class="ledger">
+        <div class="entry rv">
+          <div class="dt">2026 · Jun<b>RELEASE</b></div>
+          <div>
+            <h3><a href="#">DERG for MacOS</a></h3>
+            <p>Full dmg installation, no-dependency status — downloadable via Guillen Studio.</p>
+          </div>
+        </div>
+        <div class="entry rv">
+          <div class="dt">2026 · Jun<b>NOTES</b></div>
+          <div>
+            <h3><a href="project.html">SSF: the core architecture, resolved</a></h3>
+            <p>Data flow, persistence, and sustainability — designed before the first line of core code.</p>
+          </div>
+        </div>
+        <div class="entry rv">
+          <div class="dt">2026 · May<b>DEMO</b></div>
+          <div>
+            <h3><a href="#">One Night Defense: demo shipped</a></h3>
+            <p>Five waves, ragdoll physics, five-minute runs — built to prove Unity proficiency end to end.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- index table -->
+    <section class="sect">
+      <div class="rule rv"><b>The index</b><span>all work</span></div>
+      <table class="idx rv">
+        <thead>
+          <tr><th>Project</th><th>What it is</th><th>Stack</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="nm"><a href="project.html">Simply Simple Foliage</a></td>
+            <td class="ds">Node-based foliage creator on a Blender backend.</td>
+            <td class="tg">Blender · Python</td>
+            <td class="st"><i>●</i> in dev</td>
+          </tr>
+          <tr>
+            <td class="nm"><a href="#">DERG</a></td>
+            <td class="ds">Batch renderer that renders a decision space — a designer script runs before every render.</td>
+            <td class="tg">Python · Blender · Rust</td>
+            <td class="st"><i>●</i> released</td>
+          </tr>
+          <tr>
+            <td class="nm"><a href="#">One Night Defense</a></td>
+            <td class="ds">Wave-based FPS survival demo in Unity.</td>
+            <td class="tg">Unity · C#</td>
+            <td class="st"><i>●</i> in dev</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- commissions -->
+    <section class="sect" id="services">
+      <div class="rule rv"><b>Commissions</b><span>managed in the CMS</span></div>
+      <div class="svc rv">
+        <div><span class="no">01</span><div><h3>Web systems</h3><p>Sites, component libraries, and headless CMS builds — built once, owned by you.</p></div></div>
+        <div><span class="no">02</span><div><h3>Game development</h3><p>Gameplay systems, tooling, and playable demos in Unity and custom stacks.</p></div></div>
+        <div><span class="no">03</span><div><h3>Animation &amp; cinematics</h3><p>Procedural and rendered sequences on a Blender pipeline — DERG runs the farm.</p></div></div>
+        <div><span class="no">04</span><div><h3>Design systems</h3><p>Tokens, recipes, and component sets that keep a product consistent.</p></div></div>
+        <div><span class="no">05</span><div><h3>AI &amp; automation</h3><p>Batch pipelines, render orchestration, and agent tooling.</p></div></div>
+        <div><span class="no">06</span><div><h3>Consulting</h3><p>Architecture reviews and build-vs-buy calls for small teams.</p></div></div>
+      </div>
+      <p class="note rv">availability shifts with the semester — <i>hello@guillen.studio</i></p>
+    </section>
+
+  </main>
+</div>
 
 <script>
   const io = new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
   }), { threshold: 0.1 });
   document.querySelectorAll('.rv').forEach((el, i) => {
-    el.style.transitionDelay = `${(i % 3) * 70}ms`;
+    el.style.transitionDelay = `${(i % 3) * 60}ms`;
     io.observe(el);
   });
 </script>
 
-<div style="position:fixed;bottom:18px;right:18px;z-index:99;display:flex;gap:8px;align-items:center;
-  font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;
-  background:var(--elev-2);border:1px solid var(--line-1);border-radius:10px;padding:9px 14px;color:var(--ink-2)">
-  variant · steel dark · <a href="index.html" style="color:var(--accent);text-decoration:none;font-weight:700">base</a>
-  · <a href="variant-light.html" style="color:var(--accent);text-decoration:none;font-weight:700">light</a>
+<div style="position:fixed;bottom:18px;right:18px;z-index:99;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;background:var(--bg3);border:1px solid var(--line);padding:9px 14px;color:var(--ink2)">
+  design · workbench · <a href="index.html" style="color:var(--acc);text-decoration:none;font-weight:700">base</a>
+  · <a href="variant-light.html" style="color:var(--acc);text-decoration:none;font-weight:700">print</a>
 </div>
+
 </body>
 </html>
