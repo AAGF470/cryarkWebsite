@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Print variant — guillen.studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ═════════════════════════════════════════════════════════════════════════
+   VARIANT · PRINT STUDIO — light design variant (not a recolor).
+   A printed journal: masthead with rules, numbered sections, magazine
+   spread, table-of-contents index with dot leaders, text-only columns.
+   No cards, no glows — rules, type, and whitespace do all the work.
+   ═════════════════════════════════════════════════════════════════════════ */
+:root {
+  --paper: #faf8f4; --ink1: #1b2027; --ink2: #454c58; --ink3: #7d8490;
+  --rule: #1b2027; --rule-soft: rgba(27, 32, 39, 0.16);
+  --acc: #23724f;   /* forest green — the single accent */
+  --acc2: #35699a;  /* steel blue — rare */
+  --mono: 'JetBrains Mono', monospace;
+  --sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --disp: 'Bricolage Grotesque', sans-serif;
+  --w: 1200px;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink2);
+  font-family: var(--sans); font-size: 16px; line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: rgba(35, 114, 79, 0.18); color: var(--ink1); }
+a { color: inherit; }
+h1,h2,h3 { font-family: var(--disp); color: var(--ink1); margin: 0; letter-spacing: -0.02em; }
+.wrap { max-width: var(--w); margin: 0 auto; padding: 0 32px; }
+
+.rv { opacity: 0; transform: translateY(10px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.rv.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; transition: none; } }
+
+/* ── MASTHEAD — printed-journal top ────────────────────────────────────── */
+.mast { border-bottom: 2px solid var(--rule); }
+.mast .top {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding: 22px 0 16px;
+}
+.mast .brand { font-family: var(--disp); font-weight: 800; font-size: 21px; color: var(--ink1); text-decoration: none; }
+.mast .brand em { font-style: normal; color: var(--acc); }
+.mast .motto { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); }
+.mast .motto em { color: var(--acc); font-style: italic; text-transform: none; letter-spacing: 0.04em; }
+.mast .nav {
+  display: flex; gap: 30px; padding: 12px 0;
+  border-top: 1px solid var(--rule-soft);
+  font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase;
+}
+.mast .nav a { text-decoration: none; color: var(--ink2); padding-bottom: 2px; border-bottom: 2px solid transparent; }
+.mast .nav a:hover { color: var(--ink1); }
+.mast .nav a.on { color: var(--acc); border-bottom-color: var(--acc); }
+.mast .nav .push { margin-left: auto; color: var(--acc); font-weight: 500; }
+
+/* ── OPENING SPREAD — headline + colophon ──────────────────────────────── */
+.open { display: grid; grid-template-columns: minmax(0, 7fr) minmax(240px, 3fr); gap: 64px; padding: 76px 0 68px; align-items: end; }
+.open h1 { font-size: clamp(46px, 5.6vw, 82px); line-height: 1.02; font-weight: 800; }
+.open h1 .a { color: var(--acc); font-style: italic; font-weight: 700; }
+.open .lead { font-size: 18px; max-width: 52ch; margin: 26px 0 0; }
+.open .acts { display: flex; gap: 12px; margin-top: 34px; }
+.bt {
+  font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
+  text-transform: uppercase; text-decoration: none; padding: 13px 24px;
+  border: 1.5px solid var(--rule); color: var(--ink1);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.bt:hover { background: var(--ink1); color: var(--paper); }
+.bt.pri { background: var(--acc); border-color: var(--acc); color: #fff; }
+.bt.pri:hover { background: #1c5c40; }
+.colo { border-top: 2px solid var(--rule); font-size: 13px; }
+.colo dl { margin: 0; }
+.colo div { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--rule-soft); }
+.colo dt { font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink3); }
+.colo dd { margin: 0; color: var(--ink1); font-weight: 600; text-align: right; }
+.colo dd.g { color: var(--acc); }
+
+/* ── numbered section heads — print rules ──────────────────────────────── */
+.snum {
+  display: flex; align-items: baseline; gap: 18px;
+  border-top: 2px solid var(--rule); padding-top: 14px; margin-bottom: 34px;
+}
+.snum b { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; color: var(--acc); font-weight: 500; }
+.snum h2 { font-size: clamp(26px, 3vw, 38px); font-weight: 800; }
+.snum span { margin-left: auto; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); }
+section { padding: 56px 0 30px; }
+
+/* ── spread — magazine two-column feature ──────────────────────────────── */
+.spread { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: center; }
+.spread .fig {
+  aspect-ratio: 16/11; border: 1.5px solid var(--rule);
+  background:
+    linear-gradient(rgba(27,32,39,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(27,32,39,0.05) 1px, transparent 1px),
+    radial-gradient(circle at 30% 70%, rgba(35, 114, 79, 0.16), transparent 55%),
+    #f2efe8;
+  background-size: 32px 32px, 32px 32px, auto, auto;
+  position: relative;
+}
+.spread .fig figcaption {
+  position: absolute; bottom: -28px; left: 0;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3);
+}
+.spread h3 { font-size: 30px; margin-bottom: 4px; }
+.spread .kv { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--acc); display: block; margin-bottom: 14px; }
+.spread p { margin: 12px 0 0; }
+.spread .more { display: inline-block; margin-top: 22px; font-weight: 700; color: var(--acc); text-decoration: none; border-bottom: 2px solid var(--acc); padding-bottom: 1px; }
+.spread .more:hover { color: #1c5c40; }
+.spread .second { border-top: 1px solid var(--rule-soft); margin-top: 26px; padding-top: 22px; }
+.spread .second h4 { font-family: var(--disp); font-size: 19px; color: var(--ink1); margin: 0 0 4px; }
+.spread .second p { font-size: 14.5px; margin: 4px 0 0; }
+
+/* ── devlog — dated archive list ───────────────────────────────────────── */
+.arch { display: grid; }
+.arch a {
+  display: grid; grid-template-columns: 150px minmax(0, 1fr) auto;
+  gap: 28px; align-items: baseline;
+  padding: 18px 0; border-bottom: 1px solid var(--rule-soft);
+  text-decoration: none;
+}
+.arch a:first-child { border-top: 1px solid var(--rule-soft); }
+.arch .dt { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--ink3); }
+.arch .dt b { color: var(--acc); font-weight: 500; }
+.arch h3 { font-size: 19px; transition: color 0.15s ease; }
+.arch a:hover h3 { color: var(--acc); }
+.arch p { margin: 2px 0 0; font-size: 14px; color: var(--ink3); }
+.arch .tg { font-family: var(--mono); font-size: 10.5px; color: var(--ink3); white-space: nowrap; }
+
+/* ── index — table of contents with dot leaders ────────────────────────── */
+.toc { display: grid; gap: 0; }
+.toc a {
+  display: flex; align-items: baseline; gap: 14px;
+  padding: 16px 0; text-decoration: none; border-bottom: 1px solid var(--rule-soft);
+}
+.toc .nm { font-family: var(--disp); font-weight: 700; font-size: 22px; color: var(--ink1); white-space: nowrap; transition: color 0.15s ease; }
+.toc a:hover .nm { color: var(--acc); }
+.toc .dots { flex: 1; border-bottom: 2px dotted rgba(27, 32, 39, 0.3); transform: translateY(-6px); }
+.toc .ds { font-size: 13.5px; color: var(--ink3); max-width: 38ch; }
+.toc .st { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--acc); white-space: nowrap; }
+
+/* ── commissions — text-only columns, small caps heads ─────────────────── */
+.cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 48px; }
+.cols > div { border-top: 1px solid var(--rule-soft); padding-top: 16px; }
+.cols .no { font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em; color: var(--acc); display: block; margin-bottom: 8px; }
+.cols h3 { font-size: 18px; margin-bottom: 6px; }
+.cols p { font-size: 14px; margin: 0; color: var(--ink3); }
+.cms-note { font-family: var(--mono); font-size: 11px; color: var(--ink3); margin-top: 30px; }
+.cms-note i { color: var(--acc); font-style: normal; }
+
+/* ── footer — closing rule ─────────────────────────────────────────────── */
+footer { border-top: 2px solid var(--rule); margin-top: 60px; padding: 26px 0 44px; }
+.colofoot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--ink3); }
+.colofoot em { color: var(--acc); font-style: italic; }
+.colofoot nav { display: flex; gap: 22px; }
+.colofoot nav a { text-decoration: none; color: var(--ink2); text-transform: uppercase; font-size: 10.5px; letter-spacing: 0.12em; }
+.colofoot nav a:hover { color: var(--acc); }
+
+@media (max-width: 900px) {
+  .open { grid-template-columns: 1fr; gap: 40px; }
+  .spread { grid-template-columns: 1fr; gap: 44px; }
+  .cols { grid-template-columns: 1fr; }
+  .arch a { grid-template-columns: 1fr; gap: 4px; }
+  .toc .ds { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- masthead -->
+<header class="mast">
+  <div class="wrap">
+    <div class="top">
+      <a class="brand" href="index.html">guillen<em>.studio</em></a>
+      <span class="motto">Tools &amp; worlds, documented · <em>vivere est creare</em></span>
+    </div>
+    <nav class="nav">
+      <a class="on" href="#">Front page</a>
+      <a href="#">The index</a>
+      <a href="#devlog">Devlog</a>
+      <a href="#services">Commissions</a>
+      <a class="push" href="mailto:hello@guillen.studio">Get in touch ↗</a>
+    </nav>
+  </div>
+</header>
+
+<!-- opening spread -->
+<div class="wrap open">
+  <div>
+    <h1 class="rv">Building tools &amp; worlds, <span class="a">documented</span> as they're made.</h1>
+    <p class="lead rv">Procedural systems, developer tooling, and games. This is a
+      working studio — the devlog is the front page, the architecture essays are
+      the long reads.</p>
+    <div class="acts rv">
+      <a class="bt pri" href="#">View work</a>
+      <a class="bt" href="#devlog">Read the devlog</a>
+    </div>
+  </div>
+  <aside class="colo rv">
+    <dl>
+      <div><dt>Studio of</dt><dd>Angel A. Guillen</dd></div>
+      <div><dt>Practice</dt><dd>Engineer — Game dev</dd></div>
+      <div><dt>On the bench</dt><dd>2 active builds</dd></div>
+      <div><dt>Commissions</dt><dd class="g">Open</dd></div>
+    </dl>
+  </aside>
+</div>
+
+<!-- 01 — now building: magazine spread -->
+<section>
+  <div class="wrap">
+    <div class="snum rv"><b>№ 01</b><h2>On the workbench.</h2><span>Now building</span></div>
+    <div class="spread rv">
+      <figure class="fig" style="margin:0">
+        <figcaption>Fig. 1 — SSF growth field, node pass</figcaption>
+      </figure>
+      <div>
+        <span class="kv">In development · Blender · Python</span>
+        <h3>Simply Simple Foliage</h3>
+        <p>Node-based foliage creator for games, animation, and digital art. Own
+          the logic, not the stack — Blender does the heavy lifting behind the
+          scenes while SSF keeps the procedural model, the editing system, and
+          the workflow.</p>
+        <a class="more" href="#">Read the architecture essay</a>
+        <div class="second">
+          <h4>Also on the bench — One Night Defense</h4>
+          <p>Wave-based FPS survival demo in Unity: charged throws, full ragdoll
+            physics, five escalating waves. Demo shipped.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 — devlog archive -->
+<section id="devlog">
+  <div class="wrap">
+    <div class="snum rv"><b>№ 02</b><h2>Latest from the bench.</h2><span>The devlog</span></div>
+    <div class="arch rv">
+      <a href="#">
+        <span class="dt">2026 · Jun — <b>Release</b></span>
+        <span><h3>DERG for MacOS</h3>
+        <p>Full dmg installation, no-dependency status — downloadable via Guillen Studio.</p></span>
+        <span class="tg">Python · MacOS</span>
+      </a>
+      <a href="#">
+        <span class="dt">2026 · Jun — <b>Notes</b></span>
+        <span><h3>SSF: the core architecture, resolved</h3>
+        <p>Data flow, persistence, and sustainability — designed before the first line of core code.</p></span>
+        <span class="tg">Architecture</span>
+      </a>
+      <a href="#">
+        <span class="dt">2026 · May — <b>Demo</b></span>
+        <span><h3>One Night Defense: demo shipped</h3>
+        <p>Five waves, ragdoll physics, five-minute runs — built to prove Unity proficiency end to end.</p></span>
+        <span class="tg">Unity · C#</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — index as table of contents -->
+<section>
+  <div class="wrap">
+    <div class="snum rv"><b>№ 03</b><h2>The index.</h2><span>All work</span></div>
+    <div class="toc rv">
+      <a href="#">
+        <span class="nm">Simply Simple Foliage</span>
+        <span class="dots"></span>
+        <span class="ds">Node-based foliage creator on a Blender backend.</span>
+        <span class="st">In dev</span>
+      </a>
+      <a href="#">
+        <span class="nm">DERG</span>
+        <span class="dots"></span>
+        <span class="ds">Batch renderer that renders a decision space.</span>
+        <span class="st">Released</span>
+      </a>
+      <a href="#">
+        <span class="nm">One Night Defense</span>
+        <span class="dots"></span>
+        <span class="ds">Wave-based FPS survival demo in Unity.</span>
+        <span class="st">In dev</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 04 — commissions: text columns -->
+<section id="services">
+  <div class="wrap">
+    <div class="snum rv"><b>№ 04</b><h2>What I take on.</h2><span>Commissions</span></div>
+    <div class="cols rv">
+      <div><span class="no">01</span><h3>Web systems</h3><p>Sites, component libraries, and headless CMS builds — built once, owned by you.</p></div>
+      <div><span class="no">02</span><h3>Game development</h3><p>Gameplay systems, tooling, and playable demos in Unity and custom stacks.</p></div>
+      <div><span class="no">03</span><h3>Animation &amp; cinematics</h3><p>Procedural and rendered sequences on a Blender pipeline — DERG runs the farm.</p></div>
+      <div><span class="no">04</span><h3>Design systems</h3><p>Tokens, recipes, and component sets that keep a product consistent.</p></div>
+      <div><span class="no">05</span><h3>AI &amp; automation</h3><p>Batch pipelines, render orchestration, and agent tooling.</p></div>
+      <div><span class="no">06</span><h3>Consulting</h3><p>Architecture reviews and build-vs-buy calls for small teams.</p></div>
+    </div>
+    <p class="cms-note rv">This list is managed in the CMS — availability shifts with the semester. <i>hello@guillen.studio</i></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap colofoot">
+    <span>guillen.studio — <em>vivere est creare</em> — © 2026 Angel A. Guillen Flores</span>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="#">Work</a>
+      <a href="#devlog">Devlog</a>
+      <a href="mailto:hello@guillen.studio">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), { threshold: 0.1 });
+  document.querySelectorAll('.rv').forEach((el, i) => {
+    el.style.transitionDelay = `${(i % 3) * 60}ms`;
+    io.observe(el);
+  });
+</script>
+
+<div style="position:fixed;bottom:18px;right:18px;z-index:99;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;background:#fff;border:1.5px solid var(--rule);padding:9px 14px;color:var(--ink2)">
+  design · print · <a href="index.html" style="color:var(--acc);text-decoration:none;font-weight:700">base</a>
+  · <a href="workbench.html" style="color:var(--acc);text-decoration:none;font-weight:700">workbench</a>
+</div>
+
+</body>
+</html>

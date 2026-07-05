@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design Seeds — Guillen Studio</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* Design Seeds — internal catalog of full design languages kept as templates.
+   Each seed is a working standalone demo, ready to grow into a client build. */
+:root {
+  --paper: #121118; --elev-1: #17161e; --elev-2: #1d1c26;
+  --line: rgba(255,255,255,0.11); --edge: rgba(255,255,255,0.12);
+  --ink1: #f4f2ee; --ink2: #c8c4bd; --ink3: #8f8b93;
+  --mint: #a3d8bf; --sky: #a4c8e6;
+  --mono: 'JetBrains Mono', monospace;
+  --sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --disp: 'Bricolage Grotesque', sans-serif;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink2);
+  font-family: var(--sans); font-size: 16px; line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: color-mix(in srgb, var(--mint) 30%, transparent); color: var(--ink1); }
+h1,h2,h3 { font-family: var(--disp); color: var(--ink1); margin: 0; letter-spacing: -0.02em; }
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+
+header { padding: 84px 0 20px; }
+.kick { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink3); margin: 0 0 20px; }
+.kick em { color: var(--mint); font-style: italic; text-transform: none; }
+h1 { font-size: clamp(38px, 5vw, 62px); }
+h1 .tint { background: linear-gradient(100deg, var(--mint), var(--sky)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.lead { max-width: 62ch; font-size: 17px; margin: 22px 0 0; }
+
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; padding: 48px 0 30px; }
+@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+
+.seed {
+  display: block; text-decoration: none; color: inherit;
+  border: 1px solid var(--line); border-radius: 16px; overflow: hidden;
+  background: linear-gradient(180deg, var(--elev-2), var(--elev-1));
+  box-shadow: inset 0 1px 0 var(--edge);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.25s ease;
+}
+.seed:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--sc, var(--mint)) 45%, var(--line));
+  box-shadow: inset 0 1px 0 var(--edge), 0 22px 44px -20px color-mix(in srgb, var(--sc, var(--mint)) 38%, transparent);
+}
+/* mini-preview strip — a stylized abstraction of each seed's look */
+.seed .prev { height: 150px; position: relative; border-bottom: 1px solid var(--line); }
+.seed .body { padding: 22px 26px 24px; }
+.seed h2 { font-size: 22px; display: flex; align-items: baseline; gap: 12px; }
+.seed h2 .st { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sc, var(--mint)); font-weight: 600; }
+.seed p { margin: 8px 0 0; font-size: 14px; }
+.seed .for { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em; color: var(--ink3); display: block; margin-top: 14px; }
+.seed .for i { font-style: normal; color: var(--sc, var(--mint)); }
+
+/* preview abstractions */
+.p-print { background: #faf8f4; }
+.p-print::before { content: ''; position: absolute; inset: 18px 22px auto; height: 3px; background: #1b2027; }
+.p-print::after {
+  content: ''; position: absolute; left: 22px; right: 50%; top: 34px; bottom: 20px;
+  background:
+    linear-gradient(#1b2027 0 0) 0 0 / 82% 12px no-repeat,
+    linear-gradient(#1b2027 0 0) 0 22px / 60% 12px no-repeat,
+    linear-gradient(rgba(27,32,39,0.35) 0 0) 0 52px / 90% 4px no-repeat,
+    linear-gradient(rgba(27,32,39,0.35) 0 0) 0 64px / 74% 4px no-repeat,
+    linear-gradient(#23724f 0 0) 0 84px / 34% 8px no-repeat;
+}
+.p-work { background: #101318; }
+.p-work::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 34%; background: #14181f; border-right: 1px solid rgba(210,226,244,0.14); }
+.p-work::after {
+  content: ''; position: absolute; left: 40%; right: 20px; top: 22px; bottom: 18px;
+  background:
+    linear-gradient(#edf1f7 0 0) 0 0 / 70% 10px no-repeat,
+    linear-gradient(rgba(210,226,244,0.25) 0 0) 0 26px / 100% 1px no-repeat,
+    linear-gradient(rgba(210,226,244,0.5) 0 0) 0 40px / 88% 5px no-repeat,
+    linear-gradient(rgba(210,226,244,0.25) 0 0) 0 58px / 100% 1px no-repeat,
+    linear-gradient(#9dc6e8 0 0) 0 72px / 30% 6px no-repeat;
+}
+.p-mid { background: #14121c; }
+.p-mid::after {
+  content: ''; position: absolute; inset: 18px 22px;
+  background:
+    linear-gradient(#e8e2f2 0 0) 0 0 / 58% 14px no-repeat,
+    linear-gradient(rgba(190,176,232,0.7) 0 0) 0 26px / 100% 1px no-repeat,
+    linear-gradient(rgba(232,226,242,0.4) 0 0) 0 40px / 31% 44px no-repeat,
+    linear-gradient(rgba(163,216,191,0.4) 0 0) 34.5% 40px / 31% 44px no-repeat,
+    linear-gradient(rgba(226,175,196,0.4) 0 0) 69% 40px / 31% 44px no-repeat;
+}
+.p-calm { background: #121118; }
+.p-calm::after {
+  content: ''; position: absolute; inset: 16px 22px;
+  border-radius: 10px;
+  background:
+    linear-gradient(#f4f2ee 0 0) 12px 12px / 46% 11px no-repeat,
+    linear-gradient(rgba(163,216,191,0.65) 0 0) 12px 32px / 26% 7px no-repeat,
+    linear-gradient(rgba(255,255,255,0.10) 0 0) 12px 52px / 84% 26px no-repeat,
+    #15211c;
+  border: 1px solid rgba(163,216,191,0.3);
+}
+
+.note { border-top: 1px solid var(--line); padding: 26px 0 70px; font-family: var(--mono); font-size: 11.5px; color: var(--ink3); line-height: 2; }
+.note i { color: var(--mint); font-style: normal; }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <p class="kick">Guillen Studio · internal catalog · <em>seed bank</em></p>
+  <h1>Design <span class="tint">seeds</span>.</h1>
+  <p class="lead">Full design languages kept alive as working demos. When a client
+    or business need matches one, it grows into a real build — theme, layout
+    system, and components already proven.</p>
+</header>
+
+<div class="wrap grid">
+
+  <a class="seed" href="print-studio.html" style="--sc: #7fc9a4">
+    <div class="prev p-print"></div>
+    <div class="body">
+      <h2>Print Studio <span class="st">Light · editorial</span></h2>
+      <p>A printed journal: masthead rules, numbered sections, magazine spreads,
+        dot-leader index. No cards, no glows — type and whitespace do the work.</p>
+      <span class="for">best for · <i>professional services, studios, editorial brands, portfolios that need daylight</i></span>
+    </div>
+  </a>
+
+  <a class="seed" href="workbench.html" style="--sc: #9dc6e8">
+    <div class="prev p-work"></div>
+    <div class="body">
+      <h2>Workbench <span class="st">Dark · terminal</span></h2>
+      <p>An engineer's journal: fixed sidebar with live status, ledger devlog,
+        real table index. Mono-forward, sharp, dense, one steel accent.</p>
+      <span class="for">best for · <i>developer portfolios, freelance-plan clients, tooling products</i></span>
+    </div>
+  </a>
+
+  <a class="seed" href="midnight-print/index.html" style="--sc: #beb0e8">
+    <div class="prev p-mid"></div>
+    <div class="body">
+      <h2>Midnight Print <span class="st">Dark · pastel newspaper</span></h2>
+      <p>A dark digital broadsheet: ruled columns, dateline mastheads, pastel ink
+        on near-black paper. Editorial at full intensity.</p>
+      <span class="for">best for · <i>magazines, event brands, culture sites that want drama</i></span>
+    </div>
+  </a>
+
+  <a class="seed" href="../redesign/index.html" style="--sc: #a3d8bf">
+    <div class="prev p-calm"></div>
+    <div class="body">
+      <h2>Calm Lab <span class="st">Dark · soft studio — in use</span></h2>
+      <p>The current guillen.studio design: grid backdrop, tinted bands, sidebar
+        shell, soft editorial type. Mint-led cool pastels.</p>
+      <span class="for">best for · <i>guillen.studio (live direction) — adaptable to product sites</i></span>
+    </div>
+  </a>
+
+</div>
+
+<div class="wrap note">
+  seeds are standalone demos — content is placeholder, links inside may be inert.<br>
+  the component library also ships <i>6 tokenized recipes</i> (editorial-paper, bold-trade,
+  dark-cinematic, coastal-light, workshop, dark-pastel) for CMS-driven client builds.
+</div>
+
+</body>
+</html>
