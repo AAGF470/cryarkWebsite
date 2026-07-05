@@ -23,21 +23,24 @@
   --ink-2: #c8c4bd;
   --ink-3: #8f8b93;
 
+  /* disciplined palette — ONE analogous pastel family (cool), no warm scatter.
+     lavender leads, sky supports, mint accents. That's the whole set. */
   --lavender: #beb0e8;
-  --mint:     #a3d8bf;
-  --peach:    #eec3a2;
-  --rose:     #e2afc4;
   --sky:      #a4c8e6;
-  --butter:   #e6d9ac;
+  --mint:     #a3d8bf;
+  /* aliases so no stray warm hues can creep in */
+  --peach:    var(--sky);
+  --rose:     var(--lavender);
+  --butter:   var(--mint);
 
   --accent: var(--lavender);
 
-  /* the rooms — dark modes of the pastels */
+  /* the rooms — dark modes of the cool pastels only */
   --room-mint:  #15211c;
   --room-lav:   #1a1727;
   --room-sky:   #151d26;
-  --room-peach: #221b15;
-  --room-rose:  #1f171d;
+  --room-peach: var(--room-sky);
+  --room-rose:  var(--room-lav);
   --room-slate: #191821;    /* neutral room */
 
   --r-sm: 10px;
@@ -45,9 +48,10 @@
   --r-room: 26px;
 
   --font: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-display: 'Bricolage Grotesque', 'Plus Jakarta Sans', system-ui, sans-serif;
   --mono: 'JetBrains Mono', monospace;
 
-  --w: 1300px;
+  --w: 1440px;
 }
 
 * { box-sizing: border-box; }
@@ -207,7 +211,7 @@ body {
 .line::after { content: ''; flex: 1; height: 1px; background: color-mix(in srgb, var(--lc, var(--accent)) 18%, transparent); }
 .line .more { font-family: var(--font); order: 3; }
 
-h1, h2, h3, h4 { color: var(--ink-1); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin: 0; }
+h1, h2, h3, h4 { font-family: var(--font-display); color: var(--ink-1); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin: 0; }
 
 h2.t { font-size: clamp(28px, 3.6vw, 44px); margin-bottom: 14px; }
 .sub { max-width: 580px; margin: 0 0 36px; color: var(--ink-2); font-size: 16px; }
@@ -305,24 +309,29 @@ h2.t { font-size: clamp(28px, 3.6vw, 44px); margin-bottom: 14px; }
 .rowitem p { margin: 2px 0 0; font-size: 13px; color: var(--ink-3); }
 .rowitem .meta { font-family: var(--mono); font-size: 10.5px; color: var(--ink-3); letter-spacing: 0.06em; white-space: nowrap; }
 
+/* status — colored dot + mono text, no bubble */
 .status {
+  display: inline-flex; align-items: center; gap: 8px;
   font-family: var(--mono); font-size: 10px; font-weight: 600;
   letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--cc, var(--accent));
-  background: color-mix(in srgb, var(--cc, var(--accent)) 15%, transparent);
-  border: 1px solid color-mix(in srgb, var(--cc, var(--accent)) 22%, transparent);
-  border-radius: 8px; padding: 5px 10px; text-align: center;
+  color: var(--ink-3);
+}
+.status::before {
+  content: ''; width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
+  background: var(--cc, var(--accent));
+  box-shadow: 0 0 8px color-mix(in srgb, var(--cc, var(--accent)) 60%, transparent);
 }
 
 @media (max-width: 700px) { .rowitem { grid-template-columns: 1fr; gap: 8px; } }
 
-/* chips — quiet tinted tags, softly rounded */
+/* chips — quiet neutral outlines, NOT colored bubbles */
 .chips { display: flex; gap: 7px; flex-wrap: wrap; }
 .chip {
-  font-size: 11.5px; font-weight: 700; letter-spacing: 0.02em;
-  color: var(--cc, var(--accent));
-  background: color-mix(in srgb, var(--cc, var(--accent)) 12%, transparent);
-  border-radius: 8px; padding: 4px 10px;
+  font-size: 11.5px; font-weight: 600; letter-spacing: 0.02em;
+  color: var(--ink-2);
+  background: transparent;
+  border: 1px solid var(--line-1);
+  border-radius: 8px; padding: 3px 10px;
 }
 
 /* media slab */
