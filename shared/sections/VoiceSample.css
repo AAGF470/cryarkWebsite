@@ -1,0 +1,99 @@
+/* VoiceSample — phone-styled player to preview the AI call voice. */
+
+.voice-sample__header { margin-bottom: 32px; }
+
+.voice-sample__phone {
+  max-width: 560px;
+  margin: 0 auto;
+  background: var(--color-surface-high);
+  border: 1px solid var(--color-border-low);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+/* "Call" header bar */
+.voice-sample__callbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+.voice-sample__dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px; height: 30px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.18);
+}
+.voice-sample__dot svg { width: 16px; height: 16px; }
+.voice-sample__caller { font-weight: 600; font-size: 14.5px; }
+.voice-sample__live {
+  margin-left: auto;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+  padding: 3px 8px; border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* Clip rows */
+.voice-sample__clips { display: flex; flex-direction: column; }
+
+.voice-clip {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  border-top: 1px solid var(--color-border-low);
+}
+.voice-clip:first-child { border-top: 0; }
+.voice-clip.is-playing { background: var(--color-accent-sub); }
+.voice-clip.is-disabled { opacity: 0.6; }
+
+.voice-clip__btn {
+  flex: none;
+  width: 40px; height: 40px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-accent);
+  background: var(--color-bg);
+  color: var(--color-accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.voice-clip__btn svg { width: 18px; height: 18px; }
+.voice-clip__btn:hover:not(:disabled) { background: var(--color-accent); color: var(--color-on-accent); }
+.voice-clip.is-playing .voice-clip__btn { background: var(--color-accent); color: var(--color-on-accent); }
+.voice-clip__btn:disabled { cursor: default; border-color: var(--color-border-mid); color: var(--color-text-faint); }
+
+.voice-clip__body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.voice-clip__label { font-size: 14.5px; font-weight: 600; color: var(--color-text); }
+.voice-clip__sub { font-size: 12.5px; color: var(--color-text-sub); }
+
+.voice-clip__track {
+  margin-top: 5px;
+  height: 4px;
+  border-radius: var(--radius-pill);
+  background: var(--color-border-low);
+  overflow: hidden;
+}
+.voice-clip__fill {
+  display: block;
+  height: 100%;
+  background: var(--color-accent);
+  transition: width 0.15s linear;
+}
+
+.voice-clip__status {
+  flex: none;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--color-text-faint);
+}
+
+@media (max-width: 480px) {
+  .voice-clip__status { display: none; }
+}
