@@ -1,0 +1,67 @@
+/* ─── FROSTED GLASS LAYER ─────────────────────────────────────────────────────
+   Reusable frosted-glass treatment for the component system. Everything here
+   is OPT-IN: rules are scoped under `.frosted` (put it on <body>), and the
+   `.glass` utility only applies where used — so sites that don't opt in are
+   completely unaffected. Pair with the "frosted" recipe + <AuroraBackground/>.
+
+   The core idea (and the trap it avoids): backdrop-filter can only blur what
+   is painted BEHIND the element. So the app mount must stay transparent to let
+   the fixed AuroraBackground show through — an opaque #root background would
+   leave the glass with nothing to diffuse. */
+
+@keyframes aurora-drift {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  50%  { transform: translate3d(2vmax, 3vmax, 0) scale(1.08); }
+  100% { transform: translate3d(-2vmax, -1vmax, 0) scale(1.04); }
+}
+
+.frosted { --glass-blur: 22px; }
+
+/* Keep the mount transparent and above the aurora (z-index 0). */
+.frosted #root {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+}
+
+/* Frost the translucent surfaces the section library already paints with
+   var(--color-surface). Scoped to .frosted, so only opted-in sites get it. */
+.frosted .section--alt,
+.frosted .card,
+.frosted [class*="__card"],
+.frosted [class*="__panel"],
+.frosted [class*="-card"] {
+  backdrop-filter: blur(var(--glass-blur)) saturate(150%);
+  backdrop-filter: blur(var(--glass-blur)) saturate(150%);
+  /* Promote to a compositor layer — Chromium (Vivaldi/Chrome/Opera) otherwise
+     drops backdrop-filter on live/GPU-pressured pages (WebKit renders it either
+     way). This is what makes the glass survive on the deployed domain. */
+  transform: translateZ(0);
+}
+
+/* A soft vignette so pure-black corners never read as dead space. */
+.frosted body::after,
+body.frosted::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(120vmax 80vmax at 50% -10%, transparent 40%, rgba(0,0,0,0.5) 100%);
+}
+
+/* Standalone glass primitive for bespoke panels. */
+.glass {
+  background: var(--color-surface);
+  backdrop-filter: blur(var(--glass-blur, 22px)) saturate(150%);
+  backdrop-filter: blur(var(--glass-blur, 22px)) saturate(150%);
+  border: 1px solid var(--color-border-low);
+  border-radius: var(--radius-2xl, 22px);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 20px 50px -24px rgba(0,0,0,0.8);
+  transform: translateZ(0);
+  will-change: backdrop-filter;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora-bg { animation: none !important; }
+}

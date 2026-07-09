@@ -20,7 +20,7 @@
   /* Frosted dark glass — semi-transparent so page grain bleeds through */
   background: color-mix(in srgb, var(--color-bg) 72%, transparent);
   backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  backdrop-filter: blur(20px) saturate(160%);
   padding: 10px;
   cursor: pointer;
   transition: border-color 0.18s ease;

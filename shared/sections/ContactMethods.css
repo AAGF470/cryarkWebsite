@@ -1,0 +1,65 @@
+/* ContactMethods — tappable contact cards + optional callout. */
+
+.contact-methods__header { margin-bottom: 32px; }
+
+.contact-methods__grid {
+  display: grid;
+  grid-template-columns: repeat(var(--contact-cols, 3), 1fr);
+  gap: 18px;
+}
+
+.contact-method {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 24px 22px;
+  background: var(--color-surface-high);
+  border: 1px solid var(--color-border-low);
+  border-radius: var(--radius-xl);
+  text-decoration: none;
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+.contact-method:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.contact-method__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px; height: 44px;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent-sub);
+  color: var(--color-accent);
+  margin-bottom: 10px;
+}
+.contact-method__icon svg { width: 22px; height: 22px; }
+
+.contact-method__name {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--color-text-faint);
+}
+.contact-method__value {
+  font-family: var(--font-display);
+  font-size: 20px; color: var(--color-text); line-height: 1.25;
+  overflow-wrap: break-word;
+}
+.contact-method__note { font-size: 12.5px; color: var(--color-text-sub); }
+.contact-method__cta { margin-top: 12px; font-size: 13px; font-weight: 600; color: var(--color-accent); }
+
+.contact-methods__callout {
+  margin: 22px 0 0;
+  padding: 16px 20px;
+  background: var(--color-accent-sub);
+  border: 1px solid var(--color-accent-dim);
+  border-radius: var(--radius-lg);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-sub);
+}
+
+@media (max-width: 760px) {
+  .contact-methods__grid { grid-template-columns: 1fr; }
+}

@@ -99,6 +99,17 @@ const ICONS = {
       <path d="M3 12h6a2.5 2.5 0 1 0-2.5-2.5"/>
     </svg>
   ),
+  message: (
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.9-.9L3 21l1.9-5.6A8.38 8.38 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z"/>
+    </svg>
+  ),
+  whatsapp: (
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.9-.9L3 21l1.9-5.6A8.38 8.38 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z"/>
+      <path d="M8.9 8.4c-.2.4-.4 1 .2 1.9a6 6 0 0 0 3.4 2.6c.9.3 1.4.1 1.8-.3l.5-.6 1.6.9c0 .8-.7 1.5-1.6 1.5A6.8 6.8 0 0 1 8 8.9c0-.9.6-1.6 1.4-1.6l.7 1.5-.7.3z"/>
+    </svg>
+  ),
 }
 
 export function SectionIcon({ name }) {

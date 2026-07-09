@@ -15,6 +15,7 @@ export { default as Button }  from './components/ui/Button'
 export { default as Card }    from './components/ui/Card'
 export { default as Pill }    from './components/ui/Pill'
 export { default as SiteNav } from './components/ui/SiteNav'
+export { default as AuroraBackground } from './components/ui/AuroraBackground'
 
 // Studio component library (guillen.studio building blocks)
 export { default as ArchitectureBlock }  from './components/ui/ArchitectureBlock'

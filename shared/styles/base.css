@@ -5,6 +5,10 @@
 /* Tokens — imported first so body/element styles can reference them */
 @import "./tokens.css";
 
+/* Frosted-glass layer — opt-in (scoped under .frosted) + the .glass utility.
+   Harmless to sites that don't add the class. */
+@import "./frosted.css";
+
 /* ── CSS Reset ─────────────────────────────────────────────────────────── */
 
 *, *::before, *::after {

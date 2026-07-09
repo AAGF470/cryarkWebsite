@@ -28,7 +28,7 @@
   box-shadow: var(--shadow-lg);
 
   backdrop-filter: var(--nav-blur);
-  -webkit-backdrop-filter: var(--nav-blur);
+  backdrop-filter: var(--nav-blur);
 
   transition:
     transform 0.30s cubic-bezier(0.4, 0, 0.2, 1),
@@ -247,7 +247,7 @@
   background: var(--nav-mobile-bg);
   box-shadow: var(--shadow-modal);
   backdrop-filter: var(--nav-blur);
-  -webkit-backdrop-filter: var(--nav-blur);
+  backdrop-filter: var(--nav-blur);
 
   overflow: hidden;
   opacity: 0;
@@ -366,7 +366,7 @@
   z-index: calc(var(--z-modal) - 2);
   background: var(--nav-backdrop);
   backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
 }
 
 /* ── PRESETS ─────────────────────────────────────────────────────────────────

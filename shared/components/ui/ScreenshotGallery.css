@@ -133,7 +133,7 @@
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
 }
 
 .screenshot-gallery__lb_img_wrap {

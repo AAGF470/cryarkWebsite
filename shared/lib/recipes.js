@@ -106,6 +106,30 @@ export const RECIPES = {
     nav: 'minimal',
   },
 
+  'frosted': {
+    name: 'Frosted Glass',
+    blurb: 'Aurora-lit near-black with true frosted-glass panels. Depth + motion for products and studios. Pair with <AuroraBackground/> and add class="frosted" to <body>.',
+    fontUrl: 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap',
+    display: { family: "'Space Grotesk', 'Inter', system-ui, sans-serif", weight: 700, tracking: '-0.02em' },
+    dark: true,
+    palette: {
+      bg: '#06070d', surface: 'rgba(255,255,255,0.045)', surfaceHigh: 'rgba(255,255,255,0.07)',
+      text: '#f4f6fb', textSub: 'rgba(244,246,251,0.62)', textDim: 'rgba(244,246,251,0.40)', textFaint: 'rgba(244,246,251,0.24)',
+      borderSub: 'rgba(255,255,255,0.055)', borderLow: 'rgba(255,255,255,0.09)', borderMid: 'rgba(255,255,255,0.20)',
+    },
+    radius: { sm: '8px', md: '12px', lg: '16px', xl: '20px', xxl: '24px' },
+    rhythm: { sectionSpace: '112px', containerMax: '1240px' },
+    shadows: 'dramatic',
+    expressions: { hero: 'statement', featureGrid: 'cards' },
+    nav: 'minimal',
+    // Consumed by the .frosted glass layer in base.css.
+    extras: {
+      '--glass-blur': '22px',
+      '--font-body': "'Inter', system-ui, -apple-system, sans-serif",
+      '--font-mono': "'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace",
+    },
+  },
+
   'coastal-light': {
     name: 'Coastal Light',
     blurb: 'Airy, cool, elegant serif, rounded and soft. For salons, boutiques, and studios.',

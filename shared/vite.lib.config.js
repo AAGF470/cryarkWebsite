@@ -14,7 +14,17 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
   plugins: [react()],
+  // Minify CSS with Lightning CSS so vendor prefixes are added correctly from
+  // the target list. Source writes only the standard `backdrop-filter`; this
+  // adds `-webkit-` for older Safari. (esbuild's default minifier collapsed
+  // hand-written prefix pairs and kept only `-webkit-`, which Chromium ignores
+  // → frosted glass rendered only in Safari on built sites.)
+  css: {
+    transformer: 'lightningcss',
+    lightningcss: { targets: { chrome: 87 << 16, safari: 14 << 16, firefox: 103 << 16, edge: 88 << 16 } },
+  },
   build: {
+    cssMinify: 'lightningcss',
     outDir: path.resolve(__dirname, 'dist'),
     emptyOutDir: true,
     cssCodeSplit: false, // one combined styles.css
