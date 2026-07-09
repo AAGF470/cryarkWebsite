@@ -22,7 +22,16 @@ export default defineConfig({
   // .env lives at the monorepo root, two levels up from apps/guillen/
   envDir: path.resolve(__dirname, '../../'),
 
+  // Lightning CSS so `backdrop-filter` keeps a `-webkit-` prefix for Safari
+  // AND the unprefixed property Chromium needs (esbuild drops one → frosted
+  // glass breaks in Chromium on the deployed site).
+  css: {
+    transformer: 'lightningcss',
+    lightningcss: { targets: { chrome: 87 << 16, safari: 14 << 16, firefox: 103 << 16, edge: 88 << 16 } },
+  },
+
   build: {
+    cssMinify: 'lightningcss',
     outDir: path.resolve(__dirname, 'dist'),
     emptyOutDir: true,
   },

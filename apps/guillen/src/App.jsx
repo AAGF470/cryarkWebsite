@@ -9,6 +9,7 @@ import AboutPage           from "./pages/AboutPage";
 import DocsPage            from "./pages/DocsPage";
 import NotFoundPage        from "./pages/NotFoundPage";
 import PageLoader          from "@shared/components/ui/PageLoader";
+import AuroraBackground    from "@shared/components/ui/AuroraBackground";
 
 // ---------------------------------------------------------------------------
 // Guillen.Studio — router
@@ -98,6 +99,7 @@ export default function App() {
 
   return (
     <ErrorBoundary>
+      <AuroraBackground />
       <PageLoader visible={loading} />
       <RouterProvider router={router} />
     </ErrorBoundary>

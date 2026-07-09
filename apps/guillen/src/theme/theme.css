@@ -1,115 +1,104 @@
 /* ── GUILLEN.STUDIO THEME ────────────────────────────────────────────────── */
-/* Identity: the "dark-pastel" recipe with the dawn-gold accent (#c8a97e).
-   Soft pastel color on deep ink — workshop after dark. This block is the
-   materialized output of:
-
-     recipeVars('dark-pastel', '#c8a97e')   — shared/lib/recipes.js
-
-   Loaded after @shared/styles/base.css (see main.jsx), so every value below
-   overrides the token defaults in shared/styles/tokens.css.
+/* Identity: the "frosted" recipe with a teal accent (#00ffa3) — aurora-lit
+   near-black with true frosted-glass panels, matching the Marino Tracker look.
+   Materialized output of:  recipeVars('frosted', '#00ffa3')  — shared/lib/recipes.js
+   Pairs with <AuroraBackground/> (mounted in App.jsx) + class="frosted" on
+   <body> (index.html), which the .frosted layer in @shared/styles/frosted.css
+   uses to (a) keep the mount transparent so the aurora shows and (b) blur the
+   translucent glass surfaces. Fonts loaded statically in index.html.
    Regenerate with:
-     node -e "import('./shared/lib/recipes.js').then(m => console.log(m.recipeVars('dark-pastel','#c8a97e').vars))"
-   The recipe's font (Bricolage Grotesque) is loaded statically in index.html. */
+     node -e "import('../../shared/lib/recipes.js').then(m=>console.log(m.recipeVars('frosted','#00ffa3').vars))" */
 
 :root {
-  /* type */
-  --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
-  --font-display-weight: 600;
-  --font-display-tracking: -0.01em;
-
-  /* neutrals — lavender-tinted glass on soft ink */
-  --color-bg: #101017;
-  --color-surface: rgba(185, 174, 227, 0.05);
-  --color-surface-high: rgba(185, 174, 227, 0.09);
-  --color-text: #f0eee9;
-  --color-text-sub: rgba(240, 238, 233, 0.72);
-  --color-text-dim: rgba(240, 238, 233, 0.52);
-  --color-text-faint: rgba(240, 238, 233, 0.30);
-  --color-border-sub: rgba(185, 174, 227, 0.10);
-  --color-border-low: rgba(185, 174, 227, 0.16);
-  --color-border-mid: rgba(185, 174, 227, 0.28);
-
-  /* accent family */
-  --color-accent: #c8a97e;
-  --color-accent-sub: color-mix(in srgb, #c8a97e 9%, transparent);
-  --color-accent-dim: color-mix(in srgb, #c8a97e 18%, transparent);
+  --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  --font-display-weight: 700;
+  --font-display-tracking: -0.02em;
+  --color-bg: #06070d;
+  --color-surface: rgba(255,255,255,0.045);
+  --color-surface-high: rgba(255,255,255,0.07);
+  --color-text: #f4f6fb;
+  --color-text-sub: rgba(244,246,251,0.62);
+  --color-text-dim: rgba(244,246,251,0.40);
+  --color-text-faint: rgba(244,246,251,0.24);
+  --color-border-sub: rgba(255,255,255,0.055);
+  --color-border-low: rgba(255,255,255,0.09);
+  --color-border-mid: rgba(255,255,255,0.20);
+  --color-accent: #00ffa3;
+  --color-accent-sub: color-mix(in srgb, #00ffa3 9%, transparent);
+  --color-accent-dim: color-mix(in srgb, #00ffa3 18%, transparent);
   --color-on-accent: #17130d;
   --color-on-accent-sub: color-mix(in srgb, #17130d 75%, transparent);
-
-  /* rhythm + corners + depth */
-  --section-space: 108px;
-  --container-max: 1320px;
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
-  --radius-xl: 18px;
-  --radius-2xl: 22px;
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.45);
-  --shadow-md: 0 6px 24px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 12px 48px rgba(0, 0, 0, 0.55);
-  --shadow-modal: 0 24px 80px rgba(0, 0, 0, 0.7);
-
-  /* buttons */
-  --btn-solid-bg: #c8a97e;
+  --section-space: 112px;
+  --container-max: 1240px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.45);
+  --shadow-md: 0 6px 24px rgba(0,0,0,0.5);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.55);
+  --shadow-modal: 0 24px 80px rgba(0,0,0,0.7);
+  --btn-solid-bg: #00ffa3;
   --btn-solid-text: #17130d;
-  --btn-solid-border: #c8a97e;
-  --btn-solid-hover-bg: color-mix(in srgb, #c8a97e 84%, black);
+  --btn-solid-border: #00ffa3;
+  --btn-solid-hover-bg: color-mix(in srgb, #00ffa3 84%, black);
   --btn-solid-hover-text: #17130d;
-  --btn-solid-hover-border: color-mix(in srgb, #c8a97e 84%, black);
-  --btn-fill: color-mix(in srgb, #c8a97e 84%, black);
-  --btn-glow-tight: color-mix(in srgb, #c8a97e 35%, transparent);
-  --btn-glow-wide: color-mix(in srgb, #c8a97e 14%, transparent);
-  --btn-ghost-text: #c8a97e;
-  --btn-ghost-color: color-mix(in srgb, #c8a97e 84%, black);
-  --btn-ghost-border: rgba(185, 174, 227, 0.28);
-  --btn-ghost-border-hover: #c8a97e;
-  --btn-ghost-hover-bg: color-mix(in srgb, #c8a97e 6%, transparent);
-  --btn-ghost-glow: color-mix(in srgb, #c8a97e 14%, transparent);
-
-  /* nav (derived from the same primitives) */
-  --nav-bg: color-mix(in srgb, #101017 97%, transparent);
-  --nav-bg-open: color-mix(in srgb, #101017 99%, transparent);
-  --nav-mobile-bg: color-mix(in srgb, #101017 99%, transparent);
-  --nav-border: rgba(185, 174, 227, 0.10);
-  --nav-backdrop: color-mix(in srgb, #f0eee9 20%, transparent);
-  --nav-glider-border: color-mix(in srgb, #c8a97e 25%, transparent);
-  --nav-glider-shadow: 0 2px 12px color-mix(in srgb, #c8a97e 6%, transparent);
-  --nav-logo-color: color-mix(in srgb, #f0eee9 70%, transparent);
-  --nav-logo-hover: #f0eee9;
-  --nav-logo-accent: #c8a97e;
-  --nav-link-rest: color-mix(in srgb, #f0eee9 52%, transparent);
-  --nav-link-hover: #f0eee9;
-  --nav-link-active: #f0eee9;
-  --nav-link-hover-bg: color-mix(in srgb, #f0eee9 4%, transparent);
-  --nav-cta-color: #c8a97e;
+  --btn-solid-hover-border: color-mix(in srgb, #00ffa3 84%, black);
+  --btn-fill: color-mix(in srgb, #00ffa3 84%, black);
+  --btn-glow-tight: color-mix(in srgb, #00ffa3 35%, transparent);
+  --btn-glow-wide: color-mix(in srgb, #00ffa3 14%, transparent);
+  --btn-ghost-text: #00ffa3;
+  --btn-ghost-color: color-mix(in srgb, #00ffa3 84%, black);
+  --btn-ghost-border: rgba(255,255,255,0.20);
+  --btn-ghost-border-hover: #00ffa3;
+  --btn-ghost-hover-bg: color-mix(in srgb, #00ffa3 6%, transparent);
+  --btn-ghost-glow: color-mix(in srgb, #00ffa3 14%, transparent);
+  --nav-bg: color-mix(in srgb, #06070d 97%, transparent);
+  --nav-bg-open: color-mix(in srgb, #06070d 99%, transparent);
+  --nav-mobile-bg: color-mix(in srgb, #06070d 99%, transparent);
+  --nav-border: rgba(255,255,255,0.055);
+  --nav-backdrop: color-mix(in srgb, #f4f6fb 20%, transparent);
+  --nav-glider-border: color-mix(in srgb, #00ffa3 25%, transparent);
+  --nav-glider-shadow: 0 2px 12px color-mix(in srgb, #00ffa3 6%, transparent);
+  --nav-logo-color: color-mix(in srgb, #f4f6fb 70%, transparent);
+  --nav-logo-hover: #f4f6fb;
+  --nav-logo-accent: #00ffa3;
+  --nav-link-rest: color-mix(in srgb, #f4f6fb 52%, transparent);
+  --nav-link-hover: #f4f6fb;
+  --nav-link-active: #f4f6fb;
+  --nav-link-hover-bg: color-mix(in srgb, #f4f6fb 4%, transparent);
+  --nav-cta-color: #00ffa3;
   --nav-cta-hover-color: #17130d;
-  --nav-cta-border: #c8a97e;
-  --nav-cta-hover-border: #c8a97e;
-  --nav-cta-hover-bg: #c8a97e;
-  --nav-hamburger-bar: color-mix(in srgb, #f0eee9 60%, transparent);
-  --nav-hamburger-hover-bg: color-mix(in srgb, #f0eee9 4%, transparent);
-  --nav-mobile-link: color-mix(in srgb, #f0eee9 55%, transparent);
-  --nav-mobile-link-hover: #f0eee9;
-  --nav-mobile-link-active: #f0eee9;
-  --nav-mobile-link-hover-bg: color-mix(in srgb, #f0eee9 3%, transparent);
-  --nav-mobile-link-active-bg: color-mix(in srgb, #c8a97e 7%, transparent);
-  --nav-mobile-top-border: rgba(185, 174, 227, 0.10);
-  --nav-mobile-cta-color: #c8a97e;
+  --nav-cta-border: #00ffa3;
+  --nav-cta-hover-border: #00ffa3;
+  --nav-cta-hover-bg: #00ffa3;
+  --nav-hamburger-bar: color-mix(in srgb, #f4f6fb 60%, transparent);
+  --nav-hamburger-hover-bg: color-mix(in srgb, #f4f6fb 4%, transparent);
+  --nav-mobile-link: color-mix(in srgb, #f4f6fb 55%, transparent);
+  --nav-mobile-link-hover: #f4f6fb;
+  --nav-mobile-link-active: #f4f6fb;
+  --nav-mobile-link-hover-bg: color-mix(in srgb, #f4f6fb 3%, transparent);
+  --nav-mobile-link-active-bg: color-mix(in srgb, #00ffa3 7%, transparent);
+  --nav-mobile-top-border: rgba(255,255,255,0.055);
+  --nav-mobile-cta-color: #00ffa3;
   --nav-mobile-cta-hover: #17130d;
-  --nav-mobile-cta-border: color-mix(in srgb, #c8a97e 30%, transparent);
-  --nav-mobile-cta-hover-border: #c8a97e;
-  --nav-mobile-cta-hover-bg: #c8a97e;
-  --nav-mobile-strip-bg: color-mix(in srgb, #101017 92%, transparent);
-  --nav-mobile-strip-border: rgba(185, 174, 227, 0.10);
+  --nav-mobile-cta-border: color-mix(in srgb, #00ffa3 30%, transparent);
+  --nav-mobile-cta-hover-border: #00ffa3;
+  --nav-mobile-cta-hover-bg: #00ffa3;
+  --nav-mobile-strip-bg: color-mix(in srgb, #06070d 92%, transparent);
+  --nav-mobile-strip-border: rgba(255,255,255,0.055);
+  --glass-blur: 22px;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 
-  /* pastel set (recipe extras) */
+  /* pastel set — soft category color that still reads well on the dark glass */
   --pastel-mint: #a3d9c3;
   --pastel-lavender: #b9aee3;
   --pastel-sky: #9cc3de;
   --pastel-rose: #dba8b8;
   --pastel-peach: #e6c39e;
 }
-
 /* ── PASTEL CATEGORY TOKENS ──────────────────────────────────────────────── */
 /* Map the component-scoped category tokens (all declared with fallbacks in
    their shared component CSS) onto the pastel set, so content pages carry
@@ -181,19 +170,18 @@
 }
 
 /* ── APP-WIDE SHELL ──────────────────────────────────────────────────────── */
-/* One definition for the page wrapper + film grain (previously duplicated
-   in every page's CSS file).                                                 */
+/* Base canvas color lives on <body>; .page stays TRANSPARENT so the fixed
+   AuroraBackground shows through and the frosted-glass panels have the
+   gradient to diffuse (an opaque .page here would kill the effect). */
+body { background: var(--color-bg); }
 
-/* Nav brand mark ("AG") joins the display face (font coverage pass). */
-.sitenav__logo_text {
-  font-family: var(--font-display);
-}
+.sitenav__logo_text { font-family: var(--font-display); }
 
 .page {
-  background: var(--color-bg);
+  background: transparent;
   min-height: 100vh;
   color: var(--color-text);
-  font-family: var(--font-sans, system-ui, sans-serif);
+  font-family: var(--font-body, 'Inter', system-ui, sans-serif);
   padding-top: 62px;
   overflow-x: hidden;
 }

@@ -13,5 +13,12 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 export default defineConfig({
   plugins: [react()],
   root: __dirname,
+  // Lightning CSS: keep both `backdrop-filter` and the `-webkit-` prefix so
+  // frosted glass renders in Chromium (unprefixed) and Safari (prefixed).
+  css: {
+    transformer: 'lightningcss',
+    lightningcss: { targets: { chrome: 87 << 16, safari: 14 << 16, firefox: 103 << 16, edge: 88 << 16 } },
+  },
+  build: { cssMinify: 'lightningcss' },
   resolve: { alias: { '@shared': path.resolve(__dirname, '../../shared') } },
 })
