@@ -1,0 +1,148 @@
+/* PromiseContract — deep accent band with a living "signed agreement" frame.
+   Colors derive from the theme: band = accent darkened, brass = --pc-gold
+   (overridable per site/recipe). Interactive by design: hoverable clauses,
+   clickable clause links, reacting stamp, real CTA. */
+
+.promise-contract {
+  --pc-bg: color-mix(in srgb, var(--color-accent) 78%, black);
+  --pc-bg-deep: color-mix(in srgb, var(--color-accent) 62%, black);
+  --pc-gold: #C9A24B;
+  --pc-ink: color-mix(in srgb, var(--color-on-accent) 92%, transparent);
+  --pc-ink-sub: color-mix(in srgb, var(--color-on-accent) 68%, transparent);
+  background: linear-gradient(180deg, var(--pc-bg), var(--pc-bg-deep));
+  position: relative;
+  overflow: hidden;
+}
+/* faint brass ring, echoing the hero motif — ties the band to the page */
+.promise-contract::before {
+  content: '';
+  position: absolute;
+  left: -180px; bottom: -260px;
+  width: 560px; height: 560px;
+  border-radius: 50%;
+  border: 1px solid var(--pc-gold);
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+.promise-contract .pc-eyebrow { color: var(--pc-gold); opacity: 1; }
+.promise-contract .pc-title { color: var(--pc-ink); max-width: 720px; }
+.promise-contract .pc-title em { font-style: italic; font-weight: 500; color: color-mix(in srgb, var(--pc-gold) 75%, white); }
+
+/* The frame */
+.pc-frame {
+  margin-top: 40px;
+  position: relative;
+  border: 1px solid color-mix(in srgb, var(--pc-gold) 45%, transparent);
+  border-radius: var(--radius-xl);
+  padding: 38px 40px 30px;
+  background: color-mix(in srgb, var(--color-on-accent) 4%, transparent);
+  max-width: 900px;
+}
+.pc-frame__label {
+  position: absolute;
+  top: -10px; left: 30px;
+  padding: 0 12px;
+  background: var(--pc-bg);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--pc-gold);
+}
+
+/* Clauses — hoverable rows, links get an arrow */
+.pc-clauses {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 22px;
+}
+.pc-clauses > li { min-width: 0; }
+.pc-clause {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 12px;
+  margin: 0 -12px;
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--pc-ink-sub);
+  transition: background 0.2s var(--motion-ease, ease), transform 0.2s var(--motion-ease, ease), color 0.2s;
+}
+li.pc-clause, .pc-clauses > li > .pc-clause { margin: 0; }
+.pc-clause:hover {
+  background: color-mix(in srgb, var(--color-on-accent) 7%, transparent);
+  color: var(--pc-ink);
+  transform: translateX(4px);
+}
+.pc-clause--link { text-decoration: none; cursor: pointer; }
+.pc-clause__go { margin-left: auto; color: var(--pc-gold); opacity: 0; transition: opacity 0.2s, transform 0.2s; transform: translateX(-6px); }
+.pc-clause--link:hover .pc-clause__go { opacity: 1; transform: none; }
+.pc-check { flex: none; color: var(--pc-gold); font-weight: 600; margin-top: 1px; }
+.pc-clause__text b, .pc-clause__text strong { color: var(--pc-ink); font-weight: 600; }
+
+/* Signature row + stamp + CTA */
+.pc-foot {
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px solid color-mix(in srgb, var(--pc-gold) 35%, transparent);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.pc-sig__name {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 26px;
+  color: color-mix(in srgb, var(--pc-gold) 70%, white);
+}
+.pc-sig__sub {
+  margin-top: 4px;
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pc-ink-sub);
+}
+.pc-foot__right { display: flex; align-items: center; gap: 22px; }
+.pc-cta {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 999px;
+  background: var(--pc-gold);
+  color: color-mix(in srgb, var(--pc-bg-deep) 88%, black);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s var(--motion-ease, ease), box-shadow 0.2s;
+}
+.pc-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 22px -10px rgba(0, 0, 0, 0.5); }
+.pc-stamp {
+  width: 78px; height: 78px;
+  border-radius: 50%;
+  border: 1.5px solid var(--pc-gold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--pc-gold);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.3;
+  padding: 8px;
+  transform: rotate(-8deg);
+  transition: transform 0.35s var(--motion-ease, ease);
+}
+.pc-frame:hover .pc-stamp { transform: rotate(-2deg) scale(1.04); }
+
+@media (max-width: 760px) {
+  .pc-frame { padding: 30px 22px 24px; }
+  .pc-clauses { grid-template-columns: 1fr; }
+  .pc-foot { align-items: center; }
+}
