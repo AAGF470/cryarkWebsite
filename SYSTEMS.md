@@ -73,7 +73,7 @@
   expression on hero+featureGrid.
 - **CMS collections**: Pages, Posts (guides), Projects, Media, Users,
   Inquiries (form submissions land here — NO email notifications configured),
-  Updates, Builds. Globals: voiceDemo (AI-phone-menu sample clips).
+  Updates, Builds. Globals: voiceDemo (AI-phone-menu sample clips), markets (one photo per market → Home grid + guide rails, arched duotone treatment in guillen theme.css).
 - **Guides** (`cms/scripts/push-guides.mjs`, 8 articles): ownership checklist,
   cost-2026, pages-vs-items, local SEO, Squarespace comparison, Wix
   comparison, nonprofit guide, AI-phone-menu explainer.
