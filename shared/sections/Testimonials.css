@@ -10,6 +10,21 @@
   gap: 20px;
 }
 
+/* Fixed column count — applied only when the `columns` prop is set */
+.testimonials__grid--fixed {
+  grid-template-columns: repeat(var(--testimonials-cols, 3), 1fr);
+}
+
+@media (max-width: 760px) {
+  .testimonials__grid--fixed {
+    grid-template-columns: repeat(min(var(--testimonials-cols, 3), 2), 1fr);
+  }
+}
+
+@media (max-width: 440px) {
+  .testimonials__grid--fixed { grid-template-columns: 1fr; }
+}
+
 .testimonial-card {
   background: var(--color-surface);
   border: 0.5px solid var(--color-border-sub);

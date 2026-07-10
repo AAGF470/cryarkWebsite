@@ -10,7 +10,7 @@ import './ServiceList.css'
 //   headline string
 //   subtext  string
 //   services Array<{ name, description?, price?, from?:boolean }>
-//   columns  1|2          — split into two columns at desktop (default: 2)
+//   columns  1|2|3        — number of columns at desktop (default: 2)
 //   variant  "default"|"alt"
 // ---------------------------------------------------------------------------
 

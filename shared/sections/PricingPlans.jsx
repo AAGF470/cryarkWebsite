@@ -23,6 +23,7 @@ import Button from '../components/ui/Button'
 //     cta          { label, href, variant? }
 //     featured?    boolean  — accent border + shadow
 //   }>
+//   columns  2|3|4   — plans per row at desktop (default: one column per plan)
 //   variant  "default"|"alt"
 // ---------------------------------------------------------------------------
 
@@ -38,6 +39,7 @@ export default function PricingPlans({
   headline,
   subtext,
   plans = [],
+  columns,
   variant = 'default',
 }) {
   return (
@@ -51,7 +53,7 @@ export default function PricingPlans({
           </div>
         )}
 
-        <div className="pricing__grid" style={{ '--pricing-cols': plans.length || 1 }}>
+        <div className="pricing__grid" style={{ '--pricing-cols': columns ?? (plans.length || 1) }}>
           {plans.map((plan, i) => (
             <div key={i} className={`plan${plan.featured ? ' plan--featured' : ''}`}>
               {plan.badge && <span className="plan__badge">{plan.badge}</span>}

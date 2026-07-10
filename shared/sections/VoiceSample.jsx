@@ -15,6 +15,8 @@ import { SectionIcon } from './SectionIcons'
 //   subtext   string
 //   callerName string  — label on the "call" header (default: "Incoming call")
 //   clips     Array<{ label, src?, sub? }>
+//   layout    "phone"|"plain" — phone chrome with call header, or a plain
+//             bordered card with just the clip rows (default: "phone")
 //   variant   "default"|"alt"|"accent"
 // ---------------------------------------------------------------------------
 
@@ -75,6 +77,7 @@ export default function VoiceSample({
   subtext,
   callerName = 'Incoming call',
   clips = [],
+  layout = 'phone',
   variant = 'default',
 }) {
   const [playing, setPlaying] = useState(-1) // index of the clip currently playing
@@ -90,12 +93,14 @@ export default function VoiceSample({
           </div>
         )}
 
-        <div className="voice-sample__phone">
-          <div className="voice-sample__callbar">
-            <span className="voice-sample__dot" aria-hidden="true"><SectionIcon name="phone" /></span>
-            <span className="voice-sample__caller">{callerName}</span>
-            <span className="voice-sample__live">DEMO</span>
-          </div>
+        <div className={layout === 'plain' ? 'voice-sample__plain' : 'voice-sample__phone'}>
+          {layout !== 'plain' && (
+            <div className="voice-sample__callbar">
+              <span className="voice-sample__dot" aria-hidden="true"><SectionIcon name="phone" /></span>
+              <span className="voice-sample__caller">{callerName}</span>
+              <span className="voice-sample__live">DEMO</span>
+            </div>
+          )}
           <div className="voice-sample__clips">
             {clips.map((clip, i) => (
               <Clip

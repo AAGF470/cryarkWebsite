@@ -8,6 +8,7 @@ import './Testimonials.css'
 //   eyebrow  string
 //   headline string
 //   items    Array<{quote, author, role?, company?}>
+//   columns  1|2|3|4     — fixed desktop column count (default: auto-fit, min 280px)
 //   variant  "default"|"alt"
 // ---------------------------------------------------------------------------
 
@@ -15,6 +16,7 @@ export default function Testimonials({
   eyebrow,
   headline,
   items = [],
+  columns,
   variant = 'default',
 }) {
   return (
@@ -26,7 +28,10 @@ export default function Testimonials({
             {headline && <h2 className="section-title">{headline}</h2>}
           </div>
         )}
-        <div className="testimonials__grid">
+        <div
+          className={`testimonials__grid${columns ? ' testimonials__grid--fixed' : ''}`}
+          style={columns ? { '--testimonials-cols': columns } : undefined}
+        >
           {items.map((item, i) => {
             const initials = item.author
               ? item.author.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase()

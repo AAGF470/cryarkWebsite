@@ -72,3 +72,17 @@
   .steps__number { width: 34px; height: 34px; font-size: 12px; }
   .steps__item { gap: 18px; }
 }
+
+/* Multi-column grid — applied only when the `columns` prop is > 1 */
+.steps__list--cols {
+  display: grid;
+  grid-template-columns: repeat(var(--steps-cols, 1), 1fr);
+  gap: 32px 40px;
+  max-width: none;
+}
+
+.steps__list--cols .steps__item { padding: 0; }
+
+@media (max-width: 760px) {
+  .steps__list--cols { grid-template-columns: 1fr; }
+}
