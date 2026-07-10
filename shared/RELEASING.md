@@ -5,7 +5,17 @@ cryark, fencingpatrol, nsl). Sites install it from **GitHub Packages** — they 
 **not** build from this repo directly. So a change here isn't live anywhere until
 it's published and each site bumps its dependency.
 
-## Publish
+## Publish — the easy way (no terminal, no token)
+
+There's a GitHub Action for this: `.github/workflows/publish-ui.yml`. It uses
+the repo's built-in `GITHUB_TOKEN`, so no PAT and no local publish at all:
+
+1. Bump `"version"` in `shared/package.json`, commit, push.
+2. On GitHub → **Actions → "Publish @aagf470/ui" → Run workflow** (or publish
+   a GitHub Release, which triggers it too).
+3. Done — CI installs, builds, and publishes. Then bump the consuming sites.
+
+## Publish — locally (fallback)
 
 ```bash
 cd shared
