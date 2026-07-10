@@ -89,8 +89,7 @@ site manifest supplies routes) bakes SEO/AI-readable HTML + sitemap → deploy
 
 ## Key facts that keep coming up
 
-- Contact: contact@guillensolutions.com · text (508) 794-9751
-  · WhatsApp (346) 332-6885 — **both text-only, no calls**.
+- Contact: contact@guillensolutions.com · text + WhatsApp (508) 794-9751 (Google Voice + WhatsApp Business, one number) — **text-only, no calls**.
 - Exit promise: runnable site copy + content export, 30 days (extendable to a
   120-day hard cap). Never promise "price never changes" — renewal rates are
   agreed in writing ("you'll always know the number in advance").
