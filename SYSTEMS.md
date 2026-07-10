@@ -98,7 +98,7 @@ site manifest supplies routes) bakes SEO/AI-readable HTML + sitemap → deploy
   client's own name.
 - Identity: LGBTQ+ & Latino-owned, bilingual EN/ES, boutique/product-business
   focus; nonprofits = initial target market.
-- Socials: Facebook https://www.facebook.com/profile.php?id=61591594841523 (in footer + ORG.sameAs; swap for the vanity URL once FB grants a username).
+- Socials: Facebook https://www.facebook.com/profile.php?id=61591594841523 + Instagram https://www.instagram.com/guillensolutions/ (both in footer + ORG.sameAs; swap FB for its vanity URL once granted).
 - Docs: `GuillenSolutionsWeb/docs/CMS_MIGRATIONS.md` (migration safety),
   `docs/COMPETITIVE.md` (vs Webflow/Framer), `shared/RELEASING.md` (publish),
   `DESIGN_SYSTEM.md` (style guide, this repo).
