@@ -6,9 +6,13 @@
 // ---------------------------------------------------------------------------
 
 import './styles/base.css'
+import './styles/motion.css'
 
 // Section library (client-facing building blocks)
 export * from './sections'
+
+// Motion (scroll reveals + hover utilities; personality via --motion-* vars)
+export { default as Reveal } from './components/ui/Reveal'
 
 // Generic UI primitives
 export { default as Button }  from './components/ui/Button'

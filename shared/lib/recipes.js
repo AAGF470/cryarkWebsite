@@ -193,10 +193,27 @@ export const RECIPES = {
   },
 }
 
+// ── Motion personality ───────────────────────────────────────────────────────
+// Emitted as --motion-* vars consumed by styles/motion.css (Reveal presets +
+// hover utilities). Mapped by recipe id so recipes need no new fields;
+// unlisted recipes get 'standard'.
+const MOTION = {
+  calm:       { duration: '0.8s',  distance: '16px', stagger: '110ms', ease: 'cubic-bezier(0.22, 1, 0.36, 1)' },
+  standard:   { duration: '0.65s', distance: '24px', stagger: '90ms',  ease: 'cubic-bezier(0.16, 1, 0.3, 1)' },
+  expressive: { duration: '0.7s',  distance: '36px', stagger: '70ms',  ease: 'cubic-bezier(0.34, 1.3, 0.5, 1)' },
+}
+const MOTION_BY_RECIPE = {
+  'editorial-paper': 'calm',
+  'coastal-light': 'calm',
+  'bold-trade': 'expressive',
+  'dark-cinematic': 'expressive',
+}
+
 export function recipeVars(id, accent = '#2c4a6e') {
   const r = RECIPES[id]
   if (!r) throw new Error(`Unknown recipe "${id}". Options: ${Object.keys(RECIPES).join(', ')}`)
   const p = r.palette
+  const motion = MOTION[MOTION_BY_RECIPE[id] || 'standard']
   const mix = (c, pct) => `color-mix(in srgb, ${c} ${pct}%, transparent)`
   // Text on the accent color: a dark ink if the accent is light, warm white if
   // dark. Light recipes can reuse their body ink; dark recipes need a dedicated
@@ -227,6 +244,9 @@ export function recipeVars(id, accent = '#2c4a6e') {
     '--radius-sm': r.radius.sm, '--radius-md': r.radius.md, '--radius-lg': r.radius.lg,
     '--radius-xl': r.radius.xl, '--radius-2xl': r.radius.xxl,
     ...shadows,
+    // motion personality (styles/motion.css)
+    '--motion-duration': motion.duration, '--motion-distance': motion.distance,
+    '--motion-ease': motion.ease, '--motion-stagger': motion.stagger,
     // buttons
     '--btn-solid-bg': accent, '--btn-solid-text': onAccent, '--btn-solid-border': accent,
     '--btn-solid-hover-bg': darker, '--btn-solid-hover-text': onAccent, '--btn-solid-hover-border': darker,
