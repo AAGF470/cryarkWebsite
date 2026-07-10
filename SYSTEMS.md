@@ -39,6 +39,16 @@
 5. **CMS-page text fields are localized (en/es)** since 2026-07-10; site
    fetches default locale unless `?locale=es`. Coded pages use the site's own
    `t()` + `content.es.js` system instead.
+6. **A CMS page with blocks TAKES OVER its route from the coded React page**
+   (PayloadPage fallback pattern, main routes like `/`). So authoring a page
+   via "Author pages" replaces the coded version for JS visitors — if the
+   script's layout is stale, live sections silently disappear (happened
+   2026-07-10: CMS `home` hid the markets/identity/nonprofit sections and all
+   Spanish). Home authoring is PARKED in `push-pages.mjs`
+   (`HOME_PAGE_DISABLED`) until it reaches full EN+ES parity with
+   `site/src/pages/Home.jsx`. Before authoring any main-route page, diff the
+   script layout against the coded page. Prerendered/SEO HTML is unaffected
+   (takeover is client-side).
 
 ## Current lineups (update when they change!)
 
