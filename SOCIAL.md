@@ -57,3 +57,27 @@
 - Assets live in `~/Desktop/guillen-gbp-slides.html` (16:9 + FB cover) and
   `~/Desktop/guillen-instagram-slides.html` (1080² squares) — both fixed-size
   exporters, brand: #134E44 green / #C9A24B gold / #FAF4EA cream / Fraunces.
+
+## Pitch conventions (cold outreach DMs/messages)
+
+Every pitch includes, in order:
+1. **Specific observation** — something true about THEIR business (their ads,
+   reviews, a broken link). Never generic. Never insult the current site;
+   state observable facts ("your website link isn't loading").
+2. **The hook tied to money they already spend** (ad spend leaking, missed
+   calls, prices-as-images invisible to Google).
+3. **A "we can build this for you" section** — 1–2 tailored capabilities that
+   ENABLE their business, drawn from real stack capacity: bilingual
+   quiz/finder + inquiry routing (like our own PlanFinder/configurator),
+   AI phone menu with bilingual routing, per-location pages, CMS price lists,
+   CG product renders, QR menus. HONESTY RULE: quizzes/estimators collect +
+   pre-qualify and route to the owner's inbox — never promise live third-party
+   rate calculations or integrations we haven't scoped.
+4. **Founding-client rate framing** — we're a newer studio, rates are the
+   lowest they'll ever be, renewal locked in writing. NEVER invent a fake
+   was/now discount; list prices are list prices. (If a real founding
+   discount is set, record it here and use it consistently.)
+5. **Free preview offer** (it's our actual pipeline: static preview before
+   contract) + keep-it-in-DMs low-friction close.
+6. Bilingual signal early; full ES version when their audience is
+   Spanish-first.
