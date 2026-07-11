@@ -99,6 +99,7 @@ site manifest supplies routes) bakes SEO/AI-readable HTML + sitemap → deploy
 - Identity: LGBTQ+ & Latino-owned, bilingual EN/ES, boutique/product-business
   focus; nonprofits = initial target market.
 - Socials: Facebook https://www.facebook.com/profile.php?id=61591594841523 + Instagram https://www.instagram.com/guillensolutions/ (both in footer + ORG.sameAs; swap FB for its vanity URL once granted).
+- Social: SOCIAL.md (this repo) — hashtag bank per market/vertical + caption conventions; pull from it for every IG/FB post.
 - Docs: `GuillenSolutionsWeb/docs/CMS_MIGRATIONS.md` (migration safety),
   `docs/COMPETITIVE.md` (vs Webflow/Framer), `shared/RELEASING.md` (publish),
   `DESIGN_SYSTEM.md` (style guide, this repo).
