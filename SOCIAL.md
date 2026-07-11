@@ -60,7 +60,17 @@
 
 ## Pitch conventions (cold outreach DMs/messages)
 
-Every pitch includes, in order:
+**LENGTH RULE (the most important one): first-touch DMs are ≤80 words,
+3 beats — (1) one specific compliment, (2) one observation useful to them
+even if they never reply, (3) one low-stakes ask. No bullet lists, no bold
+walls, conversational sentences. Prices, plans, ownership pitch, and the
+free-preview details all go in MESSAGE #2, after they reply — a price lands
+as an answer, not a pitch. Long structured messages read as scripts/mail
+merge and get ignored. (Email to a formal principal, e.g. GTC, may run
+longer; DMs never.)**
+
+The full sequence below is the MATERIAL for the conversation, not the first
+message. Every pitch draws on, in order:
 1. **Specific observation** — something true about THEIR business (their ads,
    reviews, a broken link). Never generic. Never insult the current site;
    state observable facts ("your website link isn't loading").
