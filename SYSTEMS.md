@@ -99,6 +99,7 @@ site manifest supplies routes) bakes SEO/AI-readable HTML + sitemap → deploy
 - Identity: LGBTQ+ & Latino-owned, bilingual EN/ES, boutique/product-business
   focus; nonprofits = initial target market.
 - Socials: Facebook https://www.facebook.com/profile.php?id=61591594841523 + Instagram https://www.instagram.com/guillensolutions/ (both in footer + ORG.sameAs; swap FB for its vanity URL once granted).
+- Lead finder: tools/leadfinder.py — feed it "Name | domain" lines (from browsing Maps/Yelp), it probes each site once via curl and scores lead heat (dead site/TLS/EOL PHP/no viewport/stale copyright); outputs ranked CSV for the tracker. Technical decay only — design judgment stays human.
 - Social: SOCIAL.md (this repo) — hashtag bank per market/vertical + caption conventions; pull from it for every IG/FB post.
 - Docs: `GuillenSolutionsWeb/docs/CMS_MIGRATIONS.md` (migration safety),
   `docs/COMPETITIVE.md` (vs Webflow/Framer), `shared/RELEASING.md` (publish),
