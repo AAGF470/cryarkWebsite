@@ -109,6 +109,13 @@ def probe(name, domain):
         gen = g.group(1)
         sig.append(f"built with: {gen.split(';')[0][:40]}")
         if re.search(r"wordpress [1-5]\.|homestead|weebly|godaddy", gen, re.I): score += 15
+    # Bilingual-market opportunity: no Spanish anywhere (no es lang/hreflang,
+    # no /es route, no Spanish keywords). Informational lead-heat for our
+    # markets — not site decay.
+    has_es = (re.search(r'lang=["\']es|hreflang=["\']es|href=["\'][^"\']*/es(?:panol)?[/"\']', low)
+              or re.search(r'espa[nñ]ol|hablamos|s[ií]guenos|servicios de', low))
+    if body and not has_es:
+        sig.append("no Spanish content (bilingual-market opportunity)"); score += 10
     yrs = [int(y) for y in re.findall(r"(?:©|&copy;|copyright)\D{0,20}(20\d\d)", low)]
     if yrs and max(yrs) < THIS_YEAR - 1: sig.append(f"copyright stuck at {max(yrs)}"); score += 20
     if elapsed > 4: sig.append(f"slow ({elapsed:.1f}s)"); score += 10
