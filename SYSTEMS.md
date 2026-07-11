@@ -116,8 +116,11 @@ site manifest supplies routes) bakes SEO/AI-readable HTML + sitemap → deploy
 - Referral: 10% of first $600 + 5% above, Zelle same day.
 - AI Phone Menu add-on: $200 one-time setup; number+voice subscription in the
   client's own name.
-- Identity: LGBTQ+ & Latino-owned, bilingual EN/ES, boutique/product-business
-  focus; nonprofits = initial target market.
+- Identity: Latino-owned + bilingual EN/ES is the PUBLIC brand; LGBTQ+
+  ownership is true but NOT brand-displayed as of 2026-07-11 (political
+  sensitivity, Texas markets — owner's call). Site carries a quiet "everyone
+  is welcome" line in Where-we-are instead. Chamber/LGBTBE strategy
+  unaffected. Boutique/product-business focus; nonprofits = initial target.
 - Socials: Facebook https://www.facebook.com/profile.php?id=61591594841523 + Instagram https://www.instagram.com/guillensolutions/ (both in footer + ORG.sameAs; swap FB for its vanity URL once granted).
 - Lead finder: tools/leadfinder.py — feed it "Name | domain" lines (from browsing Maps/Yelp), it probes each site once via curl and scores lead heat (dead site/TLS/EOL PHP/no viewport/stale copyright); outputs ranked CSV for the tracker. Technical decay only — design judgment stays human.
 - Pitch: PITCH.md (this repo) — canonical copy-paste sales pitch; keep synced with pricing changes.

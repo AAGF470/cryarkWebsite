@@ -10,8 +10,15 @@
 ## Brand / identity (every post picks 2–3)
 
 #smallbusiness #shopsmall #websitedesign #webdesigner #smallbusinessowner
-#latinoowned #lgbtqowned #lgbtbusiness #bilingual #bilingualbusiness
+#latinoowned #bilingual #bilingualbusiness
 #negociospequeños #emprendedores #transparentpricing #smallbusinesstips
+
+**LGBTQ+ tags (#lgbtqowned #lgbtbusiness): NOT in the default brand set as of
+2026-07-11** — brand-level LGBTQ+ display retired for political sensitivity in
+Texas markets (owner's call). Use only in explicitly LGBTQ+ contexts (chamber
+events, LGBTQ+ business communities). The MA LGBT Chamber / LGBTBE
+certification strategy is unaffected — that's B2B networking, not consumer
+branding.
 
 ## Markets
 
