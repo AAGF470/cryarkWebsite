@@ -78,6 +78,26 @@
   cost-2026, pages-vs-items, local SEO, Squarespace comparison, Wix
   comparison, nonprofit guide, AI-phone-menu explainer.
 
+## Infra (RAYA — 72.61.11.169, ssh alias `raya`)
+
+- **Edge: nginx-proxy-manager container** owns 80/443 + all Let's Encrypt
+  certs (GUI on :81). Every site/service is proxied through it — so
+  edge-level settings apply to ALL current and future client sites at once.
+- **Gzip (added 2026-07-11):** NPM's stock conf had `gzip on` but no
+  gzip_types and gzip_proxied off → proxied CSS/JS/JSON shipped raw
+  (166KB CSS → 27KB after fix). Lives at
+  `/srv/docker/nginx-proxy-manager/npm/data/nginx/custom/http.conf`
+  (NPM's documented http-context hook). Rollback: delete file →
+  `docker exec nginx-proxy-manager nginx -s reload`. NEVER touch
+  `/srv/docker/nginx-proxy-manager/npm/letsencrypt` (certs).
+- Per-site static sites are `nginx:alpine` containers (guillensolutions-static,
+  clientpreview-one/two, guillen-static, cryark-static…) rsync'd by CI;
+  hashed /assets already ship `max-age=31536000, immutable` from those.
+- **New-client server checklist:** gzip = inherited from edge (nothing to do);
+  add proxy host in NPM GUI (+ cert); static container from the standard
+  nginx:alpine pattern; CMS clones get the media cache-headers next.config +
+  WebP imageSizes from GuillenSolutionsWeb/cms (copy, don't reinvent).
+
 ## Client pipeline (the business process the code serves)
 
 Call → static preview from `apps/freelance-template` (copy dir, edit
