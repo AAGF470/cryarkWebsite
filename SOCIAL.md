@@ -22,12 +22,12 @@ branding.
 
 ## Markets
 
-### Boston, MA (home base — in person)
+### Boston, MA (home base #1 — in person)
 #boston #bostonsmallbusiness #bostonbusiness #shopsmallboston
 #roxbury #roxburyma #southend #southendboston #seaportboston #seaportdistrict
 #eastboston #eastie #dorchester #jamaicaplain #bostonlatino #massachusetts
 
-### North Houston, TX (Tomball / Spring / Klein / The Woodlands)
+### North Houston, TX (home base #2 — Tomball / Spring / Klein / The Woodlands)
 #tomball #tomballtx #tomballtexas #tomballsmallbusiness #oldtowntomball
 #springtexas #springtx #klein #kleintx
 #thewoodlands #thewoodlandstx #thewoodlandstexas #woodlandstx
