@@ -127,6 +127,26 @@ Houston — trust competition is thinnest there. (5) Personalized DMs
 (current practice) — validated: personalized outreach appears in founder
 accounts; spray-and-pray doesn't.
 
+**Founding-showcase offer (selective free build — decided 2026-07-12):**
+The "$0 offers reduce response" finding applies to BROADCAST free offers.
+A hand-picked founding showcase is the seed variant and is allowed, with
+fixed terms — never improvise them:
+- Framing: "we're choosing one business in [area] as a founding showcase —
+  full Freelance-tier build, no build fee." Selective, never "free website".
+- Price is consideration, on a one-page written agreement: testimonial +
+  case-study/portfolio rights + Google review + 2 referral intros.
+- Year 1 free, renewal at the normal $200/yr stated upfront (keeps the
+  "you'll always know the number" promise; tests commitment).
+- Domain in THEIR name, paid by them (~$12) — you-own-everything brand.
+- Cap: ONE per market, Freelance-tier scope, fixed page count, timeboxed.
+- Deploy as message #2 escalation on warm-but-stalled threads, or to the
+  nonprofit seed target.
+
+**Cold-DM expectations (calibration, 2026-07):** personalized DMs to local
+SMBs → ~10–20% reply, replies → ~20–30% close. 20 sends ≈ 2–4 replies,
+0–1 clients — zero from one batch is normal. One polite bump 3–5 days later
+(Tue/Wed morning) adds ~30–50% more replies; "read, no reply" = nudge list.
+
 **Niche signal:** vets/dental/med/trades = high-LTV niches that referral-
 chain well (one vet → three vets). RESTAURANTS flagged as a WEAK niche
 (3–5% margins, discovery via Maps/IG, owners won't pay) — pitch them
