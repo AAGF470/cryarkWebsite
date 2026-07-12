@@ -80,6 +80,9 @@
   routing/prerender/sitemap/schema inherit automatically. Adding an area =
   one AREAS entry (roads, places, hand-written flavor line — the anti-
   doorway ingredient). Market guides + /guides index interlink the areas.
+  All 15 guides are footer-linked ("Serving:" strip, React footer + the
+  prerender template footer in `scripts/prerender.mjs` — BOTH must carry
+  new links, prerender does not run React) → crawl depth 1 from every page.
 - **Guides** (`cms/scripts/push-guides.mjs`, 8 articles): ownership checklist,
   cost-2026, pages-vs-items, local SEO, Squarespace comparison, Wix
   comparison, nonprofit guide, AI-phone-menu explainer.
