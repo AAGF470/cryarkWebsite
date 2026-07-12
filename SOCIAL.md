@@ -98,3 +98,36 @@ message. Every pitch draws on, in order:
    contract) + keep-it-in-DMs low-friction close.
 6. Bilingual signal early; full ES version when their audience is
    Spanish-first.
+
+## Acquisition playbook (researched 2026-07 — founder accounts + channel data)
+
+**SKIP in year one (evidence-based):** Google Ads on "web design [city]"
+(~$104/lead benchmark — $300/mo buys ~3 leads pre-conversion); Google LSA
+(web design not an eligible category); Bark/Thumbtack (most consistently
+negative reviews of any channel — fake/dead leads); paid Clutch/UpCity tiers
+(pay-to-play, wrong buyer); BNI (~$700–1,500/yr + weekly meetings, chapter
+lottery); FB lead ads under ~$500/mo (tire-kickers); $0 free-site offers
+(actively reduce response vs cheap-paid framing).
+
+**INVEST money in:** one "anchor build" per market at cheap-not-free framing
+(e.g. ~$500-600 first year incl. hosting, for a well-connected local
+business) — referral chains from one visible client are the #1 repeated
+origin pattern; free listings everywhere (GBP, Nextdoor business page,
+free Clutch/UpCity tiers); MA LGBT Chamber $295 (only membership that
+survives scrutiny — includes LGBTBE cert).
+
+**INVEST hours in (20/mo):** (1) weekly in-person circuits — Tomball/Spring
+chamber mixers + Boston meetups; expect 6–12 months to compound (Up And
+Social, Boston agency). (2) Referral machinery: ask AT LAUNCH (peak
+happiness), make referring easy, referral program already exists (10%/5%).
+(3) 2–3 referral-swap partnerships: bookkeepers, photographers, printers,
+marketing consultants serving the same SMBs. (4) Bilingual moat: WhatsApp
+Business with Spanish greeting, Spanish-language FB group presence in North
+Houston — trust competition is thinnest there. (5) Personalized DMs
+(current practice) — validated: personalized outreach appears in founder
+accounts; spray-and-pray doesn't.
+
+**Niche signal:** vets/dental/med/trades = high-LTV niches that referral-
+chain well (one vet → three vets). RESTAURANTS flagged as a WEAK niche
+(3–5% margins, discovery via Maps/IG, owners won't pay) — pitch them
+opportunistically, don't build around them.
