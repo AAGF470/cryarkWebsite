@@ -87,6 +87,24 @@
   cost-2026, pages-vs-items, local SEO, Squarespace comparison, Wix
   comparison, nonprofit guide, AI-phone-menu explainer.
 
+## guillen.studio v2 rebuild (decided 2026-07-13, in design)
+
+- **Design language: "Datasheet / Silicon"** — PCB/datasheet metaphor, two-metal
+  rule (structural metal + "alive" signal color), bus rail drawn by scroll,
+  projects as datasheets, devlogs as errata, serial-console easter egg.
+  Concept mock: `~/Desktop/guillen-concept/index.html` (4 candidate palettes,
+  palette undecided). Chip hero placeholder → Angel's own 3D die render.
+- **Strategy: fresh build, no morphing.** New bare app `apps/studio` (this
+  repo) + NEW container on RAYA; domain swap = one NPM proxy-host edit when
+  ready; old guillen-static container kept as rollback.
+- **CMS: Payload replaces Sanity** for this site. Separate instance cloned
+  from GuillenSolutionsWeb/cms patterns (own Postgres + container, NOT shared
+  with the client CMS). Collections: Devlogs (errata), Projects (datasheets),
+  DocSpaces/DocPages, Media; globals: operator profile, site links.
+- **New IA:** / (five-sheet board) · /ssf (flagship hub) · /work · /devlog ·
+  /docs (into nav) · /lab (seeds) · /about (recruiter sheet — co-op deadline
+  Fall 2026). "Work with me" shrinks to a footer link → guillensolutions.com.
+
 ## Infra (RAYA — 72.61.11.169, ssh alias `raya`)
 
 - **Edge: nginx-proxy-manager container** owns 80/443 + all Let's Encrypt
