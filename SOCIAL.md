@@ -142,6 +142,17 @@ fixed terms — never improvise them:
 - Deploy as message #2 escalation on warm-but-stalled threads, or to the
   nonprofit seed target.
 
+**Gatekeeper routing (businesses >~10 people, added 2026-07-13):** small
+solo/family businesses = the DM inbox IS the owner, no change. Larger SMBs:
+(1) write to be FORWARDED, not evaluated — lead with the business's problem
+stated factually (hack/leak/search-result defect), never with our service;
+(2) always end with "if you're not the right person for website stuff,
+could you pass this to whoever is?" — forwarding is the easiest yes;
+(3) name the owner first: TX SOS/Comptroller + MA SOS corporate searches
+list LLC managers free; license databases list holders; LinkedIn for titles;
+(4) read-no-reply on a big business = possibly wrong person, so the
+follow-up SWITCHES CHANNEL (IG→email→call), same message, one touch.
+
 **Cold-DM expectations (calibration, 2026-07):** personalized DMs to local
 SMBs → ~10–20% reply, replies → ~20–30% close. 20 sends ≈ 2–4 replies,
 0–1 clients — zero from one batch is normal. One polite bump 3–5 days later
