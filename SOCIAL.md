@@ -147,6 +147,20 @@ SMBs → ~10–20% reply, replies → ~20–30% close. 20 sends ≈ 2–4 replie
 0–1 clients — zero from one batch is normal. One polite bump 3–5 days later
 (Tue/Wed morning) adds ~30–50% more replies; "read, no reply" = nudge list.
 
+**Email marketing (assessed 2026-07-12):** three tiers —
+(1) Cold volume: NOT YET. Needs separate sending domain + warmup + tooling
+(~$40–100/mo) + 500–1,000 sends per client (1–5% reply). Revisit only after
+the hot-lead pool is exhausted. HARD RULE: never send cold volume from
+guillensolutions.com — one spam flag and client invoices/contracts land in
+spam. Cold sending always uses a throwaway-adjacent domain.
+(2) Manual personalized email (current practice): correct at this scale,
+keep as one DM channel.
+(3) Warm list: START NOW — newsletter signup on site → free beehiiv/
+Mailchimp tier; monthly email (what we shipped + one local-SEO tip). Feed it
+"not now" replies, Inquiries, chamber contacts (with permission). This is
+where slow leads convert months later; also becomes a sellable client
+add-on (newsletter setup). Social ads verdict unchanged: hold under $500/mo.
+
 **Niche signal:** vets/dental/med/trades = high-LTV niches that referral-
 chain well (one vet → three vets). RESTAURANTS flagged as a WEAK niche
 (3–5% margins, discovery via Maps/IG, owners won't pay) — pitch them
