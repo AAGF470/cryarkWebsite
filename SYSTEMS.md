@@ -89,18 +89,21 @@
 
 ## guillen.studio v2 rebuild (decided 2026-07-13, in design)
 
-- **Design language: "Datasheet / Silicon"** — PCB/datasheet metaphor, two-metal
-  rule (structural metal + "alive" signal color), bus rail drawn by scroll,
-  projects as datasheets, devlogs as errata, serial-console easter egg.
-  Concept mock: `~/Desktop/guillen-concept/index.html`.
-  **Palette DECIDED 2026-07-13: steel/blue/red trio** — structural silver-steel
-  `#97a0ac` (lines/borders/traces), label metal steel-blue `#8fb9e6` (part
-  numbers/headers/outline type), alive signal red `#ff3b47` (LEDs, links,
-  active states). Silicon-shine layer: metallic gradient display text
-  (.metal-text), iridescent wafer disc behind chip hero, hover light-sweeps.
-  Media system: labeled FIG wells (flagship gameplay slot, work-card thumbs,
-  operator portrait) — all image/animation slots. Chip hero placeholder →
-  Angel's own 3D die render (QFN, steel leads, red emissive accent).
+- **Design language DECIDED 2026-07-14: "Soft Silicon" (v2)** — softened,
+  media-first evolution of the datasheet concept. Mock:
+  `~/Desktop/guillen-concept/index.html` (v1 kept at `v1-datasheet.html`).
+  Palette: steel `#97a0ac` (structure) · blue `#8fb9e6` (labels/links) ·
+  soft signal red `#ee5560` (alive: LEDs, active nav, CTAs). Sentence-case
+  Archivo (700/800, 110% stretch), 14-18px radii, quiet grain, whisper bus
+  rail (single line + vias), subtle metallic .metal display text, wafer halo
+  behind chip hero. **Engineering flavor = seasoning, not the dish** (target
+  audience incl. recruiters): human labels ("Featured project", "Devlog"),
+  no part numbers/SHT/barcode chrome; deep-tech lives in the hidden serial
+  console (` key) only.
+  **Light-bleed media system**: every media well = .media > .bleed (blurred
+  clone behind) + .frame; hover diffuses the artwork's own edge colors
+  outward (ambilight). Works with img/video via clone JS. Media slots:
+  SSF gameplay/trailer, 4 work-card thumbs, about portrait, chip die render.
 - **Strategy: fresh build, no morphing.** New bare app `apps/studio` (this
   repo) + NEW container on RAYA; domain swap = one NPM proxy-host edit when
   ready; old guillen-static container kept as rollback.
