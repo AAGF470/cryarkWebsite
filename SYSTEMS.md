@@ -118,6 +118,8 @@
     readingTime auto) · DocSpaces (project rel, version label, grouped tree)
     · DocPages (space rel, group, order, slug, blocks[]; prev/next + on-this-
     page derived). Docs layout: sidebar tree / content / on-this-page rail.
+  - Nav behavior: auto-hide (hide on scroll-down, show on scroll-up, 16px
+    top hover zone summons it; never hidden near page top). All pages.
 - Prior iteration — "Soft Silicon" (v2) — softened,
   media-first evolution of the datasheet concept. Mock:
   `~/Desktop/guillen-concept/index.html` (v1 kept at `v1-datasheet.html`).
