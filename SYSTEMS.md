@@ -101,6 +101,23 @@
   **BLOCKER: needs 3 real captures from Angel** (SSF viewport clip,
   Toolkit screenshot, Last Call gameplay) — design judged only w/ real
   media; do not restyle further until then.
+- **Typography (2026-07-14): Space Grotesk only** (display + body, 700 for
+  headings) + JetBrains Mono. Archivo/wide-stretch REMOVED (read as squished
+  — Angel wants boxy/vertical). Content column 1040px; prose measure 720px.
+- **Devlog + docs page templates + PAYLOAD BLOCK PALETTE (2026-07-14):**
+  mocks `devlog.html` + `docs.html` in guillen-concept/. Angel authors these
+  himself in the CMS — blocks ARE the schema:
+  - Shared blocks: `prose` (richtext, 720px measure) · `media` (upload +
+    caption + wide/inset variant, light-bleed) · `code` (filename + language
+    + body) · `callout` (tip/note/warning) · `metrics` (label/value/was/
+    delta-direction cards) · `compare` (before/after upload pair, slider).
+  - Devlog-only: `changelog` (added/changed/fixed rows) · `embed` (YouTube).
+  - Docs-only: `steps` (numbered title+body) · `params` (name/type/
+    description table rows).
+  - Collections: Devlogs (title, project rel, date, version, blocks[],
+    readingTime auto) · DocSpaces (project rel, version label, grouped tree)
+    · DocPages (space rel, group, order, slug, blocks[]; prev/next + on-this-
+    page derived). Docs layout: sidebar tree / content / on-this-page rail.
 - Prior iteration — "Soft Silicon" (v2) — softened,
   media-first evolution of the datasheet concept. Mock:
   `~/Desktop/guillen-concept/index.html` (v1 kept at `v1-datasheet.html`).
