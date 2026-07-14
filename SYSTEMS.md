@@ -89,7 +89,19 @@
 
 ## guillen.studio v2 rebuild (decided 2026-07-13, in design)
 
-- **Design language DECIDED 2026-07-14: "Soft Silicon" (v2)** — softened,
+- **v3 CONTENT-FIRST (2026-07-14, current direction):** professional-
+  consensus strip-down for the graphics-portfolio genre — "the work is the
+  design." Full-bleed SSF media hero (autoplay loop slot) with statement
+  overlaid; quiet gallery below; glass ONLY on floating chrome (nav,
+  console); CUT: wafer, chip hero (die mark demoted to logo/About), rail,
+  metallic text, glass content panels. KEPT: 218° hue-unified neutrals,
+  sparse red accent (60-30-10), wheel-related status hues, 8px rhythm,
+  light-bleed (the one signature effect — feeds on real media), console.
+  Mock: index.html (v3); v1-datasheet.html + v2-soft-silicon.html kept.
+  **BLOCKER: needs 3 real captures from Angel** (SSF viewport clip,
+  Toolkit screenshot, Last Call gameplay) — design judged only w/ real
+  media; do not restyle further until then.
+- Prior iteration — "Soft Silicon" (v2) — softened,
   media-first evolution of the datasheet concept. Mock:
   `~/Desktop/guillen-concept/index.html` (v1 kept at `v1-datasheet.html`).
   Palette: steel `#97a0ac` (structure) · blue `#8fb9e6` (labels/links) ·
