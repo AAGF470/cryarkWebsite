@@ -111,9 +111,30 @@
   from GuillenSolutionsWeb/cms patterns (own Postgres + container, NOT shared
   with the client CMS). Collections: Devlogs (errata), Projects (datasheets),
   DocSpaces/DocPages, Media; globals: operator profile, site links.
-- **New IA:** / (five-sheet board) · /ssf (flagship hub) · /work · /devlog ·
-  /docs (into nav) · /lab (seeds) · /about (recruiter sheet — co-op deadline
-  Fall 2026). "Work with me" shrinks to a footer link → guillensolutions.com.
+- **v2.1 (2026-07-14): hue-unified + frosted glass.** All neutrals on one
+  218° blue axis (bg #0b0d12, glass rgba(198,214,235,.045), steel #9aa7ba,
+  ink cool-white); red #ee5560 = split-complement accent, ≤10% (60-30-10).
+  Status hues wheel-related: shipped=teal #7fd8c3 (red's complement),
+  in-dev=blue, R&D=violet #b7a3e8 (blue↔red bridge). Frosted `.glass`
+  convention (blur 22px + saturate + top-edge inset highlight) over a dim
+  2-tone ambient field. 8px spacing scale (--sp-1..7), dark-mode generous
+  rhythm. Light-bleed doubles as glass illumination.
+- **REAL PROJECT SLATE (corrected 2026-07-14 — SSF is NOT a game):**
+  SSF = **procedural foliage scattering/rendering system for UNREAL** (C++/
+  HLSL, flagship, in dev); Cinematic Toolkit (Godot modules: AA shader,
+  asset inspector, The Instancer, proc generators, FPS controller, in dev);
+  DERG = synthetic training-data pipeline (Blender/Python, R&D — the old
+  "Derg docs" nav comment refers to this); Last Call (Unity team game,
+  shipped, course); GPA Tracker (PyQt6 packaged macOS app, shipped).
+  Cooper proc-gen research: add ONLY when confirmed. Framing rule: every
+  project carries a "what it demonstrates" line; lead with graphics/engine
+  work; honest in-dev vs shipped status. Site purposes: project showcase +
+  live docs + **beta build distribution** + how-it-was-made breakdowns +
+  small hire-me pitch.
+- **New IA:** / (media-first board) · /ssf (flagship hub) · /work · /devlog ·
+  /docs (into nav) · /builds (beta distribution) · /lab (seeds) · /about
+  (recruiter sheet — co-op deadline Fall 2026). "Work with me" = small
+  hire-me block in About + footer link → guillensolutions.com.
 
 ## Infra (RAYA — 72.61.11.169, ssh alias `raya`)
 
