@@ -120,6 +120,7 @@
     page derived). Docs layout: sidebar tree / content / on-this-page rail.
   - Nav behavior: auto-hide (hide on scroll-down, show on scroll-up, 16px
     top hover zone summons it; never hidden near page top). All pages.
+- **Widened layout (2026-07-14):** home main/hero 1040→1280px; devlog article 880→1020px (measure 720→760px, wide-media breakout recalculated against 1020px column, spans up to 1320px); docs shell 1280→1560px (sidebar 230→250px, rail 190→220px). Spacing scale opened further: sp-5 48→56, sp-6 80→96, sp-7 112/128→128/144. Reason: more room for visual content (media/renders), plus a boxier/more-vertical feel over the earlier squished one.
 - Prior iteration — "Soft Silicon" (v2) — softened,
   media-first evolution of the datasheet concept. Mock:
   `~/Desktop/guillen-concept/index.html` (v1 kept at `v1-datasheet.html`).
