@@ -92,8 +92,15 @@
 - **Design language: "Datasheet / Silicon"** — PCB/datasheet metaphor, two-metal
   rule (structural metal + "alive" signal color), bus rail drawn by scroll,
   projects as datasheets, devlogs as errata, serial-console easter egg.
-  Concept mock: `~/Desktop/guillen-concept/index.html` (4 candidate palettes,
-  palette undecided). Chip hero placeholder → Angel's own 3D die render.
+  Concept mock: `~/Desktop/guillen-concept/index.html`.
+  **Palette DECIDED 2026-07-13: steel/blue/red trio** — structural silver-steel
+  `#97a0ac` (lines/borders/traces), label metal steel-blue `#8fb9e6` (part
+  numbers/headers/outline type), alive signal red `#ff3b47` (LEDs, links,
+  active states). Silicon-shine layer: metallic gradient display text
+  (.metal-text), iridescent wafer disc behind chip hero, hover light-sweeps.
+  Media system: labeled FIG wells (flagship gameplay slot, work-card thumbs,
+  operator portrait) — all image/animation slots. Chip hero placeholder →
+  Angel's own 3D die render (QFN, steel leads, red emissive accent).
 - **Strategy: fresh build, no morphing.** New bare app `apps/studio` (this
   repo) + NEW container on RAYA; domain swap = one NPM proxy-host edit when
   ready; old guillen-static container kept as rollback.
