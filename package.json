@@ -10,7 +10,7 @@
     "build": "vite build",
     "build:guillen": "vite build --config apps/guillen/vite.config.js",
     "build:freelance": "vite build --config apps/freelance-template/vite.config.js",
-    "build:ui":      "vite build --config shared/vite.lib.config.js",
+    "build:ui": "vite build --config shared/vite.lib.config.js",
     "lint": "eslint .",
     "preview": "vite preview",
     "studio:dev": "cd studio && npm run dev",
